@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  backend:
+    image: backend_image
+    container_name: backend
+    build: 
+      context: "./backend"
+      dockerfile: "../docker/app/Backend"
+    volumes:
+      - ../backend:/app
+    command: python3 backend/manage.py runserver 0.0.0.0:30001
+    ports:
+      - "30001:30001"
