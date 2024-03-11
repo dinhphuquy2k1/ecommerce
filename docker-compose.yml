@@ -7,7 +7,7 @@ services:
       context: "./backend"
       dockerfile: "../docker/app/Backend"
     volumes:
-      - ../backend:/app
-    command: python3 backend/manage.py runserver 0.0.0.0:30001
+      - ./:/app
+#    command: python app/manage.py runserver 0.0.0.0:30001
     ports:
       - "30001:30001"

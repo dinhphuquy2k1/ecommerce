@@ -11,8 +11,9 @@ ENV DJANGO_SUPERUSER_PASSWORD="admin"
 # Cập nhật pip và setuptools
 RUN pip install --upgrade pip setuptools wheel
 COPY ./requirements.txt /app/
+COPY ./ /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 30001
 
-CMD ["python3", "backend/manage.py", "runserver"]
+CMD ["python3", "backend/manage.py", "runserver", "0.0.0.0:30001"]
