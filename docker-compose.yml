@@ -28,7 +28,6 @@ services:
   db:
     image: mysql:8.0
     container_name: db
-    command: mysqld --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_DATABASE: 'ecommerce'
@@ -38,6 +37,7 @@ services:
       MYSQL_ROOT_HOST: '%'
     volumes:
       - mysql-db:/var/lib/mysql
+      - ./docker/mysql:/docker-entrypoint-initdb.d
     ports:
       - "5107:3306"
     networks:
