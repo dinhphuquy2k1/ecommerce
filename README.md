@@ -24,7 +24,7 @@
     docker-compose up -d
     ```
 
-   library django
+   write library django to file
    ``` sh
    pip freeze > requirements.txt
    ```
