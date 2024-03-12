@@ -3,11 +3,16 @@ services:
   backend:
     image: backend_image
     container_name: backend
-    build: 
+    build:
       context: "./backend"
       dockerfile: "../docker/app/Backend"
     volumes:
-      - ./:/app/backend
+      - ./:/app/
+    depends_on:
+      - db
+    restart: always
+    links:
+      - db
     ports:
       - "30001:30001"
     networks:
@@ -23,6 +28,8 @@ services:
     ports:
       - "8080:8080"
     depends_on:
+      - backend
+    networks:
       - backend
     restart: always
   db:
