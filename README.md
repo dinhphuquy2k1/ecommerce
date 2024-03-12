@@ -18,15 +18,10 @@
 
 4. backend
 
-   intel mac
+   build app
 
     ``` sh
-    docker-compose up
-    ```
-
-   apple silicon mac
-    ```sh
-    docker-compose -f docker-compose-arm.yml up
+    docker-compose up -d
     ```
 
    library django
