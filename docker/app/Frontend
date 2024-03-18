@@ -1,13 +1,13 @@
 # Sử dụng image node phiên bản LTS
 FROM node:lts-alpine
 # Thiết lập thư mục làm việc
-WORKDIR /app/frontend
+WORKDIR /app/
 # Copy package.json và package-lock.json để cài đặt dependencies
-COPY package*.json ./
+COPY package*.json /app/
 # Cài đặt dependencies
 RUN npm install
 RUN npm install --location=global @vue/cli
-COPY . .
+COPY . /app/
 # Build ứng dụng Vue.js
 RUN npm run build
 EXPOSE 8080
