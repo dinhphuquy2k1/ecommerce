@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import CategoryApi
+from . import api
+
+# router = DefaultRouter()
+# router.register(r'category', CategoryAPIView.as_view(), basename='category')
+# urlpatterns = router.urls
 
 urlpatterns = [
-    path('/category/', CategoryApi.as_view(), name="index"),
+    path('category/', api.category_list)
 ]
