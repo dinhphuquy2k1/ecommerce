@@ -1,23 +1,23 @@
 version: "3.8"
 services:
-  backend:
+  e-backend:
     image: backend_image
-    container_name: backend
+    container_name: e-backend
     build:
       context: "./backend"
       dockerfile: "../docker/app/Backend"
     volumes:
       - ./:/app/
     depends_on:
-      - db
+      - e-db
     restart: always
     links:
-      - db
+      - e-db
     ports:
       - "30001:30001"
     networks:
       - backend
-  frontend:
+  e-frontend:
     image: frontend_image
     container_name: frontend
     build:
@@ -29,13 +29,13 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - backend
+      - e-backend
     networks:
       - backend
     restart: always
-  db:
+  e-db:
     image: mysql:8.0
-    container_name: db
+    container_name: e-db
     restart: always
     environment:
       MYSQL_DATABASE: 'ecommerce'

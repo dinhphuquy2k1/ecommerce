@@ -43,5 +43,5 @@
 ## database and sql
 
    ``` sh
-   sudo docker exec db sh /docker-entrypoint-initdb.d/run-sql.sh
+   sudo docker exec e-db sh /docker-entrypoint-initdb.d/run-sql.sh
    ```
