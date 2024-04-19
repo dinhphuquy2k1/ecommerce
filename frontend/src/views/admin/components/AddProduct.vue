@@ -22,26 +22,7 @@
       </div>
       <div class="row gy-4 pb-4">
         <div class="col-xxl-9">
-          <Panel header="Thông tin cơ bản" toggleable>
-            <div class="d-flex flex-column group-form_list">
-              <div class="group-form_box">
-                <div class="label">Tên sản phẩm</div>
-                <div class="">
-                  <InputText placeholder="Tên sản phẩm"></InputText>
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-              <div class="group-form_box">
-                <div class="label">Mô tả</div>
-                <div class="">
-                  <Textarea rows="4" cols="30" class="h-100" placeholder="Nhập mô tả"/>
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-            </div>
-          </Panel>
-
-          <Panel header="Phương tiện" toggleable class="mt-4 ma-media">
+          <Panel header="Thông tin cơ bản" toggleable class="ma-media">
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
                 <div class="label d-flex">Hình ảnh sản phẩm
@@ -195,11 +176,35 @@
                 </div>
                 <div class="col-6 ma-item-video">
                   <div class="icon">
-                     <Image :src="require('@public/assets/icons/video.svg')" alt="Image"/>
+                    <Image :src="require('@public/assets/icons/video.svg')" alt="Image"/>
                   </div>
                   <div class="title">
                     Video
                   </div>
+                </div>
+                <div class="ms-error-text"></div>
+              </div>
+              <div class="group-form_box">
+                <div class="label">Tên sản phẩm</div>
+                <div class="">
+                  <InputText placeholder="Tên sản phẩm"></InputText>
+                </div>
+                <div class="ms-error-text"></div>
+              </div>
+              <div class="group-form_box">
+                <div class="label">Hạng mục</div>
+                <div class="">
+                  <TreeSelect v-model="selectedCity" :options="cascadeSelect" optionLabel="cname"
+                              optionGroupLabel="name"
+                              :metaKeySelection="true"
+                              :optionGroupChildren="['states', 'cities']" placeholder="Vui lòng chọn một hạng mục"/>
+                </div>
+                <div class="ms-error-text"></div>
+              </div>
+              <div class="group-form_box">
+                <div class="label">Thương hiệu</div>
+                <div class="">
+                  <InputText placeholder="Tên sản phẩm"></InputText>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
@@ -339,6 +344,7 @@ import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
 import Dropdown from 'primevue/dropdown';
 import Editor from 'primevue/editor';
+import TreeSelect from 'primevue/treeselect';
 import Image from 'primevue/image';
 import FileUpload from 'primevue/fileupload';
 
@@ -351,7 +357,8 @@ export default {
     Dropdown,
     Editor,
     FileUpload,
-    Image
+    Image,
+    TreeSelect
   },
   data() {
     return {
@@ -363,6 +370,77 @@ export default {
         {name: 'London', code: 'LDN'},
         {name: 'Istanbul', code: 'IST'},
         {name: 'Paris', code: 'PRS'}
+      ],
+      cascadeSelect: [
+        {
+          key: '0',
+          label: 'Documents',
+          data: 'Documents Folder',
+          icon: 'pi pi-fw pi-inbox',
+          children: [
+            {
+              key: '0-0',
+              label: 'Work',
+              data: 'Work Folder',
+              icon: 'pi pi-fw pi-cog',
+              children: [
+                {key: '0-0-0', label: 'Expenses.doc', icon: 'pi pi-fw pi-file', data: 'Expenses Document'},
+                {key: '0-0-1', label: 'Resume.doc', icon: 'pi pi-fw pi-file', data: 'Resume Document'}
+              ]
+            },
+            {
+              key: '0-1',
+              label: 'Home',
+              data: 'Home Folder',
+              icon: 'pi pi-fw pi-home',
+              children: [{
+                key: '0-1-0',
+                label: 'Invoices.txt',
+                icon: 'pi pi-fw pi-file',
+                data: 'Invoices for this month'
+              }]
+            }
+          ]
+        },
+        {
+          key: '1',
+          label: 'Events',
+          data: 'Events Folder',
+          icon: 'pi pi-fw pi-calendar',
+          children: [
+            {key: '1-0', label: 'Meeting', icon: 'pi pi-fw pi-calendar-plus', data: 'Meeting'},
+            {key: '1-1', label: 'Product Launch', icon: 'pi pi-fw pi-calendar-plus', data: 'Product Launch'},
+            {key: '1-2', label: 'Report Review', icon: 'pi pi-fw pi-calendar-plus', data: 'Report Review'}
+          ]
+        },
+        {
+          key: '2',
+          label: 'Movies',
+          data: 'Movies Folder',
+          icon: 'pi pi-fw pi-star-fill',
+          children: [
+            {
+              key: '2-0',
+              icon: 'pi pi-fw pi-star-fill',
+              label: 'Al Pacino',
+              data: 'Pacino Movies',
+              children: [
+                {key: '2-0-0', label: 'Scarface', icon: 'pi pi-fw pi-video', data: 'Scarface Movie'},
+                {key: '2-0-1', label: 'Serpico', icon: 'pi pi-fw pi-video', data: 'Serpico Movie'}
+              ]
+            },
+            {
+              key: '2-1',
+              label: 'Robert De Niro',
+              icon: 'pi pi-fw pi-star-fill',
+              data: 'De Niro Movies',
+              children: [
+                {key: '2-1-0', label: 'Goodfellas', icon: 'pi pi-fw pi-video', data: 'Goodfellas Movie'},
+                {key: '2-1-1', label: 'Untouchables', icon: 'pi pi-fw pi-video', data: 'Untouchables Movie'}
+              ]
+            }
+          ]
+        }
       ],
       files: [],
       totalSize: 0,
@@ -488,7 +566,7 @@ export default {
     border-radius: 4px;
     border: 1px dashed rgba(0, 0, 0, .14);
 
-    .icon{
+    .icon {
       margin-bottom: 8px;
     }
 

@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'ecommerce',
         'USER': 'ecommerce',
         'PASSWORD': '1181080029',
-        'HOST': 'db',
+        'HOST': 'e-db',
         'PORT': '3306',
     }
 }

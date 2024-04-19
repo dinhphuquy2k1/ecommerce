@@ -1,20 +1,24 @@
-.p-dropdown {
+.p-dropdown, .p-treeselect {
   width: 100%;
   max-width: 100% !important;
   min-height: 36px;
+  color: #000;
   height: 40px;
   border-radius: 3.5px;
   display: flex;
   box-sizing: border-box !important;
   align-items: center;
+  text-align: left;
+  position: relative;
+
 }
 
-.p-dropdown:not(.p-disabled).p-focus {
+.p-dropdown:not(.p-disabled).p-focus, .p-treeselect:not(.p-disabled).p-focus {
   box-shadow: none !important;
   border-color: #1a73e8;
 }
 
-.p-dropdown:not(.p-disabled):hover {
+.p-dropdown:not(.p-disabled):hover, .p-treeselect:not(.p-disabled):hover {
   border-color: #1a73e8;
 }
 
@@ -68,6 +72,12 @@
 
 .p-dropdown.p-component.p-inputwrapper.p-inputwrapper-filled .p-inputtext {
   border: none;
+}
+
+.p-dropdown-panel {
+  .p-dropdown-item-label {
+    color: #000;
+  }
 }
 
 .p-multiselect {
@@ -132,5 +142,81 @@
 
   &:last-child {
     margin-bottom: 8px;
+  }
+}
+
+.p-treeselect-panel {
+  box-sizing: border-box;
+
+  .p-treeselect-items-wrapper {
+    .p-tree-selectable {
+      padding: unset;
+    }
+
+    .p-tree-wrapper {
+      .p-tree-container {
+        & > .p-treenode:first-child {
+          margin-top: 8px;
+        }
+
+        .p-treenode {
+          cursor: pointer;
+          line-height: 36px;
+          white-space: nowrap;
+          border-radius: 4px;
+          padding: 0;
+          margin: 0 8px 0 8px;
+
+          &:focus {
+            .p-treenode-content {
+              box-shadow: unset;
+            }
+          }
+
+          .p-treenode-children {
+            .p-treenode {
+              padding-left: 20px;
+            }
+          }
+
+          .p-treenode-content {
+            position: relative;
+            padding: 0;
+            height: 36px;
+            border-radius: 4px;
+
+            &.p-highlight {
+              background: #dfebff;
+              color: #000;
+            }
+
+            &.p-treenode-selectable:not(.p-highlight):hover {
+              background: #dfebff;
+            }
+
+            .p-tree-toggler {
+              width: 100%;
+              height: 36px;
+              z-index: 1;
+
+              &:enabled:hover {
+                background: unset;
+              }
+
+              .p-tree-toggler-icon {
+                position: absolute;
+                left: 10px;
+              }
+            }
+
+            .p-treenode-label {
+              position: absolute;
+              left: 36px;
+              color: #000;
+            }
+          }
+        }
+      }
+    }
   }
 }
