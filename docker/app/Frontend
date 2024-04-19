@@ -5,10 +5,10 @@ WORKDIR /app/
 # Copy package.json và package-lock.json để cài đặt dependencies
 COPY package*.json /app/
 # Cài đặt dependencies
+RUN npm install -g @vue/cli
 RUN npm install
-RUN npm install --location=global @vue/cli
-COPY . /app/
+COPY . .
 # Build ứng dụng Vue.js
 RUN npm run build
 EXPOSE 8080
-CMD [ "npm", "--prefix", "frontend", "run", "serve" ]
+CMD [ "npm", "run", "serve" ]

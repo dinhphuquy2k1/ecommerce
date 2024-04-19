@@ -96,8 +96,8 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(93
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(94, 'Số lõi', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(95, 'Loại SIM', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(96, 'Giắc cắm 3,5 mm', 3, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(97, 'Loại cáp', 4, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(98, 'Năm phát hành', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(97, 'Loại cáp', 4, now(), now()); -- thừa
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(98, 'Năm phát hành', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(99, 'CPU (Ghz)', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(100, 'Ổ đĩa quang', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(101, 'Loại bảo quản', 3, now(), now());
@@ -144,3 +144,8 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(14
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(142, 'Loại Đầu nối & Cáp mạng', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(143, 'Loại két sắt', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(144, 'Thiết bị thông minh', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(145, 'Tính năng Đồng hồ', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(146, 'Kiểu Theo dõi', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(147, 'Tính năng VR', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(148, 'Tiêu chuẩn Giao tiếp Mạng', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(149, 'Giám sát Thời gian Phản hồi (ms)', 0, now(), now());

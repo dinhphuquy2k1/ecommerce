@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
                 components: {
                     header: () => import('@/views/user/components/Header.vue'),
                     menu: () => import('@/views/user/components/MenuSetting.vue'),
-                    content: () => import('@/views/user/components/OrderDetail.vue'),
+                    content: () => import('@/views/user/components/ComputerAccessories.vue'),
                     footer: () => import('@/views/user/components/Footer.vue'),
                 },
             },

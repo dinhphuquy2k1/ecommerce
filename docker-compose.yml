@@ -24,9 +24,8 @@ services:
       context: "./frontend"
       dockerfile: "../docker/app/Frontend"
     volumes:
-      - ./:/app/
-      - /app/frontend/node_modules
-    command: npm --prefix frontend run serve
+      - ./frontend/:/app/
+      - /app/node_modules
     ports:
       - "8080:8080"
     depends_on:
