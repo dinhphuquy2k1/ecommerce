@@ -44,9 +44,6 @@
                           <Button @click="clearCallback()" icon="pi pi-times" rounded outlined severity="danger"
                                   :disabled="!files || files.length === 0"></Button>
                         </div>
-                        <ProgressBar :value="totalSizePercent" :showValue="false"
-                                     :class="['md:w-20rem h-1rem w-full md:ml-auto', { 'exceeded-progress-bar': totalSizePercent > 100 }]"
-                        ><span class="white-space-nowrap">{{ totalSize }}B / 1Mb</span></ProgressBar
                         >
                       </div>
                     </template>
@@ -138,7 +135,6 @@
                             </div>
                             <span class="font-semibold">{{ file.name }}</span>
                             <div>{{ formatSize(file.size) }}</div>
-                            <Badge value="Pending" severity="warning"/>
                             <Button icon="pi pi-times" @click="onRemoveTemplatingFile(file, removeFileCallback, index)"
                                     outlined rounded severity="danger"/>
                           </div>
@@ -155,7 +151,6 @@
                             </div>
                             <span class="font-semibold">{{ file.name }}</span>
                             <div>{{ formatSize(file.size) }}</div>
-                            <Badge value="Completed" class="mt-3" severity="success"/>
                             <Button icon="pi pi-times" @click="removeUploadedFileCallback(index)" outlined rounded
                                     severity="danger"/>
                           </div>
@@ -194,10 +189,9 @@
               <div class="group-form_box">
                 <div class="label">Hạng mục</div>
                 <div class="">
-                  <TreeSelect v-model="selectedCity" :options="cascadeSelect" optionLabel="cname"
-                              optionGroupLabel="name"
-                              :metaKeySelection="true"
-                              :optionGroupChildren="['states', 'cities']" placeholder="Vui lòng chọn một hạng mục"/>
+                  <TreeSelect v-model="selectedCity" :options="categories"
+                              label="name"
+                              placeholder="Vui lòng chọn một hạng mục"/>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
@@ -347,6 +341,7 @@ import Editor from 'primevue/editor';
 import TreeSelect from 'primevue/treeselect';
 import Image from 'primevue/image';
 import FileUpload from 'primevue/fileupload';
+import {getCategory} from '@/api/category'
 
 export default {
   components: {
@@ -371,76 +366,35 @@ export default {
         {name: 'Istanbul', code: 'IST'},
         {name: 'Paris', code: 'PRS'}
       ],
-      cascadeSelect: [
+      categories: [
         {
-          key: '0',
-          label: 'Documents',
-          data: 'Documents Folder',
-          icon: 'pi pi-fw pi-inbox',
+          label: "Đồ đựng trong nhà",
+          key: 1000,
           children: [
             {
-              key: '0-0',
-              label: 'Work',
-              data: 'Work Folder',
-              icon: 'pi pi-fw pi-cog',
-              children: [
-                {key: '0-0-0', label: 'Expenses.doc', icon: 'pi pi-fw pi-file', data: 'Expenses Document'},
-                {key: '0-0-1', label: 'Resume.doc', icon: 'pi pi-fw pi-file', data: 'Resume Document'}
-              ]
+              key: 28000,
+              label: "Hộp đựng và thùng chứa",
+              children: []
             },
             {
-              key: '0-1',
-              label: 'Home',
-              data: 'Home Folder',
-              icon: 'pi pi-fw pi-home',
-              children: [{
-                key: '0-1-0',
-                label: 'Invoices.txt',
-                icon: 'pi pi-fw pi-file',
-                data: 'Invoices for this month'
-              }]
+              key: 28001,
+              label: "Móc và kẹp treo",
+              children: []
             }
           ]
         },
         {
-          key: '1',
-          label: 'Events',
-          data: 'Events Folder',
-          icon: 'pi pi-fw pi-calendar',
-          children: [
-            {key: '1-0', label: 'Meeting', icon: 'pi pi-fw pi-calendar-plus', data: 'Meeting'},
-            {key: '1-1', label: 'Product Launch', icon: 'pi pi-fw pi-calendar-plus', data: 'Product Launch'},
-            {key: '1-2', label: 'Report Review', icon: 'pi pi-fw pi-calendar-plus', data: 'Report Review'}
-          ]
-        },
-        {
-          key: '2',
-          label: 'Movies',
-          data: 'Movies Folder',
-          icon: 'pi pi-fw pi-star-fill',
+          key: 2000,
+          label: "Đồ gia dụng",
           children: [
             {
-              key: '2-0',
-              icon: 'pi pi-fw pi-star-fill',
-              label: 'Al Pacino',
-              data: 'Pacino Movies',
-              children: [
-                {key: '2-0-0', label: 'Scarface', icon: 'pi pi-fw pi-video', data: 'Scarface Movie'},
-                {key: '2-0-1', label: 'Serpico', icon: 'pi pi-fw pi-video', data: 'Serpico Movie'}
-              ]
-            },
-            {
-              key: '2-1',
-              label: 'Robert De Niro',
-              icon: 'pi pi-fw pi-star-fill',
-              data: 'De Niro Movies',
-              children: [
-                {key: '2-1-0', label: 'Goodfellas', icon: 'pi pi-fw pi-video', data: 'Goodfellas Movie'},
-                {key: '2-1-1', label: 'Untouchables', icon: 'pi pi-fw pi-video', data: 'Untouchables Movie'}
-              ]
+              key: 29000,
+              label: "Dao nhà bếp",
+              children: []
             }
           ]
         }
+
       ],
       files: [],
       totalSize: 0,
@@ -491,12 +445,20 @@ export default {
         button.click();
 
       });
-
     },
 
-    test() {
-      alert(1)
+    loadCategory() {
+      getCategory().then(res => {
+        // this.categories = res;
+        console.log(this.categories)
+      })
+          .catch(error => {
+            console.log(error)
+          })
     }
+  },
+  created() {
+    this.loadCategory();
   }
 }
 </script>

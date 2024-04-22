@@ -158,6 +158,9 @@
         & > .p-treenode:first-child {
           margin-top: 8px;
         }
+        & > .p-treenode:last-child {
+          margin-bottom: 8px;
+        }
 
         .p-treenode {
           cursor: pointer;
