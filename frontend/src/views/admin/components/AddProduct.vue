@@ -449,7 +449,7 @@ export default {
 
     loadCategory() {
       getCategory().then(res => {
-        // this.categories = res;
+        this.categories = res.data;
         console.log(this.categories)
       })
           .catch(error => {

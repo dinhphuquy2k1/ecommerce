@@ -1,5 +1,5 @@
 FROM php:8.1.0-apache
-WORKDIR /var/www/html/
+WORKDIR /var/www/html
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
@@ -23,8 +23,9 @@ RUN apt-get update -y && apt-get install -y \
 
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 # PHP Extension
-RUN docker-php-ext-install gettext intl pdo pdo_mysql gd
+RUN docker-php-ext-install gettext intl pdo_mysql gd
 
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
@@ -33,4 +34,5 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
 COPY backend/composer.json backend/composer.lock ./
 COPY backend/ .
 RUN composer update \
-    && composer install
+    && composer install \
+    && php artisan route:clear
