@@ -16,7 +16,7 @@
     git clone git@github.com:dinhphuquy2k1/e-commerce.git
     ```
 
-4. backend
+4. Backend
 
    build app
 
@@ -24,24 +24,15 @@
     docker-compose up -d
     ```
 
-   write library django to file
-   ``` sh
-   pip freeze > requirements.txt
-   ```
+   build database
 
-   active virtual environment
    ``` sh
-   source env/bin/activate
-   ```
-
+    sudo docker exec e-db sh /docker-entrypoint-initdb.d/run-sql.sh
+    ```
+   
 5. Open web page locally
 
    http://localhost:8080/
 
    http://localhost:30001/
 
-## database and sql
-
-   ``` sh
-   sudo docker exec e-db sh /docker-entrypoint-initdb.d/run-sql.sh
-   ```

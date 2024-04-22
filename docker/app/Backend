@@ -1,19 +1,36 @@
-FROM python:3.8.10
+FROM php:8.1.0-apache
+WORKDIR /var/www/html/
 
-# set work directory
-WORKDIR /app/
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-ENV DJANGO_SUPERUSER_PASSWORD="admin"
+# Mod Rewrite
+RUN a2enmod rewrite
 
-# Cập nhật pip và setuptools
-RUN pip install --upgrade pip setuptools wheel
-COPY ./requirements.txt /app/
-COPY ./ /app/
-RUN pip install --no-cache-dir -r requirements.txt
+# Linux Library
+RUN apt-get update -y && apt-get install -y \
+    libicu-dev \
+    libmariadb-dev \
+    unzip \
+    zip \
+    zlib1g-dev \
+    libpng-dev \
+    libzip-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    && docker-php-ext-install zip
 
-EXPOSE 30001
+# Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# PHP Extension
+RUN docker-php-ext-install gettext intl pdo pdo_mysql gd
 
-CMD ["python3", "backend/manage.py", "runserver", "0.0.0.0:30001"]
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
+
+
+COPY backend/composer.json backend/composer.lock ./
+COPY backend/ .
+RUN composer update \
+    && composer install

@@ -4,34 +4,35 @@ services:
     image: backend_image
     container_name: e-backend
     build:
-      context: "./backend"
-      dockerfile: "../docker/app/Backend"
+      context: .
+      dockerfile: "docker/app/Backend"
     volumes:
-      - ./:/app/
+      - ./backend:/var/www/html/
+      - ./docker/config/php:/usr/local/etc/
     depends_on:
       - e-db
-    restart: always
+#    restart: always
     links:
       - e-db
     ports:
-      - "30001:30001"
+      - "30001:80"
     networks:
-      - backend
+      - e-networks
   e-frontend:
     image: frontend_image
-    container_name: frontend
+    container_name: e-frontend
     build:
       context: "./frontend"
       dockerfile: "../docker/app/Frontend"
     volumes:
-      - ./frontend/:/app/
-      - /app/node_modules
+      - ./frontend/:/var/www/html/
+      - /var/www/html/node_modules
     ports:
-      - "8080:8080"
+      - "30000:8080"
     depends_on:
       - e-backend
     networks:
-      - backend
+      - e-networks
     restart: always
   e-db:
     image: mysql:8.0
@@ -43,18 +44,28 @@ services:
       MYSQL_PASSWORD: '1181080029'
       MYSQL_ROOT_PASSWORD: '1181080029'
       MYSQL_ROOT_HOST: '%'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
       - mysql-db:/var/lib/mysql
       - ./docker/mysql:/docker-entrypoint-initdb.d
     ports:
       - "5107:3306"
     networks:
-      - backend
+      - e-networks
+  e-phpmyadmin:
+    container_name: e-phpmyadmin
+    image: phpmyadmin:latest
+    ports:
+      - "30002:80"
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - e-networks
 
 volumes:
   mysql-db:
 
 networks:
-  backend:
+  e-networks:
     driver: bridge
-    name: backend
+    name: e-networks

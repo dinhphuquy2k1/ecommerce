@@ -1,9 +1,9 @@
 # Sử dụng image node phiên bản LTS
 FROM node:lts-alpine
 # Thiết lập thư mục làm việc
-WORKDIR /app/
+WORKDIR /var/www/html/
 # Copy package.json và package-lock.json để cài đặt dependencies
-COPY package*.json /app/
+COPY package*.json /var/www/html/
 # Cài đặt dependencies
 RUN npm install -g @vue/cli
 RUN npm install
