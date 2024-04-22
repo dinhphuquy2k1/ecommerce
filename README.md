@@ -29,10 +29,12 @@
    ``` sh
     sudo docker exec e-db sh /docker-entrypoint-initdb.d/run-sql.sh
     ```
-   
+
 5. Open web page locally
 
-   http://localhost:8080/
+   FE: http://localhost:30000/
 
-   http://localhost:30001/
+   BE: http://localhost:30001/
+
+   PHPMYADMIN: http://localhost:30002/
 
