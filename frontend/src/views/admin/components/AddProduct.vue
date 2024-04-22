@@ -189,7 +189,8 @@
               <div class="group-form_box">
                 <div class="label">Hạng mục</div>
                 <div class="">
-                  <TreeSelect v-model="selectedCity" :options="categories"
+                  <TreeSelect v-model="selectedCategory" :options="categories"
+                              @change="changeCategory"
                               label="name"
                               placeholder="Vui lòng chọn một hạng mục"/>
                 </div>
@@ -217,7 +218,8 @@
                 <div class="group-form_box flex-grow-1 col-6">
                   <div class="label">Loại giảm giá</div>
                   <div class="">
-                    <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Loại giảm giá"
+                    <Dropdown v-model="selectedCategory" :options="cities" optionLabel="name"
+                              placeholder="Loại giảm giá"
                               class="ms-category text-start"/>
                   </div>
                   <div class="ms-error-text"></div>
@@ -320,7 +322,7 @@
             <div class="group-form_box flex-grow-1">
               <div class="label">Trạng thái</div>
               <div class="">
-                <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Trạng thái"
+                <Dropdown v-model="selectedCategory" :options="cities" optionLabel="name" placeholder="Trạng thái"
                           class="ms-category text-start"/>
               </div>
             </div>
@@ -358,7 +360,7 @@ export default {
   data() {
     return {
       value: '',
-      selectedCity: null,
+      selectedCategory: null,
       cities: [
         {name: 'New York', code: 'NY'},
         {name: 'Rome', code: 'RM'},
@@ -439,12 +441,14 @@ export default {
 
       return `${formattedSize} ${sizes[i]}`;
     },
-    handleElementClick() {
-      this.$nextTick(() => {
-        const button = this.$refs.myButton;
-        button.click();
 
-      });
+    /**
+     * Sự kiện chọn hạng mục
+     */
+    changeCategory() {
+      // lấy ra id hạng mục
+      let idCategory = Object.keys(this.selectedCategory)[0];
+
     },
 
     loadCategory() {
