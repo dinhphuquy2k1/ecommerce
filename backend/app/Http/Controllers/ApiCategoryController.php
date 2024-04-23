@@ -41,4 +41,18 @@ class ApiCategoryController extends Controller
         }
         return $data;
     }
+
+    /**
+     * Lấy danh sách property theo id category
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function getProperties(int $id): JsonResponse
+    {
+        $properties = Category::with('properties')->find($id);
+        if (!$properties) {
+            return $this->sendResponseSuccess();
+        }
+        return $this->sendResponseSuccess($properties->toArray());
+    }
 }

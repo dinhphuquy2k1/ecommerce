@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CategoryPropertyController extends Controller
+class ApiPropertyValueController extends Controller
 {
     //
 }

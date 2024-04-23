@@ -344,6 +344,7 @@ import TreeSelect from 'primevue/treeselect';
 import Image from 'primevue/image';
 import FileUpload from 'primevue/fileupload';
 import {getCategory} from '@/api/category'
+import {getCategoryProperty} from '@/api/category-property'
 
 export default {
   components: {
@@ -448,7 +449,11 @@ export default {
     changeCategory() {
       // lấy ra id hạng mục
       let idCategory = Object.keys(this.selectedCategory)[0];
-
+      getCategoryProperty(idCategory).then(res => {
+        console.log(res)
+      }).catch(error => {
+        console.log(error)
+      })
     },
 
     loadCategory() {

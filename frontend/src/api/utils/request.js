@@ -6,7 +6,7 @@ const service = axios.create({
     baseURL: "http://localhost:30001/api", // uri = baseURL + apiFunction truyền tới
     timeout: 5000,
     headers: { // Request Headers
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
         'Accept': 'application/json'
     }
 })
