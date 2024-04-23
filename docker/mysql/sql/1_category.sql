@@ -614,7 +614,7 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(82008, 'Hệ thống & Camera an ninh', 9001, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(82009, 'Ống kính máy ảnh', 9001, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(82010, 'Drone & Phụ kiện', 9001, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(82010, 'Bảo quản camera', 9001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(82011, 'Bảo quản camera', 9001, now(), now());
 
 -- Điện thoại & Đồ điện tử > Âm thanh & Video
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(83000, 'Tai nghe trong & Tai nghe', 9002, now(), now());

@@ -177,3 +177,5 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(17
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(175, 'Bộ phận cơ thể', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(176, 'Loại phụ kiện phòng tắm', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(177, 'Hướng dẫn giặt', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(178, 'Điểm ảnh', 0, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(179, 'Mẫu Ống kính', 0, now(), now());
