@@ -637,127 +637,127 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(84002, 'Phụ kiện bảng điều khiển', 9003, now(), now());
 
 -- Điện thoại & Đồ điện tử > Thiết bị thông minh & Thiết bị đeo
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85000, 'Phụ kiện đeo', 9003, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85001, 'Đồng hồ thông minh', 9003, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85002, 'Kính thông minh', 9003, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85003, 'Vòng đeo tay thể thao thông minh', 9003, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85004, 'Thiết bị định vị GPS', 9003, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85005, 'Thiết bị VR', 9003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85000, 'Phụ kiện đeo', 9004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85001, 'Đồng hồ thông minh', 9004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85002, 'Kính thông minh', 9004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85003, 'Vòng đeo tay thể thao thông minh', 9004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85004, 'Thiết bị định vị GPS', 9004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(85005, 'Thiết bị VR', 9004, now(), now());
 
 -- Điện thoại & Đồ điện tử > Thiết bị giáo dục
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86000, 'Máy đọc sách điện tử', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86001, 'Từ điển điện tử', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86002, 'Bộ phận & phụ kiện thiết bị giáo dục', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86003, 'Bảng viết điện tử', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86004, 'Sổ tay điện tử', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86005, 'Bút & Thiết bị đọc', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86006, 'Thiết bị học tập điện tử', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86007, 'Bút thông minh & kỹ thuật số', 9004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86000, 'Máy đọc sách điện tử', 9005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86001, 'Từ điển điện tử', 9005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86002, 'Bộ phận & phụ kiện thiết bị giáo dục', 9005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86003, 'Bảng viết điện tử', 9005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86004, 'Sổ tay điện tử', 9005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86005, 'Bút & Thiết bị đọc', 9005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86006, 'Thiết bị học tập điện tử', 9005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(86007, 'Bút thông minh & kỹ thuật số', 9005, now(), now());
 
 -- Điện thoại & Đồ điện tử > Phụ kiện đa năng
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(87000, 'Máy hút chân không USB', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(87001, 'Wi-Fi bỏ túi', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(87002, 'Đèn USB & di động', 9004, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(87003, 'Quạt USB & di động', 9004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(87000, 'Máy hút chân không USB', 9006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(87001, 'Wi-Fi bỏ túi', 9006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(87002, 'Đèn USB & di động', 9006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(87003, 'Quạt USB & di động', 9006, now(), now());
 
 -- Điện thoại & Đồ điện tử > Phụ kiện máy tính bảng & máy tính
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88000, 'Vỏ & Ốp máy tính bảng', 9005, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88001, 'Bộ sạc & Bộ điều hợp máy tính bảng', 9005, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88002, 'Bộ phận máy tính bảng', 9005, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88003, 'Cường lực máy tính bảng', 9005, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88004, 'Bàn phím máy tính bảng', 9005, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88005, 'Giá đỡ & đế máy tính bảng', 9005, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88006, 'Bút cảm ứng', 9005, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88007, 'Túi đựng máy tính bảng', 9005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88000, 'Vỏ & Ốp máy tính bảng', 9007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88001, 'Bộ sạc & Bộ điều hợp máy tính bảng', 9007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88002, 'Bộ phận máy tính bảng', 9007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88003, 'Cường lực máy tính bảng', 9007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88004, 'Bàn phím máy tính bảng', 9007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88005, 'Giá đỡ & đế máy tính bảng', 9007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88006, 'Bút cảm ứng', 9007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(88007, 'Túi đựng máy tính bảng', 9007, now(), now());
 
 -- Điện thoại & Đồ điện tử > Điện thoại & Máy tính bảng
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(89000, 'Điện thoại di động', 9006, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(89001, 'Máy tính bảng', 9006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(89000, 'Điện thoại di động', 9008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(89001, 'Máy tính bảng', 9008, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Máy tính để bàn, Máy tính xách tay & Máy tính bảng
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90000, 'Máy tính xách tay', 9007, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90002, 'Máy tính để bàn', 9007, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90003, 'Máy chủ', 9007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90000, 'Máy tính xách tay', 10000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90002, 'Máy tính để bàn', 10000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90003, 'Máy chủ', 10000, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91000, 'Màn hình', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91001, 'Quạt & Tản nhiệt', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91002, 'Bộ xử lý', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91003, 'Bo mạch chủ', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91004, 'Card đồ họa', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91005, 'Bộ cấp nguồn', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91006, 'RAM', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91007, 'UPS & Ổn áp', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91008, 'Ổ quang', 9008, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91009, 'Card âm thanh', 9008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91000, 'Màn hình', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91001, 'Quạt & Tản nhiệt', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91002, 'Bộ xử lý', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91003, 'Bo mạch chủ', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91004, 'Card đồ họa', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91005, 'Bộ cấp nguồn', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91006, 'RAM', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91007, 'UPS & Ổn áp', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91008, 'Ổ quang', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91009, 'Card âm thanh', 10001, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Thiết bị ngoại vi & Phụ kiện
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100000, 'Bàn phím & Chuột', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100001, 'Hub USB & Đầu đọc thẻ', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100002, 'Webcam', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100003, 'Vỏ & Ốp máy tính xách tay', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100004, 'Tấm làm mát', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100005, 'Giá đỡ & Khay để máy tính xách tay', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100006, 'Bàn phím & Vỏ bàn di chuột', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100007, 'Pin máy tính xách tay', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100008, 'Bộ sạc & Bộ điều hợp máy tính xách tay', 9009, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100009, 'Tấm lót chuột', 9009, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100000, 'Bàn phím & Chuột', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100001, 'Hub USB & Đầu đọc thẻ', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100002, 'Webcam', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100003, 'Vỏ & Ốp máy tính xách tay', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100004, 'Tấm làm mát', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100005, 'Giá đỡ & Khay để máy tính xách tay', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100006, 'Bàn phím & Vỏ bàn di chuột', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100007, 'Pin máy tính xách tay', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100008, 'Bộ sạc & Bộ điều hợp máy tính xách tay', 10002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100009, 'Tấm lót chuột', 10002, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Phần mềm & Bộ nhớ
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101000, 'Ổ cứng', 9010, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101001, 'SSD', 9010, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101002, 'Bộ nhớ đính kèm mạng (NAS)', 9010, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101003, 'Ổ flash & Cáp OTG', 9010, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101004, 'Hộp đựng đĩa cứng & Trạm lưu trữ', 9010, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101005, 'Đĩa nhỏ gọn', 9010, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101000, 'Ổ cứng', 10003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101001, 'SSD', 10003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101002, 'Bộ nhớ đính kèm mạng (NAS)', 10003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101003, 'Ổ flash & Cáp OTG', 10003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101004, 'Hộp đựng đĩa cứng & Trạm lưu trữ', 10003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(101005, 'Đĩa nhỏ gọn', 10003, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Các thành phần mạng
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102000, 'Modem & Bộ định tuyến không dây', 9011, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102001, 'Bộ lặp', 9011, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102002, 'Bộ điều hợp không dây & Card mạng', 9011, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102003, 'Bộ điều hợp Powerline', 9011, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102004, 'Công tắc mạng & PoE', 9011, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102005, 'Cáp & Đầu nối mạng', 9011, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102006, 'Công tắc KVM', 9011, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102007, 'Máy chủ in', 9011, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102000, 'Modem & Bộ định tuyến không dây', 10004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102001, 'Bộ lặp', 10004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102002, 'Bộ điều hợp không dây & Card mạng', 10004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102003, 'Bộ điều hợp Powerline', 10004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102004, 'Công tắc mạng & PoE', 10004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102005, 'Cáp & Đầu nối mạng', 10004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102006, 'Công tắc KVM', 10004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(102007, 'Máy chủ in', 10004, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Thiết bị văn phòng
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103000, 'Máy đánh chữ', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103001, 'Thiết bị chấm công & Kiểm soát truy cập', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103002, 'Máy hủy giấy', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103003, 'Máy đếm tiền', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103004, 'Máy in & Máy scan', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103005, 'Dụng cụ in 3D', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103006, 'Máy fax', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103007, 'Máy quét mã vạch', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103008, 'Thiết bị bán lẻ thông minh', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103009, 'Máy in nhãn', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103010, 'Thiết bị in ấn quảng cáo', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103011, 'Hộp mực in dạng lỏng & bột', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103012, 'Bộ phận thiết bị văn phòng', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103013, 'Máy cán màng', 9012, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103014, 'Thiết bị Âm thanh & Video hội nghị', 9012, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103000, 'Máy đánh chữ', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103001, 'Thiết bị chấm công & Kiểm soát truy cập', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103002, 'Máy hủy giấy', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103003, 'Máy đếm tiền', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103004, 'Máy in & Máy scan', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103005, 'Dụng cụ in 3D', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103006, 'Máy fax', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103007, 'Máy quét mã vạch', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103008, 'Thiết bị bán lẻ thông minh', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103009, 'Máy in nhãn', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103010, 'Thiết bị in ấn quảng cáo', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103011, 'Hộp mực in dạng lỏng & bột', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103012, 'Bộ phận thiết bị văn phòng', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103013, 'Máy cán màng', 10005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(103014, 'Thiết bị Âm thanh & Video hội nghị', 10005, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Văn phòng phẩm & Vật tư
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104000, 'Đồ để viết & sửa', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104001, 'Vật tư dùng trong văn phòng', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104002, 'Dụng cụ cắt dùng trong văn phòng', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104003, 'Đồ dùng học tập & giáo dục', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104004, 'Họa cụ', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104005, 'Sổ tay & Giấy', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104006, 'Phong bì & Đồ bưu điện', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104007, 'Quà tặng & Giấy gói', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104008, 'Vật tư dùng cho công việc kế toán', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104009, 'Phụ kiện & Giá để đồ bàn học', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104010, 'Thẻ', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104011, 'Két sắt', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104012, 'Lịch & Phụ kiện', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104013, 'Sản phẩm giữ tài liệu văn phòng', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104014, 'Phù hiệu & Đồ đi kèm', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104015, 'Nhãn, Bìa phân trang & Tem', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104016, 'Dụng cụ đo dùng trong văn phòng', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104017, 'Dụng cụ thuyết trình dùng trong văn phòng', 9013, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104018, 'Băng dán, keo dán & chốt buộc', 9013, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104000, 'Đồ để viết & sửa', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104001, 'Vật tư dùng trong văn phòng', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104002, 'Dụng cụ cắt dùng trong văn phòng', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104003, 'Đồ dùng học tập & giáo dục', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104004, 'Họa cụ', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104005, 'Sổ tay & Giấy', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104006, 'Phong bì & Đồ bưu điện', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104007, 'Quà tặng & Giấy gói', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104008, 'Vật tư dùng cho công việc kế toán', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104009, 'Phụ kiện & Giá để đồ bàn học', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104010, 'Thẻ', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104011, 'Két sắt', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104012, 'Lịch & Phụ kiện', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104013, 'Sản phẩm giữ tài liệu văn phòng', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104014, 'Phù hiệu & Đồ đi kèm', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104015, 'Nhãn, Bìa phân trang & Tem', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104016, 'Dụng cụ đo dùng trong văn phòng', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104017, 'Dụng cụ thuyết trình dùng trong văn phòng', 10006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(104018, 'Băng dán, keo dán & chốt buộc', 10006, now(), now());
 
 -- Đồ dùng cho thú cưng > Thức ăn cho chó & mèo
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(105000, 'Thức ăn cho chó', 11000, now(), now());

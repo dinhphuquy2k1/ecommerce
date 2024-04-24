@@ -1,14 +1,7 @@
 SET
 FOREIGN_KEY_CHECKS = 0; -- disable check foreign key
 
--- drop all table
-SELECT concat('DROP TABLE IF EXISTS `', table_name, '`;')
-FROM information_schema.tables
-WHERE table_schema = 'ecommerce'; -- database name
-
-SET
-FOREIGN_KEY_CHECKS = 1; -- enable check foreign key
-
+DROP TABLE IF EXISTS categories;
 CREATE TABLE `categories`
 (
     `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -22,6 +15,7 @@ CREATE TABLE `categories`
     CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS properties;
 CREATE TABLE `properties`
 (
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -32,6 +26,7 @@ CREATE TABLE `properties`
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS categories_properties;
 CREATE TABLE `categories_properties`
 (
     `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -47,6 +42,7 @@ CREATE TABLE `categories_properties`
     CONSTRAINT `categories_properties_property_id_foreign` FOREIGN KEY (`property_id`) REFERENCES `properties` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS property_values;
 CREATE TABLE `property_values`
 (
     `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -58,3 +54,5 @@ CREATE TABLE `property_values`
     KEY           `property_values_property_id_foreign` (`property_id`),
     CONSTRAINT `property_values_property_id_foreign` FOREIGN KEY (`property_id`) REFERENCES `properties` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+SET
+FOREIGN_KEY_CHECKS = 1; -- enable check foreign key

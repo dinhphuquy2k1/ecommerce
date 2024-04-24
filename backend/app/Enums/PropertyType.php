@@ -12,8 +12,8 @@ use BenSampo\Enum\Enum;
 final class PropertyType extends Enum
 {
     const INPUT_TEXT = 0;
-    const INPUT_NUMBER = 1;
-    const INPUT_DATE = 2;
-    const SELECT_SINGLE = 3;
-    const SELECT_MULTIPLE = 4;
+    const SELECT_SINGLE = 1;
+    const SELECT_MULTIPLE = 2;
+    const SELECT_SINGLE_WITH_ADD_OPTION = 3;
+    const SELECT_MULTIPLE_WITH_ADD_OPTION = 4;
 }

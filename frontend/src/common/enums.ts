@@ -41,4 +41,5 @@ export const MESSAGE = {
     HTTP_DELETE_OK: 'Xóa thành công',
     INPUT_PROPERTY_PLACEHOLDER: 'Nhập một giá trị tùy chỉnh',
     SELECT_PROPERTY_PLACEHOLDER: 'Chọn một giá trị được đề xuất',
+    INVALID_OPTION_SELECT: 'Vui lòng không nhập các giá trị trùng lặp.',
 };

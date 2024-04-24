@@ -10,12 +10,17 @@ use App\Enums\PropertyType;
 
 class ApiCategoryController extends Controller
 {
+    private $categoryIds = [
+        '1',
+        '9'
+    ];
+
     /**
      * @return JsonResponse
      */
     public function get(): JsonResponse
     {
-        $categories = Category::all()->toArray();
+        $categories = Category::whereIn('id', $this->categoryIds)->orWhereNotNull('parent_id')->get()->toArray();
         $ret = $this->recursiveCategory($categories);
         return $this->sendResponseSuccess($ret);
     }
@@ -49,7 +54,7 @@ class ApiCategoryController extends Controller
      */
     public function getProperties(int $id): JsonResponse
     {
-        $properties = Category::with('properties')->find($id);
+        $properties = Category::with('properties.property_values')->find($id);
         if (!$properties) {
             return $this->sendResponseSuccess();
         }

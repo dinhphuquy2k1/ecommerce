@@ -196,40 +196,109 @@
                 </div>
                 <div class="ms-error-text"></div>
               </div>
-              <div class="group-form_box group-form_properties" v-if="selectedCategory">
+              <div class="group-form_box group-form_properties" v-if="properties?.properties?.length > 0">
                 <div class="label d-flex align-items-center">
                   Thuộc tính sản phẩm
                   <div class="icon16 icon-note text-start"
                        v-tooltip="'Thêm thuộc tính sản phẩm có thể giúp khách hàng hiểu rõ hơn về sản phẩm đó.'"></div>
                 </div>
                 <div class="row g-0 p-2">
-                  <div v-for="property in properties.properties" class="col-lg-4 col-sm-6 gx-3 gy-3 col-xs-12">
-                    <div class="group-form_box" v-if="properties.propertyType?.INPUT_TEXT?.value == property.type">
+                  <div v-for="(property, index) in properties.properties" class="col-lg-4 col-sm-6 gx-3 gy-3 col-xs-12">
+                    <div class="group-form_box" v-if="properties.propertyType?.INPUT_TEXT?.value === property.type">
                       <div class="label">{{ property['name'] }}</div>
                       <div class="">
-                        <InputText :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
+                        <InputText v-model="selectedProperty[index]"
+                                   :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
                       </div>
                       <div class="ms-error-text"></div>
                     </div>
                     <div class="group-form_box"
-                         v-else-if="properties.propertyType?.SELECT_SINGLE?.value == property.type">
+                         v-else-if="properties.propertyType?.SELECT_SINGLE?.value === property.type">
                       <div class="label">{{ property['name'] }}</div>
                       <div class="">
-                        <Dropdown v-model="value" :options="cities" optionLabel="name"
+                        <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
+                                  optionLabel="value"
                                   :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
                                   showClear
-                                  class="ms-category text-start"/>
+                                  class="ms-category text-start">
+                        </Dropdown>
                       </div>
                       <div class="ms-error-text"></div>
                     </div>
                     <div class="group-form_box"
-                         v-else-if="properties.propertyType?.SELECT_MULTIPLE?.value == property.type">
+                         v-else-if="properties.propertyType?.SELECT_MULTIPLE?.value === property.type">
                       <div class="label">{{ property['name'] }}</div>
                       <div class="">
-                        <MultiSelect v-model="value" :options="cities" optionLabel="name"
+                        <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
+                                  optionLabel="value"
+                                  :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
+                                  showClear
+                                  class="ms-category text-start">
+                        </Dropdown>
+                      </div>
+                      <div class="ms-error-text"></div>
+                    </div>
+                    <div class="group-form_box"
+                         v-else-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
+                      <div class="label">{{ property['name'] }}</div>
+                      <div class="">
+                        <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
+                                  optionLabel="value"
+                                  @before-show="beforeShowSelectWithAddOption(index)"
+                                  :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
+                                  showClear
+                                  class="ms-category text-start">
+                          <template #footer>
+                            <div class="d-flex gap-2 ms-dropdown_properties-footer">
+                              <div class="group-form_box">
+                                <div class="">
+                                  <InputText v-model="valueSelectAddOption[index]"
+                                             :class="{'error': invalidValueSelectAddOption[index]}"
+                                             :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
+                                </div>
+                                <div class="ms-error-text" v-if="invalidValueSelectAddOption[index]">
+                                  {{ invalidValueSelectAddOption[index] }}
+                                </div>
+                              </div>
+                              <Button @click="appendOptionToSingleSelect(index)"
+                                      class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                                <div class="fw-semibold">Thêm</div>
+                              </Button>
+                            </div>
+                          </template>
+                        </Dropdown>
+                      </div>
+                      <div class="ms-error-text"></div>
+                    </div>
+                    <div class="group-form_box"
+                         v-else-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type">
+                      <div class="label">{{ property['name'] }}</div>
+                      <div class="">
+                        <MultiSelect v-model="selectedProperty[index]" :options="property.property_values"
+                                     optionLabel="value"
                                      :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
                                      display="chip"
-                                     class="ms-category text-start"/>
+                                     @before-show="beforeShowSelectWithAddOption(index)"
+                                     class="ms-category text-start">
+                          <template #footer>
+                            <div class="d-flex gap-2 ms-dropdown_properties-footer">
+                              <div class="group-form_box">
+                                <div class="">
+                                  <InputText v-model="valueSelectAddOption[index]"
+                                             :class="{'error': invalidValueSelectAddOption[index]}"
+                                             :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
+                                </div>
+                                <div class="ms-error-text" v-if="invalidValueSelectAddOption[index]">
+                                  {{ invalidValueSelectAddOption[index] }}
+                                </div>
+                              </div>
+                              <Button @click="appendOptionToMultipleSelect(index)"
+                                      class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                                <div class="fw-semibold">Thêm</div>
+                              </Button>
+                            </div>
+                          </template>
+                        </MultiSelect>
                       </div>
                       <div class="ms-error-text"></div>
                     </div>
@@ -417,6 +486,9 @@ export default {
         {name: 'Istanbul', code: 'IST'},
         {name: 'Paris', code: 'PRS'}
       ],
+      selectedProperty: [],
+      valueSelectAddOption: [],
+      invalidValueSelectAddOption: [],
       categories: [],
       properties: [],
       files: [],
@@ -430,20 +502,11 @@ export default {
       this.totalSize -= parseInt(this.formatSize(file.size));
       this.totalSizePercent = this.totalSize / 10;
     },
-    onClearTemplatingUpload(clear) {
-      clear();
-      this.totalSize = 0;
-      this.totalSizePercent = 0;
-    },
     onSelectedFiles(event) {
       this.files = event.files;
       this.files.forEach((file) => {
         this.totalSize += parseInt(this.formatSize(file.size));
       });
-    },
-    uploadEvent(callback) {
-      this.totalSizePercent = this.totalSize / 10;
-      callback();
     },
     onTemplatedUpload() {
       this.$toast.add({severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000});
@@ -461,6 +524,64 @@ export default {
       const formattedSize = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
 
       return `${formattedSize} ${sizes[i]}`;
+    },
+
+    /**
+     * Sự kiện trước khi show drowdown add option
+     * @param index
+     */
+    beforeShowSelectWithAddOption(index) {
+      this.valueSelectAddOption[index] = this.invalidValueSelectAddOption[index] = null;
+    },
+
+    /**
+     * Sự kiện thêm option vào select single
+     */
+    appendOptionToSingleSelect(index) {
+      let option = this.validateAddOption(index)
+      if (option) {
+        this.selectedProperty[index] = option;
+      }
+    },
+
+    /**
+     * validate khi add option
+     * @param index
+     * @returns {{updated_at: null, created_at: null, id: null, value: *, property_id}|null}
+     */
+    validateAddOption(index) {
+      this.invalidValueSelectAddOption[index] = null;
+      let value = this.valueSelectAddOption[index];
+      if (value === null || value === "" || value.trim() === "") {
+        return null;
+      }
+      if (this.properties.properties[index].property_values.filter(item => item.value.toLocaleString() === value.toLocaleString()).length > 0) {
+        this.invalidValueSelectAddOption[index] = MESSAGE.INVALID_OPTION_SELECT;
+        return null;
+      }
+      let option = {
+        'id': null,
+        'property_id': this.properties.properties[index].id,
+        'value': this.valueSelectAddOption[index],
+        'created_at': null,
+        'updated_at': null,
+      }
+      this.properties.properties[index].property_values.push(option);
+      this.valueSelectAddOption[index] = null;
+      return option;
+    },
+
+    /**
+     * Sự kiện thêm option vào select multiple
+     */
+    appendOptionToMultipleSelect(index) {
+      let option = this.validateAddOption(index)
+      if (option) {
+        if (!this.selectedProperty[index]) {
+          this.selectedProperty[index] = [];
+        }
+        this.selectedProperty[index].push(option);
+      }
     },
 
     /**
