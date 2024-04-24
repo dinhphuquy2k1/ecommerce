@@ -861,3 +861,15 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Phụ kiện Kinect', 181, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Bộ gá', 181, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Bộ điều khiển từ xa', 181, now(), now());
+-- Số lượng Camera Chính
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14800, 'Không có máy ảnh', 183, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14801, '1', 183, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14802, '2', 183, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14803, '3', 183, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14803, '>3', 183, now(), now());
+-- GPS
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14900, 'Có', 183, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14901, 'Không', 183, now(), now());
+-- Dữ liệu di động
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15000, 'Có', 183, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15001, 'Không', 183, now(), now());
