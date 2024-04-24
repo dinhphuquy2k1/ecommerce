@@ -853,3 +853,11 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Vệ tinh', 180, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Dạng thanh', 180, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa siêu trầm', 180, now(), now());
+-- Loại phụ kiện
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14700, 'Dây cáp', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14701, 'Tai nghe', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14702, 'Pad chơi game', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Cần điều khiển', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Phụ kiện Kinect', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Bộ gá', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Bộ điều khiển từ xa', 181, now(), now());

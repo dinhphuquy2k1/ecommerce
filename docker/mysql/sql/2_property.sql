@@ -180,3 +180,4 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(17
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(178, 'Điểm ảnh', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(179, 'Mẫu Ống kính', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(180, 'Loại loa', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(181, 'Loại phụ kiện', 3, now(), now());
