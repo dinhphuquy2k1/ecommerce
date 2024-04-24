@@ -847,3 +847,8 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 -- Điện thoại & Đồ điện tử > Thiết bị giáo dục > Bút thông minh & kỹ thuật số
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7000, 86007, 2, 1, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7001, 86007, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Phụ kiện đa năng > Wi-Fi bỏ túi
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7100, 87001, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7101, 87001, 23, 0, now(), now());
+
