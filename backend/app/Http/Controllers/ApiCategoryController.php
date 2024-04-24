@@ -14,32 +14,31 @@ class ApiCategoryController extends Controller
      */
     public function get(): JsonResponse
     {
-        $categories = Category::with('children')->whereNull('parent_id')->get()->toArray();
-        $ret = [];
-        foreach ($categories as $category) {
-            $ret[] = [
-                'key' => $category['id'],
-                'label' => $category['name'],
-                'children' => $this->recursiveCategory($category['children']),
-            ];
-        }
+        $categories = Category::all()->toArray();
+        $ret = $this->recursiveCategory($categories);
         return $this->sendResponseSuccess($ret);
     }
 
     /**
-     * @param $data
+     * @param array $categories
+     * @param $parentId
      * @return array
      */
-    public function recursiveCategory($data): array
+    public function recursiveCategory(array $categories, $parentId = null): array
     {
-        foreach ($data as &$category) {
-            $category['key'] = $category['id'];
-            $category['label'] = $category['name'];
-            if ($category['children']) {
-                $category['children'] = $this->recursiveCategory($category['children']);
+        $result = [];
+        foreach ($categories as $category) {
+            if ($parentId == $category['parent_id']) {
+                $category = [
+                    'label' => $category['name'],
+                    'key' => $category['id'],
+                    'parent_id' => $category['parent_id'],
+                    'children' => $this->recursiveCategory($categories, $category['id']),
+                ];
+                $result[] = $category;
             }
         }
-        return $data;
+        return $result;
     }
 
     /**
