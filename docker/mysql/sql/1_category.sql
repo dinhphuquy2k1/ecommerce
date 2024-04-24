@@ -676,8 +676,8 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 
 -- Máy tính & Thiết bị Văn phòng > Máy tính để bàn, Máy tính xách tay & Máy tính bảng
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90000, 'Máy tính xách tay', 10000, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90002, 'Máy tính để bàn', 10000, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90003, 'Máy chủ', 10000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90001, 'Máy tính để bàn', 10000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(90002, 'Máy chủ', 10000, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91000, 'Màn hình', 10001, now(), now());

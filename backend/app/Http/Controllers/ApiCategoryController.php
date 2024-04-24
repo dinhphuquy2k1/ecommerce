@@ -12,7 +12,8 @@ class ApiCategoryController extends Controller
 {
     private $categoryIds = [
         '1',
-        '9'
+        '9',
+        '10'
     ];
 
     /**
