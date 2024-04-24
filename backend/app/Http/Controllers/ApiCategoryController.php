@@ -6,6 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use App\Enums\PropertyType;
 
 class ApiCategoryController extends Controller
 {
@@ -52,6 +53,12 @@ class ApiCategoryController extends Controller
         if (!$properties) {
             return $this->sendResponseSuccess();
         }
+        $properties['propertyType'] = collect(PropertyType::getInstances())->map(function ($instance) {
+            return [
+                'value' => $instance->value,
+                'description' => $instance->description,
+            ];
+        })->toArray();
         return $this->sendResponseSuccess($properties->toArray());
     }
 }

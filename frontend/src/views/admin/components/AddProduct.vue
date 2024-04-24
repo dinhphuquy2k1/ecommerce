@@ -25,7 +25,7 @@
           <Panel header="Thông tin cơ bản" toggleable class="ma-media">
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
-                <div class="label d-flex">Hình ảnh sản phẩm
+                <div class="label d-flex align-items-center">Hình ảnh sản phẩm
                   <div class="icon16 icon-note text-start"
                        v-tooltip="'Tải lên tối đa 9 hình ảnh. Kích thước hình ảnh tối thiểu: 300×300 px.\nBạn nên sử dụng hình nền trắng làm hình ảnh đầu tiên thay vì sử dụng hình ảnh có các yếu tố khác (chữ, logo, đường viền, khối màu, hình mờ hoặc hình ảnh đồ họa khác).\nĐể thêm chữ vào hình ảnh, hãy đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
                 </div>
@@ -162,7 +162,7 @@
                 <div class="ms-error-text"></div>
               </div>
               <div class="group-form_box">
-                <div class="label d-flex">Video
+                <div class="label d-flex align-items-center">Video
                   <div class="icon16 icon-note text-start"
                        v-tooltip="'Video tải lên sẽ được hiển thị trên trang chi tiết sản phẩm. Hãy làm nổi bật 1 hoặc 2 lợi điểm bán hàng chính của sản phẩm trong video.'"></div>
                 </div>
@@ -195,6 +195,46 @@
                               placeholder="Vui lòng chọn một hạng mục"/>
                 </div>
                 <div class="ms-error-text"></div>
+              </div>
+              <div class="group-form_box group-form_properties" v-if="selectedCategory">
+                <div class="label d-flex align-items-center">
+                  Thuộc tính sản phẩm
+                  <div class="icon16 icon-note text-start"
+                       v-tooltip="'Thêm thuộc tính sản phẩm có thể giúp khách hàng hiểu rõ hơn về sản phẩm đó.'"></div>
+                </div>
+                <div class="row g-0 p-2">
+                  <div v-for="property in properties.properties" class="col-lg-4 col-sm-6 gx-3 gy-3 col-xs-12">
+                    <div class="group-form_box" v-if="properties.propertyType?.INPUT_TEXT?.value == property.type">
+                      <div class="label">{{ property['name'] }}</div>
+                      <div class="">
+                        <InputText :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
+                      </div>
+                      <div class="ms-error-text"></div>
+                    </div>
+                    <div class="group-form_box"
+                         v-else-if="properties.propertyType?.SELECT_SINGLE?.value == property.type">
+                      <div class="label">{{ property['name'] }}</div>
+                      <div class="">
+                        <Dropdown v-model="value" :options="cities" optionLabel="name"
+                                  :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
+                                  showClear
+                                  class="ms-category text-start"/>
+                      </div>
+                      <div class="ms-error-text"></div>
+                    </div>
+                    <div class="group-form_box"
+                         v-else-if="properties.propertyType?.SELECT_MULTIPLE?.value == property.type">
+                      <div class="label">{{ property['name'] }}</div>
+                      <div class="">
+                        <MultiSelect v-model="value" :options="cities" optionLabel="name"
+                                     :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
+                                     display="chip"
+                                     class="ms-category text-start"/>
+                      </div>
+                      <div class="ms-error-text"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="group-form_box">
                 <div class="label">Thương hiệu</div>
@@ -340,13 +380,20 @@ import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
 import Dropdown from 'primevue/dropdown';
 import Editor from 'primevue/editor';
+import MultiSelect from 'primevue/multiselect';
 import TreeSelect from 'primevue/treeselect';
 import Image from 'primevue/image';
 import FileUpload from 'primevue/fileupload';
 import {getCategory} from '@/api/category'
 import {getCategoryProperty} from '@/api/category-property'
+import {MESSAGE} from "@/common/enums";
 
 export default {
+  computed: {
+    MESSAGE() {
+      return MESSAGE
+    }
+  },
   components: {
     Button,
     InputText,
@@ -356,7 +403,8 @@ export default {
     Editor,
     FileUpload,
     Image,
-    TreeSelect
+    TreeSelect,
+    MultiSelect
   },
   data() {
     return {
@@ -369,36 +417,8 @@ export default {
         {name: 'Istanbul', code: 'IST'},
         {name: 'Paris', code: 'PRS'}
       ],
-      categories: [
-        {
-          label: "Đồ đựng trong nhà",
-          key: 1000,
-          children: [
-            {
-              key: 28000,
-              label: "Hộp đựng và thùng chứa",
-              children: []
-            },
-            {
-              key: 28001,
-              label: "Móc và kẹp treo",
-              children: []
-            }
-          ]
-        },
-        {
-          key: 2000,
-          label: "Đồ gia dụng",
-          children: [
-            {
-              key: 29000,
-              label: "Dao nhà bếp",
-              children: []
-            }
-          ]
-        }
-
-      ],
+      categories: [],
+      properties: [],
       files: [],
       totalSize: 0,
       totalSizePercent: 0,
@@ -450,7 +470,7 @@ export default {
       // lấy ra id hạng mục
       let idCategory = Object.keys(this.selectedCategory)[0];
       getCategoryProperty(idCategory).then(res => {
-        console.log(res)
+        this.properties = res.data
       }).catch(error => {
         console.log(error)
       })

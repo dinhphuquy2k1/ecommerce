@@ -42,7 +42,7 @@ export default {
         line-height: 35px;
       }
 
-      .group-form_list{
+      .group-form_list {
         gap: 16px;
       }
 
@@ -50,15 +50,24 @@ export default {
         display: flex;
         flex-direction: column;
 
+        &.group-form_properties {
+          .row {
+            background: #f5f5f5;
+            border-radius: 8px;
+            .label{
+            }
+          }
+        }
+
         .label {
           color: var(--Gray-900);
           text-align: left;
           margin-bottom: 10px;
         }
 
-        .description{
+        .description {
           text-align: left;
-          color: rgba(0,0,0,.55);
+          color: rgba(0, 0, 0, .55);
           margin-bottom: 10px;
         }
       }

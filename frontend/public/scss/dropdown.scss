@@ -1,4 +1,4 @@
-.p-dropdown, .p-treeselect {
+.p-dropdown, .p-treeselect, .p-multiselect {
   width: 100%;
   max-width: 100% !important;
   min-height: 36px;
@@ -13,12 +13,12 @@
 
 }
 
-.p-dropdown:not(.p-disabled).p-focus, .p-treeselect:not(.p-disabled).p-focus {
+.p-dropdown:not(.p-disabled).p-focus, .p-treeselect:not(.p-disabled).p-focus, .p-multiselect:not(.p-disabled).p-focus {
   box-shadow: none !important;
   border-color: #1a73e8;
 }
 
-.p-dropdown:not(.p-disabled):hover, .p-treeselect:not(.p-disabled):hover {
+.p-dropdown:not(.p-disabled):hover, .p-treeselect:not(.p-disabled):hover, .p-multiselect:not(.p-disabled):hover {
   border-color: #1a73e8;
 }
 
@@ -92,6 +92,14 @@
   border: 1px solid #e0e0e0 !important;
 }
 
+.p-multiselect-panel .p-multiselect-header {
+  padding: 8px 16px;
+}
+
+.p-multiselect.p-multiselect-chip .p-multiselect-token {
+  padding: 2px 8px;
+}
+
 .p-multiselect.error {
   border: 1px solid #ef5350 !important;
 }
@@ -114,10 +122,9 @@
   color: #000;
 }
 
-.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item, .p-multiselect-panel .p-multiselect-items .p-multiselect-item {
   cursor: pointer;
   height: 36px;
-  line-height: 36px;
   white-space: nowrap;
   border-radius: 4px;
   padding: 0 8px;
@@ -158,6 +165,7 @@
         & > .p-treenode:first-child {
           margin-top: 8px;
         }
+
         & > .p-treenode:last-child {
           margin-bottom: 8px;
         }
