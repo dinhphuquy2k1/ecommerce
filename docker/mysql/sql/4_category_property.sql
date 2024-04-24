@@ -1083,6 +1083,6 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(9605, 100008, 23, 0, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Thiết bị ngoại vi & Phụ kiện > Tấm lót chuột
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(9600, 100009, 2, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(9601, 100009, 50, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(9602, 100009, 129, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(9700, 100009, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(9701, 100009, 50, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(9702, 100009, 129, 0, now(), now());
