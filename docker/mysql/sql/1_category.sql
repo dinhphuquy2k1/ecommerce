@@ -690,6 +690,7 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91007, 'UPS & Ổn áp', 10001, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91008, 'Ổ quang', 10001, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91009, 'Card âm thanh', 10001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(91010, 'Vỏ máy tính', 10001, now(), now());
 
 -- Máy tính & Thiết bị Văn phòng > Thiết bị ngoại vi & Phụ kiện
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(100000, 'Bàn phím & Chuột', 10002, now(), now());

@@ -25,6 +25,6 @@ class Category extends Model
      */
     public function properties(): HasManyThrough
     {
-        return $this->hasManyThrough(Property::class, CategoryProperty::class, 'category_id', 'id', 'id', 'property_id');
+        return $this->hasManyThrough(Property::class, CategoryProperty::class, 'category_id', 'id', 'id', 'property_id')->select('properties.*', 'categories_properties.required');
     }
 }

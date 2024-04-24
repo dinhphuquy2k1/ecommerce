@@ -28,7 +28,7 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(25
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(26, 'Có pin', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(27, 'Dung lượng pin (mAh)', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(28, 'Có Maganet', 1, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(29, 'Tình trạng sản phẩm', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(29, 'Tình trạng sản phẩm', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(30, 'Pin tích hợp', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(31, 'Số lượng pin', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(32, 'Điểm lấy nét Tự động', 0, now(), now());
@@ -107,7 +107,7 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(10
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(105, 'Loại máy tính xách tay', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(106, 'Hệ điều hành', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(107, 'Loại bảng LED', 3, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(108, 'Kích thước Màn hình Điều khiển', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(108, 'Kích thước Màn hình Điều khiển', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(109, 'Giám sát Thời gian Phản hồi (ms)', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(110, 'Cổng Giám sát', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(111, 'Điện áp', 3, now(), now());
@@ -117,7 +117,7 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(11
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(115, 'Đánh giá Công suất', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(116, 'Đánh giá Hiệu suất PSU', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(117, 'Khả năng tương thích của Bo mạch chủ', 0, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(118, 'Bên trong/Bên ngoài', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(118, 'Bên trong/Bên ngoài', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(119, 'Tốc độ Đọc (Mb/s)', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(120, 'Phương tiện Tương thích', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(121, 'Chế độ Đầu ra Âm thanh', 4, now(), now());

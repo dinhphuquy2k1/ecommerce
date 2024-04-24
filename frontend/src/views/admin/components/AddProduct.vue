@@ -221,34 +221,10 @@
                       <div class="ms-error-text"></div>
                     </div>
                     <div class="group-form_box"
-                         v-else-if="properties.propertyType?.SELECT_SINGLE?.value === property.type">
-                      <div class="label">{{ property['name'] }}</div>
-                      <div class="">
-                        <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
-                                  optionLabel="value"
-                                  :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
-                                  showClear
-                                  class="ms-category text-start">
-                        </Dropdown>
-                      </div>
-                      <div class="ms-error-text"></div>
-                    </div>
-                    <div class="group-form_box"
-                         v-else-if="properties.propertyType?.SELECT_MULTIPLE?.value === property.type">
-                      <div class="label">{{ property['name'] }}</div>
-                      <div class="">
-                        <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
-                                  optionLabel="value"
-                                  :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
-                                  showClear
-                                  class="ms-category text-start">
-                        </Dropdown>
-                      </div>
-                      <div class="ms-error-text"></div>
-                    </div>
-                    <div class="group-form_box"
-                         v-else-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
-                      <div class="label">{{ property['name'] }}</div>
+                         v-else-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type || properties.propertyType?.SELECT_SINGLE?.value === property.type">
+                      <div class="label d-flex align-items-center">
+                        <span class="required" v-if="property.required">*</span>
+                        {{ property['name'] }}</div>
                       <div class="">
                         <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
                                   optionLabel="value"
@@ -256,7 +232,7 @@
                                   :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
                                   showClear
                                   class="ms-category text-start">
-                          <template #footer>
+                          <template #footer v-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
                             <div class="d-flex gap-2 ms-dropdown_properties-footer">
                               <div class="group-form_box">
                                 <div class="">
@@ -279,7 +255,7 @@
                       <div class="ms-error-text"></div>
                     </div>
                     <div class="group-form_box"
-                         v-else-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type">
+                         v-else-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type || properties.propertyType?.SELECT_MULTIPLE?.value === property.type">
                       <div class="label">{{ property['name'] }}</div>
                       <div class="">
                         <MultiSelect v-model="selectedProperty[index]" :options="property.property_values"
@@ -288,7 +264,7 @@
                                      display="chip"
                                      @before-show="beforeShowSelectWithAddOption(index)"
                                      class="ms-category text-start">
-                          <template #footer>
+                          <template #footer v-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type">
                             <div class="d-flex gap-2 ms-dropdown_properties-footer">
                               <div class="group-form_box">
                                 <div class="">

@@ -959,3 +959,76 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 -- Máy tính & Thiết bị Văn phòng > Máy tính để bàn, Máy tính xách tay & Máy tính bảng > Máy chủ
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7600, 90002, 2, 1, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7601, 90002, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Màn hình
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7700, 91000, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7701, 91000, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7702, 91000, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7703, 91000, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7704, 91000, 108, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7705, 91000, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7706, 91000, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7707, 91000, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7708, 91000, 109, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7709, 91000, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7710, 91000, 110, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7711, 91000, 107, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7712, 91000, 19, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7713, 91000, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7714, 91000, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Quạt & Tản nhiệt
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7800, 91001, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7801, 91001, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Bộ xử lý
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7900, 91002, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7901, 91002, 111, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7902, 91002, 93, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7903, 91002, 112, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7904, 91002, 113, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7905, 91002, 114, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7906, 91002, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Bo mạch chủ
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8000, 91003, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8001, 91003, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Card đồ họa
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8100, 91004, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8101, 91004, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Bộ cấp nguồn
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8200, 91005, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8201, 91005, 115, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8202, 91005, 116, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8203, 91005, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > RAM
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8300, 91006, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8301, 91006, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > UPS & Ổn áp
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8400, 91007, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8401, 91007, 116, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8402, 91007, 115, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8403, 91007, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Vỏ máy tính
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8500, 91010, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8501, 91010, 117, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8502, 91010, 5, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8503, 91010, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Ổ quang
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8600, 91008, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8601, 91008, 118, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8602, 91008, 119, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8603, 91008, 120, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8604, 91008, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Linh kiện máy tính để bàn & máy tính xách tay > Card âm thanh
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8700, 91009, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8701, 91009, 121, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8702, 91009, 11, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(8703, 91009, 23, 0, now(), now());
