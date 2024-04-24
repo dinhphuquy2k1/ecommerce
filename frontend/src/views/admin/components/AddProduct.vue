@@ -25,7 +25,9 @@
           <Panel header="Thông tin cơ bản" toggleable class="ma-media">
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
-                <div class="label d-flex align-items-center">Hình ảnh sản phẩm
+                <div class="label d-flex align-items-center">
+                  <span class="required">*</span>
+                  Hình ảnh sản phẩm
                   <div class="icon16 icon-note text-start"
                        v-tooltip="'Tải lên tối đa 9 hình ảnh. Kích thước hình ảnh tối thiểu: 300×300 px.\nBạn nên sử dụng hình nền trắng làm hình ảnh đầu tiên thay vì sử dụng hình ảnh có các yếu tố khác (chữ, logo, đường viền, khối màu, hình mờ hoặc hình ảnh đồ họa khác).\nĐể thêm chữ vào hình ảnh, hãy đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
                 </div>
@@ -180,14 +182,20 @@
                 <div class="ms-error-text"></div>
               </div>
               <div class="group-form_box">
-                <div class="label">Tên sản phẩm</div>
+                <div class="label d-flex align-items-center">
+                  <span class="required">*</span>
+                  Tên sản phẩm</div>
                 <div class="">
                   <InputText placeholder="Tên sản phẩm"></InputText>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
               <div class="group-form_box">
-                <div class="label">Hạng mục</div>
+                <div class="label d-flex align-items-center">
+                  <span class="required">*</span>
+                  Hạng mục
+                  <div class="icon16 icon-note text-start"
+                       v-tooltip="'Đảm bảo rằng bạn chọn danh mục phù hợp. Việc phân loại sai sản phẩm có thể ảnh hưởng đến chất lượng bán hàng.'"></div></div>
                 <div class="">
                   <TreeSelect v-model="selectedCategory" :options="categories"
                               @change="changeCategory"
@@ -573,6 +581,7 @@ export default {
 
     /**
      * Sự kiện thêm option vào select multiple
+     * @param index
      */
     appendOptionToMultipleSelect(index) {
       let option = this.validateAddOption(index)
