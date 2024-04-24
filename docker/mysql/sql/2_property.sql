@@ -49,8 +49,8 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(46
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(47, 'Ống ngắm', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(48, 'Loại Ống kính Camera', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(49, 'Khả năng tương thích với Nhãn hiệu Camera', 0, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(50, 'Dành cho Trò chơi', 3, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(51, 'Loại kết nối', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(50, 'Dành cho Trò chơi', 1, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(51, 'Loại kết nối', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(52, 'Dành cho Thể thao', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(53, 'Khả năng tương thích Âm thanh', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(54, 'Tai nghe', 3, now(), now());
@@ -124,7 +124,7 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(12
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(122, 'Nước xuất xứ', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(123, 'Mẫu Bàn phím & Chuột', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(124, 'Các tính năng của Cáp', 0, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(125, 'Micro Tích hợp sẵn', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(125, 'Micro Tích hợp sẵn', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(126, 'Khả năng tương thích với Thương hiệu Bộ sạc Máy tính xách tay', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(127, 'Chiều dài Cáp (m)', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(128, 'Loại Bộ điều hợp', 3, now(), now());
