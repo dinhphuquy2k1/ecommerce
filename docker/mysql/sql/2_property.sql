@@ -1,7 +1,7 @@
 SET CHARSET UTF8;
 
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(1, 'Họa tiết', 0, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(2, 'Loại bảo hành', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(2, 'Loại bảo hành', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(3, 'Thương hiệu', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(4, 'Chất liệu', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(5, 'Loại hộp đựng', 4, now(), now());

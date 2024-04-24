@@ -816,14 +816,34 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6410, 86000, 23, 0, now(), now());
 
 -- Điện thoại & Đồ điện tử > Thiết bị giáo dục > Từ điển điện tử
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6500, 86000, 2, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6501, 86000, 31, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6502, 86000, 25, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6503, 86000, 29, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6504, 86000, 30, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6505, 86000, 26, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6506, 86000, 17, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6507, 86000, 28, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6508, 86000, 27, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6509, 86000, 16, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6510, 86000, 23, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6500, 86001, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6501, 86001, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6502, 86001, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6503, 86001, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6504, 86001, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6505, 86001, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6506, 86001, 17, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6507, 86001, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6508, 86001, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6509, 86001, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6510, 86001, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Thiết bị giáo dục > Bảng viết điện tử
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6600, 86003, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6601, 86003, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Thiết bị giáo dục > Sổ tay điện tử
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6700, 86004, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6701, 86004, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Thiết bị giáo dục > Bút & Thiết bị đọc
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6800, 86005, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6801, 86005, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Thiết bị giáo dục > Thiết bị học tập điện tử
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6900, 86006, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(6901, 86006, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Thiết bị giáo dục > Bút thông minh & kỹ thuật số
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7000, 86007, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(7001, 86007, 23, 0, now(), now());
