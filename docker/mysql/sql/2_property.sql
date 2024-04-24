@@ -136,7 +136,7 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(13
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(134, 'Loại Bộ nhớ Flash', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(135, 'Kích thước Vỏ Đĩa cứng (inch)', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(136, 'Số lượng Anten', 0, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(137, 'Loại Ăng ten', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(137, 'Loại Ăng ten', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(138, 'Tốc độ Modem (Mbps)', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(139, 'Mạng Không dây', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(140, 'Tốc độ Mạng', 3, now(), now());

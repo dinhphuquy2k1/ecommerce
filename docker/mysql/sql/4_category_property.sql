@@ -1120,3 +1120,46 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 
 -- Máy tính & Thiết bị Văn phòng > Phần mềm & Bộ nhớ > Đĩa nhỏ gọn
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11200, 101005, 2, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Các thành phần mạng > Modem & Bộ định tuyến không dây
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11300, 102000, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11301, 102000, 136, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11302, 102000, 137, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11303, 102000, 138, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11304, 102000, 139, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11305, 102000, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Các thành phần mạng > Bộ lặp
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11400, 102001, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11401, 102001, 137, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11402, 102001, 136, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11403, 102001, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Các thành phần mạng > Bộ điều hợp không dây & Card mạng
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11500, 102002, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11501, 102002, 139, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11502, 102002, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Các thành phần mạng > Bộ điều hợp Powerline
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11600, 102003, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11601, 102003, 140, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11602, 102003, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Các thành phần mạng > Công tắc mạng & PoE
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11700, 102004, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11701, 102004, 141, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11702, 102004, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Các thành phần mạng > Cáp & Đầu nối mạng
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11800, 102005, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11801, 102005, 127, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11802, 102005, 142, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11802, 102005, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Các thành phần mạng > Công tắc KVM
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11900, 102006, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(11901, 102006, 23, 0, now(), now());
+
+-- Máy tính & Thiết bị Văn phòng > Các thành phần mạng > Máy chủ in
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(12000, 102007, 2, 1, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(12001, 102007, 23, 0, now(), now());

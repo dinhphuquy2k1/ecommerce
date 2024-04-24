@@ -210,7 +210,7 @@
                   <div class="icon16 icon-note text-start"
                        v-tooltip="'Thêm thuộc tính sản phẩm có thể giúp khách hàng hiểu rõ hơn về sản phẩm đó.'"></div>
                 </div>
-                <div class="row g-0 p-2">
+                <div class="row g-0 pb-2 ps-2 pe-2">
                   <div v-for="(property, index) in properties.properties" class="col-lg-4 col-sm-6 gx-3 gy-3 col-xs-12">
                     <div class="group-form_box" v-if="properties.propertyType?.INPUT_TEXT?.value === property.type">
                       <div class="label">{{ property['name'] }}</div>
