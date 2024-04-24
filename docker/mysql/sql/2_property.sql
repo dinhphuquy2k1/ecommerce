@@ -68,7 +68,7 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(65
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(66, 'Phạm vi', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(67, 'Số kênh', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(68, 'Kết nối Tai nghe', 3, now(), now());
-INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(69, 'Loại Phụ kiện Tai nghe', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(69, 'Nguồn điện', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(70, 'Loại Tai nghe', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(71, 'Mức tiêu thụ điện (W)', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(72, 'Độ sáng Máy chiếu', 3, now(), now());
@@ -179,3 +179,4 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(17
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(177, 'Hướng dẫn giặt', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(178, 'Điểm ảnh', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(179, 'Mẫu Ống kính', 0, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(180, 'Loại loa', 3, now(), now());

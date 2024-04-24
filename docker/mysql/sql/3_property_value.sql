@@ -842,3 +842,14 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14501, 'Chỉ giặt khô', 177, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14502, 'Giặt máy', 177, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14503, 'Không cần giặt', 177, now(), now());
+-- Loại loa
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14600, 'Loa Giá sách', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14601, 'Loa trần', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14602, 'Loa Kênh Trung tâm', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Máy tính', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa sàn', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Ngoài trời', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Di động', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Vệ tinh', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Dạng thanh', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa siêu trầm', 180, now(), now());

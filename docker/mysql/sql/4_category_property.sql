@@ -500,3 +500,187 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 -- Điện thoại & Đồ điện tử > Camera & Nhiếp ảnh > Bảo quản camera
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4200, 82011, 2, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4201, 82011, 24, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Tai nghe trong & Tai nghe
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4300, 83000, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4301, 83000, 17, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4302, 83000, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4303, 83000, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4304, 83000, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4305, 83000, 50, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4306, 83000, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4307, 83000, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4308, 83000, 51, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4309, 83000, 87, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4310, 83000, 52, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4311, 83000, 4, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4312, 83000, 53, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4313, 83000, 54, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4314, 83000, 55, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4315, 83000, 56, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4316, 83000, 57, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4317, 83000, 58, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4318, 83000, 59, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4319, 83000, 60, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4320, 83000, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4321, 83000, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Loa
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4400, 83001, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4401, 83001, 61, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4402, 83001, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4403, 83001, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4404, 83001, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4405, 83001, 17, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4406, 83001, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4407, 83001, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4408, 83001, 62, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4409, 83001, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4410, 83001, 69, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4411, 83001, 87, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4412, 83001, 51, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4413, 83001, 63, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4414, 83001, 53, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4415, 83001, 64, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4416, 83001, 65, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4417, 83001, 58, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4418, 83001, 60, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4419, 83001, 180, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4420, 83001, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4421, 83001, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Bộ đàm
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4500, 83002, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4501, 83002, 66, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4502, 83002, 67, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4503, 83002, 17, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4504, 83002, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Micrô
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4600, 83003, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4601, 83003, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4602, 83003, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4603, 83003, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4604, 83003, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4605, 83003, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4606, 83003, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4607, 83003, 51, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4608, 83003, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4609, 83003, 53, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4610, 83003, 56, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4611, 83003, 68, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4612, 83003, 70, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4613, 83003, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4614, 83003, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Máy chiếu
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4700, 83004, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4701, 83004, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4702, 83004, 71, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4703, 83004, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4704, 83004, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4705, 83004, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4706, 83004, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4707, 83004, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4708, 83004, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4709, 83004, 65, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4710, 83004, 72, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4711, 83004, 73, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4712, 83004, 74, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4713, 83004, 75, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4714, 83004, 19, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4715, 83004, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4716, 83004, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Hệ thống rạp chiếu phim tại nhà
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4800, 83005, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4801, 83005, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4802, 83005, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4803, 83005, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4804, 83005, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4805, 83005, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4806, 83005, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4807, 83005, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4808, 83005, 19, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4809, 83005, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4810, 83005, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Máy nghe nhạc MP3 & MP4
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4900, 83006, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4901, 83006, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4902, 83006, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4903, 83006, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4904, 83006, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4905, 83006, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4906, 83006, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4907, 83006, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4908, 83006, 20, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4909, 83006, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(4910, 83006, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Đầu đĩa CD & DVD
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5000, 83007, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5001, 83007, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5002, 83007, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5003, 83007, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5004, 83007, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5005, 83007, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5006, 83007, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5007, 83007, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5008, 83007, 65, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5009, 83007, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5010, 83007, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Đầu đĩa CD & DVD
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5100, 83008, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5101, 83008, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5102, 83008, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5103, 83008, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5104, 83008, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5105, 83008, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5106, 83008, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5107, 83008, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5108, 83008, 20, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5109, 83008, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5110, 83008, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Radio & Máy cassette
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5200, 83009, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5201, 83009, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5202, 83009, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5203, 83009, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5204, 83009, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5205, 83009, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5206, 83009, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5207, 83009, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5208, 83009, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5209, 83009, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Amply & Bàn trộn
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5300, 83010, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5301, 83010, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5302, 83010, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5303, 83010, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5304, 83010, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5305, 83010, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5306, 83010, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5307, 83010, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5308, 83010, 63, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5309, 83010, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5310, 83010, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Máy thu AV
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5400, 83011, 2, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5401, 83011, 29, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5402, 83011, 27, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5403, 83011, 26, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5404, 83011, 25, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5405, 83011, 28, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5406, 83011, 31, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5407, 83011, 30, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5408, 83011, 65, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5409, 83011, 16, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5410, 83011, 23, 0, now(), now());
+
+-- Điện thoại & Đồ điện tử > Âm thanh & Video > Phụ kiện âm thanh & video
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(5500, 83012, 2, 0, now(), now());
