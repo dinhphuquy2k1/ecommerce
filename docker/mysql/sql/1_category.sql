@@ -598,11 +598,11 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(69009, 'Giày hở gót & Guốc', 7001, now(), now());
 -- Giày > Phụ kiện giày (70000)
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70000, 'Lót giày & Lót gót chân', 7002, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70002, 'Lót bảo vệ mũi giày & bốt', 7002, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70003, 'Phụ kiện trang trí giày', 7002, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70004, 'Đón gót & Phom giày', 7002, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70005, 'Dây giày', 7002, now(), now());
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70006, 'Vệ sinh & Bảo quản', 7002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70001, 'Lót bảo vệ mũi giày & bốt', 7002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70002, 'Phụ kiện trang trí giày', 7002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70003, 'Đón gót & Phom giày', 7002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70004, 'Dây giày', 7002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70005, 'Vệ sinh & Bảo quản', 7002, now(), now());
 
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Đồ trang điểm & Nước hoa (71000)
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da (72000)

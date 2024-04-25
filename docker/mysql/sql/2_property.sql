@@ -195,3 +195,5 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(19
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(193, 'Chiều cao ủng', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(194, 'Chiều cao phần trên', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(195, 'Loại căn hộ', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(196, 'Đón gót & loại cây', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(197, 'Loại chất tẩy', 3, now(), now());

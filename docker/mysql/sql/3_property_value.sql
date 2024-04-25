@@ -961,3 +961,13 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16101, 'Giày ballet', 195, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16102, 'Giày thuyền', 195, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16103, 'Giày Moccasin', 195, now(), now());
+-- Đón gót & loại cây
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16200, 'Đón gót', 196, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16201, 'Cây xỏ giày', 196, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16202, 'Đế rút giày', 196, now(), now());
+-- Loại chất tẩy
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16300, 'Xi đánh bóng giày', 197, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16301, 'Bình xịt bảo vệ giày', 197, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16302, 'Bàn chải chà giày', 197, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16303, 'Bộ dụng cụ chăm sóc giày', 197, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16304, 'Màu & thuốc nhuộm', 197, now(), now());

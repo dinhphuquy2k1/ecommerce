@@ -1618,3 +1618,22 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16409, 69009, 190, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16410, 69009, 6, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16411, 69009, 153, 0, now(), now());
+
+-- Giày > Phụ kiện giày > Lót giày & Lót gót chân
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16500, 70000, 4, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16501, 70000, 164, 0, now(), now());
+
+-- Giày > Phụ kiện giày > Lót bảo vệ mũi giày & bốt
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16600, 70001, 4, 0, now(), now());
+
+-- Giày > Phụ kiện giày > Phụ kiện trang trí giày
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16600, 70002, 1, 0, now(), now());
+
+-- Giày > Phụ kiện giày > Đón gót & Phom giày
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16700, 70003, 196, 0, now(), now());
+
+-- Giày > Phụ kiện giày > Dây giày
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16800, 70004, 4, 0, now(), now());
+
+-- Giày > Phụ kiện giày > Vệ sinh & Bảo quản
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16800, 70005, 197, 0, now(), now());
