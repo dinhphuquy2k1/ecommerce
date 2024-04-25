@@ -27,7 +27,7 @@
    build database
 
    ``` sh
-    sudo docker exec e-db sh /docker-entrypoint-initdb.d/run-sql.sh
+   docker exec e-db sh /docker-entrypoint-initdb.d/run-sql.sh
     ```
 
 5. Open web page locally
