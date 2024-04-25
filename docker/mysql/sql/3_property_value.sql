@@ -1119,3 +1119,14 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 -- Loại dụng cụ chăm sóc da
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18300, 'Dụng cụ mát-xa & giảm béo mặt', 220, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18301, 'Dụng cụ rửa mặt', 220, now(), now());
+-- Kiểu tóc
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18400, 'Khô', 221, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18401, 'Bình thường', 221, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18402, 'Dầu mỡ', 221, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18403, 'Nhuộm màu', 221, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18404, 'Xoăn', 221, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18405, 'Bất kỳ', 221, now(), now());
+-- Loại công cụ tạo kiểu không dùng nhiệt
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18500, 'Lược chải tóc', 222, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18501, 'Tóc giả & Tóc nối & Miếng đệm tóc', 222, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18502, 'Phụ kiện tạo kiểu tóc', 222, now(), now());
