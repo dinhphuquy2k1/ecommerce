@@ -86,7 +86,7 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(7002, 'Phụ kiện giày', 7, now(), now());
 
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân
-INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(8000, 'Đồ trang điểm & Nước hoa', 8, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(8000, 'Trang điểm', 8, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(8001, 'Chăm sóc da', 8, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(8002, 'Chăm sóc & Tạo kiểu tóc', 8, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(8003, 'Chăm sóc tay, chân & móng', 8, now(), now());
@@ -604,7 +604,26 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70004, 'Dây giày', 7002, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(70005, 'Vệ sinh & Bảo quản', 7002, now(), now());
 
--- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Đồ trang điểm & Nước hoa (71000)
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Trang điểm (71000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71000, 'Bộ trang điểm', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71001, 'Son môi & Son bóng', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71002, 'Dụng cụ trang điểm', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71003, 'Kem BB và Kem CC', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71004, 'Xịt cố định lớp trang điểm', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71005, 'Kem che khuyết điểm & Phấn nền', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71006, 'Phấn tạo khối & Phấn bắt sáng', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71007, 'Lớp nền trang điểm và Kem lót', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71008, 'Phấn', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71009, 'Phấn má', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71010, 'Trang điểm cơ thể', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71011, 'Mascara', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71012, 'Chì & Gel kẻ lông mày', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71013, 'Kẻ mắt & Kẻ viền môi', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71014, 'Phấn mắt', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71015, 'Tẩy trang', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71016, 'Hình xăm tạm thời', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71017, 'Mí mắt giả & keo', 8000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71018, 'Xóa hình xăm', 8000, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da (72000)
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc & Tạo kiểu tóc (73000)
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Đồ tắm & Chăm sóc cơ thể (74000)

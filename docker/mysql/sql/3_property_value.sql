@@ -847,20 +847,20 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14601, 'Loa trần', 180, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14602, 'Loa Kênh Trung tâm', 180, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Máy tính', 180, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa sàn', 180, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Ngoài trời', 180, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Di động', 180, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Vệ tinh', 180, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa Dạng thanh', 180, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14603, 'Loa siêu trầm', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14604, 'Loa sàn', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14605, 'Loa Ngoài trời', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14606, 'Loa Di động', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14607, 'Loa Vệ tinh', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14608, 'Loa Dạng thanh', 180, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14609, 'Loa siêu trầm', 180, now(), now());
 -- Loại phụ kiện
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14700, 'Dây cáp', 181, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14701, 'Tai nghe', 181, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14702, 'Pad chơi game', 181, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Cần điều khiển', 181, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Phụ kiện Kinect', 181, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Bộ gá', 181, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14703, 'Bộ điều khiển từ xa', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14704, 'Phụ kiện Kinect', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14705, 'Bộ gá', 181, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14706, 'Bộ điều khiển từ xa', 181, now(), now());
 -- Số lượng Camera Chính
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14800, 'Không có máy ảnh', 183, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14801, '1', 183, now(), now());
@@ -971,3 +971,121 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16302, 'Bàn chải chà giày', 197, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16303, 'Bộ dụng cụ chăm sóc giày', 197, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16304, 'Màu & thuốc nhuộm', 197, now(), now());
+-- Phiên bản
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16400, 'Ấn bản thông thường', 182, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16401, 'Phiên bản giới hạn', 182, now(), now());
+-- Khối lượng tịnh
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16500, '10g', 199, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16501, '20g', 199, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16502, '30g', 199, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16503, '50g', 199, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16504, '100g', 199, now(), now());
+-- Chứa cồn hoặc son khí
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16600, 'Chứa cồn', 200, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16601, 'Chứa son khí', 200, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16602, 'Chứa cả hai', 200, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16603, 'Không chứa chất nào', 200, now(), now());
+-- Khu vực xuất xứ
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16700, 'Trung Quốc', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16701, 'Indonesia', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16702, 'Malaysia', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16703, 'Thái Lan', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16704, 'Việt Nam', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16705, 'Phi-líp-pin', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16706, 'Nhật Bản', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16707, 'Hàn Quốc', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16708, 'Châu Âu', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16709, 'Vương quốc Anh', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16710, 'Hoa Kỳ', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16711, 'Australia', 201, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16712, 'Singapore', 201, now(), now());
+-- Hạn sử dụng
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16800, '1 tháng', 203, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16801, '2 tháng', 203, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16802, '3 tháng', 203, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16803, '6 tháng', 203, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16804, '12 tháng', 203, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16805, '18 tháng', 203, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16806, '24 tháng', 203, now(), now());
+-- Loại gói
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16900, 'Nhiều gói', 205, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16901, 'Sản phẩm đơn', 205, now(), now());
+-- Hình thức sản phẩm
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17000, 'Kem', 206, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17001, 'Bánh Mousse', 206, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17002, 'Bột', 206, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17003, 'Chất lỏng', 206, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17004, 'Gel', 206, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17005, 'Giấy lau', 206, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17006, 'Một màu', 206, now(), now());
+-- Loại set
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17100, 'Môi', 207, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17101, 'Mặt', 207, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17102, 'Mắt', 207, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17103, 'Đa chức năng', 207, now(), now());
+-- Lớp hoàn thiện trang điểm
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17200, 'Lì', 208, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17201, 'Satin', 208, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17202, 'Tự nhiên', 208, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17203, 'Kim loại', 208, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17204, 'Căng mọng', 208, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17205, 'Lung linh', 208, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17206, 'Rạng rỡ', 208, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17207, 'Sáng bóng', 208, now(), now());
+-- Lợi ích
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17300, 'Kiểm soát dầu', 209, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17301, 'Dưỡng ẩm', 209, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17302, 'Độ phủ SPF', 209, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17303, 'Lâu dài', 209, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17304, 'Sắc tố cao', 209, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17305, 'Giảm thiểu lỗ chân lông', 209, now(), now());
+-- Loại dụng cụ trang điểm
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17400, 'Tăm bông và bông tẩy trang', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17401, 'Túi & Hộp đồ trang điểm', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17402, 'Gương', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17403, 'Dung dịch vệ sinh cọ trang điểm', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17404, 'Cọ trang điểm', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17405, 'Dụng cụ trang điểm và mút trang điểm', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17406, 'Dụng cụ uốn mi', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17407, 'Lông mi giả', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17408, 'Băng dính & keo dán mí mắt', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17409, 'Dụng cụ gọt bút chì', 210, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17410, 'Khuôn lông mày', 210, now(), now());
+-- Khả năng che phủ khuôn mặt
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17500, 'Nhẹ', 211, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17501, 'Vừa', 211, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17502, 'Full', 211, now(), now());
+-- Màu da
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17600, 'Sáng màu', 212, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17601, 'Vừa', 212, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17602, 'Đen', 212, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17603, 'Bất kỳ', 212, now(), now());
+-- Loại da
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17700, 'Khô', 213, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17701, 'Bình thường', 213, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17702, 'Dầu mỡ', 213, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17703, 'Kết hợp', 213, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17704, 'Xỉn màu', 213, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17705, 'Mụn trứng cá', 213, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17706, 'Nhạy cảm', 213, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17707, 'Tất cả các loại da', 213, now(), now());
+-- SPF
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17800, '15', 214, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17801, '20', 214, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17802, '30', 214, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17803, '50', 214, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17804, '60', 214, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17805, '100', 214, now(), now());
+-- Khu vực áp dụng
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17900, 'Mặt', 215, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17901, 'Môi & mắt', 215, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17902, 'Cơ thể người', 215, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17903, 'Nách', 215, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17904, 'Tóc', 215, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(17905, 'Bất kỳ', 215, now(), now());
+-- Loại sản phẩm tẩy trang
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18000, 'Gốc dầu', 216, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18001, 'Nước tẩy trang', 216, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18002, 'Khăn tẩy trang', 216, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18003, 'Sáp tẩy trang', 216, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18004, 'Gốc lotion (gốc dưỡng)', 216, now(), now());
