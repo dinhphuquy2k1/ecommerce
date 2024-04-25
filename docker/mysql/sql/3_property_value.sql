@@ -873,3 +873,91 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 -- Dữ liệu di động
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15000, 'Có', 183, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15001, 'Không', 183, now(), now());
+-- Loại giày cao gót
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15100, 'Comma', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15101, 'Cone', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15102, 'Cuban', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15103, 'Cut Out', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15104, 'Decorative', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15105, 'Flare', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15106, 'Tiếng Pháp', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15107, 'Kitten', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15108, 'Spool', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15109, 'Stiletto', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15110, 'Wedge', 97, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15111, 'Giày đế bằng', 97, now(), now());
+-- Chiều cao bốt
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15200, 'Không gót', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15201, 'Gót phẳng (1 cm trở xuống)', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15202, 'Gót thấp (1-3 cm)', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15203, 'Gót vừa (3-5 cm)', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15204, 'Cao gót (5-8 cm)', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15205, 'Rất cao gót (trên 8 cm)', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15206, '0 to 2 cm', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15207, '2 to 4.5 cm', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15208, '4.5 to 6 cm', 186, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15209, 'Trên 6 cm', 186, now(), now());
+-- Dịp
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15300, 'Kinh doanh', 187, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15301, 'Lễ cưới', 187, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15302, 'Thông thường', 187, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15303, 'Buổi tối', 187, now(), now());
+-- Hình dáng ngón chân
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15400, 'Cao gót hở mũi', 188, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15401, 'Mũi tròn', 188, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15402, 'Mũi hở', 188, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15403, 'Toe Thong', 188, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15403, 'Mũi nhọn', 188, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15403, 'Mũi vuông', 188, now(), now());
+-- Độ rộng của giày
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15500, 'Bình thường', 189, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15501, 'Vừa', 189, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15502, 'Rộng', 189, now(), now());
+-- Trang trí
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15600, 'Kim cương giả', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15601, 'Hạt', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15602, 'Đinh tán', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15603, 'Cái nơ', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15604, 'Có núm tua', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15605, 'Lông vũ', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15606, 'Ren', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15607, 'Nút', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15608, 'Faux Pearls', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15609, 'Kim sa', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15610, 'Butterfly', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15611, 'Dây chuyền', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15612, 'Knot', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15613, 'Đầu nhọn', 190, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15614, 'Dây bện', 190, now(), now());
+-- Loại buộc
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15700, 'Khóa kéo', 191, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15701, 'Khóa dán', 191, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15702, 'Khóa trượt', 191, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15703, 'Dây buộc', 191, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15704, 'Khóa', 191, now(), now());
+-- Loại quai
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15800, 'Quai có thể điều chỉnh', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15801, 'Quai đeo mắt cá chân', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15802, 'Quai chữ T', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15803, 'Có quai', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15804, 'Gladiator', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15805, 'Hai quai', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15806, 'Quai hậu', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15807, 'Quai chữ X', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15808, 'Quai đệm', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15809, 'Quai xỏ ngón cái', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15810, 'Xỏ ngón', 192, now(), now());
+-- Chiều cao ủng
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15900, 'Mắt cá', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15901, 'Giữa bắp chân', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15902, 'Đầu gối', 192, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15903, 'Qua đầu gối', 192, now(), now());
+-- Chiều cao phần trên
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16000, 'Giày cao cổ', 194, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16001, 'Giày cao vừa phải', 194, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16002, 'Giày cổ thấp', 194, now(), now());
+-- Loại căn hộ
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16100, 'Giày Espadrilles', 195, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16101, 'Giày ballet', 195, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16102, 'Giày thuyền', 195, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(16103, 'Giày Moccasin', 195, now(), now());
