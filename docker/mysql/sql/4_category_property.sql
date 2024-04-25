@@ -1880,3 +1880,219 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18511, 71015, 182, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18512, 71015, 216, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18513, 71015, 213, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Sản phẩm đặc trị môi
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18600, 72000, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18601, 72000, 217, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18602, 72000, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18603, 72000, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18604, 72000, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18605, 72000, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18606, 72000, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18607, 72000, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18608, 72000, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18609, 72000, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18610, 72000, 206, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18611, 72000, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18612, 72000, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18613, 72000, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Kem chống nắng cho da mặt
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18700, 72001, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18701, 72001, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18702, 72001, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18703, 72001, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18704, 72001, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18705, 72001, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18706, 72001, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18707, 72001, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18708, 72001, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18709, 72001, 206, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18710, 72001, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18711, 72001, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18712, 72001, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18713, 72001, 214, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18714, 72001, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Toner
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18800, 72002, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18801, 72002, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18802, 72002, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18803, 72002, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18804, 72002, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18805, 72002, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18806, 72002, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18807, 72002, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18808, 72002, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18809, 72002, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18810, 72002, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18811, 72002, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18812, 72002, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Sữa rửa mặt
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18900, 72003, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18901, 72003, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18902, 72003, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18903, 72003, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18904, 72003, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18905, 72003, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18906, 72003, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18907, 72003, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18908, 72003, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18909, 72003, 206, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18910, 72003, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18911, 72003, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18912, 72003, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(18913, 72003, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Kem massage mặt
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19000, 72004, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19001, 72004, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19002, 72004, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19003, 72004, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19004, 72004, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19005, 72004, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19006, 72004, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19007, 72004, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19008, 72004, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19009, 72004, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19010, 72004, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19011, 72004, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19012, 72004, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Bộ dụng cụ chăm sóc da
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19100, 72005, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19101, 72005, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19102, 72005, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19103, 72005, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19104, 72005, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19105, 72005, 161, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19106, 72005, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19107, 72005, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19108, 72005, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19109, 72005, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19110, 72005, 206, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19111, 72005, 207, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19112, 72005, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19113, 72005, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19114, 72005, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19115, 72005, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Tẩy tế bào chết & Lột da mặt
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19200, 72006, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19201, 72006, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19202, 72006, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19203, 72006, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19204, 72006, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19205, 72006, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19206, 72006, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19207, 72006, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19208, 72006, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19209, 72006, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19210, 72006, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19211, 72006, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19212, 72006, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Kem dưỡng ẩm & Xịt thơm
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19300, 72007, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19301, 72007, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19302, 72007, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19303, 72007, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19304, 72007, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19305, 72007, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19306, 72007, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19307, 72007, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19308, 72007, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19309, 72007, 206, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19310, 72007, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19311, 72007, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19312, 72007, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19313, 72007, 214, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19314, 72007, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Mặt nạ
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19400, 72008, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19401, 72008, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19402, 72008, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19403, 72008, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19404, 72008, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19405, 72008, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19406, 72008, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19407, 72008, 161, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19408, 72008, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19409, 72008, 219, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19410, 72008, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19411, 72008, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19412, 72008, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Serum & Tinh chất
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19500, 72009, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19501, 72009, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19502, 72009, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19503, 72009, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19504, 72009, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19505, 72009, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19506, 72009, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19507, 72009, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19508, 72009, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19509, 72009, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19510, 72009, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19511, 72009, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19512, 72009, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Sản phẩm đặc trị mắt
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19600, 72010, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19601, 72010, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19602, 72010, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19603, 72010, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19604, 72010, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19605, 72010, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19606, 72010, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19607, 72010, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19608, 72010, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19609, 72010, 206, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19610, 72010, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19611, 72010, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19612, 72010, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19613, 72010, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Sản phẩm đặc trị mũi
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19700, 72011, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19701, 72011, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19702, 72011, 161, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19703, 72011, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19704, 72011, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19705, 72011, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19706, 72011, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19707, 72011, 204, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19708, 72011, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19709, 72011, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19710, 72011, 206, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19711, 72011, 182, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19712, 72011, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19713, 72011, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19714, 72011, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Dụng cụ chăm sóc da
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19800, 72012, 220, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19801, 72012, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19802, 72012, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19803, 72012, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19804, 72012, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19805, 72012, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19806, 72012, 209, 0, now(), now());
+
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da > Sản phẩm đặc trị mụn
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19900, 72013, 203, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19901, 72013, 201, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19902, 72013, 198, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19903, 72013, 161, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19904, 72013, 205, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19905, 72013, 199, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19906, 72013, 152, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19907, 72013, 200, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19908, 72013, 202, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19909, 72013, 206, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19910, 72013, 213, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19911, 72013, 218, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(19912, 72013, 209, 0, now(), now());

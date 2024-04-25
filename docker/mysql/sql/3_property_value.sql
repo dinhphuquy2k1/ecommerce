@@ -1089,3 +1089,33 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18002, 'Khăn tẩy trang', 216, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18003, 'Sáp tẩy trang', 216, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18004, 'Gốc lotion (gốc dưỡng)', 216, now(), now());
+-- Loại sản phẩm điều trị môi
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18100, 'Son dưỡng môi', 217, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18101, 'Tẩy da chết môi', 217, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18102, 'Mặt nạ môi', 217, now(), now());
+-- Ưu tiên thành phần
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18100, 'Không có hương liệu', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18101, 'Không chứa silicon', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18102, 'Không chứa paraben', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18103, 'Hữu cơ', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18104, 'Không có cồn', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18105, 'Axit amin', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18106, 'Vitamin C', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18107, 'Vitamin E', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18108, 'Axit hyaluronic', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18109, 'Chất chống oxy hóa', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18110, 'Khoáng chất', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18111, 'BHA', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18112, 'Ceramide', 218, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18113, 'Có nguồn gốc tự nhiên', 218, now(), now());
+-- Loại mặt nạ
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18200, 'Ga', 219, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18201, 'Mặt nạ lột', 219, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18202, 'Mặt nạ bôi', 219, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18203, 'Đất sét', 219, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18204, 'Gel', 219, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18205, 'Kem', 219, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18206, 'Bột', 219, now(), now());
+-- Loại dụng cụ chăm sóc da
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18300, 'Dụng cụ mát-xa & giảm béo mặt', 220, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18301, 'Dụng cụ rửa mặt', 220, now(), now());

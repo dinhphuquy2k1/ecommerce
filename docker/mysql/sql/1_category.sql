@@ -625,14 +625,117 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71017, 'Mí mắt giả & keo', 8000, now(), now());
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(71018, 'Xóa hình xăm', 8000, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc da (72000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72000, 'Sản phẩm đặc trị môi', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72001, 'Kem chống nắng cho da mặt', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72002, 'Toner', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72003, 'Sữa rửa mặt', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72004, 'Kem massage mặt', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72005, 'Bộ dụng cụ chăm sóc da', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72006, 'Tẩy tế bào chết & Lột da mặt', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72007, 'Kem dưỡng ẩm & Xịt thơm', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72008, 'Mặt nạ', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72009, 'Serum & Tinh chất', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72010, 'Sản phẩm đặc trị mắt', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72011, 'Sản phẩm đặc trị mũi', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72012, 'Dụng cụ chăm sóc da', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72013, 'Sản phẩm đặc trị mụn', 8001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(72014, 'Dầu thuộc da & tự thuộc da', 8001, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc & Tạo kiểu tóc (73000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73000, 'Dầu gội & Dầu xả', 8002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73001, 'Keo bọt & Gel', 8002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73002, 'Thuốc nhuộm tóc', 8002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73003, 'Dụng cụ tạo kiểu không nhiệt', 8002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73004, 'Sản phẩm chống rụng tóc', 8002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73005, 'Điều trị tóc / điều trị da đầu', 8002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73006, 'Bột tạo kiểu tóc', 8002, now(), now());
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc tay, chân & móng (73000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73500, 'Mặt nạ tay & chân', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73501, 'Sản phẩm kiểm soát mùi hôi chân', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73502, 'Sữa dường, kem & tẩy tế bào chết cho tay', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73503, 'Nước rửa tay', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73504, 'Vẽ móng & Sơn móng tay', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73505, 'Dụng cụ làm móng tay & chân', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73506, 'Bộ dụng cụ sơn móng tay', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73507, 'Điều trị móng', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73508, 'Chai khử trùng cầm tay', 8003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(73509, 'Nước tẩy sơn móng tayy', 8003, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Đồ tắm & Chăm sóc cơ thể (74000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74000, 'Bộ dụng cụ chăm sóc cơ thể', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74001, 'Kem & Sữa dưỡng thể', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74002, 'Sữa tắm & Xà phòng', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74003, 'Phấn rôm', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74004, 'Kem, wax và nước cạo râu', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74005, 'Khử mùi', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74006, 'Tẩy tế bào chết & Lột da cơ thể', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74007, 'Chăm sóc ngực', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74008, 'Kem định hình cơ thể', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74009, 'Dụng cụ xoa bóp thủ công', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74010, 'Mặt nạ cơ thể', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74011, 'Dầu xoa bóp & dầu dưỡng thể', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74012, 'Kem chống nắng', 8004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(74013, 'Chăm sóc cổ', 8004, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Sản phẩm chăm sóc dành cho nam giới (75000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(75000, 'Đồ tắm & Chăm sóc cơ thể', 8005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(75001, 'Đồ trang điểm', 8005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(75002, 'Chăm sóc da', 8005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(75003, 'Bọt cạo râu & Nước hoa sau khi cạo râu', 8005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(75004, 'Chăm sóc tóc', 8005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(75005, 'Dao cạo', 8005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(75006, 'Bộ dụng cụ cạo', 8005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(75007, 'Phụ kiện cạo thủ công', 8005, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Thiết bị chăm sóc cá nhân (76000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76000, 'Thiết bị massage', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76001, 'Thiết bị Làm đẹp cơ thể', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76002, 'Dao cạo lông mày điện', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76003, 'Thiết bị làm đẹp da mặt', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76004, 'Phụ kiện', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76005, 'Máy tẩy lông', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76006, 'Ghế mát-xa', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76007, 'Dao cạo râu điện', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76008, 'Bàn chải đánh răng điện', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76009, 'Máy tăm nước', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76010, 'Máy sấy tóc', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76011, 'Máy uốn & ép tóc', 8006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(76012, 'Máy xén & Tông đơ cắt tóc', 8006, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc mắt & tai (77000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(77000, 'Dung dịch ngâm rửa kính áp tròng & Thuốc nhỏ mắt', 8007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(77001, 'Kính áp tròng', 8007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(77002, 'Bộ dụng cụ cho kính áp tròng', 8007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(77003, 'Mặt nạ ngủ', 8007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(77004, 'Kính đọc sách', 8007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(77005, 'Thuốc nhỏ tai', 8007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(77006, 'Sản phẩm lấy ráy tai', 8007, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(77007, 'Nút tai', 8007, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc mũi & răng miệng (78000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78000, 'Làm trắng răng', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78001, 'Bộ dụng cụ chăm sóc răng miệng', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78002, 'Xịt miệng', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78003, 'Nước súc miệng', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78004, 'Kem đánh răng', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78005, 'Bàn chải đánh răng', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78006, 'Chỉ & tăm nha khoa', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78007, 'Chăm sóc răng miệng', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78008, 'Vệ sinh mũi', 8008, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78009, 'Phụ kiện chỉnh nha', 8008, now(), now());
+-- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Sản phẩm chăm sóc dành cho phụ nữ
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78500, 'Kem bôi âm đạo', 8009, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78501, 'Dung dịch vệ sinh phụ nữ', 8009, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78502, 'Khăn vệ sinh', 8009, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78503, 'Bình xịt & kem mãn kinh', 8009, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78504, 'Băng vệ sinh', 8009, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78505, 'Cốc nguyệt san', 8009, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(78506, 'Sản phẩm khử mùi vùng kín', 8009, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Nước hoa (79000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(79000, 'Nước hoa nam', 8010, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(79001, 'Nước hoa unisex', 8010, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(79002, 'Nước hoa nữ', 8010, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(79003, 'Bộ nước hoa', 8010, now(), now());
 -- Chăm sóc sắc đẹp & Chăm sóc cá nhân > Chăm sóc cá nhân đặc biệt (80000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(80000, 'Vá nhiệt', 8011, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(80001, 'Túi chườm nước đá', 8011, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(80002, 'Tã người lớn', 8011, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(80003, 'Thuốc đuổi côn trùng', 8011, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(80004, 'Tấm lót giường thấm nước tiểu', 8011, now(), now());
 
 -- Điện thoại & Đồ điện tử > Phụ kiện điện thoại
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(81000, 'Ốp, miếng bảo vệ màn hình & miếng dán', 9000, now(), now());
