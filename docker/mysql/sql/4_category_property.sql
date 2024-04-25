@@ -1636,4 +1636,4 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16800, 70004, 4, 0, now(), now());
 
 -- Giày > Phụ kiện giày > Vệ sinh & Bảo quản
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16800, 70005, 197, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(16900, 70005, 197, 0, now(), now());
