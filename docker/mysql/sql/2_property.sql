@@ -222,3 +222,9 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(21
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(220, 'Loại dụng cụ chăm sóc da', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(221, 'Kiểu tóc', 4, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(222, 'Loại công cụ tạo kiểu không dùng nhiệt', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(223, 'Ngày hết hạn', 0, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(224, 'Kích cỡ gói', 0, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(225, 'Tuổi khuyến nghị', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(226, 'Đặc tính nguyên liệu', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(227, 'Hương thơm', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(228, 'Loại dụng cụ làm móng tay & móng chân', 4, now(), now());
