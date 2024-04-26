@@ -1175,3 +1175,29 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18900, 'Long lanh', 228, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18901, 'Bộ móng tay', 228, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(18902, 'Kéo cắt móng', 228, now(), now());
+-- Loại sản phẩm tắm & chăm sóc cơ thể
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19000, 'Sữa tắm & Xà phòng', 229, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19001, 'Kem dưỡng da & Lotion dưỡng da toàn thân', 229, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19002, 'Bột Tal', 229, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19002, 'Chất khử mùi', 229, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19002, 'Kem & Sáp tẩy lông', 229, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19002, 'Dầu xoa bóp & dưỡng thể', 229, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19002, 'Tẩy tế bào chết & Lột da toàn thân', 229, now(), now());
+-- Loại trang điểm dành cho nam giới
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19100, 'Kem lót', 230, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19101, 'Kem nền', 230, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19102, 'BB Cream và CC Cream', 230, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19102, 'Xịt dưỡng trang điểm', 230, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19102, 'Trang điểm môi', 230, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19102, 'Trang điểm khuôn mặt', 230, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19102, 'Trang điểm mắt', 230, now(), now());
+-- Loại chăm sóc da cho nam giới
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19200, 'Sữa rửa mặt', 231, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19201, 'Nước hoa hồng', 231, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Kem mặt', 231, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Serum', 231, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Mặt nạ', 231, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Kem chống nắng', 231, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Chăm sóc môi', 231, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Chăm sóc mắt', 231, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Chăm sóc cơ thể', 231, now(), now());

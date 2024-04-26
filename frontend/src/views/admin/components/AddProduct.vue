@@ -231,6 +231,7 @@
                                   @before-show="beforeShowSelectWithAddOption(index)"
                                   :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
                                   showClear
+                                  filter
                                   class="ms-category text-start">
                           <template #footer v-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
                             <div class="d-flex gap-2 ms-dropdown_properties-footer">
@@ -262,6 +263,7 @@
                                      optionLabel="value"
                                      :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
                                      display="chip"
+                                     filter
                                      @before-show="beforeShowSelectWithAddOption(index)"
                                      class="ms-category text-start">
                           <template #footer v-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type">
