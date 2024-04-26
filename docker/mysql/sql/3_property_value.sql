@@ -1216,3 +1216,12 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19601, 'Giảm rối', 235, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19601, 'Bảo vệ nhiệt', 235, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19601, 'Tăng cường độ sáng bóng', 235, now(), now());
+-- Sử dụng cho mục đích y tế hoặc phi y tế
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19700, 'Y tế', 237, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19701, 'Phi y tế', 237, now(), now());
+-- Loại hoạt động
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19800, 'Điện tử', 238, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19801, 'Thủ công', 238, now(), now());
+-- Nếu sửa chữa
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19900, 'Có', 239, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19901, 'Không', 239, now(), now());
