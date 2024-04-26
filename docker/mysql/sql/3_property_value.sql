@@ -1190,7 +1190,7 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19103, 'Xịt dưỡng trang điểm', 230, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19104, 'Trang điểm môi', 230, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19105, 'Trang điểm khuôn mặt', 230, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19106 'Trang điểm mắt', 230, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19106, 'Trang điểm mắt', 230, now(), now());
 -- Loại chăm sóc da cho nam giới
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19200, 'Sữa rửa mặt', 231, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19201, 'Nước hoa hồng', 231, now(), now());
