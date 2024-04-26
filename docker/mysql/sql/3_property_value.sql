@@ -1225,3 +1225,13 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 -- Nếu sửa chữa
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19900, 'Có', 239, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19901, 'Không', 239, now(), now());
+-- Độ cứng của lông
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20000, 'Cứng', 240, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20001, 'Vừa', 240, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20002, 'Mềm mại', 240, now(), now());
+-- Loại chăm sóc răng giả
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20100, 'Keo dán răng giả', 241, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20102, 'Hộp rửa răng giả', 241, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20103, 'Bàn chải răng giả', 241, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20104, 'Chất tẩy rửa răng giả', 241, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20105, 'Bộ dụng cụ sửa chữa răng giả', 241, now(), now());
