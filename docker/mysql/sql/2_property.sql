@@ -247,3 +247,14 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(24
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(245, 'Cánh', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(246, 'Nhà chế tạo', 0, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(247, 'Độ tuổi', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(248, 'Chiều dài quần áo', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(249, 'Chiều dài tay áo', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(250, 'Vừa vặn', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(251, 'Loại tay áo', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(252, 'Đường viền cổ áo', 4, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(253, 'Kiểu cổ', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(254, 'Loại kích thước', 2, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(255, 'Thiết kế', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(256, 'Loại quần áo', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(257, 'Loại khóa', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(258, 'Kiểu lưng', 3, now(), now());

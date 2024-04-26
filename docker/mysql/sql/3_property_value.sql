@@ -1253,3 +1253,128 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20600, 'Người lớn', 247, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20601, 'Thiếu niên', 247, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20602, 'Trẻ em', 247, now(), now());
+-- Chiều dài quần áo
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20700, 'Ngắn', 248, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20701, 'Vừa', 248, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20702, 'Chiều dài 3/4', 248, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20703, 'Dài', 248, now(), now());
+-- Chiều dài tay áo
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20800, 'Ngắn tay', 249, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20801, 'Lửng tay', 249, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20802, '3/4 tay', 249, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20803, 'Dài tay', 249, now(), now());
+-- Vừa vặn
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20900, 'Vừa vặn', 250, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20901, 'Rộng lùng thùng', 250, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20902, 'Fitted', 250, now(), now());
+-- Loại tay áo
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21000, 'Không có', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21001, 'Tay phồng', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21002, 'Tay cánh dơi', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21003, 'Tay đèn lồng', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21004, 'Tay bo gấu', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21005, 'Tay áo Raglan', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21006, 'Tay bèo', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21007, 'Tay chuông', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21008, 'Tay áo Bishop', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21009, 'Tay nhí', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21010, 'Tay áo choàng', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21011, 'Tay áo hở vai', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21012, 'Tay trùm', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21013, 'Tay áo loe', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21014, 'Tay áo cánh', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21015, 'Tay áo kimono', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21016, 'Tay áo xẻ', 251, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21017, 'Roll Up Sleeve', 251, now(), now());
+-- Đường viền cổ áo
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21100, 'Cổ thuyền', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21101, 'Cổ chữ V', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21102, 'Cổ lọ', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21103, 'Cổ cao', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21104, 'Cổ vuông', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21105, 'Cổ bẻ', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21106, 'Cổ yếm', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21107, 'Trễ vai', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21108, 'Một vai', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21109, 'Cổ tròn', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21110, 'Cổ tim', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21111, 'Deep V Neck', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21112, 'Tie Neck', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21113, 'U Neck', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21114, 'Asymmetrical Neck', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21115, 'Notched', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21116, 'Cowl Neck', 252, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21117, 'Keyhole Neckline', 252, now(), now());
+-- Kiểu cổ
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21200, 'Cổ Chelsea', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21201, 'Cổ đăng ten', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21202, 'Cổ yếm', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21203, 'Cổ vạt nhọn', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21204, 'Cổ lọ', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21205, 'Cổ Tàu', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21206, 'Cổ cánh nhạn', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21207, 'Cổ Sam', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21208, 'Cổ tròn', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21209, 'Cổ nhọn Gothic', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21210, 'Peter Pan Collar', 253, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21211, 'Lapel', 253, now(), now());
+-- Loại kích thước
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21300, 'Trẻ em', 254, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21301, 'Cỡ nhỏ', 254, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21302, 'Cỡ lớn cộng', 254, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21303, 'Thường', 254, now(), now());
+-- Thiết kế
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21400, 'Frill', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21401, 'Ruffle', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21402, 'Asymmetrical', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21403, 'Criss Cross', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21404, 'Quai có thể điều chỉnh', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21405, 'Washed', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21406, 'Split', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21407, 'Shirred', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21408, 'Pleated', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21409, 'Contrast Lace', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21410, 'Twist', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21411, 'Sheer', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21412, 'Tiered Layer', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21413, 'Contrast Binding', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21414, 'Lettuce Trim', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21415, 'Crochet', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21416, 'Raw Hem', 255, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21417, 'Ripped', 255, now(), now());
+-- Loại quần áo
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21500, 'Blazer', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21501, 'Khăn choàng', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21502, 'Áo trễ vai', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21503, 'Áo khoác phi công', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21504, 'Áo khoác bóng chày', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21505, 'Áo khoác tuxedo', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21506, 'Áo phao lông vũ', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21507, 'Áo khoác denim', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21508, 'Áo khoác lông & giả lông', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21509, 'Da & giả da', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21510, 'Áo khoác nhẹ chần bông', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21511, 'Áo khoác len & hải quân', 256, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21512, 'Trench Coat', 256, now(), now());
+-- Loại khóa
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21600, 'Xỏ', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21601, 'Dây buộc', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21602, 'Khóa móc', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21603, 'Móc gài', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21604, 'Cột', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21605, 'Băng gai dính', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21606, 'Khóa', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21607, 'Nút', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21608, 'Dây rút', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21609, 'Nam châm', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21610, 'Then', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21611, 'Khóa kéo', 257, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21612, 'Thanh móc', 257, now(), now());
+-- Kiểu lưng
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21700, 'Buộc', 258, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21701, 'Quai', 258, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21702, 'Dây chữ Y', 258, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21703, 'Dán', 258, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21704, 'Dây chữ V', 258, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21705, 'Hở khe', 258, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(21706, 'Ren', 258, now(), now());

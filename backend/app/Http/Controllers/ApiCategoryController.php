@@ -15,7 +15,9 @@ class ApiCategoryController extends Controller
         '7',
         '8',
         '9',
-        '10'
+        '10',
+        '5',
+        '24',
     ];
 
     /**

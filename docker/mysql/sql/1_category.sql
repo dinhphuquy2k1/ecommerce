@@ -558,12 +558,52 @@ INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALU
 INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(51006, 'Bộ phận của thiết bị thương mại', 4004, now(), now());
 
 -- Trang phục nữ & Đồ lót > Áo nữ (52000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52000, 'Áo cánh & Áo sơ mi', 5000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52001, 'Áo khoác & Áo choàng', 5000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52002, 'Áo gilê', 5000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52003, 'Hàng dệt kim', 5000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52004, 'Áo hoodie & Áo len', 5000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52005, 'Áo thun', 5000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52006, 'Áo vest, Tank Top & Áo quây', 5000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52007, 'Bodysuit', 5000, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(52008, 'Áo Polo', 5000, now(), now());
 -- Trang phục nữ & Đồ lót > Quần nữ (53000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(53000, 'Chân váy', 5001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(53001, 'Quần short', 5001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(53002, 'Quần legging', 5001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(53003, 'Quần jean', 5001, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(53004, 'Quần dài', 5001, now(), now());
 -- Trang phục nữ & Đồ lót > Váy nữ (54000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(54000, 'Váy cưới', 5002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(54001, 'Váy dự tiệc', 5002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(54002, 'Váy thường mặc', 5002, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(54003, 'Váy phù dâu', 5002, now(), now());
 -- Trang phục nữ & Đồ lót > Trang phục đặc biệt dành cho nữ (55000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(55000, 'Trang phục & Phụ kiện', 5003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(55001, 'Quần áo bảo hộ lao động & Đồng phục', 5003, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(55002, 'Trang phục truyền thống', 5003, now(), now());
 -- Trang phục nữ & Đồ lót > Bộ vét và quần yếm nữ (56000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(56000, 'Quần yếm', 5004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(56001, 'Bộ', 5004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(56002, 'Bộ vét', 5004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(56003, 'Bộ đồ cho cặp đôi', 5004, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(56004, 'Bộ đồ cho gia đình', 5004, now(), now());
 -- Trang phục nữ & Đồ lót > Đồ lót nữ (57000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57000, 'Quần lót', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57001, 'Đồ lót định hình', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57002, 'Áo lót', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57003, 'Quần bó', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57004, 'Đồ giữ ấm mặc bên trong', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57005, 'Phụ kiện áo lót', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57006, 'Đồ nội y', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57007, 'Tất', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57008, 'Áo lót không gọng', 5005, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(57009, 'Bộ đồ lót', 5005, now(), now());
 -- Trang phục nữ & Đồ lót > Đồ ngủ nữ (58000)
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(58000, 'Áo liền quần rộng', 5006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(58001, 'Bộ ngủ', 5006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(58002, 'Áo choàng tắm & Áo choàng', 5006, now(), now());
+INSERT IGNORE INTO categories (id, name, parent_id, created_at, updated_at) VALUES(58003, 'Váy ngủ', 5006, now(), now());
 -- Thời trang Hồi giáo > Khăn trùm đầu che đầu và cổ (Hijab) (59000)
 -- Thời trang Hồi giáo > Trang phục phụ nữ Hồi giáo (60000)
 -- Thời trang Hồi giáo > Trang phục đàn ông Hồi giáo (61000)
