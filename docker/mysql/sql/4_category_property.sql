@@ -3346,9 +3346,9 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30504, 58001, 249, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30505, 58001, 261, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30506, 58001, 4, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30506, 58001, 1, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30506, 58001, 264, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30506, 58001, 255, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30507, 58001, 1, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30508, 58001, 264, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30509, 58001, 255, 0, now(), now());
 
 -- Trang phục nữ & Đồ lót > Đồ ngủ nữ > Áo choàng tắm & Áo choàng
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30600, 58002, 164, 0, now(), now());
@@ -3358,7 +3358,7 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30604, 58002, 4, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30605, 58002, 1, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30606, 58002, 264, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30606, 58002, 255, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30607, 58002, 255, 0, now(), now());
 
 -- Trang phục nữ & Đồ lót > Đồ ngủ nữ > Váy ngủ
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30700, 58003, 164, 0, now(), now());
@@ -3368,4 +3368,4 @@ INSERT IGNORE INTO categories_properties (id, category_id, property_id, required
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30704, 58003, 4, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30705, 58003, 1, 0, now(), now());
 INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30706, 58003, 264, 0, now(), now());
-INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30706, 58003, 255, 0, now(), now());
+INSERT IGNORE INTO categories_properties (id, category_id, property_id, required, created_at, updated_at) VALUES(30707, 58003, 255, 0, now(), now());
