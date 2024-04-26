@@ -1201,3 +1201,18 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Chăm sóc môi', 231, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Chăm sóc mắt', 231, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19202, 'Chăm sóc cơ thể', 231, now(), now());
+-- Từ tính
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19300, 'Có', 232, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19301, 'Không', 232, now(), now());
+-- Bao gồm pin
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19400, 'Có', 233, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19401, 'Không', 233, now(), now());
+-- Người lớn hoặc trẻ em
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19500, 'Người lớn', 234, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19501, 'Trẻ em', 234, now(), now());
+-- Tính năng của máy sấy tóc
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19600, 'Phồng', 235, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19601, 'Máy tạo ion âm', 235, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19601, 'Giảm rối', 235, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19601, 'Bảo vệ nhiệt', 235, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(19601, 'Tăng cường độ sáng bóng', 235, now(), now());
