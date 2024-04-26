@@ -1231,7 +1231,21 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20002, 'Mềm mại', 240, now(), now());
 -- Loại chăm sóc răng giả
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20100, 'Keo dán răng giả', 241, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20102, 'Hộp rửa răng giả', 241, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20103, 'Bàn chải răng giả', 241, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20104, 'Chất tẩy rửa răng giả', 241, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20105, 'Bộ dụng cụ sửa chữa răng giả', 241, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20101, 'Hộp rửa răng giả', 241, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20102, 'Bàn chải răng giả', 241, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20103, 'Chất tẩy rửa răng giả', 241, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20104, 'Bộ dụng cụ sửa chữa răng giả', 241, now(), now());
+-- Sử dụng ban ngày hoặc ban đêm
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20200, 'Ngày', 242, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20201, 'Đêm', 242, now(), now());
+-- Mức dòng chảy
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20300, 'Regular', 243, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20301, 'Nhẹ', 243, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20302, 'Nặng', 243, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20303, 'Thai sản', 243, now(), now());
+-- Đặc trưng mùi hương
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20400, 'Có hương liệu', 244, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20401, 'Không mùi', 244, now(), now());
+-- Cánh
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20500, 'Có', 245, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20501, 'Không', 245, now(), now());
