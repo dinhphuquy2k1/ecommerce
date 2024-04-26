@@ -1,6 +1,6 @@
 <template>
-  <div class="form-list flex-grow-1 d-flex ma-add-product_wrapper">
-    <div class="d-flex flex-column flex-grow-1">
+  <div class="form-list flex-grow-1 d-flex ma-add-product_wrapper mw-100">
+    <div class="d-flex flex-column flex-grow-1 mw-100">
       <div class="d-flex flex-row title-box">
         <div class="list-title flex-grow-1 text-start">Thêm sản phẩm</div>
       </div>
