@@ -578,7 +578,7 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(9010, 'XQD', 122, now(), now());
 -- Micro Tích hợp sẵn
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(10000, 'Có', 125, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(10000, 'Không', 125, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(10001, 'Không', 125, now(), now());
 -- Loại Bộ điều hợp
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(10100, 'Bộ sạc Ô tô', 128, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(10101, 'Bộ sạc tường', 128, now(), now());
@@ -866,7 +866,7 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14801, '1', 183, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14802, '2', 183, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14803, '3', 183, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14803, '>3', 183, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14804, '>3', 183, now(), now());
 -- GPS
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14900, 'Có', 183, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(14901, 'Không', 183, now(), now());
@@ -907,8 +907,8 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15401, 'Mũi tròn', 188, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15402, 'Mũi hở', 188, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15403, 'Toe Thong', 188, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15403, 'Mũi nhọn', 188, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15403, 'Mũi vuông', 188, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15404, 'Mũi nhọn', 188, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15405, 'Mũi vuông', 188, now(), now());
 -- Độ rộng của giày
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15500, 'Bình thường', 189, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(15501, 'Vừa', 189, now(), now());
