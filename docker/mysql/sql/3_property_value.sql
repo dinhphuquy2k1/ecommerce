@@ -1252,4 +1252,4 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 -- Độ tuổi
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20600, 'Người lớn', 247, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20601, 'Thiếu niên', 247, now(), now());
-INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20601, 'Trẻ em', 247, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(20602, 'Trẻ em', 247, now(), now());
