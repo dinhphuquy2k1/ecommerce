@@ -1398,3 +1398,18 @@ INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22000, 'Nút', 262, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22001, 'Khóa kéo', 262, now(), now());
 INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22002, 'Không có', 262, now(), now());
+-- Chủ đề
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22000, 'Động vật, Côn trùng & khủng long', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22001, 'Nhân vật hoạt hình', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22002, 'Disney', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22003, 'Kỳ quan', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22004, 'DC', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22005, 'Người nổi tiếng', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22006, 'Chính trị & Memes', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22007, 'Halloween cổ điển', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22008, 'Hài hước & Ngốc nghếch', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22009, 'Lịch sử & Kỳ nghỉ lễ', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22010, 'Phim/TV', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22011, 'Đáng sợ/Rùng rợn', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22012, 'Steampunk', 263, now(), now());
+INSERT IGNORE INTO property_values (id, value, property_id, created_at, updated_at) VALUES(22013, 'Đồng dạng', 263, now(), now());
