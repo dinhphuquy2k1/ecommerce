@@ -1,7 +1,5 @@
 #!/bin/sh -eu
-
 cd /docker-entrypoint-initdb.d/
-
 if [ -z "${IS_CI}" ]; then
   echo "import sql"
   for file in `\find sql -name '*.sql' | sort`; do
