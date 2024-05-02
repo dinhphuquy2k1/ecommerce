@@ -212,10 +212,19 @@ input:focus {
   }
 
   .p-checkbox-input:checked ~ .p-checkbox-box {
-    .p-checkbox-icon{
+    .p-checkbox-icon {
       display: none;
     }
+
     background: url('@public/assets/icons/ic_checkbox_active.5a4982e1.svg');
   }
 
+}
+
+.p-inputswitch.p-highlight .p-inputswitch-slider:before {
+  transform: translateX(0.85rem);
+}
+
+.p-inputswitch.p-highlight .p-inputswitch-slider {
+  background: #2979ff;
 }

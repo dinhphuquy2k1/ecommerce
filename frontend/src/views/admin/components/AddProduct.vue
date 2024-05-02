@@ -4,16 +4,20 @@
       <div class="d-flex flex-row title-box">
         <div class="list-title flex-grow-1 text-start">Thêm sản phẩm</div>
       </div>
-      <div class="d-flex flex-row toolbar-box justify-content-between">
+      <div class="d-flex flex-row toolbar-box justify-content-between position-sticky top-0 z-1">
         <div class="left-toolbar d-flex flex-row">
-          <div class="m-search_form flex-row d-flex align-items-center d-flex">
-            <InputText type="search" v-model="value" class="ms-input_search w-100" placeholder="Tìm kiếm"/>
-            <div class="icon24 icon search-right search"></div>
-          </div>
+          <!--          <div class="m-search_form flex-row d-flex align-items-center d-flex">-->
+          <!--            <InputText type="search" v-model="value" class="ms-input_search w-100" placeholder="Tìm kiếm"/>-->
+          <!--            <div class="icon24 icon search-right search"></div>-->
+          <!--          </div>-->
         </div>
         <div class="right-toolbar d-flex flex-row">
           <Button
-
+              class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
+            <div class="icon-only icon-simple_cart"></div>
+            <div class="fw-semibold">Lưu nháp</div>
+          </Button>
+          <Button
               class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
             <div class="icon-only icon-simple_cart"></div>
             <div class="fw-semibold">Thêm sản phẩm</div>
@@ -22,7 +26,7 @@
       </div>
       <div class="row gy-4 pb-4">
         <div class="col-xxl-9">
-          <Panel header="Thông tin cơ bản" toggleable class="ma-media">
+          <Panel header="Thông tin cơ bản" class="ma-media">
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
                 <div class="label d-flex align-items-center">
@@ -184,7 +188,8 @@
               <div class="group-form_box">
                 <div class="label d-flex align-items-center">
                   <span class="required">*</span>
-                  Tên sản phẩm</div>
+                  Tên sản phẩm
+                </div>
                 <div class="">
                   <InputText placeholder="Tên sản phẩm"></InputText>
                 </div>
@@ -195,7 +200,8 @@
                   <span class="required">*</span>
                   Hạng mục
                   <div class="icon16 icon-note text-start"
-                       v-tooltip="'Đảm bảo rằng bạn chọn danh mục phù hợp. Việc phân loại sai sản phẩm có thể ảnh hưởng đến chất lượng bán hàng.'"></div></div>
+                       v-tooltip="'Đảm bảo rằng bạn chọn danh mục phù hợp. Việc phân loại sai sản phẩm có thể ảnh hưởng đến chất lượng bán hàng.'"></div>
+                </div>
                 <div class="">
                   <TreeSelect v-model="selectedCategory" :options="categories"
                               @change="changeCategory"
@@ -224,7 +230,8 @@
                          v-else-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type || properties.propertyType?.SELECT_SINGLE?.value === property.type">
                       <div class="label d-flex align-items-center">
                         <span class="required" v-if="property.required">*</span>
-                        {{ property['name'] }}</div>
+                        {{ property['name'] }}
+                      </div>
                       <div class="">
                         <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
                                   optionLabel="value"
@@ -235,7 +242,8 @@
                                   checkmark
                                   panelClass="ms-dropdown-checkmark"
                                   class="ms-category text-start">
-                          <template #footer v-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
+                          <template #footer
+                                    v-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
                             <div class="d-flex gap-2 ms-dropdown_properties-footer">
                               <div class="group-form_box">
                                 <div class="">
@@ -268,7 +276,8 @@
                                      filter
                                      @before-show="beforeShowSelectWithAddOption(index)"
                                      class="ms-category text-start">
-                          <template #footer v-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type">
+                          <template #footer
+                                    v-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type">
                             <div class="d-flex gap-2 ms-dropdown_properties-footer">
                               <div class="group-form_box">
                                 <div class="">
@@ -354,25 +363,56 @@
             </div>
           </Panel>
 
-          <Panel header="Thông tin bán hàng" toggleable class="mt-4" collapsed>
+          <Panel header="Thông tin bán hàng" class="mt-4" :collapsed="selectedCategory">
             <template #header>
               <div class="d-flex flex-column justify-content-start text-start ma-custom-panel-header">
                 <div class="title">Thông tin bán hàng</div>
-                <div class="description">Vui lòng chọn danh mục trước</div>
+                <div class="description" v-if="!selectedCategory">Vui lòng chọn danh mục trước</div>
               </div>
             </template>
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
-                <div class="label">Tên sản phẩm</div>
-                <div class="">
-                  <InputText placeholder="Tên sản phẩm"></InputText>
+                <div class="label d-flex gap-3 mb-1">Kích hoạt biến thể
+                  <InputSwitch v-model="isVariant"/>
+                </div>
+                <div class="sub-description">Bạn có thể thêm biến thể nếu sản phẩm này có nhiều lựa chọn như kích cỡ
+                  hoặc màu sắc.
                 </div>
                 <div class="ms-error-text"></div>
               </div>
               <div class="group-form_box">
-                <div class="label">Mô tả</div>
-                <div class="">
-                  <Textarea rows="4" cols="30" class="h-100" placeholder="Nhập mô tả"/>
+                <div class="label d-flex align-items-center">
+                  <span class="required">*</span>
+                  Giá & Số lượng
+                </div>
+                <div class="row theme-arco-table-content-inner gx-0">
+                  <div class="col-4 d-flex flex-column mb-2">
+                    <div class="label pt-1 pb-1 ps-2 d-flex align-items-center">
+                      <span class="required">*</span>
+                      Giá bán lẻ
+                    </div>
+                    <div class="d-flex ps-2">
+                    <InputNumber v-model="value1" inputClass="text-start" class="flex-grow-1" mode="currency"
+                                   currency="VND" locale="vi"/>
+                    </div>
+                  </div>
+                  <div class="col-4 d-flex flex-column">
+                    <div class="label pt-1 pb-1 d-flex align-items-center ps-3">
+                      <span class="required">*</span>
+                      Số lượng
+                    </div>
+                    <div class="d-flex ps-3">
+                      <InputNumber v-model="value1" inputClass="text-start" class="flex-grow-1" max="999999"/>
+                    </div>
+                  </div>
+                  <div class="col-4 d-flex flex-column">
+                    <div class="label pt-1 pb-1 d-flex align-items-center ps-3 pe-2">
+                      SKU Người bán
+                    </div>
+                    <div class="d-flex ps-3 pe-2">
+                      <InputNumber v-model="value1" inputClass="text-start" class="flex-grow-1"/>
+                    </div>
+                  </div>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
@@ -441,6 +481,8 @@ import MultiSelect from 'primevue/multiselect';
 import TreeSelect from 'primevue/treeselect';
 import Image from 'primevue/image';
 import FileUpload from 'primevue/fileupload';
+import InputNumber from 'primevue/inputnumber';
+import InputSwitch from 'primevue/inputswitch';
 import {getCategory} from '@/api/category'
 import {getCategoryProperty} from '@/api/category-property'
 import {MESSAGE} from "@/common/enums";
@@ -461,7 +503,9 @@ export default {
     FileUpload,
     Image,
     TreeSelect,
-    MultiSelect
+    MultiSelect,
+    InputSwitch,
+    InputNumber,
   },
   data() {
     return {
@@ -481,6 +525,7 @@ export default {
       properties: [],
       files: [],
       totalSize: 0,
+      isVariant: false,
       totalSizePercent: 0,
     }
   },
@@ -609,11 +654,27 @@ export default {
     background-color: #fff;
 
     .ma-custom-panel-header {
-      .description {
+      .description, .sub-description {
         color: rgba(0, 0, 0, .55);
         font-size: 14px;
         font-weight: 400;
         margin-top: 3px;
+      }
+
+    }
+
+    .sub-description {
+      font-size: 12px;
+      color: rgba(0, 0, 0, .55);
+      font-weight: 400;
+      margin-top: 3px;
+    }
+
+    .theme-arco-table-content-inner{
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      .label{
+        background-color: #f5f5f5;
       }
     }
 
