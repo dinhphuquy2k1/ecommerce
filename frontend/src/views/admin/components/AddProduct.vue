@@ -232,6 +232,8 @@
                                   :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
                                   showClear
                                   filter
+                                  checkmark
+                                  panelClass="ms-dropdown-checkmark"
                                   class="ms-category text-start">
                           <template #footer v-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
                             <div class="d-flex gap-2 ms-dropdown_properties-footer">

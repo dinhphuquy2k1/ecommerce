@@ -13,14 +13,10 @@ export default {
 
 <style lang="scss">
 @import url('../public/scss/main.scss');
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.p-dropdown, .p-treeselect, .p-multiselect, .p-inputtext, .ms-btn{
+  line-height: unset;
+  height: $input-select-height;
 }
-
 nav {
   padding: 30px;
 
