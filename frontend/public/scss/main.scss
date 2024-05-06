@@ -167,6 +167,16 @@ body {
     background: #fff;
   }
 
+  &.secondary {
+    background-color: rgba(0, 0, 0, .05);
+    color: rgba(0, 0, 0, .92);
+    font-weight: 500;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, .08);
+    }
+  }
+
   &.btn-transparent {
     background-color: transparent;
     color: rgba(0, 0, 0, .55);

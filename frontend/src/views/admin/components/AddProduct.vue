@@ -1381,6 +1381,7 @@ export default {
                 border: unset !important;
                 padding: 6px !important;
                 border-radius: unset !important;
+                background: unset;
               }
             }
           }
