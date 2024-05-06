@@ -352,7 +352,44 @@ span.icon24 {
   &:before {
     background-position: -24px -48px;
   }
+
   &:hover {
     cursor: pointer;
   }
+}
+
+.icon-eye {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/icon-eye_white.svg") no-repeat center;
+}
+
+.icon_remove-white {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/ic_remove-white.svg") no-repeat center;
+}
+
+.icon_remove {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/ic_remove.svg") no-repeat center;
+}
+
+.icon_drag_dot {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/drag-dots-svgrepo-com.svg") no-repeat center;
+}
+
+
+.icon-add-blue:before {
+  background-image: url('@public/assets/icons/add_blue.6a2d268a.svg');
+  background-position: 50%;
+}
+
+.icon_up {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/ic_up.svg") no-repeat center;
 }

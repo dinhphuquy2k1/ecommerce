@@ -380,7 +380,7 @@
                 </div>
                 <div class="ms-error-text"></div>
               </div>
-              <div class="group-form_box">
+              <div class="group-form_box" v-if="!isVariant">
                 <div class="label d-flex align-items-center">
                   <span class="required">*</span>
                   Giá & Số lượng
@@ -392,7 +392,8 @@
                       Giá bán lẻ
                     </div>
                     <div class="d-flex ps-2">
-                    <InputNumber v-model="value1" inputClass="text-start" class="flex-grow-1" mode="currency"
+                      <InputNumber v-model="saleInfomation.retailPrice" inputClass="text-start" class="flex-grow-1"
+                                   mode="currency"
                                    currency="VND" locale="vi"/>
                     </div>
                   </div>
@@ -402,7 +403,8 @@
                       Số lượng
                     </div>
                     <div class="d-flex ps-3">
-                      <InputNumber v-model="value1" inputClass="text-start" class="flex-grow-1" max="999999"/>
+                      <InputNumber v-model="saleInfomation.quantity" inputClass="text-start" class="flex-grow-1"
+                                   :max="999999"/>
                     </div>
                   </div>
                   <div class="col-4 d-flex flex-column">
@@ -410,12 +412,299 @@
                       SKU Người bán
                     </div>
                     <div class="d-flex ps-3 pe-2">
-                      <InputNumber v-model="value1" inputClass="text-start" class="flex-grow-1"/>
+                      <InputNumber v-model="saleInfomation.skuSeller" inputClass="text-start" class="flex-grow-1"/>
                     </div>
                   </div>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
+              <div class="ms-group_variants d-flex flex-column gap-3 justify-content-start" v-else>
+                <div class="ms-variants_wrapper" v-for="(item, key) in listVariant">
+                  <div v-if="!listVariant[key].complete">
+                    <div class="group-form_box">
+                      <div class="label d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                          <span class="required">*</span>
+                          Tên biến thể
+                          <div class="icon16 icon-note text-start" v-tooltip="'\n'+
+'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
+'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
+                        </div>
+                        <div class="d-flex align-items-center ms-checkbox_label gap-1" v-if="key === 0">
+                          <Checkbox v-model="isVariantImage" :binary="true" inputId="variant_image"/>
+                          <label for="variant_image">
+                            Thêm hình ảnh
+                          </label>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <InputText v-model="listVariant[key].name" :placeholder="MESSAGE.INPUT_PLACEHOLDER_VARIANT"
+                                   :class="{'error': invalidVariant[`name${key}`]}" maxlength="50"
+                                   @input="changeNameVariant($event, key)"></InputText>
+                        <div class="icon-w24 ms-1" style="margin-right: 45px;">
+                          <div class="icon_remove pointer" v-if="listVariant.length > 1"
+                               @click="removeVariant(key)"></div>
+                        </div>
+                      </div>
+                      <div class="ms-error-text" v-if="invalidVariant[`name${key}`]">
+                        {{ invalidVariant[`name${key}`] }}
+                      </div>
+                    </div>
+                    <div class="group-form_box mt-4">
+                      <div class="label d-flex align-items-center">
+                        <span class="required">*</span>
+                        Tùy chọn
+                        <div class="icon16 icon-note text-start" v-tooltip="'\n'+
+'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
+'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
+                      </div>
+                      <div>
+                        <DataTable :value="item.option" :reorderableColumns="true"
+                                   class="ms-variants_table" :class="{' ms-variant_image': isVariantImage}"
+                                   @rowReorder="onRowReorderVariant($event, key)" v-if="item.option.length > 0">
+                          <Column>
+                            <template #body="slotProps">
+                              <input type="file" hidden :ref="`ref_variant_image${key}${slotProps.index}`"
+                                     @change="changeVariantImage($event, key, slotProps.index)">
+                              <Button v-if="isVariantImage"
+                                      @click="chooseVariantImage(key, slotProps.index)"
+                                      :class="{'border-0': listVariant[key].option[slotProps.index].image}"
+                                      class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center flex-grow-1 me-3 ms-btn_search gap-2">
+                                <div v-if="!listVariant[key].option[slotProps.index].image">
+                                  <div class="icon">
+                                    <Image :src="require('@public/assets/icons/image.svg')"
+                                           alt="Image"/>
+                                  </div>
+                                  <div class="">Tải ảnh lên</div>
+                                </div>
+                                <div v-else class="d-flex">
+                                  <Image :src="listVariant[key].option[slotProps.index].image" class="flex-grow-1"
+                                         alt="Image"
+                                         preview>
+                                    <template #indicatoricon>
+                                      <div class="d-flex gap-2">
+                                        <i class="icon-eye"></i>
+                                        <div class="icon_remove-white"
+                                             @click="removeVariantImage($event, key, slotProps.index)"></div>
+                                      </div>
+                                    </template>
+                                  </Image>
+                                </div>
+                              </Button>
+                            </template>
+                          </Column>
+                          <Column class="flex-grow-1 d-flex align-items-start pe-2">
+                            <template #body="slotProps">
+                              <div class="flex-grow-1 d-flex flex-column">
+                                <div class="flex-grow-1">
+                                  <InputText v-model="item.option[slotProps.index].value"
+                                             :class="{'error': invalidVariant[`${key}${slotProps.index}`]}"
+                                             :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"
+                                             maxlength="50"
+                                             @input="changeVariantValue(key, slotProps.index)"></InputText>
+                                </div>
+                                <div class="ms-error-text" v-if="invalidVariant[`${key}${slotProps.index}`]">
+                                  {{ invalidVariant[`${key}${slotProps.index}`] }}
+                                </div>
+                              </div>
+                            </template>
+                          </Column>
+                          <Column
+                              style="padding-top: 6px !important; padding-right: 12px !important; padding-left: 12px !important;">
+                            <template #body="slotProps">
+                              <div class="row-actions flex-row">
+                                <div class="icon_remove pointer"
+                                     @click="deleteOptionVariantValue(key, slotProps.index)">
+                                </div>
+                              </div>
+                            </template>
+                          </Column>
+                          <Column rowReorder :reorderableColumn="false" style="padding-top: 6px !important;">
+                            <template #rowreordericon>
+                              <div class="p-icon p-datatable-reorderablerow-handle icon_drag_dot" aria-hidden="true"
+                                   data-pc-section="rowreordericon"></div>
+                            </template>
+                          </Column>
+                        </DataTable>
+
+                        <div class="mt-2 d-flex flex-grow-1">
+                          <input type="file" hidden :ref="`ref_variant_image${key}`"
+                                 @change="changeVariantImage($event, key)">
+                          <Button v-if="isVariantImage"
+                                  @click="chooseVariantImage(key)"
+                                  class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center me-3 ms-btn_search gap-2">
+                            <div v-if="!itemVariant[key].image">
+                              <div class="icon">
+                                <Image :src="require('@public/assets/icons/image.svg')"
+                                       alt="Image"/>
+                              </div>
+                              <div class="">Tải ảnh lên</div>
+                            </div>
+                            <div v-else class="d-flex flex-grow-1">
+                              <Image :src="itemVariant[key].image" class="flex-grow-1"
+                                     alt="Image"
+                                     preview>
+                                <template #indicatoricon>
+                                  <div class="d-flex gap-2">
+                                    <i class="icon-eye"></i>
+                                    <div class="icon_remove-white"
+                                         @click="removeVariantImage($event, key)"></div>
+                                  </div>
+                                </template>
+                              </Image>
+                            </div>
+                          </Button>
+                          <div class="d-flex flex-column flex-grow-1">
+                            <div class="flex-grow-1">
+                              <InputText v-model="itemVariant[key].value"
+                                         :class="{'error': invalidVariant[key]}"
+                                         maxlength="50"
+                                         :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"
+                                         @input="changeVariantValue(key)"></InputText>
+                            </div>
+                            <div class="ms-error-text" v-if="invalidVariant[key]">
+                              {{ invalidVariant[key] }}
+                            </div>
+                          </div>
+                          <div class="me-4 ms-4" style="padding-left: 25px"></div>
+                        </div>
+                        <Button
+                            @click="completeVariant(key)"
+                            class="ms-btn secondary primary d-flex justify-content-center ms-btn_search ps-3 pe-3 mt-4 gap-2">
+                          <div class="">Xong</div>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="" v-else>
+                    <div class="row gy-2 align-items-center">
+                      <div class="d-flex flex-column col-10 gap-2">
+                        <div>
+                          {{ listVariant[key].name }}
+                        </div>
+                        <div class="d-flex gap-2 flex-wrap">
+                          <div v-for="option in listVariant[key].option">
+                            <Chip :label="option.value"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-2 d-flex justify-content-center">
+                        <Button
+                            @click="editVariant(key)"
+                            class="ms-btn btn-transparent d-flex justify-content-center ms-btn_search ps-3 pe-3 gap-1 mt-2 mb-2">
+                          <div class="">Chỉnh sửa</div>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <Button
+                      v-if="listVariant.length < 3"
+                      @click="addVariant"
+                      class="custom-btn text-link ms-btn d-flex justify-content-center ms-btn_search ps-3 pe-3 gap-1 mt-2 mb-2">
+                    <div class="icon24 icon-add-blue"></div>
+                    <div class="">Thêm biến thể</div>
+                  </Button>
+                </div>
+
+                <div class="group-form_box" v-if="variantsData.length > 0">
+                  <div class="label d-flex align-items-center justify-content-between">
+                    <div>
+                      <span class="required">*</span>
+                      Danh sách biến thể
+                    </div>
+                    <div>
+                      <ToggleButton v-model="isBatchEditing" :onLabel="MESSAGE.BATCH_EDITING" :offLabel="MESSAGE.BATCH_EDITING" class="ms-btn">
+                        <template #icon>
+                          <div class="icon_up"></div>
+                        </template>
+                      </ToggleButton>
+                    </div>
+                  </div>
+                  <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 gx-3 gy-2" v-if="isBatchEditing">
+                    <div class="col" v-for="(variant, index) in listVariant">
+                      <div class="">
+                        <Dropdown v-model="batchEditingVariant[`variant${index}`]" :options="[{
+                          value: 'Tất cả'
+                        },... variant.option]" optionLabel="value"
+                                  autoOptionFocus
+                                  selectOnFocus
+                                  placeholder="Trạng thái"
+                                  class="ms-category text-start"/>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <InputNumber v-model="batchEditingVariant['retailPrice']" inputClass="text-start"
+                                   class="flex-grow-1"
+                                   mode="currency"
+                                   placeholder="Giá bán lẻ"
+                                   currency="VND" locale="vi"/>
+                    </div>
+                    <div class="col">
+                      <InputNumber v-model="batchEditingVariant['quantity']" placeholder="Số lượng"
+                                   inputClass="text-start" class="flex-grow-1"/>
+                    </div>
+                    <div class="col">
+                      <InputText v-model="batchEditingVariant['skuSeller']"
+                                 :placeholder="MESSAGE.SKU_SELLER"></InputText>
+                    </div>
+                    <div class="col order-md-last">
+                      <Button
+                          class="ms-btn secondary d-flex justify-content-center w-100 ms-btn_search ps-3 pe-3 gap-2 me-2"
+                          @click="applyBatchEditing">
+                        <div class="">Áp dụng</div>
+                      </Button>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <DataTable class="flex1 flex-column ms-list_variant--table"
+                               :value="variantsData"
+                               v-if="variantsData.length > 0"
+                               tableStyle="min-width: 100%" rowHover>
+                      <Column
+                          v-for="(column, index) in Object.keys(variantsData[0]).filter(key => key.startsWith('variant_name_')).map((name, index) => ({ name: variantsData[0][name] }))"
+                          :key="index"
+                          :field="'variant_option_' + index"
+                          :header="column.name"
+                          style="width: 120px"
+                      />
+                      <Column field="retail_price" style="width: 140px">
+                        <template #header>
+                          Giá bán lẻ
+                        </template>
+                        <template #body="slotProps">
+                          <InputNumber v-model="variantsData[slotProps.index].retail_price" inputClass="text-start"
+                                       class="flex-grow-1"
+                                       mode="currency"
+                                       placeholder="Giá bán lẻ"
+                                       currency="VND" locale="vi"/>
+                        </template>
+                      </Column>
+                      <Column field="quantity" style="width: 128px">
+                        <template #header>
+                          Số lượng
+                        </template>
+                        <template #body="slotProps">
+                          <InputNumber v-model="variantsData[slotProps.index].quantity" placeholder="Số lượng"
+                                       inputClass="text-start" class="flex-grow-1"/>
+                        </template>
+                      </Column>
+                      <Column field="sku_seller" style="width: 128px">
+                        <template #header>
+                          {{ MESSAGE.SKU_SELLER }}
+                        </template>
+                        <template #body="slotProps">
+                          <InputText v-model="variantsData[slotProps.index].sku_seller"
+                                     :placeholder="MESSAGE.SKU_SELLER"></InputText>
+                        </template>
+                      </Column>
+                    </DataTable>
+                  </div>
+                  <div class="ms-error-text"></div>
+                </div>
+              </div>
+
             </div>
           </Panel>
 
@@ -468,6 +757,37 @@
       </div>
     </div>
   </div>
+
+  <Dialog v-model:visible="isCropperImage" modal header="Cắt hình ảnh" :style="{ width: '25rem' }">
+    <vue-cropper ref="cropper" :src="imageSrc" :autoCrop="true"
+                 :aspectRatio="1"
+                 :autoCropArea="1"
+                 :minCropBoxWidth="100" :minCropBoxHeight="100"
+                 :maxCropBoxWidth="300" :maxCropBoxHeight="300"
+                 :minContainerWidth="314"
+                 :minCanvasWidth="314"
+                 :maxCanvasWidth="314"
+                 :minCanvasHeight="314"
+                 :minContainerHeight="314"
+                 :maxContainerHeight="314"
+                 :maxContainerWidth="314"
+    ></vue-cropper>
+    <template #footer>
+      <div class="d-flex flex-row">
+        <div class="flex1"></div>
+        <Button
+            class="ms-btn secondary d-flex justify-content-center ms-btn_search ps-3 pe-3 gap-2 me-2"
+            @click="isCropperImage = false">
+          <div class="">Hủy</div>
+        </Button>
+        <Button @click="cropImage"
+                class="ms-btn primary blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+          <div class="fw-semibold">Xong</div>
+        </Button>
+      </div>
+
+    </template>
+  </Dialog>
 </template>
 
 <script>
@@ -483,6 +803,14 @@ import Image from 'primevue/image';
 import FileUpload from 'primevue/fileupload';
 import InputNumber from 'primevue/inputnumber';
 import InputSwitch from 'primevue/inputswitch';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Dialog from 'primevue/dialog';
+import Checkbox from 'primevue/checkbox';
+import Chip from 'primevue/chip';
+import ToggleButton from 'primevue/togglebutton';
+import VueCropper from 'vue-cropperjs';
+import 'cropperjs/dist/cropper.css';
 import {getCategory} from '@/api/category'
 import {getCategoryProperty} from '@/api/category-property'
 import {MESSAGE} from "@/common/enums";
@@ -506,6 +834,13 @@ export default {
     MultiSelect,
     InputSwitch,
     InputNumber,
+    DataTable,
+    Column,
+    VueCropper,
+    Dialog,
+    Checkbox,
+    Chip,
+    ToggleButton,
   },
   data() {
     return {
@@ -525,7 +860,34 @@ export default {
       properties: [],
       files: [],
       totalSize: 0,
+      saleInfomation: {
+        retailPrice: null,
+        quantity: null,
+        skuSeller: null,
+      },
       isVariant: false,
+      variantsData: [],
+      batchEditingVariant: [],
+      isBatchEditing: false,
+      listVariant: [
+        {
+          id: 0,
+          name: null,
+          option: []
+        }
+      ],
+      itemVariant: [
+        {
+          id: 0,
+          value: null,
+          image: null,
+        },
+      ],
+      isVariantImage: false,
+      isCropperImage: false,
+      selectedVariant: null,
+      imageSrc: null,
+      invalidVariant: [],
       totalSizePercent: 0,
     }
   },
@@ -619,6 +981,299 @@ export default {
     },
 
     /**
+     * Click nút thêm biến thể
+     */
+    addVariant() {
+      this.itemVariant.push(
+          {
+            id: this.itemVariant.length,
+            value: null,
+            name: null,
+          }
+      )
+      this.listVariant.push(
+          {
+            id: this.listVariant.length,
+            name: null,
+            option: []
+          }
+      )
+    },
+
+    /**
+     * Click button chỉnh sửa biến thể
+     * @param key
+     */
+    editVariant(key) {
+      this.listVariant[key].complete = false;
+    },
+
+    /**
+     * Click icon xóa biến thể
+     * @param key
+     */
+    removeVariant(key) {
+      this.listVariant.splice(key, 1);
+    },
+
+    /**
+     * Click nút áp dụng chỉnh sửa hàng loạt cho các biến thể
+     */
+    applyBatchEditing() {
+      let conditions = []
+      this.listVariant.forEach((item, i) => {
+        let index = item.option.findIndex((option) => {
+          return option.value === this.batchEditingVariant[`variant${i}`].value
+        })
+        if (index >= 0) {
+          conditions.push({
+            'field': `variant_option_${i}`,
+            'value': this.batchEditingVariant[`variant${i}`].value,
+          })
+        }
+      })
+
+      this.variantsData.forEach((item, index) => {
+        // áp dụng cho các sản phẩm đã chọn
+        if (conditions.length > 0) {
+          let check = true;
+          conditions.forEach((condition) => {
+            if (this.variantsData[index][condition.field] !== condition.value) {
+              check = false;
+            }
+          })
+          if (check) {
+            this.variantsData[index]['retail_price'] = this.batchEditingVariant['retailPrice'];
+            this.variantsData[index]['quantity'] = this.batchEditingVariant['quantity'];
+            this.variantsData[index]['sku_seller'] = this.batchEditingVariant['skuSeller'];
+          }
+        }
+        // áp dụng cho tất cả
+        else {
+          this.variantsData[index]['retail_price'] = this.batchEditingVariant['retailPrice'];
+          this.variantsData[index]['quantity'] = this.batchEditingVariant['quantity'];
+          this.variantsData[index]['sku_seller'] = this.batchEditingVariant['skuSeller'];
+        }
+      })
+    },
+
+    /**
+     * xử lý list biến thể
+     * @param arr
+     * @returns {*[]}
+     */
+    generateVariants(arr) {
+      let result = [];
+
+      const generate = (current, index) => {
+        // nếu duyệt hết các biến thể thì thêm biến thể
+        if (index === arr.length) {
+          result.push({...current});
+          return;
+        }
+
+        const {name, option} = arr[index];
+
+        // duyệt từng option của biến thể
+        for (const opt of option) {
+          current[`variant_name_${index}`] = name;
+          current[`variant_option_${index}`] = opt.value;
+          current[`quantity`] = null;
+          current[`retail_price`] = null;
+          current[`sku_seller`] = null;
+          // gọi hàm để lấy các giá trị option trong biến thể kế tiếp
+          generate(current, index + 1);
+        }
+      };
+
+      generate({}, 0);
+      return result;
+    },
+
+    /**
+     * Sự kiện nhập tên biến thể
+     * @param event
+     * @param key
+     */
+    changeNameVariant(event, key) {
+      clearTimeout(this.debounce);
+      this.debounce = setTimeout(() => {
+        delete this.invalidVariant[`name${key}`]
+        // thay đổi giá trị
+        if (this.listVariant[key].name !== "") {
+          if (this.listVariant.filter((item, k) => item.name != null && item.name.toLocaleLowerCase() === this.listVariant[key].name.toLocaleLowerCase() && k !== key).length > 0) {
+            this.invalidVariant[`name${key}`] = MESSAGE.INVALID_EXITS_VARIANT_NAME;
+          }
+        }
+      }, 750)
+    },
+
+    /**
+     * Click button "Xong" của từng biến thể
+     * @param key
+     */
+    completeVariant(key) {
+      delete this.invalidVariant[`name${key}`]
+      delete this.invalidVariant[key]
+      if (this.listVariant[key].name === null || this.listVariant[key].name === "") {
+        this.invalidVariant[`name${key}`] = MESSAGE.INVALID_EMPTY_VARIANT_NAME;
+      }
+      this.listVariant[key].option.forEach((item, index) => {
+        delete this.invalidVariant[`${key}${index}`]
+        if (item === "") {
+          this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EMPTY_VARIANT;
+        }
+        // kiểm tra giá trị đã tồn tại chưa
+        else if (this.listVariant[key].option.filter((item, k) => item.value != null && item.value.toLocaleLowerCase() === this.listVariant[key].option[index].value.toLocaleLowerCase() && k !== index).length > 0) {
+          this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EXITS_VARIANT;
+        }
+      })
+
+      if (this.itemVariant[key].value === null && this.listVariant[key].option.length === 0) {
+        this.invalidVariant[key] = MESSAGE.INVALID_EMPTY_VARIANT;
+      }
+      if (this.listVariant[key].option.filter(item => item.value != null && this.itemVariant[key].value != null && item.value.toLocaleLowerCase() === this.itemVariant[key].value.toLocaleLowerCase()).length > 0) {
+        this.invalidVariant[key] = MESSAGE.INVALID_EXITS_VARIANT;
+      }
+
+      if (Object.keys(this.invalidVariant).length > 0) {
+        return
+      }
+      this.listVariant[key].complete = true;
+    },
+
+    /**
+     * Sự kiện thay đổi thứ tự hàng biến thể
+     * @param event
+     * @param index
+     */
+    onRowReorderVariant(event, index) {
+      this.listVariant[index].option = event.value;
+    },
+
+    /**
+     * Sự kiện nhập giá trị của biến thể
+     * @param key
+     * @param index
+     */
+    changeVariantValue(key, index = null) {
+      clearTimeout(this.debounce);
+      this.debounce = setTimeout(() => {
+        delete this.invalidVariant[`${key}${index}`]
+        // thay đổi giá trị
+        if (index != null) {
+          //check rỗng
+          if (this.listVariant[key].option[index].value === "") {
+            this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EMPTY_VARIANT;
+          }
+          // kiểm tra giá trị đã tồn tại chưa
+          else if (this.listVariant[key].option.filter((item, k) => item.value != null && item.value.toLocaleLowerCase() === this.listVariant[key].option[index].value.toLocaleLowerCase() && k !== index).length > 0) {
+            this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EXITS_VARIANT;
+          }
+        }
+        // thêm mới
+        else {
+          delete this.invalidVariant[key]
+          if (this.itemVariant[key].value !== "") {
+            if (this.listVariant[key].option.filter(item => item.value != null && item.value.toLocaleLowerCase() === this.itemVariant[key].value.toLocaleLowerCase()).length > 0) {
+              this.invalidVariant[key] = MESSAGE.INVALID_EXITS_VARIANT;
+            } else {
+              this.listVariant[key].option.push({
+                id: this.listVariant.length,
+                value: this.itemVariant[key].value,
+                image: this.itemVariant[key].image,
+              })
+              this.itemVariant[key] = {
+                id: this.itemVariant[key].id,
+                value: null,
+                name: null,
+              };
+            }
+          }
+        }
+
+      }, 750);
+    },
+
+    /**
+     * Xóa biến thể
+     * @param key
+     * @param index
+     */
+    deleteOptionVariantValue(key, index) {
+      this.listVariant[key].option.splice(index, 1);
+    },
+
+    /**
+     * Click nút tải ảnh lên
+     * @param key
+     * @param index
+     */
+    chooseVariantImage(key, index = null) {
+      if (index != null && this.listVariant[key].option[index].image) {
+        return;
+      }
+      const ref = index != null ? `ref_variant_image${key}${index}` : `ref_variant_image${key}`;
+      this.$refs[ref][0].click()
+    },
+
+    /**
+     * xóa ảnh đã tải
+     * @param event
+     * @param key
+     * @param index
+     */
+    removeVariantImage(event, key, index = null) {
+      event.stopPropagation()
+      if (index != null) {
+        this.listVariant[key].option[index].image = null;
+      } else {
+        this.itemVariant[key].image = null;
+      }
+    },
+
+    /**
+     *
+     * @param event
+     * @param key
+     * @param index
+     * @returns {Promise<void>}
+     */
+    async changeVariantImage(event, key, index = null) {
+      const ref = index != null ? `ref_variant_image${key}${index}` : `ref_variant_image${key}`;
+      const file = this.$refs[ref][0].files[0];
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        this.imageSrc = event.target.result;
+        if (index != null) {
+          this.selectedVariant = this.listVariant[key].option[index];
+          this.selectedVariant.index = index;
+        } else {
+          this.selectedVariant = this.itemVariant;
+        }
+        this.selectedVariant.key = key;
+        this.isCropperImage = true;
+      };
+      await reader.readAsDataURL(file);
+    },
+
+    /**
+     * Click cắt ảnh
+     */
+    cropImage() {
+      let ref = '';
+      if (this.selectedVariant.index) {
+        ref = `ref_variant_image${this.selectedVariant.key}${this.selectedVariant.index}`;
+        this.listVariant[this.selectedVariant.key].option[this.selectedVariant.index].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+      } else {
+        ref = `ref_variant_image${this.selectedVariant.key}`;
+        this.itemVariant[this.selectedVariant.key].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+      }
+      this.$refs[ref][0].value = null;
+      this.isCropperImage = false;
+      this.selectedVariant = null;
+    },
+    /**
      * Sự kiện chọn hạng mục
      */
     changeCategory() {
@@ -634,7 +1289,6 @@ export default {
     loadCategory() {
       getCategory().then(res => {
         this.categories = res.data;
-        console.log(this.categories)
       })
           .catch(error => {
             console.log(error)
@@ -643,6 +1297,14 @@ export default {
   },
   created() {
     this.loadCategory();
+  },
+  watch: {
+    listVariant: {
+      handler(newVal, oldVal) {
+        this.variantsData = this.generateVariants(newVal)
+      },
+      deep: true,
+    }
   }
 }
 </script>
@@ -670,11 +1332,103 @@ export default {
       margin-top: 3px;
     }
 
-    .theme-arco-table-content-inner{
+    .theme-arco-table-content-inner {
       border: 1px solid #e0e0e0;
       border-radius: 4px;
-      .label{
+
+      .label {
         background-color: #f5f5f5;
+      }
+    }
+
+    .ms-group_variants {
+      .ms-variants_wrapper {
+        background-color: #f5f5f5;
+        padding: 16px;
+        border-radius: 4px;
+      }
+    }
+
+    .ms-list_variant--table {
+      .p-datatable-wrapper {
+        border: 1px solid rgba(0, 0, 0, .1);
+        border-radius: 4px;
+
+        .p-datatable-table {
+          .p-datatable-thead {
+            tr {
+              th {
+                background-color: #f5f5f5 !important;
+                box-sizing: border-box;
+                color: rgba(0, 0, 0, .92);
+                font-weight: 600;
+                line-height: 1.5715;
+                text-align: left;
+                padding: 6px;
+                border: unset;
+                font-size: 12px;
+              }
+            }
+          }
+
+          .p-datatable-tbody {
+            tr {
+              &:hover {
+                background-color: rgba(0, 0, 0, .08) !important;
+              }
+
+              td {
+                border: unset !important;
+                padding: 6px !important;
+                border-radius: unset !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ms-variants_table {
+      .p-datatable-wrapper {
+        .p-datatable-table {
+
+          .p-datatable-thead {
+            display: none;
+          }
+
+          tr {
+            display: flex;
+            background: unset !important;
+            margin-bottom: 10px;
+
+            td {
+              height: unset !important;
+              padding: unset !important;
+              border: unset !important;
+
+              &:last-child {
+                background: unset !important;
+              }
+            }
+          }
+        }
+      }
+
+      &.ms-variant_image {
+        .p-datatable-wrapper {
+          .p-datatable-table {
+            tr {
+              display: flex;
+              background: unset !important;
+
+              td {
+                height: 106px;
+                max-height: 106px;
+              }
+            }
+
+          }
+        }
       }
     }
 

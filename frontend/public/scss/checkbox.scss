@@ -29,3 +29,11 @@
 .p-checkbox-checked ~ label {
   color: var(--Gray-900);
 }
+
+.ms-checkbox_label {
+  cursor: pointer;
+
+  label {
+    cursor: pointer;
+  }
+}
