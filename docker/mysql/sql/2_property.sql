@@ -273,3 +273,6 @@ INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(27
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(271, 'Loại đồ lót', 3, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(272, 'Chiều cao vớ', 1, now(), now());
 INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(273, 'Kiểu mũi giày', 3, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(274, 'Tên nhà sản xuất/thương mại', 0, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(275, 'Địa chỉ nhà sản xuất/thương mại', 0, now(), now());
+INSERT IGNORE INTO properties (id, name, type, created_at, updated_at) VALUES(276, 'Văn hoá', 0, now(), now());
