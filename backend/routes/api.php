@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/categories', [ApiCategoryController::class, 'get']);
+Route::post('/upload/image', [ApiCategoryController::class, 'uploadImage']);
 Route::post('/categories/properties/{id}', [ApiCategoryController::class, 'getProperties']);

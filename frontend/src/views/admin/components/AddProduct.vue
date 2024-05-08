@@ -25,163 +25,109 @@
         </div>
       </div>
       <div class="row gy-4 pb-4">
-        <div class="col-xxl-9">
+        <div class="col-9">
           <Panel header="Thông tin cơ bản" class="ma-media">
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
-                <div class="label d-flex align-items-center">
+                <div class="label d-flex align-items-center gap-1">
                   <span class="required">*</span>
                   Hình ảnh sản phẩm
-                  <div class="icon16 icon-note text-start"
+                  <div class="icon_question--cricle-13 text-start"
                        v-tooltip="'Tải lên tối đa 9 hình ảnh. Kích thước hình ảnh tối thiểu: 300×300 px.\nBạn nên sử dụng hình nền trắng làm hình ảnh đầu tiên thay vì sử dụng hình ảnh có các yếu tố khác (chữ, logo, đường viền, khối màu, hình mờ hoặc hình ảnh đồ họa khác).\nĐể thêm chữ vào hình ảnh, hãy đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
                 </div>
                 <div class="description">Bạn nên thêm ít nhất 5 ảnh để minh họa đầy đủ cho sản phẩm của bạn.</div>
-                <div class="">
-                  <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)" :multiple="true"
-                              accept="image/*" :maxFileSize="5000000 " @select="onSelectedFiles" showUploadButton
-                  >
-                    <template #header="{ chooseCallback, clearCallback, files }">
-                      <div class="flex flex-wrap justify-content-between align-items-center flex-1 gap-2 d-none">
-                        <div class="flex gap-2">
-                          <Button class="ms-btn light-pink d-flex icon-only justify-content-center ms-btn_search mt-4"
-                                  v-tooltip.bottom="{ value: `Yêu thích`, escape: true }">
-                            <div class="icon-only icon-heart_black" ref="myButton" @click="chooseCallback()"></div>
-                          </Button>
-                          <Button @click="clearCallback()" icon="pi pi-times" rounded outlined severity="danger"
-                                  :disabled="!files || files.length === 0"></Button>
-                        </div>
-                        >
-                      </div>
-                    </template>
-                    <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
-                      <div class="row text-start gap-3 gx-0">
-                        <div class="col-lg-8 ma-item-main-image" @click="$refs.myButton.click()">
-                          <div class="image">
-                            <Image :src="require('@public/assets/icons/image.svg')" style="color: red" alt="Image"/>
+              </div>
+              <div class="position-relative d-flex flex-grow-1">
+                <div class="grid grid-cols-4 grid-rows-3 gap-12 ms-product_images">
+                  <div v-for="(item, index) in imageProducts" class="ms-item_image--products_wrapper"
+                       @click="chooseImageProduct($event, index)"
+                       :class="{'active': item.active, 'ms-media_active': item.imageData}">
+                    <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
+                                accept="image/*" :maxFileSize="5000000 " @select="changeImageProduct($event, index)"
+                                showUploadButton
+                    >
+                      <template #header="{ chooseCallback, clearCallback, files }">
+                        <button :ref="`chooseButton${index}`" @click="chooseCallback()">123</button>
+                        <button :ref="`clearButton${index}`" @click="clearCallback()"></button>
+                      </template>
+                      <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
+                        <div class="p-fileupload-empty" data-pc-section="empty">
+                          <div v-if="item.imageData" class="d-flex h-100 w-100">
+                            <Image :src="item.image" class="flex-grow-1 w-100 h-100"
+                                   alt="Image"
+                                   preview>
+                              <template #indicatoricon>
+                                <div class="d-flex gap-2">
+                                  <i class="icon-eye"></i>
+                                  <div class="icon_remove-white"
+                                       @click="removeProductImage($event, index)"></div>
+                                </div>
+                              </template>
+                            </Image>
                           </div>
-                          <div class="text-center title">Tải lên hình ảnh chính</div>
-                          <ul>
-                            <li>
-                              Kích thước: 300 × 300 px
-                            </li>
-                            <li>
-                              Kích thước tập tin tối đa: 5 MB (Tối đa 9 tập tin)
-                            </li>
-                            <li>
-                              Định dạng: JPG, JPEG, PNG
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-4 row gap-2">
-                          <div class="row gap-3">
-                            <div class="col-6 ma-item-image">
-                              <div>
-                                <Image :src="require('@public/assets/images/background-perspective.png')" alt="Image"/>
-                              </div>
-                              <div class="title" v-tooltip.top="'Chính diện'">
-                                Chính diện
-                              </div>
+                          <div v-else class="ms-item_image--products">
+                            <div class="image d-flex align-items-center text-center">
+                              <Image :src="item.icon"
+                                     alt="Image"/>
                             </div>
-                            <div class="col-6 ma-item-image">
-                              <div>
-                                <Image :src="require('@public/assets/images/side.png')" alt="Image"/>
-                              </div>
-                              <div class="title" v-tooltip.top="'Cạnh bên'">Cạnh bên</div>
-                            </div>
-                          </div>
-                          <div class="row gap-3">
-                            <div class="col-6 ma-item-image">
-                              <div>
-                                <Image :src="require('@public/assets/images/other-angles.png')" alt="Image"/>
-                              </div>
-                              <div class="title" v-tooltip.top="'Các góc độ khác'">Các góc độ khác</div>
-                            </div>
-                            <div class="col-6 ma-item-image">
-                              <div>
-                                <Image :src="require('@public/assets/images/using.png')" alt="Image"/>
-                              </div>
-                              <div class="title" v-tooltip.top="'Đang sử dụng'">Đang sử dụng</div>
-                            </div>
+                            <div class="title" v-tooltip.top="item.title">{{ item.title }}</div>
+                            <ul v-if="item.description">
+                              <li>
+                                Kích thước: 300 × 300 px
+                              </li>
+                              <li>
+                                Kích thước tập tin tối đa: 5 MB (Tối đa 9 tập tin)
+                              </li>
+                              <li>
+                                Định dạng: JPG, JPEG, PNG
+                              </li>
+                            </ul>
                           </div>
                         </div>
-                        <div class="row gap-3">
-                          <div class="col-3 ma-item-image">
-                            <div>
-                              <Image :src="require('@public/assets/images/variant.png')" alt="Image"/>
-                            </div>
-                            <div class="title" v-tooltip.top="'Biến thể'">Biến thể</div>
-                          </div>
-                          <div class="col-3 ma-item-image">
-                            <div>
-                              <Image :src="require('@public/assets/images/background-perspective.png')" alt="Image"/>
-                            </div>
-                            <div class="title" v-tooltip.top="'Phối cảnh nền'">Phối cảnh nền</div>
-                          </div>
-                          <div class="col-3 ma-item-image">
-                            <div>
-                              <Image :src="require('@public/assets/images/close-up-photo.png')" alt="Image"/>
-                            </div>
-                            <div class="title" v-tooltip.top="'Ảnh chụp cận'">Ảnh chụp cận</div>
-                          </div>
-                          <div class="col-3 ma-item-image">
-                            <div>
-                              <Image :src="require('@public/assets/images/size-and-weight.png')" alt="Image"/>
-                            </div>
-                            <div class="title" v-tooltip.top="'Kích thước & cân nặng'">Kích thước & cân nặng</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div v-if="files.length > 0">
-                        <h5>Pending</h5>
-                        <div class="flex flex-wrap p-0 sm:p-5 gap-5">
-                          <div v-for="(file, index) of files" :key="file.name + file.type + file.size"
-                               class="card m-0 px-6 flex flex-column border-1 surface-border align-items-center gap-3">
-                            <div>
-                              <img role="presentation" :alt="file.name" :src="file.objectURL" width="100" height="50"/>
-                            </div>
-                            <span class="font-semibold">{{ file.name }}</span>
-                            <div>{{ formatSize(file.size) }}</div>
-                            <Button icon="pi pi-times" @click="onRemoveTemplatingFile(file, removeFileCallback, index)"
-                                    outlined rounded severity="danger"/>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div v-if="uploadedFiles.length > 0">
-                        <h5>Completed</h5>
-                        <div class="flex flex-wrap p-0 sm:p-5 gap-5">
-                          <div v-for="(file, index) of uploadedFiles" :key="file.name + file.type + file.size"
-                               class="card m-0 px-6 flex flex-column border-1 surface-border align-items-center gap-3">
-                            <div>
-                              <img role="presentation" :alt="file.name" :src="file.objectURL" width="100" height="50"/>
-                            </div>
-                            <span class="font-semibold">{{ file.name }}</span>
-                            <div>{{ formatSize(file.size) }}</div>
-                            <Button icon="pi pi-times" @click="removeUploadedFileCallback(index)" outlined rounded
-                                    severity="danger"/>
-                          </div>
-                        </div>
-                      </div>
-                    </template>
-                  </FileUpload>
+                      </template>
+                    </FileUpload>
+                  </div>
                 </div>
-                <div class="ms-error-text"></div>
               </div>
               <div class="group-form_box">
-                <div class="label d-flex align-items-center">Video
-                  <div class="icon16 icon-note text-start"
+                <div class="label d-flex align-items-center gap-1">Video
+                  <div class="icon_question--cricle-13 text-start"
                        v-tooltip="'Video tải lên sẽ được hiển thị trên trang chi tiết sản phẩm. Hãy làm nổi bật 1 hoặc 2 lợi điểm bán hàng chính của sản phẩm trong video.'"></div>
                 </div>
                 <div class="description">
                   Tỷ lệ khung hình video phải từ 9:16 đến 16:9. Kích thước tập tin tối đa: 100 MB.
                 </div>
-                <div class="col-6 ma-item-video">
-                  <div class="icon">
-                    <Image :src="require('@public/assets/icons/video.svg')" alt="Image"/>
-                  </div>
-                  <div class="title">
-                    Video
-                  </div>
+                <div class="col-6 ma-item-video" :class="{'ms-media_active': videoProduct}" @click="chooseVideoProduct">
+                  <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
+                              accept="video/*" :maxFileSize="5000000 " @select="changeVideoProduct($event)"
+                              showUploadButton
+                  >
+                    <template #header="{ chooseCallback, clearCallback, files }">
+                      <button :ref="`chooseVideoProduct`" @click="chooseCallback()">123</button>
+                      <button :ref="`clearVideoProduct`" @click="clearCallback()"></button>
+                    </template>
+                    <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
+                      <div class="p-fileupload-empty  w-100 h-100" data-pc-section="empty">
+                        <div v-if="videoProduct" class="d-flex w-100 h-100 position-relative">
+                          <video :src="videoProduct" class="w-100 h-100">
+                          </video>
+                          <div
+                              class="position-absolute ms-box_video w-100 h-100 flex-column d-flex  align-items-center justify-content-center">
+                            <div class="icon-pause pointer"></div>
+                            <div class="icon_remove-white pointer"></div>
+                          </div>
+                        </div>
+                        <div v-else
+                             class="ms-item_image--products w-100 h-100 d-flex  align-items-center justify-content-center">
+                          <div class="image d-flex align-items-center text-center">
+                            <Image :src="require('@public/assets/icons/video.svg')"
+                                   alt="Image"/>
+                          </div>
+                          <div class="title" v-tooltip.top="'Video'">Video</div>
+                        </div>
+                      </div>
+                    </template>
+                  </FileUpload>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
@@ -196,10 +142,10 @@
                 <div class="ms-error-text"></div>
               </div>
               <div class="group-form_box">
-                <div class="label d-flex align-items-center">
+                <div class="label d-flex align-items-center gap-1">
                   <span class="required">*</span>
                   Hạng mục
-                  <div class="icon16 icon-note text-start"
+                  <div class="icon_question--cricle-13 text-start"
                        v-tooltip="'Đảm bảo rằng bạn chọn danh mục phù hợp. Việc phân loại sai sản phẩm có thể ảnh hưởng đến chất lượng bán hàng.'"></div>
                 </div>
                 <div class="">
@@ -311,51 +257,63 @@
               </div>
             </div>
           </Panel>
-          <Panel header="Giá tiền" toggleable class="mt-4">
-            <div class="d-flex flex-column group-form_list">
-              <div class="group-form_box">
-                <div class="label">Giá tiền</div>
-                <div class="">
-                  <InputText placeholder="Giá tiền"></InputText>
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-              <div class="d-flex flex-row gap-4">
-                <div class="group-form_box flex-grow-1 col-6">
-                  <div class="label">Loại giảm giá</div>
-                  <div class="">
-                    <Dropdown v-model="selectedCategory" :options="cities" optionLabel="name"
-                              placeholder="Loại giảm giá"
-                              class="ms-category text-start"/>
-                  </div>
-                  <div class="ms-error-text"></div>
-                </div>
-                <div class="group-form_box flex-grow-1 col-6">
-                  <div class="label">Tỉ lệ giảm giá</div>
-                  <div class="">
-                    <InputText placeholder="Tỉ lệ giảm giá"></InputText>
-                  </div>
-                  <div class="ms-error-text"></div>
-                </div>
-              </div>
-              <div class="group-form_box">
-                <div class="label">Mô tả</div>
-                <div class="">
-                  <Textarea rows="4" cols="30" class="h-100" placeholder="Nhập mô tả"/>
-                </div>
-              </div>
-            </div>
-          </Panel>
+<!--          <Panel header="Giá tiền" toggleable class="mt-4">-->
+<!--            <div class="d-flex flex-column group-form_list">-->
+<!--              <div class="group-form_box">-->
+<!--                <div class="label">Giá tiền</div>-->
+<!--                <div class="">-->
+<!--                  <InputText placeholder="Giá tiền"></InputText>-->
+<!--                </div>-->
+<!--                <div class="ms-error-text"></div>-->
+<!--              </div>-->
+<!--              <div class="d-flex flex-row gap-4">-->
+<!--                <div class="group-form_box flex-grow-1 col-6">-->
+<!--                  <div class="label">Loại giảm giá</div>-->
+<!--                  <div class="">-->
+<!--                    <Dropdown v-model="selectedCategory" :options="cities" optionLabel="name"-->
+<!--                              placeholder="Loại giảm giá"-->
+<!--                              class="ms-category text-start"/>-->
+<!--                  </div>-->
+<!--                  <div class="ms-error-text"></div>-->
+<!--                </div>-->
+<!--                <div class="group-form_box flex-grow-1 col-6">-->
+<!--                  <div class="label">Tỉ lệ giảm giá</div>-->
+<!--                  <div class="">-->
+<!--                    <InputText placeholder="Tỉ lệ giảm giá"></InputText>-->
+<!--                  </div>-->
+<!--                  <div class="ms-error-text"></div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="group-form_box">-->
+<!--                <div class="label">Mô tả</div>-->
+<!--                <div class="">-->
+<!--                  <Textarea rows="4" cols="30" class="h-100" placeholder="Nhập mô tả"/>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </Panel>-->
           <Panel header="Chi tiết sản phẩm" toggleable class="mt-4 ma-description-product">
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
-                <div class="label d-flex">Mô tả sản phẩm
-                  <div class="icon16 icon-note text-start" v-tooltip="'\n'+
+                <div class="label d-flex align-items-center gap-1">Mô tả sản phẩm
+                  <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
 'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
 'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
                 </div>
                 <div class="description">
                   Nên viết mô tả dài ít nhất 500 ký tự và thêm hình ảnh để giúp khách hàng đưa ra quyết định mua hàng.
+                </div>
+                <Editor v-model="value" editorStyle="height: 320px" placeholder="Nhập mô tả sản phẩm"/>
+                <div class="ms-error-text"></div>
+              </div>
+              <div class="group-form_box">
+                <div class="label d-flex align-items-center gap-1">Bảng kích thước
+                  <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
+'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
+'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
+                </div>
+                <div class="description">
+                  Để đảm bảo sự hài lòng của khách hàng, hãy tải lên bảng kích thước để giúp khách hàng tìm được kích thước phù hợp.
                 </div>
                 <Editor v-model="value" editorStyle="height: 320px" placeholder="Nhập mô tả sản phẩm"/>
                 <div class="ms-error-text"></div>
@@ -478,7 +436,8 @@
                                   <div class="">Tải ảnh lên</div>
                                 </div>
                                 <div v-else class="d-flex">
-                                  <Image :src="listVariant[key].option[slotProps.index].image" class="flex-grow-1"
+                                  <Image :src="listVariant[key].option[slotProps.index].image"
+                                         class="flex-grow-1"
                                          alt="Image"
                                          preview>
                                     <template #indicatoricon>
@@ -615,14 +574,16 @@
                       Danh sách biến thể
                     </div>
                     <div>
-                      <ToggleButton v-model="isBatchEditing" :onLabel="MESSAGE.BATCH_EDITING" :offLabel="MESSAGE.BATCH_EDITING" class="ms-btn">
+                      <ToggleButton v-model="isBatchEditing" :onLabel="MESSAGE.BATCH_EDITING"
+                                    :offLabel="MESSAGE.BATCH_EDITING" class="ms-btn">
                         <template #icon>
                           <div class="icon_up"></div>
                         </template>
                       </ToggleButton>
                     </div>
                   </div>
-                  <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 gx-3 gy-2" v-if="isBatchEditing">
+                  <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 gx-3 gy-2"
+                       v-if="isBatchEditing">
                     <div class="col" v-for="(variant, index) in listVariant">
                       <div class="">
                         <Dropdown v-model="batchEditingVariant[`variant${index}`]" :options="[{
@@ -733,7 +694,7 @@
             </div>
           </Panel>
         </div>
-        <div class="col-xxl-3">
+        <div class="col-3 position-sticky">
           <Panel header="Loại sản phẩm" toggleable>
             <p class="m-0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -743,15 +704,6 @@
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
               laborum.
             </p>
-          </Panel>
-          <Panel header="Trạng thái" toggleable class="mt-4">
-            <div class="group-form_box flex-grow-1">
-              <div class="label">Trạng thái</div>
-              <div class="">
-                <Dropdown v-model="selectedCategory" :options="cities" optionLabel="name" placeholder="Trạng thái"
-                          class="ms-category text-start"/>
-              </div>
-            </div>
           </Panel>
         </div>
       </div>
@@ -814,6 +766,7 @@ import 'cropperjs/dist/cropper.css';
 import {getCategory} from '@/api/category'
 import {getCategoryProperty} from '@/api/category-property'
 import {MESSAGE} from "@/common/enums";
+import {uploadImage} from "@/api/image";
 
 export default {
   computed: {
@@ -858,7 +811,80 @@ export default {
       invalidValueSelectAddOption: [],
       categories: [],
       properties: [],
-      files: [],
+      videoProduct: null,
+      indexSelectedImageProduct: null,
+      imageProducts: [
+        {
+          image: null,
+          imageData: null,
+          active: true,
+          title: 'Tải lên hình ảnh chính',
+          description: [
+            'Kích thước: 300 x 300 px',
+            'Kích thước tệp tin tối đa: 5MB(Tối đa 9 tập tin)',
+            'Định dạng: JPG, JPEG, PNG'
+          ],
+          icon: require("@public/assets/icons/image.svg"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Chính diện',
+          icon: require("@public/assets/images/background-perspective.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Cạnh bên',
+          icon: require("@public/assets/images/side.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Các góc độ khác',
+          icon: require("@public/assets/images/other-angles.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Đang sử dụng',
+          icon: require("@public/assets/images/using.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Biến thể',
+          icon: require("@public/assets/images/variant.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Phối cảnh nền',
+          icon: require("@public/assets/images/background-perspective.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Ảnh chụp cận',
+          icon: require("@public/assets/images/close-up-photo.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Kích thước và cân nặng',
+          icon: require("@public/assets/images/size-and-weight.png"),
+        },
+
+      ],
+      isCropImageProduct: false,
       totalSize: 0,
       saleInfomation: {
         retailPrice: null,
@@ -897,15 +923,76 @@ export default {
       this.totalSize -= parseInt(this.formatSize(file.size));
       this.totalSizePercent = this.totalSize / 10;
     },
-    onSelectedFiles(event) {
-      this.files = event.files;
-      this.files.forEach((file) => {
-        this.totalSize += parseInt(this.formatSize(file.size));
-      });
+
+    /**
+     * Click nút chọn video
+     * @param event
+     */
+    chooseVideoProduct(event) {
+      if (!this.videoProduct) {
+        this.$refs['chooseVideoProduct'].click()
+      }
     },
+
+    /**
+     * Sự kiện thay đổi video
+     * @param event
+     */
+    changeVideoProduct(event) {
+      this.videoProduct = URL.createObjectURL(event.files[0]);
+    },
+
+    /**
+     * click chọn ảnh sản phẩm
+     * @param event
+     * @param index
+     */
+    chooseImageProduct(event, index) {
+      if (this.imageProducts[index].image || !this.imageProducts[index].active) {
+        event.preventDefault()
+      } else {
+        this.$refs[`chooseButton${index}`][0].click()
+      }
+    },
+
+    /**
+     * Xóa ảnh sản phẩm đã tải
+     * @param event
+     * @param index
+     */
+    removeProductImage(event, index) {
+      event.stopPropagation()
+      for (let i = index; i < this.imageProducts.length; i++) {
+        if (i + 1 < this.imageProducts.length) {
+          this.imageProducts[i].image = this.imageProducts[i + 1].image;
+          this.imageProducts[i].imageData = this.imageProducts[i + 1].imageData;
+          this.imageProducts[i + 1].active = !!this.imageProducts[i].image
+        }
+      }
+    },
+
+    /**
+     * Sự kiện thay đổi ảnh sản phẩm
+     * @param event
+     * @param index
+     */
+    changeImageProduct(event, index) {
+      this.imageProducts[index].image = event.files[0];
+      const file = event.files[0];
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        this.imageSrc = event.target.result;
+        this.isCropImageProduct = true;
+        this.isCropperImage = true;
+      };
+      reader.readAsDataURL(file);
+      this.indexSelectedImageProduct = index;
+    },
+
     onTemplatedUpload() {
       this.$toast.add({severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000});
     },
+
     formatSize(bytes) {
       const k = 1024;
       const dm = 3;
@@ -1261,17 +1348,29 @@ export default {
      * Click cắt ảnh
      */
     cropImage() {
-      let ref = '';
-      if (this.selectedVariant.index) {
-        ref = `ref_variant_image${this.selectedVariant.key}${this.selectedVariant.index}`;
-        this.listVariant[this.selectedVariant.key].option[this.selectedVariant.index].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
-      } else {
-        ref = `ref_variant_image${this.selectedVariant.key}`;
-        this.itemVariant[this.selectedVariant.key].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+      // cắt ảnh sản phẩm
+      if (this.isCropImageProduct) {
+        this.imageProducts[this.indexSelectedImageProduct].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+        this.imageProducts[this.indexSelectedImageProduct].imageData = this.$refs.cropper.getCroppedCanvas();
+        if (this.indexSelectedImageProduct + 1 < this.imageProducts.length) {
+          this.imageProducts[this.indexSelectedImageProduct + 1].active = true;
+        }
+        this.isCropImageProduct = false;
       }
-      this.$refs[ref][0].value = null;
+      // cắt ảnh biến thể
+      else {
+        let ref = '';
+        if (this.selectedVariant.index) {
+          ref = `ref_variant_image${this.selectedVariant.key}${this.selectedVariant.index}`;
+          this.listVariant[this.selectedVariant.key].option[this.selectedVariant.index].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+        } else {
+          ref = `ref_variant_image${this.selectedVariant.key}`;
+          this.itemVariant[this.selectedVariant.key].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+        }
+        this.$refs[ref][0].value = null;
+        this.selectedVariant = null;
+      }
       this.isCropperImage = false;
-      this.selectedVariant = null;
     },
     /**
      * Sự kiện chọn hạng mục
@@ -1483,17 +1582,56 @@ export default {
     border-radius: 4px;
     border: 1px dashed rgba(0, 0, 0, .14);
 
+    .p-fileupload {
+      width: 100%;
+      height: 100%;
+
+      .p-fileupload-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .ms-box_video {
+          &:hover {
+            background-color: #000;
+            border-radius: 4px;
+            opacity: .5;
+          }
+        }
+
+        .ms-item_image--products {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    }
+
     .icon {
       margin-bottom: 8px;
     }
 
-    &:hover {
+    &.ms-media_active {
+      border: 1px solid #fff;
+    }
+
+    &:not(.ms-media_active):hover {
       cursor: pointer;
       border-color: rgb(0, 153, 149);
+      border-radius: 4px;
     }
   }
 
   .p-fileupload {
+    display: flex;
+    justify-content: center;
+
+    .p-image {
+      flex: 1;
+    }
+
     .p-fileupload-buttonbar {
       display: none;
     }
@@ -1501,55 +1639,70 @@ export default {
     .p-fileupload-content {
       padding: unset;
       border: unset;
+    }
+  }
 
-      .ma-item-main-image {
-        align-items: center;
-        background-color: #fff;
-        border: 1px dashed rgba(0, 0, 0, .14);
-        border-radius: 4px;
-        color: rgba(0, 0, 0, .55);
-        display: flex;
-        flex-direction: column;
-        height: 224px;
-        justify-content: center;
-        width: 228px;
+  .ms-product_images {
+    .ms-item_image--products_wrapper {
+      display: flex;
+      border: 1px dashed rgba(0, 0, 0, .14);
+      border-radius: 4px;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f5f5f5;
+      color: rgba(0, 0, 0, .55);
+      justify-content: center;
+      height: 106px;
+      overflow: hidden;
+      width: 106px;
 
-        .title {
-          color: rgba(0, 0, 0, .92);
-          font-weight: 500;
-          margin-bottom: 8px;
-          margin-top: 4px;
-        }
+      &.active {
+        background: #fff;
 
-        ul {
-          margin-left: 30px;
-          line-height: 18px;
-
-          li {
-            font-size: 12px;
-          }
-        }
-
-        &:hover {
-          cursor: pointer;
-          border-color: rgb(0, 153, 149);
+        .ms-item_image--products {
+          background: #fff;
         }
       }
 
-      .ma-item-image {
-        width: 106px;
-        height: 108px;
+      .p-fileupload {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding-bottom: 10px;
+
+        .p-fileupload-content {
+          flex: 1;
+          display: flex;
+
+          .p-fileupload-empty {
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            img {
+              width: 100% !important;
+              height: 100% !important;
+            }
+          }
+        }
+      }
+
+      .ms-item_image--products {
         background-color: #f5f5f5;
         display: flex;
+        width: 100%;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        border-radius: 4px;
-        border: 1px dashed rgba(0, 0, 0, .14);
+        padding: 10px;
 
-        &:hover {
-          cursor: pointer;
-          border-color: rgb(0, 153, 149);
+        ul {
+          font-size: 12px;
+          padding-left: 2rem;
+        }
+
+        img {
+          width: 64px;
+          height: 64px;
         }
 
         .title {
@@ -1560,6 +1713,94 @@ export default {
           -webkit-line-clamp: 1;
         }
       }
+
+      &.ms-media_active {
+        border: 1px solid #fff;
+      }
+
+      &.active:not(.ms-media_active):hover {
+        cursor: pointer;
+        border-color: rgb(0, 153, 149);
+      }
+    }
+
+    & > .ms-item_image--products_wrapper:first-child {
+      background: #fff;
+
+      .ms-item_image--products {
+        background: #fff;
+      }
+
+      grid-row-start: span 2;
+      grid-column-start: span 2;
+      width: 224px;
+      height: 224px;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+
+    }
+
+  }
+
+  .ma-item-main-image {
+    align-items: center;
+    background-color: #fff;
+    border: 1px dashed rgba(0, 0, 0, .14);
+    border-radius: 4px;
+    color: rgba(0, 0, 0, .55);
+    display: flex;
+    flex-direction: column;
+    height: 224px;
+    justify-content: center;
+    width: 228px;
+
+    .title {
+      color: rgba(0, 0, 0, .92);
+      font-weight: 500;
+      margin-bottom: 8px;
+      margin-top: 4px;
+    }
+
+    ul {
+      margin-left: 30px;
+      line-height: 18px;
+
+      li {
+        font-size: 12px;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: rgb(0, 153, 149);
+    }
+  }
+
+  .ma-item-image {
+    width: 106px;
+    height: 108px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px dashed rgba(0, 0, 0, .14);
+
+    &:hover {
+      cursor: pointer;
+      border-color: rgb(0, 153, 149);
+    }
+
+    .title {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1;
     }
   }
 }

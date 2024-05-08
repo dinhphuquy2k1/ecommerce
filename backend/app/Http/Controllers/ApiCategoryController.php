@@ -71,4 +71,19 @@ class ApiCategoryController extends Controller
         })->toArray();
         return $this->sendResponseSuccess($properties->toArray());
     }
+
+    public function uploadImage(Request $request)
+    {
+        // Kiểm tra xem có file được gửi lên không
+        if ($request->hasFile('croppedImage')) {
+            // Lưu file vào thư mục public/uploads (hoặc bất kỳ thư mục nào bạn muốn)
+            $path = $request->file('croppedImage')->store('uploads', 'public');
+
+            // Trả về đường dẫn của ảnh đã lưu
+            return response()->json(['path' => $path], 200);
+        }
+
+        // Trả về lỗi nếu không có file được gửi lên
+        return response()->json(['error' => 'No image uploaded'], 400);
+    }
 }

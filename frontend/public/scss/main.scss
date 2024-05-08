@@ -546,3 +546,19 @@ nav a {
   color: red;
   margin-right: 4px;
 }
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-rows-3 {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.grid {
+  display: grid;
+}
+
+.gap-12 {
+  gap: 12px;
+}
