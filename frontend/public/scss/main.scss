@@ -529,7 +529,7 @@ nav a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #fff;
+  background: transparent;
 }
 
 .p-dropdown .p-dropdown-label.p-placeholder {
@@ -561,4 +561,28 @@ nav a {
 
 .gap-12 {
   gap: 12px;
+}
+
+.text-xl {
+  font-size: 18px;
+}
+
+.text-sm {
+  font-size: 12px;
+}
+
+.text-2xl{
+  font-size: 20px;
+}
+
+.text-gray-0 {
+  color: rgba(33, 37, 51, 1);
+}
+
+.text-gray-3 {
+  color: rgba(0, 0, 0, .55);
+}
+
+.font-regular {
+  font-weight: 400;
 }

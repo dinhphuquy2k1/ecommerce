@@ -43,6 +43,8 @@ export const MESSAGE = {
     SELECT_PROPERTY_PLACEHOLDER: 'Chọn một giá trị được đề xuất',
     INVALID_OPTION_SELECT: 'Vui lòng không nhập các giá trị trùng lặp.',
     INVALID_EXITS_VARIANT: 'Tùy chọn đã tồn tại',
+    PLEASE_ENTER: 'Vui lòng nhập',
+    ENTER: 'Nhập',
     INVALID_EMPTY_VARIANT: 'Vui lòng nhập một tùy chọn',
     INPUT_PLACEHOLDER_VARIANT: 'Nhập một biến thể',
     INVALID_EXITS_VARIANT_NAME: 'Biến thể đã được tạo. Vui lòng chọn một biến thể khác.',

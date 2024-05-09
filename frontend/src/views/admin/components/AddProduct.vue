@@ -257,41 +257,41 @@
               </div>
             </div>
           </Panel>
-<!--          <Panel header="Giá tiền" toggleable class="mt-4">-->
-<!--            <div class="d-flex flex-column group-form_list">-->
-<!--              <div class="group-form_box">-->
-<!--                <div class="label">Giá tiền</div>-->
-<!--                <div class="">-->
-<!--                  <InputText placeholder="Giá tiền"></InputText>-->
-<!--                </div>-->
-<!--                <div class="ms-error-text"></div>-->
-<!--              </div>-->
-<!--              <div class="d-flex flex-row gap-4">-->
-<!--                <div class="group-form_box flex-grow-1 col-6">-->
-<!--                  <div class="label">Loại giảm giá</div>-->
-<!--                  <div class="">-->
-<!--                    <Dropdown v-model="selectedCategory" :options="cities" optionLabel="name"-->
-<!--                              placeholder="Loại giảm giá"-->
-<!--                              class="ms-category text-start"/>-->
-<!--                  </div>-->
-<!--                  <div class="ms-error-text"></div>-->
-<!--                </div>-->
-<!--                <div class="group-form_box flex-grow-1 col-6">-->
-<!--                  <div class="label">Tỉ lệ giảm giá</div>-->
-<!--                  <div class="">-->
-<!--                    <InputText placeholder="Tỉ lệ giảm giá"></InputText>-->
-<!--                  </div>-->
-<!--                  <div class="ms-error-text"></div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="group-form_box">-->
-<!--                <div class="label">Mô tả</div>-->
-<!--                <div class="">-->
-<!--                  <Textarea rows="4" cols="30" class="h-100" placeholder="Nhập mô tả"/>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </Panel>-->
+          <!--          <Panel header="Giá tiền" toggleable class="mt-4">-->
+          <!--            <div class="d-flex flex-column group-form_list">-->
+          <!--              <div class="group-form_box">-->
+          <!--                <div class="label">Giá tiền</div>-->
+          <!--                <div class="">-->
+          <!--                  <InputText placeholder="Giá tiền"></InputText>-->
+          <!--                </div>-->
+          <!--                <div class="ms-error-text"></div>-->
+          <!--              </div>-->
+          <!--              <div class="d-flex flex-row gap-4">-->
+          <!--                <div class="group-form_box flex-grow-1 col-6">-->
+          <!--                  <div class="label">Loại giảm giá</div>-->
+          <!--                  <div class="">-->
+          <!--                    <Dropdown v-model="selectedCategory" :options="cities" optionLabel="name"-->
+          <!--                              placeholder="Loại giảm giá"-->
+          <!--                              class="ms-category text-start"/>-->
+          <!--                  </div>-->
+          <!--                  <div class="ms-error-text"></div>-->
+          <!--                </div>-->
+          <!--                <div class="group-form_box flex-grow-1 col-6">-->
+          <!--                  <div class="label">Tỉ lệ giảm giá</div>-->
+          <!--                  <div class="">-->
+          <!--                    <InputText placeholder="Tỉ lệ giảm giá"></InputText>-->
+          <!--                  </div>-->
+          <!--                  <div class="ms-error-text"></div>-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--              <div class="group-form_box">-->
+          <!--                <div class="label">Mô tả</div>-->
+          <!--                <div class="">-->
+          <!--                  <Textarea rows="4" cols="30" class="h-100" placeholder="Nhập mô tả"/>-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </Panel>-->
           <Panel header="Chi tiết sản phẩm" toggleable class="mt-4 ma-description-product">
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
@@ -307,13 +307,27 @@
                 <div class="ms-error-text"></div>
               </div>
               <div class="group-form_box">
-                <div class="label d-flex align-items-center gap-1">Bảng kích thước
+                <div class="label d-flex align-items-center gap-1">
+                  <span class="required">*</span>Bảng kích thước
                   <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
 'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
 'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
                 </div>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="d-flex align-items-center">
+                    <RadioButton v-model="sizeTable" inputId="useSample" name="sizeTable" value="0"
+                                 @change="changeSizeTable"/>
+                    <label for="useSample" class="ml-2 pointer">Sử dụng mẫu</label>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <RadioButton v-model="sizeTable" inputId="upImage" name="sizeTable" value="1"
+                                 @change="changeSizeTable"/>
+                    <label for="upImage" class="ml-2 pointer">Tải ảnh lên</label>
+                  </div>
+                </div>
                 <div class="description">
-                  Để đảm bảo sự hài lòng của khách hàng, hãy tải lên bảng kích thước để giúp khách hàng tìm được kích thước phù hợp.
+                  Để đảm bảo sự hài lòng của khách hàng, hãy tải lên bảng kích thước để giúp khách hàng tìm được kích
+                  thước phù hợp.
                 </div>
                 <Editor v-model="value" editorStyle="height: 320px" placeholder="Nhập mô tả sản phẩm"/>
                 <div class="ms-error-text"></div>
@@ -740,6 +754,163 @@
 
     </template>
   </Dialog>
+  <Sidebar v-model:visible="isSideBarSizeTable" header="Sidebar" position="right" :dismissable="false"
+           style="width: 45vw" class="ms-sizebar_product" :showCloseIcon="false">
+    <template #container="{ closeCallback }">
+      <div class="ms-sizebar_product-header">
+        <div class="fw-bold text-xl">Tạo bảng kích thước
+        </div>
+        <div class="text-gray-3 text-sm">
+          Điền thông tin kích cỡ để cung cấp biểu đồ kích cỡ cho khách hàng. Xem cách hiển thị
+        </div>
+      </div>
+      <div class="ms-sizebar_product--wrapper">
+        <div class="ms-sizebar_product--content">
+          <form action="">
+            <div class="ms-sizebar_product--content_item">
+              <h2 class="text-2xl mb-4">Bước 1: Chọn thông tin sẽ được hiển thị trên trang chi tiết sản phẩm của
+                bạn</h2>
+              <div class="group-form_box mb-4">
+                <div class="label d-flex align-items-center mb-1">
+                  <span class="required">*</span>
+                  Tên biểu đồ kích cỡ
+                </div>
+                <div class="">
+                  <InputText :placeholder="MESSAGE.PLEASE_ENTER"></InputText>
+                </div>
+                <div class="ms-error-text"></div>
+              </div>
+
+              <div class="group-form_box mb-4">
+                <div class="label d-flex align-items-center mb-1">
+                  <span class="required">*</span>
+                  Tùy chọn
+                </div>
+                <div class="">
+                  <MultiSelect
+                      v-model="selectedSizeTableOption"
+                      :options="sizeTableOption"
+                      optionLabel="label"
+                      :selectionLimit="6"
+                      :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
+                      display="chip"
+                      class="ms-category text-start"></MultiSelect>
+                </div>
+                <div class="ms-error-text"></div>
+              </div>
+
+              <div class="group-form_box mb-4">
+                <div class="label d-flex align-items-center gap-3">
+                  Một cỡ
+                  <InputSwitch v-model="isVariant"/>
+                </div>
+                <div class="ms-error-text"></div>
+              </div>
+
+              <div class="group-form_box">
+                <div class="label d-flex align-items-center">
+                  Lưu ý
+                </div>
+                <div class="text-gray-3 text-sm font-regular mb-2">
+                  Thông tin này sẽ được hiển thị cho khách hàng để tham khảo.
+                </div>
+                <div class="">
+                  <InputText :placeholder="MESSAGE.PLEASE_ENTER"></InputText>
+                </div>
+                <div class="ms-error-text"></div>
+              </div>
+            </div>
+            <div class="ms-sizebar_product--content_item mt-4">
+              <h2 class="text-2xl mb-4">Bước 2: Điền bảng kích thước của bạn</h2>
+              <div class="theme-arco-table theme-m4b-table theme-arco-table-border theme-arco-table-layout-fixed">
+                <div class="theme-arco-spin">
+                  <div class="theme-arco-spin-children">
+                    <div class="theme-arco-table-container">
+                      <DataTable class="flex1 flex-column ms-list_variant--table"
+                                 :value="sizeTableData"
+                                 scrollable
+                                 :reorderableColumns="true" @rowReorder="onRowReorderSizeTable"
+                                 tableStyle="min-width: 100%" rowHover>
+                        <Column style="min-width: 300px">
+                          <template #header>
+                            <span class="required">*</span>
+                            <div>Kích cỡ</div>
+                          </template>
+                          <template #body="slotProps">
+                            <div class="group-form_box">
+                              <div class="">
+                                <InputText v-model="sizeTableData[slotProps.index].value"
+                                           :placeholder="MESSAGE.ENTER"></InputText>
+                              </div>
+                              <div class="ms-error-text"></div>
+                            </div>
+                          </template>
+                        </Column>
+                        <Column :field="column.label" style="min-width: 300px" v-if="selectedSizeTableOption"
+                                v-for="(column, indexColumn) in selectedSizeTableOption">
+                          <template #header="slotProps">
+                            <span class="required">*</span>
+                            <div>{{ column.label }}</div>
+                          </template>
+                          <template #body="slotProps">
+                            <div class="group-form_box">
+                              <div class="">
+                                <InputText v-model="sizeTableData[`${slotProps.index}${indexColumn}`]"
+                                           :placeholder="MESSAGE.ENTER"></InputText>
+                              </div>
+                              <div class="ms-error-text"></div>
+                            </div>
+                          </template>
+                        </Column>
+                        <Column style="width: 100px;" frozen alignFrozen="right">
+                          <template #header>
+                            <div>Hành động</div>
+                          </template>
+                          <template #body="slotProps">
+                            <div class="d-flex gap-3">
+                              <div class="row-actions flex-row">
+                                <div class="icon_remove pointer"
+                                     @click="deleteRowSizeTable(slotProps.index)">
+                                </div>
+                              </div>
+                              <div class="p-icon p-datatable-reorderablerow-handle icon_drag_dot" aria-hidden="true"
+                                   data-pc-section="rowreordericon"></div>
+                            </div>
+                          </template>
+                        </Column>
+                      </DataTable>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Button
+                  @click="addOptionSizeTable"
+                  class="ms-btn secondary mt-4 d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
+                <div class="fw-semibold">Thêm hàng ({{ this.sizeTableData.length }}/10)</div>
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="ms-sizebar_product--footer">
+        <div class="ms-sizebar_product--footer_container">
+          <div class="d-flex">
+            <Button
+                @click="closeCallback"
+                class="ms-btn secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
+              <div class="fw-semibold">Hủy</div>
+            </Button>
+            <Button
+                class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
+              <div class="fw-semibold">Xong</div>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+  </Sidebar>
 </template>
 
 <script>
@@ -761,6 +932,8 @@ import Dialog from 'primevue/dialog';
 import Checkbox from 'primevue/checkbox';
 import Chip from 'primevue/chip';
 import ToggleButton from 'primevue/togglebutton';
+import Sidebar from 'primevue/sidebar';
+import RadioButton from 'primevue/radiobutton';
 import VueCropper from 'vue-cropperjs';
 import 'cropperjs/dist/cropper.css';
 import {getCategory} from '@/api/category'
@@ -794,6 +967,8 @@ export default {
     Checkbox,
     Chip,
     ToggleButton,
+    RadioButton,
+    Sidebar,
   },
   data() {
     return {
@@ -812,6 +987,61 @@ export default {
       categories: [],
       properties: [],
       videoProduct: null,
+      selectedSizeTableOption: null,
+      sizeTableOption: [
+        {
+          label: 'Chiều dài váy',
+        },
+        {
+          label: 'Vòng 1',
+        },
+        {
+          label: 'Hông',
+        },
+        {
+          label: 'Chiều rộng vai',
+        },
+        {
+          label: 'Eo',
+        },
+        {
+          label: 'Chiều dài tay áo',
+        },
+        {
+          label: 'Chiều rộng cổ áo',
+        },
+        {
+          label: 'Độ sâu đường viền cổ trước',
+        },
+        {
+          label: 'Chiều rộng đáy',
+        },
+        {
+          label: 'Chiều cao cổ tay áo',
+        },
+        {
+          label: 'Chiều cao đường xẻ',
+        },
+        {
+          label: 'Chiều cao',
+        },
+        {
+          label: 'Cân nặng',
+        },
+        {
+          label: 'Vòng dưới ngực',
+        },
+        {
+          label: 'Chiều dài thân trên',
+        },
+      ],
+      sizeTable: null,
+      sizeTableData: [
+        {
+          value: null,
+        },
+      ],
+      isSideBarSizeTable: true,
       indexSelectedImageProduct: null,
       imageProducts: [
         {
@@ -922,6 +1152,19 @@ export default {
       removeFileCallback(index);
       this.totalSize -= parseInt(this.formatSize(file.size));
       this.totalSizePercent = this.totalSize / 10;
+    },
+
+    /**
+     * Sự kiện chọn sử dụng ảnh hay mẫu cho phần bảng kích thước
+     */
+    changeSizeTable() {
+      switch (Number.parseInt(this.sizeTable)) {
+        case 0:
+          this.isSideBarSizeTable = true;
+          break;
+        case 1:
+          break;
+      }
     },
 
     /**
@@ -1372,6 +1615,35 @@ export default {
       }
       this.isCropperImage = false;
     },
+
+    /**
+     * Click button thêm hàng cho bảng kích thước
+     * @param index
+     */
+    addOptionSizeTable(index) {
+      if (this.sizeTableData.length < 10) {
+        this.sizeTableData.push({
+          value: null,
+        })
+      }
+    },
+
+    /**
+     * Sự kiện click button xóa hàng bảng kích thước
+     * @param index
+     */
+    deleteRowSizeTable(index) {
+      this.sizeTableData.splice(index, 1);
+    },
+
+    /**
+     * Sự kiện sắp xếp hàng table kích thước
+     * @param event
+     */
+    onRowReorderSizeTable(event) {
+      this.sizeTableData = event.value;
+    },
+
     /**
      * Sự kiện chọn hạng mục
      */
@@ -1566,6 +1838,51 @@ export default {
     font-style: unset;
     font-size: 14px;
     color: rgb(0, 0, 0, 0.3);
+  }
+}
+
+.ms-sizebar_product {
+  background-color: #f5f5f5;
+
+  .ms-sizebar_product-header {
+    padding: 32px 24px 0;
+    min-height: 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-bottom: 1px solid transparent;
+  }
+
+
+  .ms-sizebar_product--wrapper {
+    padding: 16px 24px;
+    overflow: auto;
+
+    .ms-sizebar_product--content {
+      box-sizing: content-box;
+      color: rgba(0, 0, 0, .92);
+      flex: 1;
+
+      .ms-sizebar_product--content_item {
+        padding: 24px;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+
+  .ms-sizebar_product--footer {
+    border-top: 1px solid transparent;
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    .ms-sizebar_product--footer_container {
+      padding: 24px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
   }
 }
 
