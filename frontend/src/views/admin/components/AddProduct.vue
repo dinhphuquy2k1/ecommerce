@@ -829,7 +829,7 @@
                       <DataTable class="flex1 flex-column ms-list_variant--table"
                                  :value="sizeTableData"
                                  scrollable
-                                 :reorderableColumns="true" @rowReorder="onRowReorderSizeTable"
+                                 @rowReorder="onRowReorderSizeTable"
                                  tableStyle="min-width: 100%" rowHover>
                         <Column style="min-width: 300px">
                           <template #header>
@@ -862,7 +862,7 @@
                             </div>
                           </template>
                         </Column>
-                        <Column style="width: 100px;" frozen alignFrozen="right">
+                        <Column style="min-width: 100px;" frozen alignFrozen="right">
                           <template #header>
                             <div>Hành động</div>
                           </template>
