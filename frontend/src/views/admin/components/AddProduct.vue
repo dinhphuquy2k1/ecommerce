@@ -90,48 +90,6 @@
                 </div>
               </div>
               <div class="group-form_box">
-                <div class="label d-flex align-items-center gap-1">Video
-                  <div class="icon_question--cricle-13 text-start"
-                       v-tooltip="'Video tải lên sẽ được hiển thị trên trang chi tiết sản phẩm. Hãy làm nổi bật 1 hoặc 2 lợi điểm bán hàng chính của sản phẩm trong video.'"></div>
-                </div>
-                <div class="description">
-                  Tỷ lệ khung hình video phải từ 9:16 đến 16:9. Kích thước tập tin tối đa: 100 MB.
-                </div>
-                <div class="col-6 ma-item-video" :class="{'ms-media_active': videoProduct}" @click="chooseVideoProduct">
-                  <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
-                              accept="video/*" :maxFileSize="5000000 " @select="changeVideoProduct($event)"
-                              showUploadButton
-                  >
-                    <template #header="{ chooseCallback, clearCallback, files }">
-                      <button :ref="`chooseVideoProduct`" @click="chooseCallback()">123</button>
-                      <button :ref="`clearVideoProduct`" @click="clearCallback()"></button>
-                    </template>
-                    <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
-                      <div class="p-fileupload-empty  w-100 h-100" data-pc-section="empty">
-                        <div v-if="videoProduct" class="d-flex w-100 h-100 position-relative">
-                          <video :src="videoProduct" class="w-100 h-100">
-                          </video>
-                          <div
-                              class="position-absolute ms-box_video w-100 h-100 flex-column d-flex  align-items-center justify-content-center">
-                            <div class="icon-pause pointer"></div>
-                            <div class="icon_remove-white pointer"></div>
-                          </div>
-                        </div>
-                        <div v-else
-                             class="ms-item_image--products w-100 h-100 d-flex  align-items-center justify-content-center">
-                          <div class="image d-flex align-items-center text-center">
-                            <Image :src="require('@public/assets/icons/video.svg')"
-                                   alt="Image"/>
-                          </div>
-                          <div class="title" v-tooltip.top="'Video'">Video</div>
-                        </div>
-                      </div>
-                    </template>
-                  </FileUpload>
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-              <div class="group-form_box">
                 <div class="label d-flex align-items-center">
                   <span class="required">*</span>
                   Tên sản phẩm
@@ -292,7 +250,7 @@
           <!--              </div>-->
           <!--            </div>-->
           <!--          </Panel>-->
-          <Panel header="Chi tiết sản phẩm" toggleable class="mt-4 ma-description-product">
+          <Panel header="Chi tiết sản phẩm" toggleable class="mt-4 ma-description-product ma-media">
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
                 <div class="label d-flex align-items-center gap-1">Mô tả sản phẩm
@@ -306,7 +264,7 @@
                 <Editor v-model="value" editorStyle="height: 320px" placeholder="Nhập mô tả sản phẩm"/>
                 <div class="ms-error-text"></div>
               </div>
-              <div class="group-form_box">
+              <div class="group-form_box" v-if="properties?.size_table">
                 <div class="label d-flex align-items-center gap-1">
                   <span class="required">*</span>Bảng kích thước
                   <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
@@ -325,17 +283,53 @@
                     <label for="upImage" class="ml-2 pointer">Tải ảnh lên</label>
                   </div>
                 </div>
-                <div class="description">
-                  Để đảm bảo sự hài lòng của khách hàng, hãy tải lên bảng kích thước để giúp khách hàng tìm được kích
-                  thước phù hợp.
+              </div>
+              <div class="group-form_box">
+                <div class="label d-flex align-items-center gap-1">Video
+                  <div class="icon_question--cricle-13 text-start"
+                       v-tooltip="'Video tải lên sẽ được hiển thị trên trang chi tiết sản phẩm. Hãy làm nổi bật 1 hoặc 2 lợi điểm bán hàng chính của sản phẩm trong video.'"></div>
                 </div>
-                <Editor v-model="value" editorStyle="height: 320px" placeholder="Nhập mô tả sản phẩm"/>
+                <div class="description">
+                  Tỷ lệ khung hình video phải từ 9:16 đến 16:9. Kích thước tập tin tối đa: 100 MB.
+                </div>
+                <div class="col-6 ma-item-video" :class="{'ms-media_active': videoProduct}" @click="chooseVideoProduct">
+                  <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
+                              accept="video/*" :maxFileSize="5000000 " @select="changeVideoProduct($event)"
+                              showUploadButton
+                  >
+                    <template #header="{ chooseCallback, clearCallback, files }">
+                      <button :ref="`chooseVideoProduct`" @click="chooseCallback()">123</button>
+                      <button :ref="`clearVideoProduct`" @click="clearCallback()"></button>
+                    </template>
+                    <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
+                      <div class="p-fileupload-empty  w-100 h-100" data-pc-section="empty">
+                        <div v-if="videoProduct" class="d-flex w-100 h-100 position-relative">
+                          <video :src="videoProduct" class="w-100 h-100">
+                          </video>
+                          <div
+                              class="position-absolute ms-box_video w-100 h-100 flex-column d-flex  align-items-center justify-content-center">
+                            <div class="icon-pause pointer"></div>
+                            <div class="icon_remove-white pointer"></div>
+                          </div>
+                        </div>
+                        <div v-else
+                             class="ms-item_image--products w-100 h-100 d-flex  align-items-center justify-content-center">
+                          <div class="image d-flex align-items-center text-center">
+                            <Image :src="require('@public/assets/icons/video.svg')"
+                                   alt="Image"/>
+                          </div>
+                          <div class="title" v-tooltip.top="'Video'">Video</div>
+                        </div>
+                      </div>
+                    </template>
+                  </FileUpload>
+                </div>
                 <div class="ms-error-text"></div>
               </div>
             </div>
           </Panel>
 
-          <Panel header="Thông tin bán hàng" class="mt-4" :collapsed="selectedCategory">
+          <Panel header="Thông tin bán hàng" class="mt-4" :collapsed="!selectedCategory">
             <template #header>
               <div class="d-flex flex-column justify-content-start text-start ma-custom-panel-header">
                 <div class="title">Thông tin bán hàng</div>
@@ -683,30 +677,6 @@
             </div>
           </Panel>
 
-          <Panel header="Vận chuyển" toggleable class="mt-4" collapsed>
-            <template #header>
-              <div class="d-flex flex-column justify-content-start text-start ma-custom-panel-header">
-                <div class="title">Vận chuyển</div>
-                <div class="description">Vui lòng chọn danh mục trước</div>
-              </div>
-            </template>
-            <div class="d-flex flex-column group-form_list">
-              <div class="group-form_box">
-                <div class="label">Tên sản phẩm</div>
-                <div class="">
-                  <InputText placeholder="Tên sản phẩm"></InputText>
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-              <div class="group-form_box">
-                <div class="label">Mô tả</div>
-                <div class="">
-                  <Textarea rows="4" cols="30" class="h-100" placeholder="Nhập mô tả"/>
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-            </div>
-          </Panel>
         </div>
         <div class="col-3 position-sticky">
           <Panel header="Loại sản phẩm" toggleable>
@@ -755,7 +725,7 @@
     </template>
   </Dialog>
   <Sidebar v-model:visible="isSideBarSizeTable" header="Sidebar" position="right" :dismissable="false"
-           style="width: 45vw" class="ms-sizebar_product" :showCloseIcon="false">
+           style="width: 45vw" class="ms-sizebar_product d-flex" :showCloseIcon="false">
     <template #container="{ closeCallback }">
       <div class="ms-sizebar_product-header">
         <div class="fw-bold text-xl">Tạo bảng kích thước
@@ -764,7 +734,7 @@
           Điền thông tin kích cỡ để cung cấp biểu đồ kích cỡ cho khách hàng. Xem cách hiển thị
         </div>
       </div>
-      <div class="ms-sizebar_product--wrapper">
+      <div class="ms-sizebar_product--wrapper flex-grow-1">
         <div class="ms-sizebar_product--content">
           <form action="">
             <div class="ms-sizebar_product--content_item">
@@ -776,9 +746,12 @@
                   Tên biểu đồ kích cỡ
                 </div>
                 <div class="">
-                  <InputText :placeholder="MESSAGE.PLEASE_ENTER"></InputText>
+                  <InputText v-model="sizeTableData.name" :placeholder="MESSAGE.PLEASE_ENTER"
+                             :class="{'error': invalidSizeTable['name']}"></InputText>
                 </div>
-                <div class="ms-error-text"></div>
+                <div class="ms-error-text" v-if="invalidSizeTable['name']">
+                  {{ invalidSizeTable['name'] }}
+                </div>
               </div>
 
               <div class="group-form_box mb-4">
@@ -792,17 +765,20 @@
                       :options="sizeTableOption"
                       optionLabel="label"
                       :selectionLimit="6"
+                      :class="{'error': invalidSizeTable['option']}"
                       :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
                       display="chip"
                       class="ms-category text-start"></MultiSelect>
                 </div>
-                <div class="ms-error-text"></div>
+                <div class="ms-error-text" v-if="invalidSizeTable['option']">
+                  {{ invalidSizeTable['option'] }}
+                </div>
               </div>
 
               <div class="group-form_box mb-4">
                 <div class="label d-flex align-items-center gap-3">
                   Một cỡ
-                  <InputSwitch v-model="isVariant"/>
+                  <InputSwitch v-model="isOneSize" @change="changeSizeTableOneSize"/>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
@@ -827,7 +803,7 @@
                   <div class="theme-arco-spin-children">
                     <div class="theme-arco-table-container">
                       <DataTable class="flex1 flex-column ms-list_variant--table"
-                                 :value="sizeTableData"
+                                 :value="sizeTableData.options"
                                  scrollable
                                  @rowReorder="onRowReorderSizeTable"
                                  tableStyle="min-width: 100%" rowHover>
@@ -838,11 +814,11 @@
                           </template>
                           <template #body="slotProps">
                             <div class="group-form_box">
-                              <div class="">
-                                <InputText v-model="sizeTableData[slotProps.index].value"
+                              <div class="d-flex align-items-center">
+                                <InputText v-model="sizeTableData.options[slotProps.index].value"
+                                           :class="{'error': invalidSizeTable[`option${slotProps.index}`]}"
                                            :placeholder="MESSAGE.ENTER"></InputText>
                               </div>
-                              <div class="ms-error-text"></div>
                             </div>
                           </template>
                         </Column>
@@ -850,30 +826,36 @@
                                 v-for="(column, indexColumn) in selectedSizeTableOption">
                           <template #header="slotProps">
                             <span class="required">*</span>
-                            <div>{{ column.label }}</div>
+                            <div>{{ column.label }} (cm)</div>
                           </template>
                           <template #body="slotProps">
-                            <div class="group-form_box">
+                            <div class="group-form_box" :ref="`option${slotProps.index}${indexColumn}`">
                               <div class="">
-                                <InputText v-model="sizeTableData[`${slotProps.index}${indexColumn}`]"
+                                <InputText v-model="sizeTableData.options[slotProps.index][indexColumn]"
+                                           :class="{'error': invalidSizeTable[`option${slotProps.index}${indexColumn}`]}"
                                            :placeholder="MESSAGE.ENTER"></InputText>
                               </div>
-                              <div class="ms-error-text"></div>
+                              <div class="ms-error-text"
+                              >
+                              </div>
                             </div>
                           </template>
                         </Column>
-                        <Column style="min-width: 100px;" frozen alignFrozen="right">
+                        <Column style="min-width: 80px; max-width: 80px" frozen alignFrozen="right">
                           <template #header>
                             <div>Hành động</div>
                           </template>
                           <template #body="slotProps">
-                            <div class="d-flex gap-3">
+                            <div class="d-flex gap-3 align-items-center">
                               <div class="row-actions flex-row">
-                                <div class="icon_remove pointer"
-                                     @click="deleteRowSizeTable(slotProps.index)">
-                                </div>
+                                <Button class="icon_remove ms-btn mw-0 pointer border-0 outline-0"
+                                        :disabled="sizeTableData.options.length === 1"
+                                        @click="deleteRowSizeTable(slotProps.index)">
+                                </Button>
                               </div>
-                              <div class="p-icon p-datatable-reorderablerow-handle icon_drag_dot" aria-hidden="true"
+                              <div class="p-icon border-0 p-datatable-reorderablerow-handle icon_drag_dot"
+                                   aria-hidden="true"
+                                   :disabled="sizeTableData.options.length === 1"
                                    data-pc-section="rowreordericon"></div>
                             </div>
                           </template>
@@ -885,9 +867,10 @@
               </div>
 
               <Button
+                  v-if="!isOneSize && this.sizeTableData.options.length < 10"
                   @click="addOptionSizeTable"
                   class="ms-btn secondary mt-4 d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
-                <div class="fw-semibold">Thêm hàng ({{ this.sizeTableData.length }}/10)</div>
+                <div class="fw-semibold">Thêm hàng ({{ this.sizeTableData.options.length }}/10)</div>
               </Button>
             </div>
           </form>
@@ -902,6 +885,7 @@
               <div class="fw-semibold">Hủy</div>
             </Button>
             <Button
+                @click="btnCompleteSizeTable"
                 class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
               <div class="fw-semibold">Xong</div>
             </Button>
@@ -1035,116 +1019,140 @@ export default {
           label: 'Chiều dài thân trên',
         },
       ],
+      isOneSize: false,
+      invalidSizeTable: [],
       sizeTable: null,
-      sizeTableData: [
-        {
-          value: null,
-        },
-      ],
-      isSideBarSizeTable: true,
-      indexSelectedImageProduct: null,
-      imageProducts: [
-        {
-          image: null,
-          imageData: null,
-          active: true,
-          title: 'Tải lên hình ảnh chính',
-          description: [
-            'Kích thước: 300 x 300 px',
-            'Kích thước tệp tin tối đa: 5MB(Tối đa 9 tập tin)',
-            'Định dạng: JPG, JPEG, PNG'
-          ],
-          icon: require("@public/assets/icons/image.svg"),
-        },
-        {
-          image: null,
-          imageData: null,
-          active: false,
-          title: 'Chính diện',
-          icon: require("@public/assets/images/background-perspective.png"),
-        },
-        {
-          image: null,
-          imageData: null,
-          active: false,
-          title: 'Cạnh bên',
-          icon: require("@public/assets/images/side.png"),
-        },
-        {
-          image: null,
-          imageData: null,
-          active: false,
-          title: 'Các góc độ khác',
-          icon: require("@public/assets/images/other-angles.png"),
-        },
-        {
-          image: null,
-          imageData: null,
-          active: false,
-          title: 'Đang sử dụng',
-          icon: require("@public/assets/images/using.png"),
-        },
-        {
-          image: null,
-          imageData: null,
-          active: false,
-          title: 'Biến thể',
-          icon: require("@public/assets/images/variant.png"),
-        },
-        {
-          image: null,
-          imageData: null,
-          active: false,
-          title: 'Phối cảnh nền',
-          icon: require("@public/assets/images/background-perspective.png"),
-        },
-        {
-          image: null,
-          imageData: null,
-          active: false,
-          title: 'Ảnh chụp cận',
-          icon: require("@public/assets/images/close-up-photo.png"),
-        },
-        {
-          image: null,
-          imageData: null,
-          active: false,
-          title: 'Kích thước và cân nặng',
-          icon: require("@public/assets/images/size-and-weight.png"),
-        },
-
-      ],
-      isCropImageProduct: false,
-      totalSize: 0,
-      saleInfomation: {
-        retailPrice: null,
-        quantity: null,
-        skuSeller: null,
+      sizeTableData: {
+        name: null,
+        options: [
+          {
+            value: null,
+          }
+        ]
       },
+      isSideBarSizeTable: false,
+      indexSelectedImageProduct:
+          null,
+      imageProducts:
+          [
+            {
+              image: null,
+              imageData: null,
+              active: true,
+              title: 'Tải lên hình ảnh chính',
+              description: [
+                'Kích thước: 300 x 300 px',
+                'Kích thước tệp tin tối đa: 5MB(Tối đa 9 tập tin)',
+                'Định dạng: JPG, JPEG, PNG'
+              ],
+              icon: require("@public/assets/icons/image.svg"),
+            },
+            {
+              image: null,
+              imageData: null,
+              active: false,
+              title: 'Chính diện',
+              icon: require("@public/assets/images/background-perspective.png"),
+            },
+            {
+              image: null,
+              imageData: null,
+              active: false,
+              title: 'Cạnh bên',
+              icon: require("@public/assets/images/side.png"),
+            },
+            {
+              image: null,
+              imageData: null,
+              active: false,
+              title: 'Các góc độ khác',
+              icon: require("@public/assets/images/other-angles.png"),
+            },
+            {
+              image: null,
+              imageData: null,
+              active: false,
+              title: 'Đang sử dụng',
+              icon: require("@public/assets/images/using.png"),
+            },
+            {
+              image: null,
+              imageData: null,
+              active: false,
+              title: 'Biến thể',
+              icon: require("@public/assets/images/variant.png"),
+            },
+            {
+              image: null,
+              imageData: null,
+              active: false,
+              title: 'Phối cảnh nền',
+              icon: require("@public/assets/images/background-perspective.png"),
+            },
+            {
+              image: null,
+              imageData: null,
+              active: false,
+              title: 'Ảnh chụp cận',
+              icon: require("@public/assets/images/close-up-photo.png"),
+            },
+            {
+              image: null,
+              imageData: null,
+              active: false,
+              title: 'Kích thước và cân nặng',
+              icon: require("@public/assets/images/size-and-weight.png"),
+            },
+
+          ],
+      isCropImageProduct:
+          false,
+      totalSize:
+          0,
+      saleInfomation:
+          {
+            retailPrice: null,
+            quantity:
+                null,
+            skuSeller:
+                null,
+          }
+      ,
       isVariant: false,
-      variantsData: [],
-      batchEditingVariant: [],
-      isBatchEditing: false,
-      listVariant: [
-        {
-          id: 0,
-          name: null,
-          option: []
-        }
-      ],
-      itemVariant: [
-        {
-          id: 0,
-          value: null,
-          image: null,
-        },
-      ],
-      isVariantImage: false,
-      isCropperImage: false,
-      selectedVariant: null,
-      imageSrc: null,
-      invalidVariant: [],
-      totalSizePercent: 0,
+      variantsData:
+          [],
+      batchEditingVariant:
+          [],
+      isBatchEditing:
+          false,
+      listVariant:
+          [
+            {
+              id: 0,
+              name: null,
+              option: []
+            }
+          ],
+      itemVariant:
+          [
+            {
+              id: 0,
+              value: null,
+              image: null,
+            },
+          ],
+      isVariantImage:
+          false,
+      isCropperImage:
+          false,
+      selectedVariant:
+          null,
+      imageSrc:
+          null,
+      invalidVariant:
+          [],
+      totalSizePercent:
+          0,
     }
   },
   methods: {
@@ -1152,6 +1160,49 @@ export default {
       removeFileCallback(index);
       this.totalSize -= parseInt(this.formatSize(file.size));
       this.totalSizePercent = this.totalSize / 10;
+    },
+
+    /**
+     * Click nút xong bảng kích thước
+     */
+    btnCompleteSizeTable() {
+      if (this.validateSizeTable()) {
+
+      }
+    },
+
+    /**
+     * Validate form bảng kích thước
+     * @returns {boolean}
+     */
+    validateSizeTable() {
+      this.invalidSizeTable = [];
+      if (this.sizeTableData.name === null || this.sizeTableData.name.trim() === "") {
+        this.invalidSizeTable['name'] = MESSAGE.PLEASE_ENTER
+      }
+      if (!this.selectedSizeTableOption) {
+        this.invalidSizeTable['option'] = MESSAGE.PLEASE_CHOOSE
+      }
+
+
+      let scrollToSizeTable = null;
+      this.sizeTableData.options.forEach((item, index) => {
+        if (item.value === null || item.value.trim() === "") {
+          this.invalidSizeTable[`option${index}`] = true;
+        }
+        if (this.selectedSizeTableOption) {
+          this.selectedSizeTableOption.forEach((column, i) => {
+            if (this.sizeTableData.options[index][i] === null || this.sizeTableData.options[index][i] === "" || !this.sizeTableData.options[index][i]) {
+              this.invalidSizeTable[`option${index}${i}`] = true
+              scrollToSizeTable = `option${index}${i}`
+            }
+          })
+        }
+      })
+      if (scrollToSizeTable) {
+        this.$refs[scrollToSizeTable][0].scrollIntoView({behavior: 'smooth', block: 'center'});
+      }
+      return Object.keys(this.invalidSizeTable).length <= 0;
     },
 
     /**
@@ -1621,11 +1672,22 @@ export default {
      * @param index
      */
     addOptionSizeTable(index) {
-      if (this.sizeTableData.length < 10) {
-        this.sizeTableData.push({
+      if (this.sizeTableData.options.length < 10) {
+        this.sizeTableData.options.push({
           value: null,
         })
       }
+    },
+
+    /**
+     * Sự kiện click button swich một cỡ
+     */
+    changeSizeTableOneSize() {
+      this.sizeTableData.options = [
+        {
+          value: null,
+        }
+      ]
     },
 
     /**
@@ -1633,7 +1695,7 @@ export default {
      * @param index
      */
     deleteRowSizeTable(index) {
-      this.sizeTableData.splice(index, 1);
+      this.sizeTableData.options.splice(index, 1);
     },
 
     /**
@@ -1641,7 +1703,7 @@ export default {
      * @param event
      */
     onRowReorderSizeTable(event) {
-      this.sizeTableData = event.value;
+      this.sizeTableData.options = event.value;
     },
 
     /**
@@ -1843,6 +1905,7 @@ export default {
 
 .ms-sizebar_product {
   background-color: #f5f5f5;
+  color: rgba(33, 37, 51, 1);
 
   .ms-sizebar_product-header {
     padding: 32px 24px 0;

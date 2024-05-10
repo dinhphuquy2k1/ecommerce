@@ -8,6 +8,7 @@ CREATE TABLE `categories`
     `name`        varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `parent_id`   bigint(20) unsigned DEFAULT NULL,
     `description` text COLLATE utf8mb4_unicode_ci,
+    `size_table` tinyint(1) NOT NULL DEFAULT '0',
     `created_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),

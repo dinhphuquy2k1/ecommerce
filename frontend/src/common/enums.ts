@@ -44,6 +44,7 @@ export const MESSAGE = {
     INVALID_OPTION_SELECT: 'Vui lòng không nhập các giá trị trùng lặp.',
     INVALID_EXITS_VARIANT: 'Tùy chọn đã tồn tại',
     PLEASE_ENTER: 'Vui lòng nhập',
+    PLEASE_CHOOSE: 'Vui lòng chọn',
     ENTER: 'Nhập',
     INVALID_EMPTY_VARIANT: 'Vui lòng nhập một tùy chọn',
     INPUT_PLACEHOLDER_VARIANT: 'Nhập một biến thể',
