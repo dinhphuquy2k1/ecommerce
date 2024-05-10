@@ -956,6 +956,7 @@ export default {
   },
   data() {
     return {
+      selectedProduct: null,
       value: '',
       selectedCategory: null,
       cities: [
