@@ -87,10 +87,13 @@ DROP TABLE IF EXISTS brands;
 CREATE TABLE `brands`
 (
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    `brand_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `brand_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE,
+    `media_id`   bigint(20) unsigned NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    KEY          `brands_media_id_foreign` (`media_id`),
+    CONSTRAINT `brands_media_id_foreign` FOREIGN KEY (`media_id`) REFERENCES `medias` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS products;

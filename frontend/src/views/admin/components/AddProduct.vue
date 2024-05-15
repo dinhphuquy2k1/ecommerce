@@ -18,6 +18,7 @@
             <div class="fw-semibold">Lưu nháp</div>
           </Button>
           <Button
+              @click="btnAddProduct"
               class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
             <div class="icon-only icon-simple_cart"></div>
             <div class="fw-semibold">Thêm sản phẩm</div>
@@ -37,57 +38,60 @@
                 </div>
                 <div class="description">Bạn nên thêm ít nhất 5 ảnh để minh họa đầy đủ cho sản phẩm của bạn.</div>
               </div>
-              <div class="position-relative d-flex flex-grow-1">
-                <div class="grid grid-cols-4 grid-rows-3 gap-12 ms-product_images">
-                  <div v-for="(item, index) in imageProducts" class="ms-item_image--products_wrapper"
-                       @click="chooseImageProduct($event, index)"
-                       :class="{'active': item.active, 'ms-media_active': item.imageData}">
-                    <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
-                                accept="image/*" :maxFileSize="5000000 " @select="changeImageProduct($event, index)"
-                                showUploadButton
-                    >
-                      <template #header="{ chooseCallback, clearCallback, files }">
-                        <button :ref="`chooseButton${index}`" @click="chooseCallback()">123</button>
-                        <button :ref="`clearButton${index}`" @click="clearCallback()"></button>
-                      </template>
-                      <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
-                        <div class="p-fileupload-empty" data-pc-section="empty">
-                          <div v-if="item.imageData" class="d-flex h-100 w-100">
-                            <Image :src="item.image" class="flex-grow-1 w-100 h-100"
-                                   alt="Image"
-                                   preview>
-                              <template #indicatoricon>
-                                <div class="d-flex gap-2">
-                                  <i class="icon-eye"></i>
-                                  <div class="icon_remove-white"
-                                       @click="removeProductImage($event, index)"></div>
-                                </div>
-                              </template>
-                            </Image>
-                          </div>
-                          <div v-else class="ms-item_image--products">
-                            <div class="image d-flex align-items-center text-center">
-                              <Image :src="item.icon"
-                                     alt="Image"/>
+              <div class="d-flex flex-column flex-grow-1">
+                <div class="position-relative d-flex flex-grow-1">
+                  <div class="grid grid-cols-4 grid-rows-3 gap-12 ms-product_images">
+                    <div v-for="(item, index) in imageProducts" class="ms-item_image--products_wrapper"
+                         @click="chooseImageProduct($event, index)"
+                         :class="{'active': item.active, 'ms-media_active': item.imageData}">
+                      <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
+                                  accept="image/*" :maxFileSize="5000000 " @select="changeImageProduct($event, index)"
+                                  showUploadButton
+                      >
+                        <template #header="{ chooseCallback, clearCallback, files }">
+                          <button :ref="`chooseButton${index}`" @click="chooseCallback()">123</button>
+                          <button :ref="`clearButton${index}`" @click="clearCallback()"></button>
+                        </template>
+                        <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
+                          <div class="p-fileupload-empty" data-pc-section="empty">
+                            <div v-if="item.imageData" class="d-flex h-100 w-100">
+                              <Image :src="item.image" class="flex-grow-1 w-100 h-100"
+                                     alt="Image"
+                                     preview>
+                                <template #indicatoricon>
+                                  <div class="d-flex gap-2">
+                                    <i class="icon-eye"></i>
+                                    <div class="icon_remove-white"
+                                         @click="removeProductImage($event, index)"></div>
+                                  </div>
+                                </template>
+                              </Image>
                             </div>
-                            <div class="title" v-tooltip.top="item.title">{{ item.title }}</div>
-                            <ul v-if="item.description">
-                              <li>
-                                Kích thước: 300 × 300 px
-                              </li>
-                              <li>
-                                Kích thước tập tin tối đa: 5 MB (Tối đa 9 tập tin)
-                              </li>
-                              <li>
-                                Định dạng: JPG, JPEG, PNG
-                              </li>
-                            </ul>
+                            <div v-else class="ms-item_image--products">
+                              <div class="image d-flex align-items-center text-center">
+                                <Image :src="item.icon"
+                                       alt="Image"/>
+                              </div>
+                              <div class="title" v-tooltip.top="item.title">{{ item.title }}</div>
+                              <ul v-if="item.description">
+                                <li>
+                                  Kích thước: 300 × 300 px
+                                </li>
+                                <li>
+                                  Kích thước tập tin tối đa: 5 MB (Tối đa 9 tập tin)
+                                </li>
+                                <li>
+                                  Định dạng: JPG, JPEG, PNG
+                                </li>
+                              </ul>
+                            </div>
                           </div>
-                        </div>
-                      </template>
-                    </FileUpload>
+                        </template>
+                      </FileUpload>
+                    </div>
                   </div>
                 </div>
+                <div class="ms-error-text" v-if="invalidProduct['image']">{{ invalidProduct['image'] }}</div>
               </div>
               <div class="group-form_box">
                 <div class="label d-flex align-items-center">
@@ -95,9 +99,13 @@
                   Tên sản phẩm
                 </div>
                 <div class="">
-                  <InputText placeholder="Tên sản phẩm"></InputText>
+                  <InputText v-model="selectedProduct['product_name']" placeholder="Tên sản phẩm"
+                             :class="{'error': invalidProduct['product_name']}"
+                  ></InputText>
                 </div>
-                <div class="ms-error-text"></div>
+                <div class="ms-error-text" v-if="invalidProduct['product_name']">
+                  {{ invalidProduct['product_name'] }}
+                </div>
               </div>
               <div class="group-form_box">
                 <div class="label d-flex align-items-center gap-1">
@@ -110,9 +118,12 @@
                   <TreeSelect v-model="selectedCategory" :options="categories"
                               @change="changeCategory"
                               label="name"
+                              :class="{'error': invalidProduct['category']}"
                               placeholder="Vui lòng chọn một hạng mục"/>
                 </div>
-                <div class="ms-error-text"></div>
+                <div class="ms-error-text" v-if="invalidProduct['category']">
+                  {{ invalidProduct['category'] }}
+                </div>
               </div>
               <div class="group-form_box group-form_properties" v-if="properties?.properties?.length > 0">
                 <div class="label d-flex align-items-center">
@@ -209,9 +220,37 @@
               <div class="group-form_box">
                 <div class="label">Thương hiệu</div>
                 <div class="">
-                  <InputText placeholder="Tên sản phẩm"></InputText>
+                  <Dropdown v-model="selectedProduct.brand" :options="brands" optionLabel="brand_name"
+                            placeholder="Chọn một thương hiệu"
+                            :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
+                            :class="{'error': invalidProduct['brand']}"
+                            class="ms-category text-start">
+                    <template #footer
+                    >
+                      <div class="d-flex gap-2 ms-dropdown_properties-footer">
+                        <div class="group-form_box flex-grow-1">
+                          <div class="">
+                            <InputText v-model="valueBrandSelectAddOption"
+                                       :class="{'error': invalidAddBrandOption['brand']}"
+                                       :placeholder="MESSAGE.ENTER"></InputText>
+                          </div>
+                          <div class="ms-error-text" v-if="invalidAddBrandOption['brand']">
+                            {{ invalidAddBrandOption['brand'] }}
+                          </div>
+                        </div>
+                        <div>
+                          <Button @click="appendOptionToBrandSelect"
+                                  class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                            <div class="fw-semibold">Thêm</div>
+                          </Button>
+                        </div>
+                      </div>
+                    </template>
+                  </Dropdown>
                 </div>
-                <div class="ms-error-text"></div>
+                <div class="ms-error-text" v-if="invalidProduct['brand']">
+                  {{ invalidProduct['brand'] }}
+                </div>
               </div>
             </div>
           </Panel>
@@ -924,6 +963,8 @@ import {getCategory} from '@/api/category'
 import {getCategoryProperty} from '@/api/category-property'
 import {MESSAGE} from "@/common/enums";
 import {uploadImage} from "@/api/image";
+import {addProduct} from "@/api/product";
+import {getBrand, addBrand} from "@/api/brand";
 
 export default {
   computed: {
@@ -956,8 +997,12 @@ export default {
   },
   data() {
     return {
-      selectedProduct: null,
+      selectedProduct: {},
+      invalidProduct: [],
       value: '',
+      brands: [],
+      valueBrandSelectAddOption: null,
+      invalidAddBrandOption: [],
       selectedCategory: null,
       cities: [
         {name: 'New York', code: 'NY'},
@@ -1708,6 +1753,44 @@ export default {
     },
 
     /**
+     * Click button thêm sản phẩm
+     */
+    btnAddProduct() {
+      if (this.validateProduct()) {
+
+      }
+      // addProduct(this.properties).then(res => {
+      //
+      // }).catch(error => {
+      //
+      // }).finally(() => {
+      //
+      // })
+    },
+
+    /**
+     * validate dữ liệu product
+     */
+    validateProduct() {
+      this.invalidProduct = [];
+      if (!this.selectedProduct.product_name || this.selectedProduct.product_name.trim() === "") {
+        this.invalidProduct['product_name'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
+      }
+      if (!this.selectedCategory) {
+        this.invalidProduct['category'] = MESSAGE.PLEASE_CHOOSE_ONE_OPTION;
+      }
+
+      if (!this.imageProducts[0].image) {
+        this.invalidProduct['image'] = MESSAGE.PLEASE_UPLOAD_ONE_IMAGE;
+      }
+
+      if (!this.selectedProduct.brand) {
+        this.invalidProduct['brand'] = MESSAGE.PLEASE_CHOOSE_ONE_OPTION;
+      }
+      return Object.keys(this.invalidProduct).length <= 0;
+    },
+
+    /**
      * Sự kiện chọn hạng mục
      */
     changeCategory() {
@@ -1727,10 +1810,44 @@ export default {
           .catch(error => {
             console.log(error)
           })
-    }
+    },
+
+    /**
+     * Click thêm mới option thương hiệu
+     */
+    async appendOptionToBrandSelect() {
+      this.invalidAddBrandOption = [];
+      if (this.valueBrandSelectAddOption === null || this.valueBrandSelectAddOption.trim() === "") {
+        this.invalidAddBrandOption['brand'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
+      }
+      if (Object.keys(this.invalidAddBrandOption).length > 0) {
+        return;
+      }
+
+      if (this.brands.filter(item => item.brand_name === this.valueBrandSelectAddOption).length === 0) {
+        this.selectedProduct.brand = {
+          brand_name: this.valueBrandSelectAddOption
+        }
+        await addBrand(this.selectedProduct.brand).then(res => {
+          this.valueBrandSelectAddOption = null;
+          this.brands.push(this.selectedProduct.brand)
+        }).catch(error => {
+          console.log(error)
+        })
+      }
+    },
+
+    loadBrand() {
+      getBrand().then(res => {
+        this.brands = res.data
+      }).catch(error => {
+        console.log(error)
+      })
+    },
   },
   created() {
     this.loadCategory();
+    this.loadBrand();
   },
   watch: {
     listVariant: {
