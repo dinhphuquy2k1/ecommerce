@@ -253,3 +253,14 @@ input:focus {
 .p-inputswitch.p-highlight .p-inputswitch-slider {
   background: #2979ff;
 }
+
+.p-editor-container {
+  &.error {
+    border: 1px solid red;
+    border-radius: 8px;
+  }
+}
+
+.p-inputnumber.error {
+  border: 1px solid red;
+}

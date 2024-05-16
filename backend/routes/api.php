@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiCategoryController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiBrandController;
+use App\Http\Controllers\ApiSizeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,9 @@ Route::prefix('products')->group(function () {
 Route::prefix('brands')->group(function () {
     Route::get('/', [ApiBrandController::class, 'get']);
     Route::post('/', [ApiBrandController::class, 'store']);
+});
+
+Route::prefix('sizes')->group(function () {
+    Route::get('/', [ApiSizeController::class, 'get']);
+    Route::post('/', [ApiSizeController::class, 'store']);
 });

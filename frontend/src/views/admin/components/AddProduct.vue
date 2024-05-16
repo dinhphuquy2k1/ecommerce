@@ -28,7 +28,7 @@
       <div class="row gy-4 pb-4">
         <div class="col-9">
           <Panel header="Thông tin cơ bản" class="ma-media">
-            <div class="d-flex flex-column group-form_list">
+            <div class="d-flex flex-column group-form_list" ref="image">
               <div class="group-form_box">
                 <div class="label d-flex align-items-center gap-1">
                   <span class="required">*</span>
@@ -98,7 +98,7 @@
                   <span class="required">*</span>
                   Tên sản phẩm
                 </div>
-                <div class="">
+                <div class="" ref="product_name">
                   <InputText v-model="selectedProduct['product_name']" placeholder="Tên sản phẩm"
                              :class="{'error': invalidProduct['product_name']}"
                   ></InputText>
@@ -107,7 +107,7 @@
                   {{ invalidProduct['product_name'] }}
                 </div>
               </div>
-              <div class="group-form_box">
+              <div class="group-form_box" ref="category">
                 <div class="label d-flex align-items-center gap-1">
                   <span class="required">*</span>
                   Hạng mục
@@ -217,12 +217,18 @@
                   </div>
                 </div>
               </div>
-              <div class="group-form_box">
-                <div class="label">Thương hiệu</div>
+              <div class="group-form_box" ref="brand">
+                <div class="label d-flex align-items-center">
+                  <span class="required">*</span>
+                  Thương hiệu
+                </div>
                 <div class="">
                   <Dropdown v-model="selectedProduct.brand" :options="brands" optionLabel="brand_name"
                             placeholder="Chọn một thương hiệu"
                             :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
+                            checkmark
+                            filter
+                            panelClass="ms-dropdown-checkmark"
                             :class="{'error': invalidProduct['brand']}"
                             class="ms-category text-start">
                     <template #footer
@@ -290,9 +296,11 @@
           <!--            </div>-->
           <!--          </Panel>-->
           <Panel header="Chi tiết sản phẩm" toggleable class="mt-4 ma-description-product ma-media">
-            <div class="d-flex flex-column group-form_list">
+            <div class="d-flex flex-column group-form_list" ref="description">
               <div class="group-form_box">
-                <div class="label d-flex align-items-center gap-1">Mô tả sản phẩm
+                <div class="label d-flex align-items-center gap-1">
+                  <span class="required">*</span>
+                  Mô tả sản phẩm
                   <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
 'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
 'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
@@ -300,8 +308,12 @@
                 <div class="description">
                   Nên viết mô tả dài ít nhất 500 ký tự và thêm hình ảnh để giúp khách hàng đưa ra quyết định mua hàng.
                 </div>
-                <Editor v-model="value" editorStyle="height: 320px" placeholder="Nhập mô tả sản phẩm"/>
-                <div class="ms-error-text"></div>
+                <Editor v-model="selectedProduct.description" editorStyle="height: 320px"
+                        :class="{'error': invalidProduct['description']}"
+                        placeholder="Nhập mô tả sản phẩm"/>
+                <div class="ms-error-text" v-if="invalidProduct['description']">
+                  {{ invalidProduct['description'] }}
+                </div>
               </div>
               <div class="group-form_box" v-if="properties?.size_table">
                 <div class="label d-flex align-items-center gap-1">
@@ -320,6 +332,35 @@
                     <RadioButton v-model="sizeTable" inputId="upImage" name="sizeTable" value="1"
                                  @change="changeSizeTable"/>
                     <label for="upImage" class="ml-2 pointer">Tải ảnh lên</label>
+                  </div>
+                </div>
+
+                <div class="group-form_box mt-3" v-if="sizeTable">
+                  <div class="">
+                    <Dropdown v-model="selectedProduct.size_id" :options="sizeList" optionLabel="size_name"
+                              optionValue="id"
+                              :placeholder="MESSAGE.SELECT_SIZE_CHART_TEMPLATE"
+                              :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
+                              checkmark
+                              filter
+                              panelClass="ms-dropdown-checkmark"
+                              :class="{'error': invalidProduct['brand']}"
+                              class="ms-category text-start">
+                      <template #footer
+                      >
+                        <div class="d-flex gap-2 ms-dropdown_properties-footer">
+                          <div>
+                            <Button @click="isSideBarSizeTable = true;"
+                                    class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                              <div class="fw-semibold">Thêm</div>
+                            </Button>
+                          </div>
+                        </div>
+                      </template>
+                    </Dropdown>
+                  </div>
+                  <div class="ms-error-text" v-if="invalidProduct['brand']">
+                    {{ invalidProduct['brand'] }}
                   </div>
                 </div>
               </div>
@@ -378,14 +419,14 @@
             <div class="d-flex flex-column group-form_list">
               <div class="group-form_box">
                 <div class="label d-flex gap-3 mb-1">Kích hoạt biến thể
-                  <InputSwitch v-model="isVariant"/>
+                  <InputSwitch v-model="selectedProduct.has_variant"/>
                 </div>
                 <div class="sub-description">Bạn có thể thêm biến thể nếu sản phẩm này có nhiều lựa chọn như kích cỡ
                   hoặc màu sắc.
                 </div>
                 <div class="ms-error-text"></div>
               </div>
-              <div class="group-form_box" v-if="!isVariant">
+              <div class="group-form_box" v-if="!selectedProduct.has_variant" ref="product_no_variant">
                 <div class="label d-flex align-items-center">
                   <span class="required">*</span>
                   Giá & Số lượng
@@ -399,8 +440,13 @@
                     <div class="d-flex ps-2">
                       <InputNumber v-model="saleInfomation.retailPrice" inputClass="text-start" class="flex-grow-1"
                                    mode="currency"
+                                   :max="999999999"
+                                   :class="{'error': invalidProduct['retail_price']}"
                                    currency="VND" locale="vi"/>
                     </div>
+                    <!--                    <div class="ms-error-text ps-2" v-if="invalidProduct['retail_price']">-->
+                    <!--                      {{ invalidProduct['retail_price'] }}-->
+                    <!--                    </div>-->
                   </div>
                   <div class="col-4 d-flex flex-column">
                     <div class="label pt-1 pb-1 d-flex align-items-center ps-3">
@@ -409,8 +455,12 @@
                     </div>
                     <div class="d-flex ps-3">
                       <InputNumber v-model="saleInfomation.quantity" inputClass="text-start" class="flex-grow-1"
+                                   :class="{'error': invalidProduct['quantity']}"
                                    :max="999999"/>
                     </div>
+                    <!--                    <div class="ms-error-text ps-3" v-if="invalidProduct['quantity']">-->
+                    <!--                      {{ invalidProduct['quantity'] }}-->
+                    <!--                    </div>-->
                   </div>
                   <div class="col-4 d-flex flex-column">
                     <div class="label pt-1 pb-1 d-flex align-items-center ps-3 pe-2">
@@ -423,7 +473,8 @@
                 </div>
                 <div class="ms-error-text"></div>
               </div>
-              <div class="ms-group_variants d-flex flex-column gap-3 justify-content-start" v-else>
+              <div class="ms-group_variants d-flex flex-column gap-3 justify-content-start" v-else
+                   ref="product_has_variant">
                 <div class="ms-variants_wrapper" v-for="(item, key) in listVariant">
                   <div v-if="!listVariant[key].complete">
                     <div class="group-form_box">
@@ -668,6 +719,7 @@
                   <div class="mt-3">
                     <DataTable class="flex1 flex-column ms-list_variant--table"
                                :value="variantsData"
+                               scrollable
                                v-if="variantsData.length > 0"
                                tableStyle="min-width: 100%" rowHover>
                       <Column
@@ -675,36 +727,45 @@
                           :key="index"
                           :field="'variant_option_' + index"
                           :header="column.name"
-                          style="width: 120px"
+                          frozen alignFrozen="left"
+                          style="min-width: 140px"
                       />
-                      <Column field="retail_price" style="width: 140px">
+                      <Column field="retail_price" style="min-width: 140px">
                         <template #header>
                           Giá bán lẻ
                         </template>
                         <template #body="slotProps">
-                          <InputNumber v-model="variantsData[slotProps.index].retail_price" inputClass="text-start"
-                                       class="flex-grow-1"
-                                       mode="currency"
-                                       placeholder="Giá bán lẻ"
-                                       currency="VND" locale="vi"/>
+                          <div :ref="`variant_retail_price_${slotProps.index}`">
+                            <InputNumber v-model="variantsData[slotProps.index].retail_price" inputClass="text-start"
+                                         class="flex-grow-1"
+                                         mode="currency"
+                                         :class="{'error': invalidProduct[`variant_retail_price_${slotProps.index}`]}"
+                                         placeholder="Giá bán lẻ"
+                                         currency="VND" locale="vi"/>
+                          </div>
                         </template>
                       </Column>
-                      <Column field="quantity" style="width: 128px">
+                      <Column field="quantity" style="min-width: 140px">
                         <template #header>
                           Số lượng
                         </template>
                         <template #body="slotProps">
-                          <InputNumber v-model="variantsData[slotProps.index].quantity" placeholder="Số lượng"
-                                       inputClass="text-start" class="flex-grow-1"/>
+                          <div :ref="`variant_quantity_${slotProps.index}`">
+                            <InputNumber v-model="variantsData[slotProps.index].quantity" placeholder="Số lượng"
+                                         :class="{'error': invalidProduct[`variant_quantity_${slotProps.index}`]}"
+                                         inputClass="text-start" class="flex-grow-1"/>
+                          </div>
                         </template>
                       </Column>
-                      <Column field="sku_seller" style="width: 128px">
+                      <Column field="sku_seller" style="min-width: 140px; position: unset;">
                         <template #header>
                           {{ MESSAGE.SKU_SELLER }}
                         </template>
                         <template #body="slotProps">
-                          <InputText v-model="variantsData[slotProps.index].sku_seller"
-                                     :placeholder="MESSAGE.SKU_SELLER"></InputText>
+                          <div :ref="`variant_sku_seller_${slotProps.index}`">
+                            <InputText v-model="variantsData[slotProps.index].sku_seller"
+                                       :placeholder="MESSAGE.SKU_SELLER"></InputText>
+                          </div>
                         </template>
                       </Column>
                     </DataTable>
@@ -785,7 +846,7 @@
                   Tên biểu đồ kích cỡ
                 </div>
                 <div class="">
-                  <InputText v-model="sizeTableData.name" :placeholder="MESSAGE.PLEASE_ENTER"
+                  <InputText v-model="sizeTableData.size_name" :placeholder="MESSAGE.PLEASE_ENTER"
                              :class="{'error': invalidSizeTable['name']}"></InputText>
                 </div>
                 <div class="ms-error-text" v-if="invalidSizeTable['name']">
@@ -817,7 +878,7 @@
               <div class="group-form_box mb-4">
                 <div class="label d-flex align-items-center gap-3">
                   Một cỡ
-                  <InputSwitch v-model="isOneSize" @change="changeSizeTableOneSize"/>
+                  <InputSwitch v-model="sizeTableData.one_size" @change="changeSizeTableOneSize"/>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
@@ -830,7 +891,7 @@
                   Thông tin này sẽ được hiển thị cho khách hàng để tham khảo.
                 </div>
                 <div class="">
-                  <InputText :placeholder="MESSAGE.PLEASE_ENTER"></InputText>
+                  <InputText v-model="sizeTableData.note" :placeholder="MESSAGE.PLEASE_ENTER"></InputText>
                 </div>
                 <div class="ms-error-text"></div>
               </div>
@@ -842,7 +903,7 @@
                   <div class="theme-arco-spin-children">
                     <div class="theme-arco-table-container">
                       <DataTable class="flex1 flex-column ms-list_variant--table"
-                                 :value="sizeTableData.options"
+                                 :value="sizeTableData.size_option"
                                  scrollable
                                  @rowReorder="onRowReorderSizeTable"
                                  tableStyle="min-width: 100%" rowHover>
@@ -854,7 +915,7 @@
                           <template #body="slotProps">
                             <div class="group-form_box">
                               <div class="d-flex align-items-center">
-                                <InputText v-model="sizeTableData.options[slotProps.index].value"
+                                <InputText v-model="sizeTableData.size_option[slotProps.index].value"
                                            :class="{'error': invalidSizeTable[`option${slotProps.index}`]}"
                                            :placeholder="MESSAGE.ENTER"></InputText>
                               </div>
@@ -870,7 +931,7 @@
                           <template #body="slotProps">
                             <div class="group-form_box" :ref="`option${slotProps.index}${indexColumn}`">
                               <div class="">
-                                <InputText v-model="sizeTableData.options[slotProps.index][indexColumn]"
+                                <InputText v-model="sizeTableData.size_option[slotProps.index][indexColumn]"
                                            :class="{'error': invalidSizeTable[`option${slotProps.index}${indexColumn}`]}"
                                            :placeholder="MESSAGE.ENTER"></InputText>
                               </div>
@@ -888,13 +949,13 @@
                             <div class="d-flex gap-3 align-items-center">
                               <div class="row-actions flex-row">
                                 <Button class="icon_remove ms-btn mw-0 pointer border-0 outline-0"
-                                        :disabled="sizeTableData.options.length === 1"
+                                        :disabled="sizeTableData.size_option.length === 1"
                                         @click="deleteRowSizeTable(slotProps.index)">
                                 </Button>
                               </div>
                               <div class="p-icon border-0 p-datatable-reorderablerow-handle icon_drag_dot"
                                    aria-hidden="true"
-                                   :disabled="sizeTableData.options.length === 1"
+                                   :disabled="sizeTableData.size_option.length === 1"
                                    data-pc-section="rowreordericon"></div>
                             </div>
                           </template>
@@ -906,10 +967,10 @@
               </div>
 
               <Button
-                  v-if="!isOneSize && this.sizeTableData.options.length < 10"
+                  v-if="!sizeTableData.one_size && this.sizeTableData.size_option.length < 10"
                   @click="addOptionSizeTable"
                   class="ms-btn secondary mt-4 d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
-                <div class="fw-semibold">Thêm hàng ({{ this.sizeTableData.options.length }}/10)</div>
+                <div class="fw-semibold">Thêm hàng ({{ this.sizeTableData.size_option.length }}/10)</div>
               </Button>
             </div>
           </form>
@@ -962,9 +1023,11 @@ import 'cropperjs/dist/cropper.css';
 import {getCategory} from '@/api/category'
 import {getCategoryProperty} from '@/api/category-property'
 import {MESSAGE} from "@/common/enums";
+import {formatCurrency} from "@/common/function";
 import {uploadImage} from "@/api/image";
 import {addProduct} from "@/api/product";
 import {getBrand, addBrand} from "@/api/brand";
+import {getSize, addSize} from "@/api/size";
 
 export default {
   computed: {
@@ -1018,6 +1081,7 @@ export default {
       properties: [],
       videoProduct: null,
       selectedSizeTableOption: null,
+      sizeList: [],
       sizeTableOption: [
         {
           label: 'Chiều dài váy',
@@ -1065,140 +1129,121 @@ export default {
           label: 'Chiều dài thân trên',
         },
       ],
-      isOneSize: false,
       invalidSizeTable: [],
       sizeTable: null,
       sizeTableData: {
-        name: null,
-        options: [
+        size_name: null,
+        size_option: [
           {
             value: null,
           }
         ]
       },
       isSideBarSizeTable: false,
-      indexSelectedImageProduct:
-          null,
-      imageProducts:
-          [
-            {
-              image: null,
-              imageData: null,
-              active: true,
-              title: 'Tải lên hình ảnh chính',
-              description: [
-                'Kích thước: 300 x 300 px',
-                'Kích thước tệp tin tối đa: 5MB(Tối đa 9 tập tin)',
-                'Định dạng: JPG, JPEG, PNG'
-              ],
-              icon: require("@public/assets/icons/image.svg"),
-            },
-            {
-              image: null,
-              imageData: null,
-              active: false,
-              title: 'Chính diện',
-              icon: require("@public/assets/images/background-perspective.png"),
-            },
-            {
-              image: null,
-              imageData: null,
-              active: false,
-              title: 'Cạnh bên',
-              icon: require("@public/assets/images/side.png"),
-            },
-            {
-              image: null,
-              imageData: null,
-              active: false,
-              title: 'Các góc độ khác',
-              icon: require("@public/assets/images/other-angles.png"),
-            },
-            {
-              image: null,
-              imageData: null,
-              active: false,
-              title: 'Đang sử dụng',
-              icon: require("@public/assets/images/using.png"),
-            },
-            {
-              image: null,
-              imageData: null,
-              active: false,
-              title: 'Biến thể',
-              icon: require("@public/assets/images/variant.png"),
-            },
-            {
-              image: null,
-              imageData: null,
-              active: false,
-              title: 'Phối cảnh nền',
-              icon: require("@public/assets/images/background-perspective.png"),
-            },
-            {
-              image: null,
-              imageData: null,
-              active: false,
-              title: 'Ảnh chụp cận',
-              icon: require("@public/assets/images/close-up-photo.png"),
-            },
-            {
-              image: null,
-              imageData: null,
-              active: false,
-              title: 'Kích thước và cân nặng',
-              icon: require("@public/assets/images/size-and-weight.png"),
-            },
+      indexSelectedImageProduct: null,
+      imageProducts: [
+        {
+          image: null,
+          imageData: null,
+          active: true,
+          title: 'Tải lên hình ảnh chính',
+          description: [
+            'Kích thước: 300 x 300 px',
+            'Kích thước tệp tin tối đa: 5MB(Tối đa 9 tập tin)',
+            'Định dạng: JPG, JPEG, PNG'
+          ],
+          icon: require("@public/assets/icons/image.svg"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Chính diện',
+          icon: require("@public/assets/images/background-perspective.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Cạnh bên',
+          icon: require("@public/assets/images/side.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Các góc độ khác',
+          icon: require("@public/assets/images/other-angles.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Đang sử dụng',
+          icon: require("@public/assets/images/using.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Biến thể',
+          icon: require("@public/assets/images/variant.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Phối cảnh nền',
+          icon: require("@public/assets/images/background-perspective.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Ảnh chụp cận',
+          icon: require("@public/assets/images/close-up-photo.png"),
+        },
+        {
+          image: null,
+          imageData: null,
+          active: false,
+          title: 'Kích thước và cân nặng',
+          icon: require("@public/assets/images/size-and-weight.png"),
+        },
 
-          ],
-      isCropImageProduct:
-          false,
-      totalSize:
-          0,
-      saleInfomation:
-          {
-            retailPrice: null,
-            quantity:
-                null,
-            skuSeller:
-                null,
-          }
-      ,
-      isVariant: false,
-      variantsData:
-          [],
-      batchEditingVariant:
-          [],
-      isBatchEditing:
-          false,
-      listVariant:
-          [
-            {
-              id: 0,
-              name: null,
-              option: []
-            }
-          ],
-      itemVariant:
-          [
-            {
-              id: 0,
-              value: null,
-              image: null,
-            },
-          ],
-      isVariantImage:
-          false,
-      isCropperImage:
-          false,
-      selectedVariant:
-          null,
-      imageSrc:
-          null,
-      invalidVariant:
-          [],
-      totalSizePercent:
-          0,
+      ],
+      isCropImageProduct: false,
+      totalSize: 0,
+      saleInfomation: {
+        retailPrice: null,
+        quantity:
+            null,
+        skuSeller:
+            null,
+      },
+      variantsData: [],
+      batchEditingVariant: [],
+      isBatchEditing: false,
+      listVariant: [
+        {
+          id: 0,
+          name: null,
+          option: []
+        }
+      ],
+      itemVariant: [
+        {
+          id: 0,
+          value: null,
+          image: null,
+        },
+      ],
+      isVariantImage: false,
+      isCropperImage: false,
+      selectedVariant: null,
+      imageSrc: null,
+      invalidVariant: [],
+      totalSizePercent: 0,
     }
   },
   methods: {
@@ -1213,7 +1258,11 @@ export default {
      */
     btnCompleteSizeTable() {
       if (this.validateSizeTable()) {
-
+        addSize(this.sizeTableData).then(res => {
+          console.log(res)
+        }).catch(error => {
+          console.log(error)
+        })
       }
     },
 
@@ -1223,7 +1272,7 @@ export default {
      */
     validateSizeTable() {
       this.invalidSizeTable = [];
-      if (this.sizeTableData.name === null || this.sizeTableData.name.trim() === "") {
+      if (this.sizeTableData.size_name === null || this.sizeTableData.size_name.trim() === "") {
         this.invalidSizeTable['name'] = MESSAGE.PLEASE_ENTER
       }
       if (!this.selectedSizeTableOption) {
@@ -1232,13 +1281,13 @@ export default {
 
 
       let scrollToSizeTable = null;
-      this.sizeTableData.options.forEach((item, index) => {
+      this.sizeTableData.size_option.forEach((item, index) => {
         if (item.value === null || item.value.trim() === "") {
           this.invalidSizeTable[`option${index}`] = true;
         }
         if (this.selectedSizeTableOption) {
           this.selectedSizeTableOption.forEach((column, i) => {
-            if (this.sizeTableData.options[index][i] === null || this.sizeTableData.options[index][i] === "" || !this.sizeTableData.options[index][i]) {
+            if (this.sizeTableData.size_option[index][i] === null || this.sizeTableData.size_option[index][i] === "" || !this.sizeTableData.size_option[index][i]) {
               this.invalidSizeTable[`option${index}${i}`] = true
               scrollToSizeTable = `option${index}${i}`
             }
@@ -1254,12 +1303,17 @@ export default {
     /**
      * Sự kiện chọn sử dụng ảnh hay mẫu cho phần bảng kích thước
      */
-    changeSizeTable() {
+    async changeSizeTable() {
       switch (Number.parseInt(this.sizeTable)) {
         case 0:
-          this.isSideBarSizeTable = true;
+          this.selectedProduct.use_sample_size = true;
+          await this.loadSize();
+          if (this.sizeList.length === 0) {
+            this.isSideBarSizeTable = true;
+          }
           break;
         case 1:
+          this.selectedProduct.use_sample_size = false;
           break;
       }
     },
@@ -1540,6 +1594,16 @@ export default {
      * @param key
      */
     completeVariant(key) {
+      if (this.validateVariant(key)) {
+        this.listVariant[key].complete = true;
+      }
+    },
+
+    /**
+     * Validate biến thể
+     * @returns {boolean}
+     */
+    validateVariant(key) {
       delete this.invalidVariant[`name${key}`]
       delete this.invalidVariant[key]
       if (this.listVariant[key].name === null || this.listVariant[key].name === "") {
@@ -1564,9 +1628,9 @@ export default {
       }
 
       if (Object.keys(this.invalidVariant).length > 0) {
-        return
+        return false
       }
-      this.listVariant[key].complete = true;
+      return true;
     },
 
     /**
@@ -1690,7 +1754,7 @@ export default {
     cropImage() {
       // cắt ảnh sản phẩm
       if (this.isCropImageProduct) {
-        this.imageProducts[this.indexSelectedImageProduct].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+        this.imageProducts[this.indexSelectedImageProduct].image = this.$refs.cropper.getCroppedCanvas().toDataURL('image/jpeg');
         this.imageProducts[this.indexSelectedImageProduct].imageData = this.$refs.cropper.getCroppedCanvas();
         if (this.indexSelectedImageProduct + 1 < this.imageProducts.length) {
           this.imageProducts[this.indexSelectedImageProduct + 1].active = true;
@@ -1718,8 +1782,8 @@ export default {
      * @param index
      */
     addOptionSizeTable(index) {
-      if (this.sizeTableData.options.length < 10) {
-        this.sizeTableData.options.push({
+      if (this.sizeTableData.size_option.length < 10) {
+        this.sizeTableData.size_option.push({
           value: null,
         })
       }
@@ -1729,7 +1793,7 @@ export default {
      * Sự kiện click button swich một cỡ
      */
     changeSizeTableOneSize() {
-      this.sizeTableData.options = [
+      this.sizeTableData.size_option = [
         {
           value: null,
         }
@@ -1741,7 +1805,7 @@ export default {
      * @param index
      */
     deleteRowSizeTable(index) {
-      this.sizeTableData.options.splice(index, 1);
+      this.sizeTableData.size_option.splice(index, 1);
     },
 
     /**
@@ -1749,43 +1813,127 @@ export default {
      * @param event
      */
     onRowReorderSizeTable(event) {
-      this.sizeTableData.options = event.value;
+      this.sizeTableData.size_option = event.value;
     },
 
     /**
      * Click button thêm sản phẩm
      */
-    btnAddProduct() {
+    async btnAddProduct() {
       if (this.validateProduct()) {
+        const formData = new FormData();
+        for (const item of this.imageProducts) {
+          if (item.image) {
+            await new Promise((resolve, reject) => {
+              item.imageData.toBlob(blob => {
+                if (blob) {
+                  formData.append('medias[]', blob);
+                  resolve();
+                } else {
+                  reject('toBlob() failed');
+                }
+              }, 'image/png');
+            });
+          }
+        }
+        formData.append('product', JSON.stringify(this.selectedProduct))
+        formData.append('category_id', Object.keys(this.selectedCategory)[0])
+        formData.append('properties', JSON.stringify(this.selectedProperty));
+        if (this.selectedProduct.has_variant) {
+          formData.append('variants', JSON.stringify(this.variantsData))
+        } else {
+          formData.append('variant', JSON.stringify(this.saleInfomation))
+        }
 
+        addProduct(formData).then(res => {
+
+        }).catch(error => {
+          console.log(error)
+        }).finally(() => {
+
+        })
+      } else {
+        console.log(this.invalidProduct)
       }
-      // addProduct(this.properties).then(res => {
-      //
-      // }).catch(error => {
-      //
-      // }).finally(() => {
-      //
-      // })
     },
 
     /**
      * validate dữ liệu product
      */
-    validateProduct() {
+    validateProduct: function () {
+      let scrollToInvalidProduct = null;
       this.invalidProduct = [];
-      if (!this.selectedProduct.product_name || this.selectedProduct.product_name.trim() === "") {
-        this.invalidProduct['product_name'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
-      }
-      if (!this.selectedCategory) {
-        this.invalidProduct['category'] = MESSAGE.PLEASE_CHOOSE_ONE_OPTION;
-      }
 
       if (!this.imageProducts[0].image) {
         this.invalidProduct['image'] = MESSAGE.PLEASE_UPLOAD_ONE_IMAGE;
+        scrollToInvalidProduct = scrollToInvalidProduct ?? 'image';
+      }
+
+      if (!this.selectedProduct.product_name || this.selectedProduct.product_name.trim() === "") {
+        this.invalidProduct['product_name'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
+        scrollToInvalidProduct = scrollToInvalidProduct ?? 'product_name';
+      }
+      if (!this.selectedCategory) {
+        this.invalidProduct['category'] = MESSAGE.PLEASE_CHOOSE_ONE_OPTION;
+        scrollToInvalidProduct = scrollToInvalidProduct ?? 'category';
       }
 
       if (!this.selectedProduct.brand) {
         this.invalidProduct['brand'] = MESSAGE.PLEASE_CHOOSE_ONE_OPTION;
+        scrollToInvalidProduct = scrollToInvalidProduct ?? 'brand';
+      }
+
+      if (!this.selectedProduct.description) {
+        this.invalidProduct['description'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
+        scrollToInvalidProduct = scrollToInvalidProduct ?? 'description';
+      }
+
+      // bảng kích thước
+      if (this.isSideBarSizeTable) {
+
+      }
+      // hình ảnh bảng kích thước
+      else {
+
+      }
+
+      // có biến thể
+      if (this.selectedProduct.has_variant) {
+        this.listVariant.forEach((item, key) => {
+          this.validateVariant(key);
+        });
+        if (Object.keys(this.invalidVariant).length > 0) {
+          this.invalidProduct['variants'] = true;
+          scrollToInvalidProduct = scrollToInvalidProduct ?? 'product_has_variant';
+        } else {
+          this.selectedProduct.max_price = this.selectedProduct.min_price = this.variantsData[0].retail_price;
+          this.variantsData.forEach((item, index) => {
+            this.selectedProduct.max_price = this.selectedProduct.max_price < item.retail_price ? item.retail_price : this.selectedProduct.max_price;
+            this.selectedProduct.min_price = this.selectedProduct.min_price > item.retail_price ? item.retail_price : this.selectedProduct.min_price;
+            if (item.quantity === null) {
+              this.invalidProduct[`variant_quantity_${index}`] = true;
+              scrollToInvalidProduct = scrollToInvalidProduct ?? `variant_quantity_${index}`;
+            }
+            if (item.retail_price === null) {
+              this.invalidProduct[`variant_retail_price_${index}`] = true;
+              scrollToInvalidProduct = scrollToInvalidProduct ?? `variant_retail_price_${index}`;
+            }
+          })
+        }
+      }
+      // không có biến thể
+      else {
+        if (!this.saleInfomation.retailPrice) {
+          this.invalidProduct['retail_price'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
+          scrollToInvalidProduct = scrollToInvalidProduct ?? 'product_no_variant';
+        }
+        if (!this.saleInfomation.quantity) {
+          this.invalidProduct['quantity'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
+          scrollToInvalidProduct = scrollToInvalidProduct ?? 'product_no_variant';
+        }
+      }
+      if (scrollToInvalidProduct) {
+        this.$refs[scrollToInvalidProduct].scrollIntoView({behavior: 'smooth', block: 'center'});
       }
       return Object.keys(this.invalidProduct).length <= 0;
     },
@@ -1803,10 +1951,14 @@ export default {
       })
     },
 
+    /**
+     * Lấy dữ liệu danh mục sản phẩm
+     */
     loadCategory() {
       getCategory().then(res => {
-        this.categories = res.data;
-      })
+            this.categories = res.data;
+          }
+      )
           .catch(error => {
             console.log(error)
           })
@@ -1837,6 +1989,9 @@ export default {
       }
     },
 
+    /**
+     * Lấy danh sách thương hiệu
+     */
     loadBrand() {
       getBrand().then(res => {
         this.brands = res.data
@@ -1844,6 +1999,17 @@ export default {
         console.log(error)
       })
     },
+
+    /**
+     * Lấy danh sách bảng kích thước
+     */
+    async loadSize() {
+      await getSize().then(res => {
+        this.sizeList = res.data
+      }).catch(error => {
+        console.log(error)
+      })
+    }
   },
   created() {
     this.loadCategory();
@@ -1924,15 +2090,18 @@ export default {
 
           .p-datatable-tbody {
             tr {
-              &:hover {
-                background-color: rgba(0, 0, 0, .08) !important;
-              }
 
               td {
                 border: unset !important;
                 padding: 6px !important;
                 border-radius: unset !important;
-                background: unset;
+                background: #fff;
+              }
+
+              &:hover {
+                td {
+                  background-color: rgba(0, 0, 0, .08) !important;
+                }
               }
             }
           }

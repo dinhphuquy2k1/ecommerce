@@ -16,7 +16,7 @@ class ApiBrandController extends Controller
      */
     public function get(): JsonResponse
     {
-        return $this->sendResponseSuccess(Brand::all()->toArray());
+        return $this->sendResponseSuccess(Brand::orderBy('id', 'DESC')->get()->toArray());
     }
 
     /**

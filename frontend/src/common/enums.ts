@@ -49,6 +49,7 @@ export const MESSAGE = {
     PLEASE_FILL_IN_THIS_FIELD: 'Vui lòng điền vào trường này',
     PLEASE_CHOOSE_ONE_OPTION: 'Vui lòng chọn một tùy chọn',
     PLEASE_UPLOAD_ONE_IMAGE: 'Vui lòng tải lên ít nhất một hình ảnh để đặt làm hình ảnh sản phẩm',
+    SELECT_SIZE_CHART_TEMPLATE: 'Chọn mẫu biểu đồ kích cỡ',
     ENTER: 'Nhập',
     INVALID_EMPTY_VARIANT: 'Vui lòng nhập một tùy chọn',
     INPUT_PLACEHOLDER_VARIANT: 'Nhập một biến thể',
