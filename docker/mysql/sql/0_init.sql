@@ -104,6 +104,7 @@ CREATE TABLE `variants`
     `id`                 bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `content`            json NOT NULL,
     `product_id`         bigint(20) unsigned NOT NULL,
+    `media_id`           bigint(20) unsigned NULL,
     `variant_price`      int(11) COLLATE utf8mb4_unicode_ci NOT NULL,
     `variant_quantity`   int(11) COLLATE utf8mb4_unicode_ci NOT NULL,
     `variant_sku_seller` varchar(255) COLLATE utf8mb4_unicode_ci NULL,
@@ -111,7 +112,9 @@ CREATE TABLE `variants`
     `updated_at`         TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     KEY                  `variants_product_id_foreign` (`product_id`),
-    CONSTRAINT `variants_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
+    KEY                  `variants_media_id_foreign` (`media_id`),
+    CONSTRAINT `variants_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `variants_media_id_foreign` FOREIGN KEY (`media_id`) REFERENCES `medias` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS medias;
@@ -120,15 +123,12 @@ CREATE TABLE `medias`
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `media_url`  varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `product_id` bigint(20) unsigned NULL,
-    `variant_id` bigint(20) unsigned NULL,
     `type`       tinyint(11) NOT NULL DEFAULT '0',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     KEY          `products_product_id_foreign` (`product_id`),
-    KEY          `variants_variant_id_foreign` (`variant_id`),
-    CONSTRAINT `products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
-    CONSTRAINT `variants_variant_id_foreign` FOREIGN KEY (`variant_id`) REFERENCES `variants` (`id`) ON DELETE CASCADE
+    CONSTRAINT `products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS brands;

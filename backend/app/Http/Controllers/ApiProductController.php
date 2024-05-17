@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Brand;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
@@ -27,6 +28,8 @@ class ApiProductController extends Controller
             [
                 'medias' => 'required|array',
                 'medias.*' => 'required|file|mimetypes:image/*,video/mp4|max:2048',
+                'variantImages' => 'nullable|array',
+                'variantImages.*' => 'required|file|mimetypes:image/*|max:2048',
                 'variants' => 'nullable|required_without:variant',
                 'variant' => 'required_without:variants',
                 'product' => 'required|json',
@@ -38,6 +41,11 @@ class ApiProductController extends Controller
                 'medias.*.required' => 'Vui lòng tải lên ít nhất 1 phương tiện',
                 'medias.*.mimetypes' => 'Phương tiện phải là hình ảnh hoặc video',
                 'medias.*.max' => 'Kích thước file không được vượt quá :max kilobytes',
+                'variantImages.*.max' => 'Kích thước file không được vượt quá :max kilobytes',
+                'variantImages.required' => 'Phương tiện không được để trống',
+                'variantImages.array' => 'Phương tiện yêu cầu là 1 mảng',
+                'variantImages.*.required' => 'Vui lòng tải lên ít nhất 1 phương tiện',
+                'variantImages.*.mimetypes' => 'Phương tiện phải là hình ảnh',
                 'product.required' => 'Dữ liệu về sản phẩm không được trống',
                 'product.json' => 'Dữ liệu sản phẩm phải là định dạng JSON',
                 'category_id.required' => 'Id category không được để trống',
@@ -102,7 +110,7 @@ class ApiProductController extends Controller
         if ($dataValidator->fails() || $productValidator->fails() || ($request['variant'] && $variantValidator->fails()) || ($request['variants'] && $variantsValidator->fails())) {
             $errors = [];
             if ($dataValidator->fails()) {
-                $errors = $dataValidator->errors();
+                $errors = $dataValidator->errors()->toArray();
             }
             if ($productValidator->fails()) {
                 $errors = array_merge($productValidator->errors()->toArray(), $errors);
@@ -120,13 +128,20 @@ class ApiProductController extends Controller
         $medias = $request->file('medias');
         $product = json_decode($request['product'], true);
         $variants = $request['variants'] ? json_decode($request['variants'], true) : [];
+        $variantImages = $request->file('variantImages') ?? [];
+        $mediaAttributes = [];
         try {
-            $mediaAttributes = [];
             foreach ($medias as $media) {
                 $mediaAttributes[] = [
                     'media_url' => $media->store('images', 'public')
                 ];
             }
+            foreach ($variantImages as $media) {
+                $mediaAttributes[] = [
+                    'media_url' => $media->store('images', 'public')
+                ];
+            }
+
             $product['brand'] = json_encode([
                 'brand_name' => $product['brand']['brand_name'],
             ]);
@@ -144,13 +159,14 @@ class ApiProductController extends Controller
                 $item['product_id'] = $productID;
             }
             Media::insert($mediaAttributes);
-
+            $variantMediaIds = array_slice(Media::latest()->take(count($mediaAttributes))->pluck('id')->toArray(), -count($variantImages), count($variantImages));
             // có biến thể
             if ($product['has_variant']) {
-                foreach ($variants as &$variant) {
+                foreach ($variants as $key => &$variant) {
                     $variant = [
                         'content' => json_encode($variant),
                         'product_id' => $productID,
+                        'media_id' => $variantMediaIds[$key] ?? null,
                         'variant_price' => $variant['retail_price'],
                         'variant_quantity' => $variant['quantity'],
                     ];
@@ -160,11 +176,13 @@ class ApiProductController extends Controller
 
             Variant::insert($variants);
             DB::commit();
-            return $this->sendResponseSuccess();
         } catch (\Throwable $th) {
-            dd($th);
             DB::rollBack();
-            return $this->sendResponseBadRequest();
+            // xóa ảnh đã tải lên nếu gặp lỗi
+            foreach ($mediaAttributes as $v) {
+                Storage::disk('public')->delete($v['media_url']);
+            }
+            return $this->sendResponseBadRequest(['message' => $th->getMessage()]);
         }
         return $this->sendResponseSuccess();
     }

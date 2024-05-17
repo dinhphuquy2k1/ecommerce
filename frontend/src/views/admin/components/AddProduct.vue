@@ -522,43 +522,51 @@
                             <template #body="slotProps">
                               <input type="file" hidden :ref="`ref_variant_image${key}${slotProps.index}`"
                                      @change="changeVariantImage($event, key, slotProps.index)">
-                              <Button v-if="isVariantImage"
-                                      @click="chooseVariantImage(key, slotProps.index)"
-                                      :class="{'border-0': listVariant[key].option[slotProps.index].image}"
-                                      class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center flex-grow-1 me-3 ms-btn_search gap-2">
-                                <div v-if="!listVariant[key].option[slotProps.index].image">
-                                  <div class="icon">
-                                    <Image :src="require('@public/assets/icons/image.svg')"
-                                           alt="Image"/>
+                              <div class="d-flex flex-column" style="max-width: 106px;" v-if="isVariantImage">
+                                <Button v-if="isVariantImage"
+                                        @click="chooseVariantImage(key, slotProps.index)"
+                                        :class="{'border-0': listVariant[key].option[slotProps.index].image}"
+                                        class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center flex-grow-1 me-3 ms-btn_search gap-2">
+                                  <div v-if="!listVariant[key].option[slotProps.index].image">
+                                    <div class="icon">
+                                      <Image :src="require('@public/assets/icons/image.svg')"
+                                             alt="Image"/>
+                                    </div>
+                                    <div class="">Tải ảnh lên</div>
                                   </div>
-                                  <div class="">Tải ảnh lên</div>
+                                  <div v-else class="d-flex">
+                                    <Image :src="listVariant[key].option[slotProps.index].image"
+                                           class="flex-grow-1"
+                                           alt="Image"
+                                           preview>
+                                      <template #indicatoricon>
+                                        <div class="d-flex gap-2">
+                                          <i class="icon-eye"></i>
+                                          <div class="icon_remove-white"
+                                               @click="removeVariantImage($event, key, slotProps.index)"></div>
+                                        </div>
+                                      </template>
+                                    </Image>
+                                  </div>
+                                </Button>
+                                <div class="ms-error-text mt-1 mb-2"
+                                     v-if="invalidVariant[`image${key}${slotProps.index}`]">
+                                  <div class="position-absolute">
+                                    {{ invalidVariant[`image${key}${slotProps.index}`] }}
+                                  </div>
                                 </div>
-                                <div v-else class="d-flex">
-                                  <Image :src="listVariant[key].option[slotProps.index].image"
-                                         class="flex-grow-1"
-                                         alt="Image"
-                                         preview>
-                                    <template #indicatoricon>
-                                      <div class="d-flex gap-2">
-                                        <i class="icon-eye"></i>
-                                        <div class="icon_remove-white"
-                                             @click="removeVariantImage($event, key, slotProps.index)"></div>
-                                      </div>
-                                    </template>
-                                  </Image>
-                                </div>
-                              </Button>
+                              </div>
                             </template>
                           </Column>
                           <Column class="flex-grow-1 d-flex align-items-start pe-2">
                             <template #body="slotProps">
-                              <div class="flex-grow-1 d-flex flex-column">
-                                <div class="flex-grow-1">
+                              <div class="flex-grow-1 d-flex flex-column" :class="{'ms-2': isVariantImage}">
+                                <div class="">
                                   <InputText v-model="item.option[slotProps.index].value"
                                              :class="{'error': invalidVariant[`${key}${slotProps.index}`]}"
                                              :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"
                                              maxlength="50"
-                                             @input="changeVariantValue(key, slotProps.index)"></InputText>
+                                             @blur="changeVariantValue(key, slotProps.index)"></InputText>
                                 </div>
                                 <div class="ms-error-text" v-if="invalidVariant[`${key}${slotProps.index}`]">
                                   {{ invalidVariant[`${key}${slotProps.index}`] }}
@@ -584,40 +592,45 @@
                           </Column>
                         </DataTable>
 
-                        <div class="mt-2 d-flex flex-grow-1">
+                        <div class="mt-2 d-flex flex-grow-1 gap-2">
                           <input type="file" hidden :ref="`ref_variant_image${key}`"
                                  @change="changeVariantImage($event, key)">
-                          <Button v-if="isVariantImage"
-                                  @click="chooseVariantImage(key)"
-                                  class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center me-3 ms-btn_search gap-2">
-                            <div v-if="!itemVariant[key].image">
-                              <div class="icon">
-                                <Image :src="require('@public/assets/icons/image.svg')"
-                                       alt="Image"/>
+                          <div class="d-flex flex-column" style="max-width: 106px;" v-if="isVariantImage">
+                            <Button
+                                @click="chooseVariantImage(key)"
+                                class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center me-3 ms-btn_search gap-2">
+                              <div v-if="!itemVariant[key].image">
+                                <div class="icon">
+                                  <Image :src="require('@public/assets/icons/image.svg')"
+                                         alt="Image"/>
+                                </div>
+                                <div class="">Tải ảnh lên</div>
                               </div>
-                              <div class="">Tải ảnh lên</div>
+                              <div v-else class="d-flex flex-grow-1">
+                                <Image :src="itemVariant[key].image" class="flex-grow-1"
+                                       alt="Image"
+                                       preview>
+                                  <template #indicatoricon>
+                                    <div class="d-flex gap-2">
+                                      <i class="icon-eye"></i>
+                                      <div class="icon_remove-white"
+                                           @click="removeVariantImage($event, key)"></div>
+                                    </div>
+                                  </template>
+                                </Image>
+                              </div>
+                            </Button>
+                            <div class="ms-error-text" v-if="invalidVariant[`image${key}`]">
+                              {{ invalidVariant[`image${key}`] }}
                             </div>
-                            <div v-else class="d-flex flex-grow-1">
-                              <Image :src="itemVariant[key].image" class="flex-grow-1"
-                                     alt="Image"
-                                     preview>
-                                <template #indicatoricon>
-                                  <div class="d-flex gap-2">
-                                    <i class="icon-eye"></i>
-                                    <div class="icon_remove-white"
-                                         @click="removeVariantImage($event, key)"></div>
-                                  </div>
-                                </template>
-                              </Image>
-                            </div>
-                          </Button>
+                          </div>
                           <div class="d-flex flex-column flex-grow-1">
-                            <div class="flex-grow-1">
+                            <div class="">
                               <InputText v-model="itemVariant[key].value"
                                          :class="{'error': invalidVariant[key]}"
                                          maxlength="50"
                                          :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"
-                                         @input="changeVariantValue(key)"></InputText>
+                                         @blur="changeVariantValue(key)"></InputText>
                             </div>
                             <div class="ms-error-text" v-if="invalidVariant[key]">
                               {{ invalidVariant[key] }}
@@ -1236,6 +1249,7 @@ export default {
           id: 0,
           value: null,
           image: null,
+          imageData: null,
         },
       ],
       isVariantImage: false,
@@ -1562,6 +1576,7 @@ export default {
           current[`quantity`] = null;
           current[`retail_price`] = null;
           current[`sku_seller`] = null;
+          current[`image_data`] = opt.imageData;
           // gọi hàm để lấy các giá trị option trong biến thể kế tiếp
           generate(current, index + 1);
         }
@@ -1606,7 +1621,7 @@ export default {
     validateVariant(key) {
       delete this.invalidVariant[`name${key}`]
       delete this.invalidVariant[key]
-      if (this.listVariant[key].name === null || this.listVariant[key].name === "") {
+      if (this.listVariant[key].name === null || this.listVariant[key].name === "" || (this.isVariantImage && this.listVariant[key].name === "")) {
         this.invalidVariant[`name${key}`] = MESSAGE.INVALID_EMPTY_VARIANT_NAME;
       }
       this.listVariant[key].option.forEach((item, index) => {
@@ -1618,19 +1633,27 @@ export default {
         else if (this.listVariant[key].option.filter((item, k) => item.value != null && item.value.toLocaleLowerCase() === this.listVariant[key].option[index].value.toLocaleLowerCase() && k !== index).length > 0) {
           this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EXITS_VARIANT;
         }
+
+        if (this.isVariantImage && !item.image) {
+          this.invalidVariant[`image${key}${index}`] = MESSAGE.ADD_PRODUCT_IMAGE;
+        }
       })
 
       if (this.itemVariant[key].value === null && this.listVariant[key].option.length === 0) {
         this.invalidVariant[key] = MESSAGE.INVALID_EMPTY_VARIANT;
       }
+
+      if (this.itemVariant[key].value !== null) {
+        if (this.isVariantImage && !this.itemVariant[key].image) {
+          this.invalidVariant[`image${key}`] = MESSAGE.ADD_PRODUCT_IMAGE;
+        }
+      }
+
       if (this.listVariant[key].option.filter(item => item.value != null && this.itemVariant[key].value != null && item.value.toLocaleLowerCase() === this.itemVariant[key].value.toLocaleLowerCase()).length > 0) {
         this.invalidVariant[key] = MESSAGE.INVALID_EXITS_VARIANT;
       }
 
-      if (Object.keys(this.invalidVariant).length > 0) {
-        return false
-      }
-      return true;
+      return Object.keys(this.invalidVariant).length <= 0;
     },
 
     /**
@@ -1648,42 +1671,36 @@ export default {
      * @param index
      */
     changeVariantValue(key, index = null) {
-      clearTimeout(this.debounce);
-      this.debounce = setTimeout(() => {
-        delete this.invalidVariant[`${key}${index}`]
-        // thay đổi giá trị
-        if (index != null) {
-          //check rỗng
-          if (this.listVariant[key].option[index].value === "") {
-            this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EMPTY_VARIANT;
-          }
-          // kiểm tra giá trị đã tồn tại chưa
-          else if (this.listVariant[key].option.filter((item, k) => item.value != null && item.value.toLocaleLowerCase() === this.listVariant[key].option[index].value.toLocaleLowerCase() && k !== index).length > 0) {
-            this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EXITS_VARIANT;
-          }
+      delete this.invalidVariant[`${key}${index}`]
+      // thay đổi giá trị
+      if (index != null) {
+        //check rỗng
+        if (this.listVariant[key].option[index].value === "") {
+          this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EMPTY_VARIANT;
         }
-        // thêm mới
-        else {
-          delete this.invalidVariant[key]
-          if (this.itemVariant[key].value !== "") {
-            if (this.listVariant[key].option.filter(item => item.value != null && item.value.toLocaleLowerCase() === this.itemVariant[key].value.toLocaleLowerCase()).length > 0) {
-              this.invalidVariant[key] = MESSAGE.INVALID_EXITS_VARIANT;
-            } else {
-              this.listVariant[key].option.push({
-                id: this.listVariant.length,
-                value: this.itemVariant[key].value,
-                image: this.itemVariant[key].image,
-              })
-              this.itemVariant[key] = {
-                id: this.itemVariant[key].id,
-                value: null,
-                name: null,
-              };
-            }
-          }
+        // kiểm tra giá trị đã tồn tại chưa
+        else if (this.listVariant[key].option.filter((item, k) => item.value != null && item.value.toLocaleLowerCase() === this.listVariant[key].option[index].value.toLocaleLowerCase() && k !== index).length > 0) {
+          this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EXITS_VARIANT;
         }
-
-      }, 750);
+      }
+      // thêm mới
+      else {
+        delete this.invalidVariant[key]
+        if (this.listVariant[key].option.filter(item => item.value != null && item.value.toLocaleLowerCase() === this.itemVariant[key].value.toLocaleLowerCase()).length > 0) {
+          this.invalidVariant[key] = MESSAGE.INVALID_EXITS_VARIANT;
+        } else {
+          this.listVariant[key].option.push({
+            id: this.listVariant.length,
+            value: this.itemVariant[key].value,
+            image: this.itemVariant[key].image,
+          })
+          this.itemVariant[key] = {
+            id: this.itemVariant[key].id,
+            value: null,
+            name: null,
+          };
+        }
+      }
     },
 
     /**
@@ -1764,12 +1781,14 @@ export default {
       // cắt ảnh biến thể
       else {
         let ref = '';
-        if (this.selectedVariant.index) {
+        if (this.selectedVariant.index != null) {
           ref = `ref_variant_image${this.selectedVariant.key}${this.selectedVariant.index}`;
           this.listVariant[this.selectedVariant.key].option[this.selectedVariant.index].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+          this.listVariant[this.selectedVariant.key].option[this.selectedVariant.index].imageData = this.$refs.cropper.getCroppedCanvas();
         } else {
           ref = `ref_variant_image${this.selectedVariant.key}`;
           this.itemVariant[this.selectedVariant.key].image = this.$refs.cropper.getCroppedCanvas().toDataURL();
+          this.itemVariant[this.selectedVariant.key].imageData = this.$refs.cropper.getCroppedCanvas();
         }
         this.$refs[ref][0].value = null;
         this.selectedVariant = null;
@@ -1835,6 +1854,18 @@ export default {
               }, 'image/png');
             });
           }
+        }
+        for (const item of [...this.variantsData]) {
+          await new Promise((resolve, reject) => {
+            item.image_data.toBlob(blob => {
+              if (blob) {
+                formData.append('variantImages[]', blob);
+                resolve();
+              } else {
+                reject('toBlob() failed');
+              }
+            }, 'image/png');
+          });
         }
         formData.append('product', JSON.stringify(this.selectedProduct))
         formData.append('category_id', Object.keys(this.selectedCategory)[0])
@@ -2144,7 +2175,10 @@ export default {
 
               td {
                 height: 106px;
-                max-height: 106px;
+
+                .btn-image {
+                  max-height: 106px;
+                }
               }
             }
 

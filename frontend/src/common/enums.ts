@@ -57,4 +57,5 @@ export const MESSAGE = {
     INVALID_EMPTY_VARIANT_NAME: 'Vui lòng nhập một biến thể',
     SKU_SELLER: 'SKU Người bán',
     BATCH_EDITING: 'Chỉnh sửa hàng loạt',
+    ADD_PRODUCT_IMAGE: 'Thêm hình ảnh sản phẩm',
 };
