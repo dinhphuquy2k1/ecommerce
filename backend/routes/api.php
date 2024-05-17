@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiCategoryController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiBrandController;
 use App\Http\Controllers\ApiSizeController;
+use App\Http\Controllers\ApiMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/categories', [ApiCategoryController::class, 'get']);
 Route::post('/upload/image', [ApiCategoryController::class, 'uploadImage']);
 Route::post('/categories/properties/{id}', [ApiCategoryController::class, 'getProperties']);
+Route::prefix('menus')->group(function () {
+    Route::get('/', [ApiMenuController::class, 'getMenu']);
+});
+
 Route::prefix('products')->group(function () {
     Route::post('/', [ApiProductController::class, 'store']);
 });

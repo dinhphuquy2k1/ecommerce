@@ -2,12 +2,12 @@
   <nav class="ma-navbar position-relative d-flex flex-column justify-content-between"
        :class="{'collapsed': isCollapsed}">
     <div class="left-container flex-grow-1">
-      <PanelMenu :model="items" multiple>
+      <PanelMenu :model="menus" multiple>
         <template #item="{ item }">
           <router-link v-if="item.route && !item.items" :to="item.route"
                        class="ma-navbar-parent d-flex align-items-center">
             <div class="d-flex flex-grow-1 align-items-center cursor-pointer menu-item">
-              <span :class="[item.icon, 'text-primary']"/>-->
+              <span :class="[item.icon, 'text-primary']"/>
               <span :class="['ml-2', { 'font-semibold': item.items }]">{{ item.label }}</span>
             </div>
           </router-link>
@@ -34,6 +34,7 @@
 
 <script>
 import PanelMenu from 'primevue/panelmenu';
+import {getMenu} from "@/api/menu";
 
 export default {
   components: {
@@ -42,31 +43,24 @@ export default {
   data() {
     return {
       isCollapsed: false,
-      items: [
-        {
-          label: 'Mail',
-          icon: 'pi pi-envelope',
-          route: '/admin/setting',
-        },
-        {
-          label: 'Reports',
-          icon: 'pi pi-chart-bar',
-          route: '/admin'
-        },
-        {
-          label: 'Profile',
-          icon: 'pi pi-user',
-          route: '/admin/setting'
-        },
-        {
-          label: 'Profile',
-          icon: 'pi pi-user',
-          route: '/admin/'
-        }
-      ]
+      menus: [],
     }
   },
-  methods: {}
+  methods: {
+    /**
+     * Lấy danh sách menu
+     */
+    loadMenu() {
+      getMenu().then(res => {
+        this.menus = res.data
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+  },
+  created() {
+    this.loadMenu();
+  }
 }
 </script>
 
@@ -144,6 +138,16 @@ export default {
         padding: 12px;
         margin: 8px 8px 0 8px;
         border-radius: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        span {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 100%;
+        }
 
         &:hover {
           background: #eff7ff;

@@ -144,5 +144,20 @@ CREATE TABLE `brands`
     CONSTRAINT `brands_media_id_foreign` FOREIGN KEY (`media_id`) REFERENCES `medias` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS menus;
+CREATE TABLE `menus`
+(
+    `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `label`      varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `icon`       varchar(255) COLLATE utf8mb4_unicode_ci NULL,
+    `route`      varchar(255) COLLATE utf8mb4_unicode_ci NULL,
+    `parent_id`  bigint(20) unsigned DEFAULT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY          `menus_parent_id_foreign` (`parent_id`),
+    CONSTRAINT `menus_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 SET
 FOREIGN_KEY_CHECKS = 1; -- enable check foreign key
