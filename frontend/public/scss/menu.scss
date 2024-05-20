@@ -21,6 +21,14 @@
   background: var(--Primary-500);
 }
 
-.p-menu .p-menuitem:not(.p-highlight):not(.p-disabled).p-focus > .p-menuitem-content .p-menuitem-link .p-menuitem-text{
+.p-menu .p-menuitem:not(.p-highlight):not(.p-disabled).p-focus > .p-menuitem-content .p-menuitem-link .p-menuitem-text {
   color: #fff;
+}
+
+.p-panelmenu {
+  .p-panelmenu-panel {
+    .p-submenu-list {
+      padding-left: unset !important;
+    }
+  }
 }

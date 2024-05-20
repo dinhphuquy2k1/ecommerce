@@ -148,6 +148,7 @@ export default {
           overflow: hidden;
           text-overflow: ellipsis;
           max-width: 100%;
+          padding-left: 5px;
         }
 
         &:hover {
