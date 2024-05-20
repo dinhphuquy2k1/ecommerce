@@ -13,6 +13,29 @@ class ApiMenuController extends Controller
      */
     public function getMenu(): JsonResponse
     {
-        return $this->sendResponseSuccess(Menu::with('items')->whereNull('parent_id')->get()->toArray());
+        $menus = Menu::all()->toArray();
+        $ret = $this->recursiveMenu($menus);
+        return $this->sendResponseSuccess($ret);
+    }
+
+    public function recursiveMenu(array $menus, $parentId = null): array
+    {
+        $result = [];
+        foreach ($menus as $menu) {
+            if ($parentId == $menu['parent_id']) {
+                $category = [
+                    'key' => $menu['id'],
+                    'id' => $menu['id'],
+                    'label' => $menu['label'],
+                    'icon' => $menu['icon'],
+                    'route' => $menu['route'],
+                    'display' => $menu['display'],
+                    'parent_id' => $menu['parent_id'],
+                    'items' => $this->recursiveMenu($menus, $menu['id']),
+                ];
+                $result[] = $category;
+            }
+        }
+        return $result;
     }
 }
