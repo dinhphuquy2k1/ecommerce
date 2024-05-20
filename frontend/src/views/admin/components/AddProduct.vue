@@ -1,32 +1,30 @@
 <template>
   <div class="form-list flex-grow-1 d-flex ma-add-product_wrapper mw-100">
-    <div class="d-flex flex-column flex-grow-1 mw-100">
-      <div class="d-flex flex-row title-box">
-        <div class="list-title flex-grow-1 text-start">Thêm sản phẩm</div>
-      </div>
-      <div class="d-flex flex-row toolbar-box justify-content-between position-sticky top-0 z-1">
-        <div class="left-toolbar d-flex flex-row">
-          <!--          <div class="m-search_form flex-row d-flex align-items-center d-flex">-->
-          <!--            <InputText type="search" v-model="value" class="ms-input_search w-100" placeholder="Tìm kiếm"/>-->
-          <!--            <div class="icon24 icon search-right search"></div>-->
-          <!--          </div>-->
-        </div>
-        <div class="right-toolbar d-flex flex-row">
-          <Button
-              class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
-            <div class="icon-only icon-simple_cart"></div>
-            <div class="fw-semibold">Lưu nháp</div>
-          </Button>
-          <Button
-              @click="btnAddProduct"
-              class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-            <div class="icon-only icon-simple_cart"></div>
-            <div class="fw-semibold">Thêm sản phẩm</div>
-          </Button>
+    <div class="d-flex flex-column mw-100 mh-100">
+      <div class="popup-header header-shadow position-sticky top-0 z-1">
+        <div class="h-100 d-flex justify-content-between">
+          <div class="left-toolbar d-flex flex-row">
+            <div class="d-flex flex-row">
+              <div class="list-title flex-grow-1 text-start">Thêm sản phẩm</div>
+            </div>
+          </div>
+          <div class="right-toolbar d-flex flex-row">
+            <Button
+                class="ms-btn secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
+              <div class="">Lưu nháp</div>
+            </Button>
+            <Button
+                @click="btnAddProduct"
+                class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+              <div class="icon-only icon-simple_cart"></div>
+              <div class="">Thêm sản phẩm</div>
+            </Button>
+          </div>
         </div>
       </div>
-      <div class="row gy-4 pb-4">
-        <div class="col-9">
+
+      <div class="row pb-4 g-0 overflow-auto">
+        <div class="col-9 gx-3">
           <Panel header="Thông tin cơ bản" class="ma-media">
             <div class="d-flex flex-column group-form_list" ref="image">
               <div class="group-form_box">
@@ -791,7 +789,7 @@
           </Panel>
 
         </div>
-        <div class="col-3 position-sticky">
+        <div class="col-3 gx-3 position-sticky">
           <Panel header="Loại sản phẩm" toggleable>
             <p class="m-0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -2059,6 +2057,9 @@ export default {
 
 <style lang="scss">
 .ma-add-product_wrapper {
+  max-width: 100%;
+  padding: 0;
+
   .p-panel {
     border-radius: 8px;
     background-color: #fff;

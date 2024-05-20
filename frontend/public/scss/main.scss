@@ -594,3 +594,44 @@ nav a {
 .font-regular {
   font-weight: 400;
 }
+
+.form-list {
+  padding: 24px;
+}
+
+.popup-header {
+  height: 60px;
+  font-weight: 700;
+  background: #fff;
+
+  &.header-shadow {
+    margin-bottom: 16px !important;
+    box-shadow: 0 1.5px 2px 0 rgba(0, 0, 0, .1);
+  }
+}
+
+.popup-footer {
+  border-top: 1px solid #e0e0e0;
+  background-color: #fbfbfe;
+  padding: 12px 24px;
+}
+
+.flex-1 {
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 0%;
+  flex: 1 1 0%;
+}
+
+.py-32 {
+  padding-bottom: 32px;
+  padding-top: 32px;
+}
+
+.px-24 {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.rounded-8 {
+  border-radius: 8px;
+}

@@ -152,6 +152,7 @@ CREATE TABLE `menus`
     `icon`       varchar(255) COLLATE utf8mb4_unicode_ci NULL,
     `route`      varchar(255) COLLATE utf8mb4_unicode_ci NULL,
     `parent_id`  bigint(20) unsigned DEFAULT NULL,
+    `display`    tinyint(1) NOT NULL DEFAULT '0',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),

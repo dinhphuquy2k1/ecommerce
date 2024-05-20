@@ -3,7 +3,7 @@
     <router-view name="header"></router-view>
     <div class="d-flex ma-main flex-grow-1">
       <router-view name="navbar"></router-view>
-      <div class="ma-content d-flex overflow-auto">
+      <div class="ma-content d-flex">
         <router-view name="content"></router-view>
       </div>
     </div>
@@ -30,10 +30,10 @@ export default {
     overflow: auto;
 
     .ma-content {
-      padding: 24px;
       transition: padding .2s;
       width: 100%;
       height: 100%;
+      max-width: 100%;
       box-shadow: inset 0 1.5px 2px 0 rgba(0, 0, 0, .1);
 
       .form-list .list-title {
@@ -54,7 +54,8 @@ export default {
           .row {
             background: #f5f5f5;
             border-radius: 8px;
-            .label{
+
+            .label {
             }
           }
         }
@@ -83,6 +84,7 @@ export default {
 
         .m-search_form {
           width: 265px;
+          max-height: 38px;
           background: #fff;
           border: 1px solid var(--Gray-100);
           border-radius: 4px;
@@ -102,6 +104,10 @@ export default {
           position: relative;
         }
       }
+    }
+
+    nav + .ma-content {
+      max-width: calc(100% - $navbar-width);
     }
   }
 }
