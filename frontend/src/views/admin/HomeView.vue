@@ -31,7 +31,6 @@ export default {
 
     .ma-content {
       transition: width .2s;
-      width: calc(100% - $navbar-width);
       height: 100%;
       box-shadow: inset 0 1.5px 2px 0 rgba(0, 0, 0, .1);
 
