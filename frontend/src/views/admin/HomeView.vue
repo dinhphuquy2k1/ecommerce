@@ -30,10 +30,9 @@ export default {
     overflow: auto;
 
     .ma-content {
-      transition: padding .2s;
-      width: 100%;
+      transition: width .2s;
+      width: calc(100% - $navbar-width);
       height: 100%;
-      max-width: 100%;
       box-shadow: inset 0 1.5px 2px 0 rgba(0, 0, 0, .1);
 
       .form-list .list-title {
@@ -106,8 +105,12 @@ export default {
       }
     }
 
+    nav:not(.collapsed) + .ma-content {
+      width: calc(100% - $navbar-width);
+    }
+
     nav + .ma-content {
-      max-width: calc(100% - $navbar-width);
+      width: calc(100% - 56px);
     }
   }
 }

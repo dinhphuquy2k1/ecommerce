@@ -79,6 +79,7 @@ export default {
   }
 
   &.collapsed {
+    min-width: 56px;
     width: 56px;
   }
 

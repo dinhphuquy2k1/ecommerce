@@ -66,6 +66,8 @@
   border-bottom: 1px solid #e0e1ef;
   border-right: 1px solid #e0e1ef;
   background: #fff !important;
+  padding: 0 16px !important;
+  height: 48px;
   border-top: none !important;
   border-left: none !important;
 }
@@ -211,10 +213,11 @@
         td {
           padding: 12px !important;
           border-right: unset !important;
-          border-bottom: 1px solid rgba(0,0,0,.1);
+          border-bottom: 1px solid rgba(0, 0, 0, .1);
         }
-        &:last-child{
-          td{
+
+        &:last-child {
+          td {
             border-bottom: unset !important;
           }
         }
