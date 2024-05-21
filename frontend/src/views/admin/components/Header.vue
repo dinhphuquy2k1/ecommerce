@@ -12,8 +12,11 @@
         <div class="right-btt-action right-action icon-setting icon24 setting has-tooltip"
              v-tooltip.bottom="'Cài đặt'"></div>
         <div class="h-100">
-          <Button type="button" icon="pi pi-ellipsis-v" class="h-100" @click="toggle" aria-haspopup="true"
-                  aria-controls="overlay_menu"/>
+          <Button
+              @click="toggle" aria-haspopup="true"
+              aria-controls="overlay_menu"
+              class="ms-btn primary h-100 rounded-0 mw-0 d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+          </Button>
           <Menu ref="menu" id="overlay_menu" :model="items" :popup="true"/>
         </div>
       </div>

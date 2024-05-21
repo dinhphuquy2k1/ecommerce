@@ -401,8 +401,38 @@ span.icon24 {
   background-image: url("@public/assets/icons/ic_question_cricle.svg");
 }
 
-.icon-pause{
+.icon-pause {
   height: 24px;
   width: 24px;
   background: transparent url("@public/assets/icons/ic_pause.svg") no-repeat center;
+}
+
+.icon-product_default {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/icon-product_default.svg") no-repeat center;
+}
+
+.icon-home_default {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/ic_home_default.svg") no-repeat center;
+}
+
+.icon-account_default {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/ic_account_default.svg") no-repeat center;
+}
+
+.icon-order_default {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/ic-order_default.svg") no-repeat center;
+}
+
+.icon-challenge_default {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/ic-challenge_default.svg") no-repeat center;
 }
