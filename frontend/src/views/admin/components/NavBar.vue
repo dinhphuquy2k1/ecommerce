@@ -6,7 +6,7 @@
         <template #item="{ item }">
           <router-link v-if="item.route && item.items.length===0" :to="item.route"
                        class="ma-navbar-parent d-flex align-items-center">
-            <div class="d-flex flex-grow-1 align-items-center cursor-pointer menu-item">
+            <div class="d-flex flex-grow-1 align-items-center gap-1 cursor-pointer menu-item">
               <span :class="[item.icon, 'text-primary']"/>
               <span :class="['ml-2', { 'font-semibold': item.items }]">{{ item.label }}</span>
             </div>
@@ -126,7 +126,7 @@ export default {
         .p-menuitem {
           .menu-item {
             span {
-              padding-left: 15px;
+              padding-left: 10px;
             }
           }
         }
