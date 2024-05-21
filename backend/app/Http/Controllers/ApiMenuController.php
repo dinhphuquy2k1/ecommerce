@@ -33,6 +33,8 @@ class ApiMenuController extends Controller
                     'parent_id' => $menu['parent_id'],
                     'items' => $this->recursiveMenu($menus, $menu['id']),
                 ];
+                $category['routes'] = array_column($category['items'], 'route');
+                $category['route_keys'] = array_column($category['items'], 'key');
                 $result[] = $category;
             }
         }

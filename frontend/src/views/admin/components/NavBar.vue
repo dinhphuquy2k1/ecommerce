@@ -2,7 +2,7 @@
   <nav class="ma-navbar position-relative d-flex flex-column justify-content-between"
        :class="{'collapsed': isCollapsed}">
     <div class="left-container flex-grow-1">
-      <PanelMenu :model="menus" multiple>
+      <PanelMenu v-model:expanded-keys="expandedKeys" :model="menus" multiple>
         <template #item="{ item }">
           <router-link v-if="item.route && item.items.length===0" :to="item.route"
                        class="ma-navbar-parent d-flex align-items-center">
@@ -49,19 +49,31 @@ export default {
     }
   },
   methods: {
+    expandedMenu() {
+      for (const [index, item] of this.menus.entries()) {
+        const find = item.routes.findIndex(route => route === this.$route.path);
+        if (find !== -1) {
+          this.expandedKeys = {
+            [item.key]: true
+          }
+          break;
+        }
+      }
+    },
     /**
      * Lấy danh sách menu
      */
-    loadMenu() {
-      getMenu().then(res => {
+    async loadMenu() {
+      await getMenu().then(res => {
         this.menus = res.data
       }).catch(error => {
         console.log(error)
       })
     },
   },
-  created() {
-    this.loadMenu();
+  async created() {
+    await this.loadMenu();
+    this.expandedMenu();
   }
 }
 </script>
@@ -153,7 +165,7 @@ export default {
             }
           }
 
-          &[aria-expanded="false"] {
+          & {
             .p-submenu-icon {
               .menu-item {
                 .pi-angle-up {
