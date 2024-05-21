@@ -219,6 +219,7 @@ export default {
       .router-link-active.router-link-exact-active {
         .menu-item {
           background: #fbe9e7;
+          color: #ff6d00;
         }
 
         &.ma-navbar-parent {
