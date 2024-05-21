@@ -13,7 +13,7 @@
           </router-link>
           <div v-else class="ma-navbar-parent d-flex align-items-center"
                :class="{'p-submenu-icon': item.items.length > 0}">
-            <div class="menu-item flex-grow-1 d-flex">
+            <div class="menu-item align-items-center flex-grow-1 d-flex">
               <div class="icon"></div>
               <div class="flex-grow-1">{{ item.label }}</div>
               <span v-if="item.items" class="pi arrow-right pi-angle-up text-primary ml-auto"/>
