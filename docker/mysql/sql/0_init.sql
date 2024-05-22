@@ -176,5 +176,72 @@ CREATE TABLE `menus`
     CONSTRAINT `menus_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-SET
-FOREIGN_KEY_CHECKS = 1; -- enable check foreign key
+DROP TABLE IF EXISTS users;
+CREATE TABLE users
+(
+    `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `username`   varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `email`      varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `password`   varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS roles;
+CREATE TABLE roles
+(
+    `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `role_name`  varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `role_type`  tinyint(1) NOT NULL DEFAULT '0',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS permissions;
+CREATE TABLE permissions
+(
+    `id`              bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `permission_name` VARCHAR(255)                            NOT NULL,
+    `permission_type` bigint(20) unsigned NOT NULL,
+    `parent_id`       bigint(20) unsigned DEFAULT NULL,
+    `model`           varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `created_at`      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY               `permissions_parent_id_foreign` (`parent_id`),
+    CONSTRAINT `permissions_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS role_permissions;
+CREATE TABLE role_permissions
+(
+    `id`            bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `role_id`       bigint(20) unsigned NOT NULL,
+    `permission_id` bigint(20) unsigned NOT NULL,
+    `created_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY             `role_permissions_role_id_foreign` (`role_id`),
+    KEY             `role_permissions_permission_idd_foreign` (`permission_id`),
+    CONSTRAINT `role_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `role_permissions_permission_idd_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS user_roles;
+CREATE TABLE user_roles
+(
+    `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `user_id`    bigint(20) unsigned NOT NULL,
+    `role_id`    bigint(20) unsigned NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY          `user_roles_user_id_foreign` (`user_id`),
+    KEY          `user_roles_role_id_foreign` (`role_id`),
+    CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+);
+
+SET FOREIGN_KEY_CHECKS = 1; -- enable check foreign key
