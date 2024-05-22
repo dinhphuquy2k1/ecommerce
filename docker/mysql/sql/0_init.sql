@@ -194,6 +194,7 @@ CREATE TABLE roles
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `role_name`  varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `role_type`  tinyint(1) NOT NULL DEFAULT '0',
+    `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
@@ -244,4 +245,5 @@ CREATE TABLE user_roles
     CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 );
 
-SET FOREIGN_KEY_CHECKS = 1; -- enable check foreign key
+SET
+FOREIGN_KEY_CHECKS = 1; -- enable check foreign key

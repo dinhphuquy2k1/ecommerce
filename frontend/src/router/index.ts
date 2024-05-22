@@ -160,7 +160,7 @@ const routes: Array<RouteRecordRaw> = [
                                 path: 'user-management',
                                 components: {
                                     header: () => import('@/views/admin/components/Header.vue'),
-                                    content: () => import('@/views/admin/components/AccountSettings.vue'),
+                                    content: () => import('@/views/admin/components/UserManagement.vue'),
                                     navbar: () => import('@/views/admin/components/NavBar.vue'),
                                 }
                             },

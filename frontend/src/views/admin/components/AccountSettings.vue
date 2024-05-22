@@ -1,5 +1,5 @@
 <template>
-  <div class="form-list flex-grow-1 d-flex">
+  <div class="form-list flex-grow-1 d-flex overflow-auto">
     <div class="d-flex flex-column flex-grow-1">
       <div class="d-flex flex-row title-box">
         <div class="list-title flex-grow-1 text-start">Cài đặt tài khoản</div>
@@ -36,7 +36,7 @@ export default {
       settings: [
         {
           title: 'Quản lý người dùng',
-          route: '/admin/profile/account-setting/warehouse',
+          route: '/admin/profile/account-setting/user-management',
           description: 'Quản lý đặc quyền và quyền truy cập của người dùng trong tài khoản của bạn.',
           icon: '<svg width="40" height="40" viewBox="0 0 40 40" fill="red" xmlns="http://www.w3.org/2000/svg" class="w-40 h-40" style="stroke: none;"><g clip-path="url(#clip0_50_2956)"><path d="M31.11 0H8.89C3.98019 0 0 3.98019 0 8.89V31.11C0 36.0198 3.98019 40 8.89 40H31.11C36.0198 40 40 36.0198 40 31.11V8.89C40 3.98019 36.0198 0 31.11 0Z" fill="#E6F1F1"></path><path d="M20.0045 18.7419C23.2473 18.7419 25.8762 16.1131 25.8762 12.8702C25.8762 9.62738 23.2473 6.99854 20.0045 6.99854C16.7617 6.99854 14.1328 9.62738 14.1328 12.8702C14.1328 16.1131 16.7617 18.7419 20.0045 18.7419Z" fill="#2979ff"></path><path d="M8.25781 27.9688C8.25781 24.2627 11.2622 21.2583 14.9683 21.2583H25.0341C28.7402 21.2583 31.7446 24.2627 31.7446 27.9688V33.0017H8.25781V27.9688Z" fill="#2979ff"></path></g><defs><clipPath id="clip0_50_2956"><rect width="40" height="40" fill="white"></rect></clipPath></defs></svg>',
         },
