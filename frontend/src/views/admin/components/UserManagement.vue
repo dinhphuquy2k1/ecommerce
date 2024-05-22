@@ -16,11 +16,11 @@
             <MultiSelect
                 v-model="selectedRoles"
                 :options="roles"
-                optionLabel="label"
+                optionLabel="role_name"
                 :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
                 :placeholder="MESSAGE.ROLES"
                 display="chip"
-                class="ms-category text-start"></MultiSelect>
+                class="ms-category max-w-266 text-start"></MultiSelect>
             <InputText v-model="valueBrandSelectAddOption"
                        :placeholder="MESSAGE.ENTER_YOUR_EMAIL_ADDRESS"></InputText>
           </div>
