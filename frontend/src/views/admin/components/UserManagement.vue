@@ -137,7 +137,7 @@
           <Column field="description" style="min-width: 170px; max-width: 170px" dataKey="id"
                   :header="MESSAGE.DESCRIPTION">
             <template #body="{ data, field, slotProps }">
-              <div v-if="!isLoading" class="truncate-text-3">
+              <div v-if="!isLoading" class="truncate-text-3" v-tooltip="data[field]">
                 {{ data[field] }}
               </div>
               <div v-else>
@@ -158,8 +158,8 @@
           <Column frozen align-frozen="right" field="permissions" style="min-width: 300px; max-width: 300px"
                   dataKey="id" :header="MESSAGE.PERMISSION">
             <template #body="{ data, field, slotProps }">
-              <div v-if="!isLoading" class="truncate-text-3">
-                {{ data[field].map(permission => permission.permission_name).join(', ') }}
+              <div v-if="!isLoading" class="truncate-text-3" v-tooltip="data[field]">
+                {{ data[field] }}
               </div>
               <div v-else>
                 <Skeleton height="18px" class="mb-2"></Skeleton>
@@ -245,7 +245,8 @@ export default {
   tr {
     td {
       white-space: wrap !important;
-      .truncate-text-3{
+
+      .truncate-text-3 {
         margin-top: 12px;
         margin-bottom: 12px;
       }
