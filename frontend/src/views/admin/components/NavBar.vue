@@ -216,7 +216,7 @@ export default {
         }
       }
 
-      .router-link-active.router-link-exact-active {
+      .router-link-active {
         .menu-item {
           background: #fbe9e7;
           color: #ff6d00;

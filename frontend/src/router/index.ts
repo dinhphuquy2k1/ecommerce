@@ -36,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
         },
         children: [
             {
-                path: '',
+                path: 'homepage',
                 components: {
                     header: () => import('@/views/admin/components/Header.vue'),
                     content: () => import('@/views/admin/components/AddProduct.vue'),
@@ -192,7 +192,7 @@ const routes: Array<RouteRecordRaw> = [
                                 path: 'warehouse',
                                 components: {
                                     header: () => import('@/views/admin/components/Header.vue'),
-                                    content: () => import('@/views/admin/components/AccountSettings.vue'),
+                                    content: () => import('@/views/admin/components/WareHouse.vue'),
                                     navbar: () => import('@/views/admin/components/NavBar.vue'),
                                 }
                             },

@@ -2,7 +2,6 @@ import request from '../api/utils/request'
 
 /**
  * Lấy danh sách bảng kích thước
- * @param data
  * @returns {*}
  */
 export function getSize() {

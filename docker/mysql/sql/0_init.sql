@@ -144,6 +144,22 @@ CREATE TABLE `brands`
     CONSTRAINT `brands_media_id_foreign` FOREIGN KEY (`media_id`) REFERENCES `medias` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS ware_houses;
+CREATE TABLE `ware_houses`
+(
+    `id`                bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `warehouse_name`    varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE,
+    `warehouse_type`    tinyint(11) NOT NULL DEFAULT '0',
+    `warehouse_contact` varchar(255) COLLATE utf8mb4_unicode_ci NULL,
+    `phone_number`      varchar(255) COLLATE utf8mb4_unicode_ci NULL,
+    `detailed_address`  varchar(255) COLLATE utf8mb4_unicode_ci NULL,
+    `warehouse_address` varchar(255) COLLATE utf8mb4_unicode_ci NULL,
+    `warehouse_status`  tinyint(11) NOT NULL DEFAULT '0',
+    `created_at`        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`        TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 DROP TABLE IF EXISTS menus;
 CREATE TABLE `menus`
 (

@@ -1,12 +1,13 @@
 import request from '../api/utils/request'
 
 /**
- * Lấy danh sách menu
+ * Lấy danh sách bảng kích thước
  * @returns {*}
  */
-export function getMenu() {
+export function getWareHouse() {
     return request({
-        url: 'menus',
+        url: 'warehouses',
         method: 'GET',
     })
 }
+

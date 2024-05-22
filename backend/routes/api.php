@@ -7,6 +7,7 @@ use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiBrandController;
 use App\Http\Controllers\ApiSizeController;
 use App\Http\Controllers\ApiMenuController;
+use App\Http\Controllers\ApiWareHouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,9 @@ Route::prefix('brands')->group(function () {
 Route::prefix('sizes')->group(function () {
     Route::get('/', [ApiSizeController::class, 'get']);
     Route::post('/', [ApiSizeController::class, 'store']);
+});
+
+Route::prefix('warehouses')->group(function () {
+    Route::get('/', [ApiWareHouseController::class, 'get']);
+    Route::post('/', [ApiWareHouseController::class, 'store']);
 });

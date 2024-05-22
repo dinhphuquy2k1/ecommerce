@@ -1,6 +1,6 @@
 SET CHARSET UTF8;
 
-INSERT IGNORE INTO menus (id, label, icon, route, parent_id, created_at, updated_at) VALUES(1, 'Trang chủ', 'icon-home_default', '/admin', null, now(), now());
+INSERT IGNORE INTO menus (id, label, icon, route, parent_id, created_at, updated_at) VALUES(1, 'Trang chủ', 'icon-home_default', '/admin/homepage', null, now(), now());
 
 INSERT IGNORE INTO menus (id, label, icon, route, parent_id, created_at, updated_at) VALUES(10, 'Tổng quan', 'icon-challenge_default', null, null, now(), now());
 INSERT IGNORE INTO menus (id, label, icon, route, parent_id, created_at, updated_at) VALUES(11, 'Đơn hàng', null, '/admin/dashboard/order', 10, now(), now());

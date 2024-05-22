@@ -243,3 +243,8 @@
     }
   }
 }
+
+.p-datatable-loading-overlay {
+  z-index: 11;
+  display: none;
+}
