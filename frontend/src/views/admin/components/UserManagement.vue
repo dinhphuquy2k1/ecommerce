@@ -34,7 +34,7 @@
         <DataTable :rows="10" class="flex1 flex-column mw-100"
                    :class="{ 'loading': isLoading }" :loading="isLoading"
                    scrollable
-                   :value="isLoading ? Array.from({ length: 1 }, () => ({ ...{} })) : data"
+                   :value="isLoading ? Array.from({ length: 10 }, () => ({ ...{} })) : data"
                    @rowDblclick="onRowSelect($event.data)" tableStyle="min-width: 100%" rowHover>
           <template #paginatorstart>
             <Button type="button" icon="pi pi-refresh" text/>
@@ -112,7 +112,7 @@
         <DataTable :rows="10" class="flex1 flex-column mw-100 ms-table_roles"
                    :class="{ 'loading': isLoading }" :loading="isLoading"
                    scrollable
-                   :value="isLoading ? Array.from({ length: 1 }, () => ({ ...{} })) : roles"
+                   :value="isLoading ? Array.from({ length: 10 }, () => ({ ...{} })) : roles"
                    @rowDblclick="onRowSelect($event.data)" tableStyle="min-width: 100%" rowHover>
           <template #paginatorstart>
             <Button type="button" icon="pi pi-refresh" text/>
