@@ -203,7 +203,11 @@
               :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
               :placeholder="MESSAGE.ROLES"
               display="chip"
-              class="ms-category w-100 text-start"></MultiSelect>
+              class="ms-category w-100 text-start">
+            <template #option="{option}">
+              <div v-tooltip="option.description">{{ option.role_name}}</div>
+            </template>
+          </MultiSelect>
         </div>
         <div class="ms-error-text"></div>
       </div>
