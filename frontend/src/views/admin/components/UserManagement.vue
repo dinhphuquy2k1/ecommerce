@@ -31,6 +31,7 @@
             <div class="theme-arco-divider-vertical mx-16"></div>
             <div>
               <Button
+                  @click="resetUserSearch"
                   class="ms-btn secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
                 <div class="fw-medium">Đặt lại</div>
               </Button>
@@ -343,7 +344,7 @@ export default {
         roleSearch: [],
       },
       isCreateUser: false,
-      isCreateRole: true,
+      isCreateRole: false,
       splitButtonItems: [
         {
           label: 'Thêm người dùng',
@@ -384,20 +385,30 @@ export default {
         case 1:
           this.isCreateUser = true;
           break;
-        case 2:
           // thêm vai trò
+        case 2:
+          this.isCreateRole = true;
           break;
       }
     },
 
     /**
-     * Click nút đặt lại vai trò tìm kiém
+     * Click nút đặt lại vai trò tìm kiếm
      */
     resetRoleSearch() {
       this.selectedTypeRole = [];
       this.selectedTypeRole.push(this.roles.types[0])
       this.roles.roleSearch = this.roles.roles;
     },
+
+    /**
+     * Click nút đặt lại tìm kiếm người dùng
+     */
+    resetUserSearch() {
+      this.searchEmail = null;
+      this.selectedRoles = null;
+    },
+
     /**
      * Lấy danh sách kho
      */
