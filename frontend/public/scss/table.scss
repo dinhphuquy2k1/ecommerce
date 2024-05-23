@@ -82,7 +82,6 @@
 .p-datatable .p-datatable-tbody > tr > td:last-child, .p-datatable .p-datatable-thead > tr > th {
   &:last-child {
     border-right: none;
-    z-index: 10;
     position: sticky;
     border-top-right-radius: 4px;
   }
@@ -99,7 +98,6 @@
 
 .p-datatable .p-datatable-tbody > tr > td:last-child, .p-datatable .p-datatable-thead > tr > th:last-child {
   border-right: none;
-  z-index: 10;
   position: sticky;
 }
 
@@ -196,6 +194,7 @@
           box-sizing: border-box;
           color: rgba(0, 0, 0, .92);
           font-weight: 500;
+          z-index: 11;
           line-height: 1.5715;
           text-align: left;
           border: unset !important;
@@ -251,4 +250,24 @@
 
 .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr.p-datatable-emptymessage:not(.p-highlight):hover {
   background: unset !important;
+}
+
+.p-datatable {
+  .p-datatable-table {
+    height: 100%;
+
+    .p-datatable-thead {
+
+    }
+
+    .p-datatable-tbody {
+      tr {
+        &.p-datatable-emptymessage {
+          td {
+            border-bottom: none !important;
+          }
+        }
+      }
+    }
+  }
 }

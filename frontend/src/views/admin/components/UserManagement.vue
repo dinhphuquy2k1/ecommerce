@@ -1,10 +1,12 @@
 <template>
-  <div class="form-list flex-grow-1 flex-column d-flex mw-100">
+  <div class="form-list flex-grow-1 flex-column d-flex mw-100 ms-user-management">
     <div class="d-flex flex-row title-box align-items-center gap-2">
       <div class="icon24 back cursor-pointer" @click="this.$router.go(-1)"></div>
       <div class="list-title flex-grow-1 text-start">Quản lý người dùng</div>
     </div>
-    <TabView>
+    <TabView class="flex1 d-flex flex-column" :pt="{
+     panelContainer: { class: 'flex1 d-flex flex-column' },
+    }">
       <TabPanel :header="MESSAGE.USER_ADDED">
         <header class="flex pb-24">
           <h3 class="flex flex-1 text-head-l font-semibold text-gray-1 items-center">
@@ -31,66 +33,68 @@
             </Button>
           </div>
         </div>
-        <DataTable :rows="10" class="flex1 flex-column mw-100"
-                   :class="{ 'loading': isLoading }" :loading="isLoading"
-                   scrollable
-                   :value="isLoading ? Array.from({ length: 10 }, () => ({ ...{} })) : data"
-                   @rowDblclick="onRowSelect($event.data)" tableStyle="min-width: 100%" rowHover>
-          <template #paginatorstart>
-            <Button type="button" icon="pi pi-refresh" text/>
-          </template>
-          <template #paginatorend>
-            bản ghi/trang
-          </template>
-          <template #empty>
-            <div class="d-flex flex-column p-24 justify-content-center align-items-center">
-              <img :src="require('@public/assets/images/empty_table.svg')" alt="">
-              <div>Không tìm thấy kết quả nào</div>
-            </div>
-          </template>
-          <Column field="warehouse_name" style="min-width: 250px" :header="MESSAGE.USER_EMAIL">
-            <template #body="{ data, field, slotProps }">
-              <div v-if="!isLoading"> {{ data[field] }}</div>
-              <div v-else>
-                <Skeleton height="18px" class="mb-2"></Skeleton>
+        <div class="flex1 d-flex">
+          <DataTable :rows="10" class="flex1 flex-column mw-100"
+                     :class="{ 'loading': isLoading }" :loading="isLoading"
+                     scrollable
+                     :value="isLoading ? Array.from({ length: 10 }, () => ({ ...{} })) : data"
+                     @rowDblclick="onRowSelect($event.data)" tableStyle="min-width: 100%" rowHover>
+            <template #paginatorstart>
+              <Button type="button" icon="pi pi-refresh" text/>
+            </template>
+            <template #paginatorend>
+              bản ghi/trang
+            </template>
+            <template #empty>
+              <div class="d-flex flex-column p-24 justify-content-center align-items-center">
+                <img :src="require('@public/assets/images/empty_table.svg')" alt="">
+                <div>Không tìm thấy kết quả nào</div>
               </div>
             </template>
-          </Column>
-          <Column field="detailed_address" style="min-width: 160px" dataKey="id" :header="MESSAGE.ROLES">
-            <template #body="{ data, field, slotProps }">
-              <div v-if="!isLoading">
-                <div v-if="data[field]">
-                  {{ data[field] }}
+            <Column field="warehouse_name" style="min-width: 200px" :header="MESSAGE.USER_EMAIL">
+              <template #body="{ data, field, slotProps }">
+                <div v-if="!isLoading"> {{ data[field] }}</div>
+                <div v-else>
+                  <Skeleton height="18px" class="mb-2"></Skeleton>
                 </div>
-                <div class="d-flex status-ctn max-content" v-else
-                     style="background-color: rgb(254, 243, 231);">
-                  <div class="status-dot" style="background-color: rgb(243, 141, 21);"></div>
-                  <div class="status-text" style="color: rgb(243, 141, 21);">Chưa cài đặt</div>
+              </template>
+            </Column>
+            <Column field="detailed_address" style="min-width: 500px" dataKey="id" :header="MESSAGE.ROLES">
+              <template #body="{ data, field, slotProps }">
+                <div v-if="!isLoading">
+                  <div v-if="data[field]">
+                    {{ data[field] }}
+                  </div>
+                  <div class="d-flex status-ctn max-content" v-else
+                       style="background-color: rgb(254, 243, 231);">
+                    <div class="status-dot" style="background-color: rgb(243, 141, 21);"></div>
+                    <div class="status-text" style="color: rgb(243, 141, 21);">Chưa cài đặt</div>
+                  </div>
                 </div>
-              </div>
-              <div v-else>
-                <Skeleton height="18px" class="mb-2"></Skeleton>
-              </div>
-            </template>
-          </Column>
-          <Column field="warehouse_contact" style="min-width: 180px" dataKey="id" :header="MESSAGE.ACT">
-            <template #body="{ data, field, slotProps }">
-              <div v-if="!isLoading">
-                <div v-if="data[field]">
-                  {{ data[field] }}
+                <div v-else>
+                  <Skeleton height="18px" class="mb-2"></Skeleton>
                 </div>
-                <div class="d-flex status-ctn max-content" v-else
-                     style="background-color: rgb(254, 243, 231);">
-                  <div class="status-dot" style="background-color: rgb(243, 141, 21);"></div>
-                  <div class="status-text" style="color: rgb(243, 141, 21);">Chưa cài đặt</div>
+              </template>
+            </Column>
+            <Column field="warehouse_contact" style="min-width: 180px" dataKey="id" :header="MESSAGE.ACT">
+              <template #body="{ data, field, slotProps }">
+                <div v-if="!isLoading">
+                  <div v-if="data[field]">
+                    {{ data[field] }}
+                  </div>
+                  <div class="d-flex status-ctn max-content" v-else
+                       style="background-color: rgb(254, 243, 231);">
+                    <div class="status-dot" style="background-color: rgb(243, 141, 21);"></div>
+                    <div class="status-text" style="color: rgb(243, 141, 21);">Chưa cài đặt</div>
+                  </div>
                 </div>
-              </div>
-              <div v-else>
-                <Skeleton height="18px" class="mb-2"></Skeleton>
-              </div>
-            </template>
-          </Column>
-        </DataTable>
+                <div v-else>
+                  <Skeleton height="18px" class="mb-2"></Skeleton>
+                </div>
+              </template>
+            </Column>
+          </DataTable>
+        </div>
       </TabPanel>
       <TabPanel :header="MESSAGE.ROLE_ADDED">
         <header class="flex pb-24">
@@ -241,14 +245,44 @@ export default {
 </script>
 
 <style lang="scss">
-.ms-table_roles {
-  tr {
-    td {
-      white-space: wrap !important;
+.ms-user-management {
+  .ms-table_roles {
+    tr {
+      td {
+        white-space: wrap !important;
 
-      .truncate-text-3 {
-        margin-top: 12px;
-        margin-bottom: 12px;
+        .truncate-text-3 {
+          margin-top: 12px;
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+
+  .p-tabview-panels {
+    display: flex;
+    flex: 1;
+
+    .p-tabview-panel {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+
+      .p-datatable {
+        flex-grow: 1;
+        height: 100%;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+
+        .p-datatable-table {
+          height: 100%;
+
+          &:not(.loading) .p-datatable-tbody > tr.p-datatable-emptymessage > td, &:not(.loading) .p-datatable-tbody > tr:last-child > td {
+            border-bottom: none !important;
+          }
+
+        }
       }
     }
   }

@@ -23,8 +23,9 @@
             bản ghi/trang
           </template>
           <template #empty>
-            <div>
-              Không có dữ liệu
+            <div class="d-flex flex-column p-24 justify-content-center align-items-center">
+              <img :src="require('@public/assets/images/empty_table.svg')" alt="">
+              <div>Không tìm thấy kết quả nào</div>
             </div>
           </template>
           <Column field="warehouse_name" style="min-width: 250px" header="Tên/mã kho hàng">
