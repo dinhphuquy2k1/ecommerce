@@ -48,10 +48,7 @@
               bản ghi/trang
             </template>
             <template #empty>
-              <div class="d-flex flex-column p-24 justify-content-center align-items-center">
-                <img :src="require('@public/assets/images/empty_table.svg')" alt="">
-                <div>Không tìm thấy kết quả nào</div>
-              </div>
+              <div>Không tìm thấy kết quả nào</div>
             </template>
             <Column field="warehouse_name" style="min-width: 200px" :header="MESSAGE.USER_EMAIL">
               <template #body="{ data, field, slotProps }">
@@ -132,10 +129,7 @@
               bản ghi/trang
             </template>
             <template #empty>
-              <div class="d-flex flex-column p-24 justify-content-center align-items-center">
-                <img :src="require('@public/assets/images/empty_table.svg')" alt="">
-                <div>Không tìm thấy kết quả nào</div>
-              </div>
+              <div>Không tìm thấy kết quả nào</div>
             </template>
             <Column field="role_name" style="min-width: 200px; max-width: 200px" :header="MESSAGE.ROLE_NAME">
               <template #body="{ data, field, slotProps }">
@@ -296,6 +290,7 @@ export default {
       td {
         white-space: wrap !important;
         max-height: 33px;
+
         .truncate-text-3 {
           margin-top: 12px;
           margin-bottom: 12px;

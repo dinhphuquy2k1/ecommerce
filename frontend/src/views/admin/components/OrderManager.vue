@@ -31,10 +31,7 @@
           bản ghi/trang
         </template>
         <template #empty>
-          <div class="d-flex flex-column p-24 justify-content-center align-items-center">
-            <img :src="require('@public/assets/images/empty_table.svg')" alt="">
-            <div>Không tìm thấy kết quả nào</div>
-          </div>
+          <div>Không tìm thấy kết quả nào</div>
         </template>
         <Column selectionMode="multiple" headerStyle="min-width: 3rem"></Column>
         <Column field="DepartmentCode" style="min-width: 250px" header="Đơn hàng">
