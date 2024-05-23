@@ -1,6 +1,4 @@
 import axios from 'axios'
-import store from '@/store'
-import router from '@/router'
 
 const service = axios.create({
     baseURL: "http://localhost:30001/api", // uri = baseURL + apiFunction truyền tới
@@ -25,8 +23,7 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
     response => {
-        const res = response.data
-        return res
+        return response.data
     },
     error => {
         console.log(error)

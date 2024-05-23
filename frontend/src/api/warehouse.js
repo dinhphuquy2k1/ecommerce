@@ -10,4 +10,3 @@ export function getWareHouse() {
         method: 'GET',
     })
 }
-
