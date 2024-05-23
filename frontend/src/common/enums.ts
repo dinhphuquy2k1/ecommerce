@@ -68,4 +68,12 @@ export const MESSAGE = {
     DESCRIPTION: 'Mô tả',
     TYPE: 'Loại',
     PERMISSION: 'Quyền',
+    ADD_USERS: 'Thêm người dùng',
+    SEND: 'Gửi',
+    ADD_NEW_ROLES: 'Thêm vai trò mới',
+    PLEASE_ENTER_A_ROLE_NAME: 'Vui lòng nhập tên vai trò',
+    ROLE_DESCRIPTION: 'Mô tả vai trò',
+    PLEASE_DESCRIBE_THE_ROLE: 'Vui lòng mô tả vai trò',
+    SET_PERMISSIONS: 'Thiết lập quyền',
+    SELECT_PERMISSION_WANT_GRANT: 'Chọn các quyền bạn muốn cấp',
 };
