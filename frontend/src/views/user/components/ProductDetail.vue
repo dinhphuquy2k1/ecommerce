@@ -485,7 +485,7 @@ export default {
         .p-tabview-nav-link {
           border-bottom: 1px solid #fff;
           padding: 18px 20px;
-          color: var(--Gray-600);
+          color: #707070;
           font-weight: 500;
         }
       }

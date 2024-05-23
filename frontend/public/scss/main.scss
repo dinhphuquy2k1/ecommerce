@@ -101,6 +101,48 @@ body {
   align-items: center;
   justify-items: center;
 
+  &.p-selectbutton {
+    &.ms-selectbutton_roles {
+      display: flex;
+      gap: 16px;
+
+      .p-button {
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .05);
+        padding: 8px 16px;
+        color: #000;
+
+        &:focus {
+          box-shadow: unset;
+        }
+
+        &:hover {
+          background-color: rgba(0, 0, 0, .08);
+        }
+
+        &.p-highlight {
+          border-color: #2979ff;
+          color: #2979ff;
+          background: transparent;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+
+    .p-button {
+      height: 36px;
+
+      .p-button-label {
+        font-weight: 500;
+      }
+    }
+
+  }
+
   .text {
     display: inline-block;
     white-space: nowrap;
@@ -169,7 +211,7 @@ body {
 
   &.secondary {
     background-color: rgba(0, 0, 0, .05);
-    color: rgba(0, 0, 0, .92);
+    color: #000;
     font-weight: 500;
 
     &:hover {
@@ -651,6 +693,12 @@ nav a {
 .pb-24 {
   padding-bottom: 24px;
 }
+
 .max-w-266 {
   max-width: 266px;
+}
+
+.mx-16 {
+  margin-left: 16px !important;
+  margin-right: 16px !important;
 }

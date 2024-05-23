@@ -11,6 +11,7 @@ use BenSampo\Enum\Enum;
  */
 final class RoleType extends Enum
 {
-    const DEFAULT = 0;
-    const CUSTOM = 1;
+    const ALL = 0;
+    const DEFAULT = 1;
+    const CUSTOM = 2;
 }

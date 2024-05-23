@@ -193,7 +193,7 @@ CREATE TABLE roles
 (
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `role_name`  varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-    `role_type`  tinyint(1) NOT NULL DEFAULT '0',
+    `role_type`  tinyint(1) NOT NULL DEFAULT '1',
     `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

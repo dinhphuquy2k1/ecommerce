@@ -10,3 +10,14 @@ export function getRoles() {
         method: 'GET',
     })
 }
+
+/**
+ *
+ * @returns {*}
+ */
+export function getRoleByType($type) {
+    return request({
+        url: `roles/${type}`,
+        method: 'GET',
+    })
+}

@@ -53,4 +53,5 @@ Route::prefix('warehouses')->group(function () {
 
 Route::prefix('roles')->group(function () {
     Route::get('/', [ApiRoleController::class, 'get']);
+    Route::get('/:type', [ApiRoleController::class, 'getRoleByType']);
 });
