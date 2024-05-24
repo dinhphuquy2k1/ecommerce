@@ -50,7 +50,10 @@
                 bản ghi/trang
               </template>
               <template #empty>
-                <div>Không tìm thấy kết quả nào</div>
+                <div class="d-flex flex-column p-24 justify-content-center align-items-center">
+                  <div class="icon-empty_table"></div>
+                  <div>Không tìm thấy kết quả nào</div>
+                </div>
               </template>
               <Column field="warehouse_name" style="min-width: 200px" :header="MESSAGE.USER_EMAIL">
                 <template #body="{ data, field, slotProps }">
@@ -131,7 +134,10 @@
                 bản ghi/trang
               </template>
               <template #empty>
-                <div>Không tìm thấy kết quả nào</div>
+                <div class="d-flex flex-column p-24 justify-content-center align-items-center">
+                  <div class="icon-empty_table"></div>
+                  <div>Không tìm thấy kết quả nào</div>
+                </div>
               </template>
               <Column field="role_name" style="min-width: 200px; max-width: 200px" :header="MESSAGE.ROLE_NAME">
                 <template #body="{ data, field, slotProps }">
@@ -205,7 +211,7 @@
               display="chip"
               class="ms-category w-100 text-start">
             <template #option="{option}">
-              <div v-tooltip="option.description">{{ option.role_name}}</div>
+              <div v-tooltip="option.description">{{ option.role_name }}</div>
             </template>
           </MultiSelect>
         </div>

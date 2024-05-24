@@ -31,7 +31,10 @@
           bản ghi/trang
         </template>
         <template #empty>
-          <div>Không tìm thấy kết quả nào</div>
+          <div class="d-flex flex-column p-24 justify-content-center align-items-center">
+            <div class="icon-empty_table"></div>
+            <div>Không tìm thấy kết quả nào</div>
+          </div>
         </template>
         <Column selectionMode="multiple" headerStyle="min-width: 3rem"></Column>
         <Column field="DepartmentCode" style="min-width: 250px" header="Sản phẩm">
