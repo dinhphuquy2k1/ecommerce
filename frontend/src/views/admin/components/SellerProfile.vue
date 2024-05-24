@@ -144,7 +144,7 @@
                         <div>Không tìm thấy kết quả nào</div>
                       </div>
                     </template>
-                    <Column field="warehouse_name" style="min-width: 200px" :header="MESSAGE.USER_EMAIL">
+                    <Column frozen align-frozen="left" field="warehouse_name" style="min-width: 200px" header="Thiết bị">
                       <template #body="{ data, field, slotProps }">
                         <div v-if="!isLoading"> {{ data[field] }}</div>
                         <div v-else>
@@ -152,7 +152,7 @@
                         </div>
                       </template>
                     </Column>
-                    <Column field="detailed_address" style="min-width: 500px" dataKey="id" :header="MESSAGE.ROLES">
+                    <Column field="detailed_address" style="min-width: 500px" dataKey="id" header="Vị trí">
                       <template #body="{ data, field, slotProps }">
                         <div v-if="!isLoading">
                           <div v-if="data[field]">
@@ -169,7 +169,7 @@
                         </div>
                       </template>
                     </Column>
-                    <Column field="warehouse_contact" style="min-width: 180px" dataKey="id" :header="MESSAGE.ACT">
+                    <Column field="warehouse_contact" style="min-width: 180px" dataKey="id" header="Thời gian">
                       <template #body="{ data, field, slotProps }">
                         <div v-if="!isLoading">
                           <div v-if="data[field]">
