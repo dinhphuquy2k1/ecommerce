@@ -8,12 +8,15 @@
       </div>
     </div>
   </div>
+  <LiveChat/>
 </template>
 
 <script>
-
+import LiveChat from "@/components/LiveChat.vue";
 export default {
-  components: {},
+  components: {
+    LiveChat
+  },
   data() {
     return {}
   }
