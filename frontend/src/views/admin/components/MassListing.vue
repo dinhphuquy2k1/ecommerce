@@ -151,7 +151,7 @@
             <div class="mt-8" v-if="selectedCategory">
               <div class="theme-m4b-card theme-m4b-card-direction-horizontal theme-m4b-card-shadow">
                 <div class="theme-m4b-card-icon">
-                  <img :src="require(`@public/assets/${selectedCategory.media}`)" alt="" width="72" height="72">
+                  <img :src="require(`@public/assets/${selectedCategory.media}`)" alt="" width="72" height="72" class="rounded-4">
                 </div>
                 <div class="theme-m4b-card-box">
                   <div class="theme-m4b-card-box-info">
