@@ -76,4 +76,10 @@ export const MESSAGE = {
     PLEASE_DESCRIBE_THE_ROLE: 'Vui lòng mô tả vai trò',
     SET_PERMISSIONS: 'Thiết lập quyền',
     SELECT_PERMISSION_WANT_GRANT: 'Chọn các quyền bạn muốn cấp',
+    ACCOUNT_INFORMATION: 'Thông tin tài khoản',
+    SELLER_INFORMATION: 'Thông tin người bán',
+    BUSINESS_INFORMATION: 'Thông tin doanh nghiệp',
+    LOGIN_INFORMATION: 'Thông tin đăng nhập',
+    CHANGE: 'Thay đổi',
+    ACCOUNT_SECURITY: 'Bảo mật tài khoản',
 };

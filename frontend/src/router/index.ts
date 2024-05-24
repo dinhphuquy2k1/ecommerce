@@ -141,7 +141,7 @@ const routes: Array<RouteRecordRaw> = [
                         path: 'seller-profile',
                         components: {
                             header: () => import('@/views/admin/components/Header.vue'),
-                            content: () => import('@/views/admin/components/AccountSettings.vue'),
+                            content: () => import('@/views/admin/components/SellerProfile.vue'),
                             navbar: () => import('@/views/admin/components/NavBar.vue'),
                         },
                     },
