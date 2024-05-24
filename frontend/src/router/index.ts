@@ -168,7 +168,7 @@ const routes: Array<RouteRecordRaw> = [
                                 path: 'payment',
                                 components: {
                                     header: () => import('@/views/admin/components/Header.vue'),
-                                    content: () => import('@/views/admin/components/AccountSettings.vue'),
+                                    content: () => import('@/views/admin/components/Payment.vue'),
                                     navbar: () => import('@/views/admin/components/NavBar.vue'),
                                 }
                             },

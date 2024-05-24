@@ -42,7 +42,7 @@ export default {
         },
         {
           title: 'Tài khoản ngân hàng',
-          route: '/admin/profile/account-setting/warehouse',
+          route: '/admin/profile/account-setting/payment',
           description: 'Quản lý tài khoản ngân hàng và phương thức thanh toán.',
           icon: '<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-40 h-40" style="stroke: none;"><g clip-path="url(#clip0_50_2968)"><path d="M31.11 0H8.89C3.98019 0 0 3.98019 0 8.89V31.11C0 36.0198 3.98019 40 8.89 40H31.11C36.0198 40 40 36.0198 40 31.11V8.89C40 3.98019 36.0198 0 31.11 0Z" fill="#E6F1F1"></path><path d="M5.5 11C5.5 9.89543 6.39543 9 7.5 9H32.5C33.6046 9 34.5 9.89543 34.5 11V29C34.5 30.1046 33.6046 31 32.5 31H7.5C6.39543 31 5.5 30.1046 5.5 29V11Z" fill="#2979ff"></path><path d="M34.5 14.3105H5.5V17.3105H34.5V14.3105Z" fill="#E6F1F1"></path><path d="M29.8867 24.9922H25.8867V26.9922H29.8867V24.9922Z" fill="#E6F1F1"></path></g><defs><clipPath id="clip0_50_2968"><rect width="40" height="40" fill="white"></rect></clipPath></defs></svg>',
         },

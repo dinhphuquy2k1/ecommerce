@@ -1,7 +1,7 @@
 <template>
   <div class="form-list flex-grow-1 flex-column d-flex mw-100">
     <div class="d-flex flex-row title-box align-items-center gap-2">
-      <div class="icon24 back cursor-pointer" @click="this.$router.go(-1)"></div>
+      <div class="icon24 back pointer" @click="this.$router.go(-1)"></div>
       <div class="list-title flex-grow-1 text-start">Địa chỉ kho hàng / Địa chỉ lấy hàng</div>
     </div>
     <div class="flex flex-col bg-white rounded-8 mb-4" v-for="(item, index) in data">
