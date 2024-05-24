@@ -394,6 +394,13 @@ span.icon24 {
   background: transparent url("@public/assets/icons/ic_up.svg") no-repeat center;
 }
 
+.icon_down {
+  height: 24px;
+  width: 24px;
+  background: transparent url("@public/assets/icons/ic_up.svg") no-repeat center;
+  transform: rotate(180deg);
+}
+
 .icon_question--cricle-13 {
   height: 13px;
   width: 13px;

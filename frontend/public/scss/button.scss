@@ -12,6 +12,10 @@
   align-items: center;
   justify-items: center;
 
+  &:disabled {
+    opacity: .56;
+  }
+
   &.p-selectbutton {
     &.ms-selectbutton_roles {
       display: flex;

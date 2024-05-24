@@ -97,10 +97,24 @@ const routes: Array<RouteRecordRaw> = [
                     },
                     {
                         path: 'batch',
-                        components: {
-                            header: () => import('@/views/admin/components/Header.vue'),
-                            content: () => import('@/views/admin/components/AddProduct.vue'),
-                        }
+                        children: [
+                            {
+                                path: '',
+                                components: {
+                                    header: () => import('@/views/admin/components/Header.vue'),
+                                    content: () => import('@/views/admin/components/BatchTool.vue'),
+                                    navbar: () => import('@/views/admin/components/NavBar.vue'),
+                                },
+                            },
+                            {
+                                path: 'mass-listing',
+                                components: {
+                                    header: () => import('@/views/admin/components/Header.vue'),
+                                    content: () => import('@/views/admin/components/MassListing.vue'),
+                                    navbar: () => import('@/views/admin/components/NavBar.vue'),
+                                },
+                            },
+                        ],
                     },
                 ],
             },

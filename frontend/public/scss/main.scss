@@ -558,10 +558,52 @@ nav a {
   color: var(--theme-arco-color-text-2);
 }
 
+.text-neutral-text3 {
+  color: var(--theme-arco-color-text-3);
+}
+
+.text-p4-regular {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.text-primary-normal {
+  color: rgb(var(--theme-arco-primary-6));
+}
+
+.text-h1-bold {
+  font-size: 24px;
+}
+
 .font-semibold {
   font-weight: 500;
 }
 
 .text-lg {
   font-size: 16px;
+}
+
+.w-40 {
+  width: 40px;
+}
+
+.p-48 {
+  padding: 48px;
+}
+
+.mx-6 {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.text-primary-normal {
+  color: #1a73e8;
+}
+
+.rotate-transition {
+  transition-duration: 0.4s;
+}
+
+.rounded-4 {
+  border-radius: 4px !important;
 }

@@ -25,9 +25,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/categories', [ApiCategoryController::class, 'get']);
 Route::post('/upload/image', [ApiCategoryController::class, 'uploadImage']);
 Route::post('/categories/properties/{id}', [ApiCategoryController::class, 'getProperties']);
+Route::prefix('categories')->group(function () {
+    Route::get('/', [ApiCategoryController::class, 'get']);
+});
+
 Route::prefix('menus')->group(function () {
     Route::get('/', [ApiMenuController::class, 'getMenu']);
 });

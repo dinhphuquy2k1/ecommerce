@@ -82,4 +82,8 @@ export const MESSAGE = {
     LOGIN_INFORMATION: 'Thông tin đăng nhập',
     CHANGE: 'Thay đổi',
     ACCOUNT_SECURITY: 'Bảo mật tài khoản',
+    BATCH_TOOLS: 'Công cụ hàng loạt',
+    MASS_LISTING: 'Niêm yết hàng loạt',
+    PLEASE_SELECT_BRAND: 'Vui lòng chọn nhãn hiệu',
+    DOWNLOAD_THE_TEMPLATE: 'Tải mẫu về',
 };
