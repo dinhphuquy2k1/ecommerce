@@ -37,11 +37,18 @@
                   </div>
                   <div class="d-flex mt-2">
                     <span class="mx-6">·</span>
-                    <div>Chọn thương hiệu để niêm yết.</div>
+                    <div>Chọn thương hiệu cho các sản phẩm niêm yết.</div>
                   </div>
                   <div class="d-flex mt-2">
                     <span class="mx-6">·</span>
-                    <div>Tải trang tính để bắt đầu niêm yết.</div>
+                    <div>Tiến hành tải mẫu và điền thông tin.</div>
+                  </div>
+                  <div class="d-flex mt-2">
+                    <span class="mx-6">·</span>
+                    <div>Tải lên tập tin để tiến hành niêm yết.</div>
+                  </div><div class="d-flex mt-2">
+                    <span class="mx-6"></span>
+                    <div class="text-primary-normal pointer">Xem hướng dẫn</div>
                   </div>
                 </div>
               </div>
