@@ -120,15 +120,18 @@ CREATE TABLE `variants`
 DROP TABLE IF EXISTS medias;
 CREATE TABLE `medias`
 (
-    `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    `media_url`  varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-    `product_id` bigint(20) unsigned NULL,
-    `type`       tinyint(11) NOT NULL DEFAULT '0',
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `media_url`   varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `product_id`  bigint(20) unsigned NULL,
+    `category_id` bigint(20) unsigned NULL,
+    `type`        tinyint(11) NOT NULL DEFAULT '0',
+    `created_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
-    KEY          `products_product_id_foreign` (`product_id`),
-    CONSTRAINT `products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
+    KEY           `medias_product_id_foreign` (`product_id`),
+    KEY           `medias_category_id_foreign` (`category_id`),
+    CONSTRAINT `medias_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `medias_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS brands;
@@ -191,12 +194,12 @@ CREATE TABLE users
 DROP TABLE IF EXISTS roles;
 CREATE TABLE roles
 (
-    `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    `role_name`  varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-    `role_type`  tinyint(1) NOT NULL DEFAULT '1',
+    `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `role_name`   varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `role_type`   tinyint(1) NOT NULL DEFAULT '1',
     `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `created_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 );
 

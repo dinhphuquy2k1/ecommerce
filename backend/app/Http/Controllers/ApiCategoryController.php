@@ -25,7 +25,7 @@ class ApiCategoryController extends Controller
      */
     public function get(): JsonResponse
     {
-        $categories = Category::whereIn('id', $this->categoryIds)->orWhereNotNull('parent_id')->get()->toArray();
+        $categories = Category::whereIn('id', $this->categoryIds)->orWhereNotNull('parent_id')->with('media')->get()->toArray();
         $ret = $this->recursiveCategory($categories);
         return $this->sendResponseSuccess($ret);
     }
@@ -44,6 +44,8 @@ class ApiCategoryController extends Controller
                     'label' => $category['name'],
                     'key' => $category['id'],
                     'parent_id' => $category['parent_id'],
+                    'media' => $category['media']['media_url'] ?? null,
+                    'description' => $category['description'],
                     'children' => $this->recursiveCategory($categories, $category['id']),
                 ];
                 $result[] = $category;

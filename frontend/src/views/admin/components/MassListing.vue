@@ -46,7 +46,8 @@
                   <div class="d-flex mt-2">
                     <span class="mx-6">·</span>
                     <div>Tải lên tập tin để tiến hành niêm yết.</div>
-                  </div><div class="d-flex mt-2">
+                  </div>
+                  <div class="d-flex mt-2">
                     <span class="mx-6"></span>
                     <div class="text-primary-normal pointer">Xem hướng dẫn</div>
                   </div>
@@ -144,10 +145,27 @@
                       :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
                       checkmark
                       filter
-                      showClear
                       panelClass="ms-dropdown-checkmark"
                       class="ms-category text-start mt-4">
             </Dropdown>
+            <div class="mt-8" v-if="selectedCategory">
+              <div class="theme-m4b-card theme-m4b-card-direction-horizontal theme-m4b-card-shadow">
+                <div class="theme-m4b-card-icon">
+                  <img :src="require(`@public/assets/${selectedCategory.media}`)" alt="" width="72" height="72">
+                </div>
+                <div class="theme-m4b-card-box">
+                  <div class="theme-m4b-card-box-info">
+                    <div>
+                      <div class="text-p3-semibold">{{ selectedCategory.label}}</div>
+                      <div class="text-body-s-regular text-neutral-text3">{{selectedCategory.description}}</div>
+                    </div>
+                  </div>
+                </div>
+                <span class="theme-m4b-card-close theme-m4b-card-close-icon icon-w24 icon-close" @click="selectedCategory = null">
+                  <span class="icon-close-cricle icon-w24"></span>
+                </span>
+              </div>
+            </div>
             <div class="text-head-l text-neutral-text1 mt-5">
               Chọn nhãn hiệu
             </div>

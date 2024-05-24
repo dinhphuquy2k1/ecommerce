@@ -607,3 +607,64 @@ nav a {
 .rounded-4 {
   border-radius: 4px !important;
 }
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+.theme-m4b-card {
+  background-color: var(--theme-arco-color-bg-white);
+  border-radius: 8px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+
+  & > .theme-m4b-card-box > .theme-m4b-card-box-info > .theme-m4b-card-info-item:first-child {
+    margin-top: 0;
+  }
+
+  & > .theme-m4b-card-box > .theme-m4b-card-box-info > .theme-m4b-card-info-desc {
+    color: var(--theme-arco-color-text-2);
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.theme-m4b-card-direction-horizontal {
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  padding: 16px;
+
+  .theme-m4b-card-icon {
+    margin-right: 16px;
+  }
+
+  .theme-m4b-card-box {
+    -moz-box-flex: 1;
+    -webkit-flex: 1 1;
+    flex: 1 1;
+  }
+  .theme-m4b-card-close {
+    right: 16px;
+    top: 20px;
+  }
+}
+
+.theme-m4b-card-shadow {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+}
+
+.theme-m4b-card-close-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.theme-m4b-card-close {
+  cursor: pointer;
+  position: absolute;
+}
