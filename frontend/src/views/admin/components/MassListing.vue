@@ -185,7 +185,7 @@
             </MultiSelect>
             <Button
                 @click="btnAddProduct"
-                :disabled="!selectedCategory"
+                v-if="selectedCategory"
                 class="ms-btn primary d-flex justify-content-center w-100 mt-5 ms-btn_search ps-3 pe-3 gap-2">
               <div class="">{{ MESSAGE.DOWNLOAD_THE_TEMPLATE }}</div>
             </Button>
