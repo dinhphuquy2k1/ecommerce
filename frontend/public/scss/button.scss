@@ -79,6 +79,18 @@
     }
   }
 
+  &.border-primary {
+    font-weight: 500;
+    color: #2979ff;
+    background: transparent;
+    min-height: 0 !important;
+    max-height: 20px;
+
+    &:hover {
+      color: #1a73e8 !important;
+      text-decoration: underline;
+    }
+  }
 
   &.primary {
     color: #fff;

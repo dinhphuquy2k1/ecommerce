@@ -17,13 +17,13 @@
             <div class="d-flex flex1">
               <div class="row flex1 gy-4">
                 <div class="col-lg-6">
-                  <div class="d-flex flex-column">
+                  <div class="d-flex flex-column gap-2">
                     <div class="text-neutral-text3">Email</div>
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-1">
                       <div>d***1@gmail.com</div>
                       <div>
                         <Button
-                            class="ms-btn secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                            class="ms-btn border-primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
                           <div class="fw-medium">Thêm</div>
                         </Button>
                       </div>
@@ -31,13 +31,13 @@
                   </div>
                 </div>
                 <div class="col-lg-6">
-                  <div class="d-flex flex-column">
+                  <div class="d-flex flex-column gap-2">
                     <div class="text-neutral-text3">Số điện thoại</div>
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-1">
                       <div>+84****1325</div>
                       <div>
                         <Button
-                            class="ms-btn secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                            class="ms-btn border-primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
                           <div class="fw-medium">{{ MESSAGE.CHANGE }}</div>
                         </Button>
                       </div>
@@ -45,13 +45,13 @@
                   </div>
                 </div>
                 <div class="col-lg-6">
-                  <div class="d-flex flex-column">
+                  <div class="d-flex flex-column gap-2">
                     <div class="text-neutral-text3">Mật khẩu</div>
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-1">
                       <div>**********</div>
                       <div>
                         <Button
-                            class="ms-btn secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                            class="ms-btn border-primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
                           <div class="fw-medium">{{ MESSAGE.CHANGE }}</div>
                         </Button>
                       </div>
@@ -216,7 +216,7 @@
               <div class="d-flex ms-3 flex1">
                 <div class="row g-3 flex1">
                   <div class="col-lg-4">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column gap-2">
                       <div class="text-neutral-text3">
                         Mã cửa hàng
                       </div>
@@ -226,7 +226,7 @@
                     </div>
                   </div>
                   <div class="col-lg-4">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column gap-2">
                       <div class="text-neutral-text3">
                         Loại hình doanh nghiệp
                       </div>
@@ -236,7 +236,7 @@
                     </div>
                   </div>
                   <div class="col-lg-4">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column gap-2">
                       <div class="text-neutral-text3">
                         Tên cửa hàng
                       </div>
@@ -244,7 +244,7 @@
                         Phú Quý
                         <div>
                           <Button
-                              class="ms-btn custom-btn d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                              class="ms-btn border-primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
                             <div class="fw-medium">Thay đổi</div>
                           </Button>
                         </div>
@@ -252,7 +252,7 @@
                     </div>
                   </div>
                   <div class="col-lg-4">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column gap-2">
                       <div class="text-neutral-text3">
                         Loại hình người bán
                       </div>
@@ -262,7 +262,7 @@
                     </div>
                   </div>
                   <div class="col-lg-4">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column gap-2">
                       <div class="text-neutral-text3">
                         Email
                       </div>
@@ -272,7 +272,7 @@
                     </div>
                   </div>
                   <div class="col-lg-4">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column gap-2">
                       <div class="text-neutral-text3">
                         Số điện thoại
                       </div>

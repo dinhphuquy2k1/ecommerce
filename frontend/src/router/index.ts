@@ -12,8 +12,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: '',
                 components: {
                     header: () => import('@/views/user/components/Header.vue'),
-                    menu: () => import('@/views/user/components/MenuSetting.vue'),
-                    content: () => import('@/views/user/components/ComputerAccessories.vue'),
+                    content: () => import('@/views/user/components/Home.vue'),
                     footer: () => import('@/views/user/components/Footer.vue'),
                 },
             },
@@ -226,14 +225,6 @@ const routes: Array<RouteRecordRaw> = [
             },
         ],
     },
-    {
-        path: '/about',
-        name: 'about',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-    }
 ]
 
 const router = createRouter({
