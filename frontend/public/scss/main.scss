@@ -567,6 +567,11 @@ nav a {
   font-weight: 400;
 }
 
+.text-body-s-regular {
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .text-primary-normal {
   color: rgb(var(--theme-arco-primary-6));
 }
@@ -649,6 +654,7 @@ nav a {
     -webkit-flex: 1 1;
     flex: 1 1;
   }
+
   .theme-m4b-card-close {
     right: 16px;
     top: 20px;
