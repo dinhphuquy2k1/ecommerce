@@ -54,13 +54,13 @@ export default {
         },
         {
           title: 'Chỉnh sửa hàng loạt hình ảnh sản phẩm',
-          route: '/admin/profile/account-setting/warehouse',
+          route: '/admin/product/batch/edit-images',
           description: 'Chỉnh sửa hình ảnh cho một lô sản phẩm',
           image: require("@public/assets/images/batch_image_product.png"),
         },
         {
           title: 'Quản lý biểu đồ kích cỡ hàng loạt',
-          route: '/admin/profile/account-setting/warehouse',
+          route: '/admin/product/batch/sizes',
           description: 'Quản lý các mẫu kích cỡ đã lưu và các sản phẩm được liên kết đến biểu đồ.',
           image: require("@public/assets/images/batch_size.png"),
         },

@@ -116,6 +116,7 @@
                   <TreeSelect v-model="selectedCategory" :options="categories"
                               @change="changeCategory"
                               label="name"
+                              panel-class="ms-treeselect_parent"
                               :class="{'error': invalidProduct['category']}"
                               placeholder="Vui lòng chọn một hạng mục"/>
                 </div>
