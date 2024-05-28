@@ -339,7 +339,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="group-form_box">
+                  <div class="group-form_box" ref="video">
                     <div class="label d-flex align-items-center gap-1">Video
                       <div class="icon_question--cricle-13 text-start"
                            v-tooltip="'Video tải lên sẽ được hiển thị trên trang chi tiết sản phẩm. Hãy làm nổi bật 1 hoặc 2 lợi điểm bán hàng chính của sản phẩm trong video.'"></div>
@@ -1108,7 +1108,17 @@ export default {
         {
           label: 'Chi tiết sản phẩm',
           ref: 'description',
-          children: [],
+          children: [
+            {
+              label: 'Mô tả sản phẩm',
+              ref: 'description',
+            },
+            {
+              label: 'Video',
+              ref: 'video',
+            },
+
+          ],
         },
         {
           label: 'Thông tin bán hàng',
