@@ -151,17 +151,19 @@
             <div class="mt-8" v-if="selectedCategory">
               <div class="theme-m4b-card theme-m4b-card-direction-horizontal theme-m4b-card-shadow">
                 <div class="theme-m4b-card-icon">
-                  <img :src="require(`@public/assets/${selectedCategory.media}`)" alt="" width="72" height="72" class="rounded-4">
+                  <img :src="require(`@public/assets/${selectedCategory.media}`)" alt="" width="72" height="72"
+                       class="rounded-4">
                 </div>
                 <div class="theme-m4b-card-box">
                   <div class="theme-m4b-card-box-info">
                     <div>
-                      <div class="text-p3-semibold">{{ selectedCategory.label}}</div>
-                      <div class="text-body-s-regular text-neutral-text3">{{selectedCategory.description}}</div>
+                      <div class="text-p3-semibold">{{ selectedCategory.label }}</div>
+                      <div class="text-body-s-regular text-neutral-text3">{{ selectedCategory.description }}</div>
                     </div>
                   </div>
                 </div>
-                <span class="theme-m4b-card-close theme-m4b-card-close-icon icon-w24 icon-close" @click="selectedCategory = null">
+                <span class="theme-m4b-card-close theme-m4b-card-close-icon icon-w24 icon-close"
+                      @click="selectedCategory = null">
                   <span class="icon-close-cricle icon-w24"></span>
                 </span>
               </div>
@@ -291,7 +293,7 @@ import Dropdown from 'primevue/dropdown';
 import MultiSelect from "primevue/multiselect";
 import InputText from 'primevue/inputtext';
 import Panel from 'primevue/panel';
-import {MESSAGE} from "../../../common/enums";
+import {MESSAGE} from "@/common/enums";
 import {getBrand, addBrand} from "@/api/brand";
 import {getCategory} from "@/api/category";
 

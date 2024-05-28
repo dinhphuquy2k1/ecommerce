@@ -99,6 +99,10 @@
   &.primary {
     color: #fff;
     background: #127FFF;
+
+    &:not(:disabled):hover {
+      background: #1a73e8;
+    }
   }
 
   &.orange {

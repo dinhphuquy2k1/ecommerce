@@ -93,6 +93,7 @@ const routes: Array<RouteRecordRaw> = [
                         components: {
                             header: () => import('@/views/admin/components/Header.vue'),
                             content: () => import('@/views/admin/components/AddProduct.vue'),
+                            navbar: () => import('@/views/admin/components/NavBar.vue'),
                         }
                     },
                     {

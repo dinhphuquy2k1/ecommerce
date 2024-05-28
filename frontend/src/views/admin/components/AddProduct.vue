@@ -1,14 +1,781 @@
 <template>
   <div class="form-list flex-grow-1 d-flex ma-add-product_wrapper mw-100">
-    <div class="d-flex flex-column mw-100 mh-100">
-      <div class="popup-header header-shadow position-sticky top-0 z-1">
-        <div class="h-100 d-flex justify-content-between">
+    <div class="d-flex flex-column mw-100 mh-100 w-100">
+      <div class="popup-header">
+        <div class="h-100 d-flex justify-content-between ms-popup-header align-items-center">
           <div class="left-toolbar d-flex flex-row">
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row align-items-center gap-2">
+              <div class="icon24 back pointer" @click="this.$router.go(-1)"></div>
               <div class="list-title flex-grow-1 text-start">Thêm sản phẩm</div>
             </div>
           </div>
           <div class="right-toolbar d-flex flex-row">
+          </div>
+        </div>
+      </div>
+
+      <div class=" popup-content flex1 flex-column">
+        <div class="flex1">
+          <div class="row g-0 h-100 flex1">
+            <div class="col-3 position-sticky list-tab-menu">
+              <div class="tab-item" v-for="(item, indexParent) in listTabMenu">
+                <div class="tab-item-parent" :class="{'active': item.active}"
+                     @click="activeTabMenu(indexParent, null, true)">
+                  {{ indexParent + 1 }}. {{ item.label }}
+                </div>
+                <div class="tab-item-child" :class="{'active': child.active}"
+                     @click="activeTabMenu(indexParent, indexChild)"
+                     v-for="(child, indexChild) in item.children">
+                  <span>{{ indexParent + 1 }}.{{ indexChild + 1 }}. {{ child.label }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-9 h-100 overflow-auto content-body flex1">
+              <Panel header="1. Thông tin cơ bản" class="ma-media">
+                <div class="d-flex flex-column group-form_list" ref="image">
+                  <div class="group-form_box">
+                    <div class="label d-flex align-items-center gap-1">
+                      <span class="required">*</span>
+                      Hình ảnh sản phẩm
+                      <div class="icon_question--cricle-13 text-start"
+                           v-tooltip="'Tải lên tối đa 9 hình ảnh. Kích thước hình ảnh tối thiểu: 300×300 px.\nBạn nên sử dụng hình nền trắng làm hình ảnh đầu tiên thay vì sử dụng hình ảnh có các yếu tố khác (chữ, logo, đường viền, khối màu, hình mờ hoặc hình ảnh đồ họa khác).\nĐể thêm chữ vào hình ảnh, hãy đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
+                    </div>
+                    <div class="description">Bạn nên thêm ít nhất 5 ảnh để minh họa đầy đủ cho sản phẩm của bạn.</div>
+                  </div>
+                  <div class="d-flex flex-column flex-grow-1">
+                    <div class="position-relative d-flex flex-grow-1">
+                      <div class="grid grid-cols-4 grid-rows-3 gap-12 ms-product_images">
+                        <div v-for="(item, index) in imageProducts" class="ms-item_image--products_wrapper"
+                             @click="chooseImageProduct($event, index)"
+                             :class="{'active': item.active, 'ms-media_active': item.imageData}">
+                          <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
+                                      accept="image/*" :maxFileSize="5000000 "
+                                      @select="changeImageProduct($event, index)"
+                                      showUploadButton
+                          >
+                            <template #header="{ chooseCallback, clearCallback, files }">
+                              <button :ref="`chooseButton${index}`" @click="chooseCallback()">123</button>
+                              <button :ref="`clearButton${index}`" @click="clearCallback()"></button>
+                            </template>
+                            <template
+                                #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
+                              <div class="p-fileupload-empty" data-pc-section="empty">
+                                <div v-if="item.imageData" class="d-flex h-100 w-100">
+                                  <Image :src="item.image" class="flex-grow-1 w-100 h-100"
+                                         alt="Image"
+                                         preview>
+                                    <template #indicatoricon>
+                                      <div class="d-flex gap-2">
+                                        <i class="icon-eye"></i>
+                                        <div class="icon_remove-white"
+                                             @click="removeProductImage($event, index)"></div>
+                                      </div>
+                                    </template>
+                                  </Image>
+                                </div>
+                                <div v-else class="ms-item_image--products">
+                                  <div class="image d-flex align-items-center text-center">
+                                    <Image :src="item.icon"
+                                           alt="Image"/>
+                                  </div>
+                                  <div class="title" v-tooltip.top="item.title">{{ item.title }}</div>
+                                  <ul v-if="item.description">
+                                    <li>
+                                      Kích thước: 300 × 300 px
+                                    </li>
+                                    <li>
+                                      Kích thước tập tin tối đa: 5 MB (Tối đa 9 tập tin)
+                                    </li>
+                                    <li>
+                                      Định dạng: JPG, JPEG, PNG
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </template>
+                          </FileUpload>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ms-error-text" v-if="invalidProduct['image']">{{ invalidProduct['image'] }}</div>
+                  </div>
+                  <div class="group-form_box">
+                    <div class="label d-flex align-items-center">
+                      <span class="required">*</span>
+                      Tên sản phẩm
+                    </div>
+                    <div class="" ref="product_name">
+                      <InputText v-model="selectedProduct['product_name']" placeholder="Tên sản phẩm"
+                                 :class="{'error': invalidProduct['product_name']}"
+                      ></InputText>
+                    </div>
+                    <div class="ms-error-text" v-if="invalidProduct['product_name']">
+                      {{ invalidProduct['product_name'] }}
+                    </div>
+                  </div>
+                  <div class="group-form_box" ref="category">
+                    <div class="label d-flex align-items-center gap-1">
+                      <span class="required">*</span>
+                      Hạng mục
+                      <div class="icon_question--cricle-13 text-start"
+                           v-tooltip="'Đảm bảo rằng bạn chọn danh mục phù hợp. Việc phân loại sai sản phẩm có thể ảnh hưởng đến chất lượng bán hàng.'"></div>
+                    </div>
+                    <div class="">
+                      <TreeSelect v-model="selectedCategory" :options="categories"
+                                  @change="changeCategory"
+                                  label="name"
+                                  panel-class="ms-treeselect_parent"
+                                  :class="{'error': invalidProduct['category']}"
+                                  placeholder="Vui lòng chọn một hạng mục"/>
+                    </div>
+                    <div class="ms-error-text" v-if="invalidProduct['category']">
+                      {{ invalidProduct['category'] }}
+                    </div>
+                  </div>
+                  <div class="group-form_box group-form_properties" v-if="properties?.properties?.length > 0">
+                    <div class="label d-flex align-items-center">
+                      Thuộc tính sản phẩm
+                      <div class="icon16 icon-note text-start"
+                           v-tooltip="'Thêm thuộc tính sản phẩm có thể giúp khách hàng hiểu rõ hơn về sản phẩm đó.'"></div>
+                    </div>
+                    <div class="row g-0 pb-2 ps-2 pe-2">
+                      <div v-for="(property, index) in properties.properties"
+                           class="col-lg-4 col-sm-6 gx-3 gy-3 col-xs-12">
+                        <div class="group-form_box" v-if="properties.propertyType?.INPUT_TEXT?.value === property.type">
+                          <div class="label">{{ property['name'] }}</div>
+                          <div class="">
+                            <InputText v-model="selectedProperty[index]"
+                                       :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
+                          </div>
+                          <div class="ms-error-text"></div>
+                        </div>
+                        <div class="group-form_box"
+                             v-else-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type || properties.propertyType?.SELECT_SINGLE?.value === property.type">
+                          <div class="label d-flex align-items-center">
+                            <span class="required" v-if="property.required">*</span>
+                            {{ property['name'] }}
+                          </div>
+                          <div class="">
+                            <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
+                                      optionLabel="value"
+                                      @before-show="beforeShowSelectWithAddOption(index)"
+                                      :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
+                                      showClear
+                                      filter
+                                      checkmark
+                                      panelClass="ms-dropdown-checkmark"
+                                      class="ms-category text-start">
+                              <template #footer
+                                        v-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
+                                <div class="d-flex gap-2 ms-dropdown_properties-footer">
+                                  <div class="group-form_box">
+                                    <div class="">
+                                      <InputText v-model="valueSelectAddOption[index]"
+                                                 :class="{'error': invalidValueSelectAddOption[index]}"
+                                                 :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
+                                    </div>
+                                    <div class="ms-error-text" v-if="invalidValueSelectAddOption[index]">
+                                      {{ invalidValueSelectAddOption[index] }}
+                                    </div>
+                                  </div>
+                                  <Button @click="appendOptionToSingleSelect(index)"
+                                          class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                                    <div class="fw-semibold">Thêm</div>
+                                  </Button>
+                                </div>
+                              </template>
+                            </Dropdown>
+                          </div>
+                          <div class="ms-error-text"></div>
+                        </div>
+                        <div class="group-form_box"
+                             v-else-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type || properties.propertyType?.SELECT_MULTIPLE?.value === property.type">
+                          <div class="label">{{ property['name'] }}</div>
+                          <div class="">
+                            <MultiSelect v-model="selectedProperty[index]" :options="property.property_values"
+                                         optionLabel="value"
+                                         :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
+                                         display="chip"
+                                         filter
+                                         @before-show="beforeShowSelectWithAddOption(index)"
+                                         class="ms-category text-start">
+                              <template #footer
+                                        v-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type">
+                                <div class="d-flex gap-2 ms-dropdown_properties-footer">
+                                  <div class="group-form_box">
+                                    <div class="">
+                                      <InputText v-model="valueSelectAddOption[index]"
+                                                 :class="{'error': invalidValueSelectAddOption[index]}"
+                                                 :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
+                                    </div>
+                                    <div class="ms-error-text" v-if="invalidValueSelectAddOption[index]">
+                                      {{ invalidValueSelectAddOption[index] }}
+                                    </div>
+                                  </div>
+                                  <Button @click="appendOptionToMultipleSelect(index)"
+                                          class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                                    <div class="fw-semibold">Thêm</div>
+                                  </Button>
+                                </div>
+                              </template>
+                            </MultiSelect>
+                          </div>
+                          <div class="ms-error-text"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="group-form_box" ref="brand">
+                    <div class="label d-flex align-items-center">
+                      <span class="required">*</span>
+                      Thương hiệu
+                    </div>
+                    <div class="">
+                      <Dropdown v-model="selectedProduct.brand" :options="brands" optionLabel="brand_name"
+                                placeholder="Chọn một thương hiệu"
+                                :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
+                                checkmark
+                                filter
+                                panelClass="ms-dropdown-checkmark"
+                                :class="{'error': invalidProduct['brand']}"
+                                class="ms-category text-start">
+                        <template #footer
+                        >
+                          <div class="d-flex gap-2 ms-dropdown_properties-footer">
+                            <div class="group-form_box flex-grow-1">
+                              <div class="">
+                                <InputText v-model="valueBrandSelectAddOption"
+                                           :class="{'error': invalidAddBrandOption['brand']}"
+                                           :placeholder="MESSAGE.ENTER"></InputText>
+                              </div>
+                              <div class="ms-error-text" v-if="invalidAddBrandOption['brand']">
+                                {{ invalidAddBrandOption['brand'] }}
+                              </div>
+                            </div>
+                            <div>
+                              <Button @click="appendOptionToBrandSelect"
+                                      class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                                <div class="fw-semibold">Thêm</div>
+                              </Button>
+                            </div>
+                          </div>
+                        </template>
+                      </Dropdown>
+                    </div>
+                    <div class="ms-error-text" v-if="invalidProduct['brand']">
+                      {{ invalidProduct['brand'] }}
+                    </div>
+                  </div>
+                </div>
+              </Panel>
+              <Panel header="2. Chi tiết sản phẩm" toggleable
+                     class="mt-4 ma-description-product ma-media">
+                <div class="d-flex flex-column group-form_list" ref="description">
+                  <div class="group-form_box">
+                    <div class="label d-flex align-items-center gap-1">
+                      <span class="required">*</span>
+                      Mô tả sản phẩm
+                      <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
+'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
+'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
+                    </div>
+                    <div class="description">
+                      Nên viết mô tả dài ít nhất 500 ký tự và thêm hình ảnh để giúp khách hàng đưa ra quyết định mua
+                      hàng.
+                    </div>
+                    <Editor v-model="selectedProduct.description" editorStyle="height: 320px"
+                            :class="{'error': invalidProduct['description']}"
+                            placeholder="Nhập mô tả sản phẩm"/>
+                    <div class="ms-error-text" v-if="invalidProduct['description']">
+                      {{ invalidProduct['description'] }}
+                    </div>
+                  </div>
+                  <div class="group-form_box" v-if="properties?.size_table">
+                    <div class="label d-flex align-items-center gap-1">
+                      <span class="required">*</span>Bảng kích thước
+                      <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
+'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
+'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="d-flex align-items-center">
+                        <RadioButton v-model="sizeTable" inputId="useSample" name="sizeTable" value="0"
+                                     @change="changeSizeTable"/>
+                        <label for="useSample" class="ml-2 pointer">Sử dụng mẫu</label>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <RadioButton v-model="sizeTable" inputId="upImage" name="sizeTable" value="1"
+                                     @change="changeSizeTable"/>
+                        <label for="upImage" class="ml-2 pointer">Tải ảnh lên</label>
+                      </div>
+                    </div>
+
+                    <div class="group-form_box mt-3" v-if="sizeTable">
+                      <div class="">
+                        <Dropdown v-model="selectedProduct.size_id" :options="sizeList" optionLabel="size_name"
+                                  optionValue="id"
+                                  :placeholder="MESSAGE.SELECT_SIZE_CHART_TEMPLATE"
+                                  :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
+                                  checkmark
+                                  filter
+                                  panelClass="ms-dropdown-checkmark"
+                                  :class="{'error': invalidProduct['brand']}"
+                                  class="ms-category text-start">
+                          <template #footer
+                          >
+                            <div class="d-flex gap-2 ms-dropdown_properties-footer">
+                              <div>
+                                <Button @click="isSideBarSizeTable = true;"
+                                        class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                                  <div class="fw-semibold">Thêm</div>
+                                </Button>
+                              </div>
+                            </div>
+                          </template>
+                        </Dropdown>
+                      </div>
+                      <div class="ms-error-text" v-if="invalidProduct['brand']">
+                        {{ invalidProduct['brand'] }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="group-form_box">
+                    <div class="label d-flex align-items-center gap-1">Video
+                      <div class="icon_question--cricle-13 text-start"
+                           v-tooltip="'Video tải lên sẽ được hiển thị trên trang chi tiết sản phẩm. Hãy làm nổi bật 1 hoặc 2 lợi điểm bán hàng chính của sản phẩm trong video.'"></div>
+                    </div>
+                    <div class="description">
+                      Tỷ lệ khung hình video phải từ 9:16 đến 16:9. Kích thước tập tin tối đa: 100 MB.
+                    </div>
+                    <div class="col-6 ma-item-video" :class="{'ms-media_active': videoProduct}"
+                         @click="chooseVideoProduct">
+                      <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
+                                  accept="video/*" :maxFileSize="5000000 " @select="changeVideoProduct($event)"
+                                  showUploadButton
+                      >
+                        <template #header="{ chooseCallback, clearCallback, files }">
+                          <button :ref="`chooseVideoProduct`" @click="chooseCallback()">123</button>
+                          <button :ref="`clearVideoProduct`" @click="clearCallback()"></button>
+                        </template>
+                        <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
+                          <div class="p-fileupload-empty  w-100 h-100" data-pc-section="empty">
+                            <div v-if="videoProduct" class="d-flex w-100 h-100 position-relative">
+                              <video :src="videoProduct" class="w-100 h-100">
+                              </video>
+                              <div
+                                  class="position-absolute ms-box_video w-100 h-100 flex-column d-flex  align-items-center justify-content-center">
+                                <div class="icon-pause pointer"></div>
+                                <div class="icon_remove-white pointer"></div>
+                              </div>
+                            </div>
+                            <div v-else
+                                 class="ms-item_image--products w-100 h-100 d-flex  align-items-center justify-content-center">
+                              <div class="image d-flex align-items-center text-center">
+                                <Image :src="require('@public/assets/icons/video.svg')"
+                                       alt="Image"/>
+                              </div>
+                              <div class="title" v-tooltip.top="'Video'">Video</div>
+                            </div>
+                          </div>
+                        </template>
+                      </FileUpload>
+                    </div>
+                    <div class="ms-error-text"></div>
+                  </div>
+                </div>
+              </Panel>
+
+              <Panel header="3. Thông tin bán hàng" class="mt-4" :collapsed="!selectedCategory">
+                <template #header>
+                  <div class="d-flex flex-column justify-content-start text-start ma-custom-panel-header">
+                    <div class="title" ref="saleInfo">3. Thông tin bán hàng</div>
+                    <div class="description" v-if="!selectedCategory">Vui lòng chọn danh mục trước</div>
+                  </div>
+                </template>
+                <div class="d-flex flex-column group-form_list">
+                  <div class="group-form_box">
+                    <div class="label d-flex gap-3 mb-1">Kích hoạt biến thể
+                      <InputSwitch v-model="selectedProduct.has_variant"/>
+                    </div>
+                    <div class="sub-description">Bạn có thể thêm biến thể nếu sản phẩm này có nhiều lựa chọn như kích cỡ
+                      hoặc màu sắc.
+                    </div>
+                    <div class="ms-error-text"></div>
+                  </div>
+                  <div class="group-form_box" v-if="!selectedProduct.has_variant" ref="product_no_variant">
+                    <div class="label d-flex align-items-center">
+                      <span class="required">*</span>
+                      Giá & Số lượng
+                    </div>
+                    <div class="row theme-arco-table-content-inner gx-0">
+                      <div class="col-4 d-flex flex-column mb-2">
+                        <div class="label pt-1 pb-1 ps-2 d-flex align-items-center">
+                          <span class="required">*</span>
+                          Giá bán lẻ
+                        </div>
+                        <div class="d-flex ps-2">
+                          <InputNumber v-model="saleInfomation.retailPrice" inputClass="text-start" class="flex-grow-1"
+                                       mode="currency"
+                                       :max="999999999"
+                                       :class="{'error': invalidProduct['retail_price']}"
+                                       currency="VND" locale="vi"/>
+                        </div>
+                        <!--                    <div class="ms-error-text ps-2" v-if="invalidProduct['retail_price']">-->
+                        <!--                      {{ invalidProduct['retail_price'] }}-->
+                        <!--                    </div>-->
+                      </div>
+                      <div class="col-4 d-flex flex-column">
+                        <div class="label pt-1 pb-1 d-flex align-items-center ps-3">
+                          <span class="required">*</span>
+                          Số lượng
+                        </div>
+                        <div class="d-flex ps-3">
+                          <InputNumber v-model="saleInfomation.quantity" inputClass="text-start" class="flex-grow-1"
+                                       :class="{'error': invalidProduct['quantity']}"
+                                       :max="999999"/>
+                        </div>
+                        <!--                    <div class="ms-error-text ps-3" v-if="invalidProduct['quantity']">-->
+                        <!--                      {{ invalidProduct['quantity'] }}-->
+                        <!--                    </div>-->
+                      </div>
+                      <div class="col-4 d-flex flex-column">
+                        <div class="label pt-1 pb-1 d-flex align-items-center ps-3 pe-2">
+                          SKU Người bán
+                        </div>
+                        <div class="d-flex ps-3 pe-2">
+                          <InputNumber v-model="saleInfomation.skuSeller" inputClass="text-start" class="flex-grow-1"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ms-error-text"></div>
+                  </div>
+                  <div class="ms-group_variants d-flex flex-column gap-3 justify-content-start" v-else
+                       ref="product_has_variant">
+                    <div class="ms-variants_wrapper" v-for="(item, key) in listVariant">
+                      <div v-if="!listVariant[key].complete">
+                        <div class="group-form_box">
+                          <div class="label d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                              <span class="required">*</span>
+                              Tên biến thể
+                              <div class="icon16 icon-note text-start" v-tooltip="'\n'+
+'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
+'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
+                            </div>
+                            <div class="d-flex align-items-center ms-checkbox_label gap-1" v-if="key === 0">
+                              <Checkbox v-model="isVariantImage" :binary="true" inputId="variant_image"/>
+                              <label for="variant_image">
+                                Thêm hình ảnh
+                              </label>
+                            </div>
+                          </div>
+                          <div class="d-flex align-items-center">
+                            <InputText v-model="listVariant[key].name" :placeholder="MESSAGE.INPUT_PLACEHOLDER_VARIANT"
+                                       :class="{'error': invalidVariant[`name${key}`]}" maxlength="50"
+                                       @input="changeNameVariant($event, key)"></InputText>
+                            <div class="icon-w24 ms-1" style="margin-right: 45px;">
+                              <div class="icon_remove pointer" v-if="listVariant.length > 1"
+                                   @click="removeVariant(key)"></div>
+                            </div>
+                          </div>
+                          <div class="ms-error-text" v-if="invalidVariant[`name${key}`]">
+                            {{ invalidVariant[`name${key}`] }}
+                          </div>
+                        </div>
+                        <div class="group-form_box mt-4">
+                          <div class="label d-flex align-items-center">
+                            <span class="required">*</span>
+                            Tùy chọn
+                            <div class="icon16 icon-note text-start" v-tooltip="'\n'+
+'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
+'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
+                          </div>
+                          <div>
+                            <DataTable :value="item.option" :reorderableColumns="true"
+                                       class="ms-variants_table" :class="{' ms-variant_image': isVariantImage}"
+                                       @rowReorder="onRowReorderVariant($event, key)" v-if="item.option.length > 0">
+                              <Column>
+                                <template #body="slotProps">
+                                  <input type="file" hidden :ref="`ref_variant_image${key}${slotProps.index}`"
+                                         @change="changeVariantImage($event, key, slotProps.index)">
+                                  <div class="d-flex flex-column" style="max-width: 106px;" v-if="isVariantImage">
+                                    <Button v-if="isVariantImage"
+                                            @click="chooseVariantImage(key, slotProps.index)"
+                                            :class="{'border-0': listVariant[key].option[slotProps.index].image}"
+                                            class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center flex-grow-1 me-3 ms-btn_search gap-2">
+                                      <div v-if="!listVariant[key].option[slotProps.index].image">
+                                        <div class="icon">
+                                          <Image :src="require('@public/assets/icons/image.svg')"
+                                                 alt="Image"/>
+                                        </div>
+                                        <div class="">Tải ảnh lên</div>
+                                      </div>
+                                      <div v-else class="d-flex">
+                                        <Image :src="listVariant[key].option[slotProps.index].image"
+                                               class="flex-grow-1"
+                                               alt="Image"
+                                               preview>
+                                          <template #indicatoricon>
+                                            <div class="d-flex gap-2">
+                                              <i class="icon-eye"></i>
+                                              <div class="icon_remove-white"
+                                                   @click="removeVariantImage($event, key, slotProps.index)"></div>
+                                            </div>
+                                          </template>
+                                        </Image>
+                                      </div>
+                                    </Button>
+                                    <div class="ms-error-text mt-1 mb-2"
+                                         v-if="invalidVariant[`image${key}${slotProps.index}`]">
+                                      <div class="position-absolute">
+                                        {{ invalidVariant[`image${key}${slotProps.index}`] }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </template>
+                              </Column>
+                              <Column class="flex-grow-1 d-flex align-items-start pe-2">
+                                <template #body="slotProps">
+                                  <div class="flex-grow-1 d-flex flex-column" :class="{'ms-2': isVariantImage}">
+                                    <div class="">
+                                      <InputText v-model="item.option[slotProps.index].value"
+                                                 :class="{'error': invalidVariant[`${key}${slotProps.index}`]}"
+                                                 :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"
+                                                 maxlength="50"
+                                                 @blur="changeVariantValue(key, slotProps.index)"></InputText>
+                                    </div>
+                                    <div class="ms-error-text" v-if="invalidVariant[`${key}${slotProps.index}`]">
+                                      {{ invalidVariant[`${key}${slotProps.index}`] }}
+                                    </div>
+                                  </div>
+                                </template>
+                              </Column>
+                              <Column
+                                  style="padding-top: 6px !important; padding-right: 12px !important; padding-left: 12px !important;">
+                                <template #body="slotProps">
+                                  <div class="row-actions flex-row">
+                                    <div class="icon_remove pointer"
+                                         @click="deleteOptionVariantValue(key, slotProps.index)">
+                                    </div>
+                                  </div>
+                                </template>
+                              </Column>
+                              <Column rowReorder :reorderableColumn="false" style="padding-top: 6px !important;">
+                                <template #rowreordericon>
+                                  <div class="p-icon p-datatable-reorderablerow-handle icon_drag_dot" aria-hidden="true"
+                                       data-pc-section="rowreordericon"></div>
+                                </template>
+                              </Column>
+                            </DataTable>
+
+                            <div class="mt-2 d-flex flex-grow-1 gap-2">
+                              <input type="file" hidden :ref="`ref_variant_image${key}`"
+                                     @change="changeVariantImage($event, key)">
+                              <div class="d-flex flex-column" style="max-width: 106px;" v-if="isVariantImage">
+                                <Button
+                                    @click="chooseVariantImage(key)"
+                                    class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center me-3 ms-btn_search gap-2">
+                                  <div v-if="!itemVariant[key].image">
+                                    <div class="icon">
+                                      <Image :src="require('@public/assets/icons/image.svg')"
+                                             alt="Image"/>
+                                    </div>
+                                    <div class="">Tải ảnh lên</div>
+                                  </div>
+                                  <div v-else class="d-flex flex-grow-1">
+                                    <Image :src="itemVariant[key].image" class="flex-grow-1"
+                                           alt="Image"
+                                           preview>
+                                      <template #indicatoricon>
+                                        <div class="d-flex gap-2">
+                                          <i class="icon-eye"></i>
+                                          <div class="icon_remove-white"
+                                               @click="removeVariantImage($event, key)"></div>
+                                        </div>
+                                      </template>
+                                    </Image>
+                                  </div>
+                                </Button>
+                                <div class="ms-error-text" v-if="invalidVariant[`image${key}`]">
+                                  {{ invalidVariant[`image${key}`] }}
+                                </div>
+                              </div>
+                              <div class="d-flex flex-column flex-grow-1">
+                                <div class="">
+                                  <InputText v-model="itemVariant[key].value"
+                                             :class="{'error': invalidVariant[key]}"
+                                             maxlength="50"
+                                             :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"
+                                             @blur="changeVariantValue(key)"></InputText>
+                                </div>
+                                <div class="ms-error-text" v-if="invalidVariant[key]">
+                                  {{ invalidVariant[key] }}
+                                </div>
+                              </div>
+                              <div class="me-4 ms-4" style="padding-left: 25px"></div>
+                            </div>
+                            <Button
+                                @click="completeVariant(key)"
+                                class="ms-btn secondary primary d-flex justify-content-center ms-btn_search ps-3 pe-3 mt-4 gap-2">
+                              <div class="">Xong</div>
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="" v-else>
+                        <div class="row gy-2 align-items-center">
+                          <div class="d-flex flex-column col-10 gap-2">
+                            <div>
+                              {{ listVariant[key].name }}
+                            </div>
+                            <div class="d-flex gap-2 flex-wrap">
+                              <div v-for="option in listVariant[key].option">
+                                <Chip :label="option.value"/>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-2 d-flex justify-content-center">
+                            <Button
+                                @click="editVariant(key)"
+                                class="ms-btn btn-transparent d-flex justify-content-center ms-btn_search ps-3 pe-3 gap-1 mt-2 mb-2">
+                              <div class="">Chỉnh sửa</div>
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <Button
+                          v-if="listVariant.length < 3"
+                          @click="addVariant"
+                          class="custom-btn text-link ms-btn d-flex justify-content-center ms-btn_search ps-3 pe-3 gap-1 mt-2 mb-2">
+                        <div class="icon24 icon-add-blue"></div>
+                        <div class="">Thêm biến thể</div>
+                      </Button>
+                    </div>
+
+                    <div class="group-form_box" v-if="variantsData.length > 0">
+                      <div class="label d-flex align-items-center justify-content-between">
+                        <div>
+                          <span class="required">*</span>
+                          Danh sách biến thể
+                        </div>
+                        <div>
+                          <ToggleButton v-model="isBatchEditing" :onLabel="MESSAGE.BATCH_EDITING"
+                                        :offLabel="MESSAGE.BATCH_EDITING" class="ms-btn">
+                            <template #icon>
+                              <div class="icon_up"></div>
+                            </template>
+                          </ToggleButton>
+                        </div>
+                      </div>
+                      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 gx-3 gy-2"
+                           v-if="isBatchEditing">
+                        <div class="col" v-for="(variant, index) in listVariant">
+                          <div class="">
+                            <Dropdown v-model="batchEditingVariant[`variant${index}`]" :options="[{
+                          value: 'Tất cả'
+                        },... variant.option]" optionLabel="value"
+                                      autoOptionFocus
+                                      selectOnFocus
+                                      placeholder="Trạng thái"
+                                      class="ms-category text-start"/>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <InputNumber v-model="batchEditingVariant['retailPrice']" inputClass="text-start"
+                                       class="flex-grow-1"
+                                       mode="currency"
+                                       placeholder="Giá bán lẻ"
+                                       currency="VND" locale="vi"/>
+                        </div>
+                        <div class="col">
+                          <InputNumber v-model="batchEditingVariant['quantity']" placeholder="Số lượng"
+                                       inputClass="text-start" class="flex-grow-1"/>
+                        </div>
+                        <div class="col">
+                          <InputText v-model="batchEditingVariant['skuSeller']"
+                                     :placeholder="MESSAGE.SKU_SELLER"></InputText>
+                        </div>
+                        <div class="col order-md-last">
+                          <Button
+                              class="ms-btn secondary d-flex justify-content-center w-100 ms-btn_search ps-3 pe-3 gap-2 me-2"
+                              @click="applyBatchEditing">
+                            <div class="">Áp dụng</div>
+                          </Button>
+                        </div>
+                      </div>
+                      <div class="mt-3">
+                        <DataTable class="flex1 flex-column ms-list_variant--table"
+                                   :value="variantsData"
+                                   scrollable
+                                   v-if="variantsData.length > 0"
+                                   tableStyle="min-width: 100%" rowHover>
+                          <Column
+                              v-for="(column, index) in Object.keys(variantsData[0]).filter(key => key.startsWith('variant_name_')).map((name, index) => ({ name: variantsData[0][name] }))"
+                              :key="index"
+                              :field="'variant_option_' + index"
+                              :header="column.name"
+                              frozen alignFrozen="left"
+                              style="min-width: 140px"
+                          />
+                          <Column field="retail_price" style="min-width: 140px">
+                            <template #header>
+                              Giá bán lẻ
+                            </template>
+                            <template #body="slotProps">
+                              <div :ref="`variant_retail_price_${slotProps.index}`">
+                                <InputNumber v-model="variantsData[slotProps.index].retail_price"
+                                             inputClass="text-start"
+                                             class="flex-grow-1"
+                                             mode="currency"
+                                             :class="{'error': invalidProduct[`variant_retail_price_${slotProps.index}`]}"
+                                             placeholder="Giá bán lẻ"
+                                             currency="VND" locale="vi"/>
+                              </div>
+                            </template>
+                          </Column>
+                          <Column field="quantity" style="min-width: 140px">
+                            <template #header>
+                              Số lượng
+                            </template>
+                            <template #body="slotProps">
+                              <div :ref="`variant_quantity_${slotProps.index}`">
+                                <InputNumber v-model="variantsData[slotProps.index].quantity" placeholder="Số lượng"
+                                             :class="{'error': invalidProduct[`variant_quantity_${slotProps.index}`]}"
+                                             inputClass="text-start" class="flex-grow-1"/>
+                              </div>
+                            </template>
+                          </Column>
+                          <Column field="sku_seller" style="min-width: 140px; position: unset;">
+                            <template #header>
+                              {{ MESSAGE.SKU_SELLER }}
+                            </template>
+                            <template #body="slotProps">
+                              <div :ref="`variant_sku_seller_${slotProps.index}`">
+                                <InputText v-model="variantsData[slotProps.index].sku_seller"
+                                           :placeholder="MESSAGE.SKU_SELLER"></InputText>
+                              </div>
+                            </template>
+                          </Column>
+                        </DataTable>
+                      </div>
+                      <div class="ms-error-text"></div>
+                    </div>
+                  </div>
+
+                </div>
+              </Panel>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup-footer">
+        <div class="flex-row">
+          <div class="flex-grow-1"></div>
+          <div class="d-flex">
             <Button
                 class="ms-btn secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
               <div class="">Lưu nháp</div>
@@ -20,787 +787,6 @@
               <div class="">Thêm sản phẩm</div>
             </Button>
           </div>
-        </div>
-      </div>
-
-      <div class="row pb-4 g-0 overflow-auto">
-        <div class="col-9 gx-3">
-          <Panel header="Thông tin cơ bản" class="ma-media">
-            <div class="d-flex flex-column group-form_list" ref="image">
-              <div class="group-form_box">
-                <div class="label d-flex align-items-center gap-1">
-                  <span class="required">*</span>
-                  Hình ảnh sản phẩm
-                  <div class="icon_question--cricle-13 text-start"
-                       v-tooltip="'Tải lên tối đa 9 hình ảnh. Kích thước hình ảnh tối thiểu: 300×300 px.\nBạn nên sử dụng hình nền trắng làm hình ảnh đầu tiên thay vì sử dụng hình ảnh có các yếu tố khác (chữ, logo, đường viền, khối màu, hình mờ hoặc hình ảnh đồ họa khác).\nĐể thêm chữ vào hình ảnh, hãy đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
-                </div>
-                <div class="description">Bạn nên thêm ít nhất 5 ảnh để minh họa đầy đủ cho sản phẩm của bạn.</div>
-              </div>
-              <div class="d-flex flex-column flex-grow-1">
-                <div class="position-relative d-flex flex-grow-1">
-                  <div class="grid grid-cols-4 grid-rows-3 gap-12 ms-product_images">
-                    <div v-for="(item, index) in imageProducts" class="ms-item_image--products_wrapper"
-                         @click="chooseImageProduct($event, index)"
-                         :class="{'active': item.active, 'ms-media_active': item.imageData}">
-                      <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
-                                  accept="image/*" :maxFileSize="5000000 " @select="changeImageProduct($event, index)"
-                                  showUploadButton
-                      >
-                        <template #header="{ chooseCallback, clearCallback, files }">
-                          <button :ref="`chooseButton${index}`" @click="chooseCallback()">123</button>
-                          <button :ref="`clearButton${index}`" @click="clearCallback()"></button>
-                        </template>
-                        <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
-                          <div class="p-fileupload-empty" data-pc-section="empty">
-                            <div v-if="item.imageData" class="d-flex h-100 w-100">
-                              <Image :src="item.image" class="flex-grow-1 w-100 h-100"
-                                     alt="Image"
-                                     preview>
-                                <template #indicatoricon>
-                                  <div class="d-flex gap-2">
-                                    <i class="icon-eye"></i>
-                                    <div class="icon_remove-white"
-                                         @click="removeProductImage($event, index)"></div>
-                                  </div>
-                                </template>
-                              </Image>
-                            </div>
-                            <div v-else class="ms-item_image--products">
-                              <div class="image d-flex align-items-center text-center">
-                                <Image :src="item.icon"
-                                       alt="Image"/>
-                              </div>
-                              <div class="title" v-tooltip.top="item.title">{{ item.title }}</div>
-                              <ul v-if="item.description">
-                                <li>
-                                  Kích thước: 300 × 300 px
-                                </li>
-                                <li>
-                                  Kích thước tập tin tối đa: 5 MB (Tối đa 9 tập tin)
-                                </li>
-                                <li>
-                                  Định dạng: JPG, JPEG, PNG
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </template>
-                      </FileUpload>
-                    </div>
-                  </div>
-                </div>
-                <div class="ms-error-text" v-if="invalidProduct['image']">{{ invalidProduct['image'] }}</div>
-              </div>
-              <div class="group-form_box">
-                <div class="label d-flex align-items-center">
-                  <span class="required">*</span>
-                  Tên sản phẩm
-                </div>
-                <div class="" ref="product_name">
-                  <InputText v-model="selectedProduct['product_name']" placeholder="Tên sản phẩm"
-                             :class="{'error': invalidProduct['product_name']}"
-                  ></InputText>
-                </div>
-                <div class="ms-error-text" v-if="invalidProduct['product_name']">
-                  {{ invalidProduct['product_name'] }}
-                </div>
-              </div>
-              <div class="group-form_box" ref="category">
-                <div class="label d-flex align-items-center gap-1">
-                  <span class="required">*</span>
-                  Hạng mục
-                  <div class="icon_question--cricle-13 text-start"
-                       v-tooltip="'Đảm bảo rằng bạn chọn danh mục phù hợp. Việc phân loại sai sản phẩm có thể ảnh hưởng đến chất lượng bán hàng.'"></div>
-                </div>
-                <div class="">
-                  <TreeSelect v-model="selectedCategory" :options="categories"
-                              @change="changeCategory"
-                              label="name"
-                              panel-class="ms-treeselect_parent"
-                              :class="{'error': invalidProduct['category']}"
-                              placeholder="Vui lòng chọn một hạng mục"/>
-                </div>
-                <div class="ms-error-text" v-if="invalidProduct['category']">
-                  {{ invalidProduct['category'] }}
-                </div>
-              </div>
-              <div class="group-form_box group-form_properties" v-if="properties?.properties?.length > 0">
-                <div class="label d-flex align-items-center">
-                  Thuộc tính sản phẩm
-                  <div class="icon16 icon-note text-start"
-                       v-tooltip="'Thêm thuộc tính sản phẩm có thể giúp khách hàng hiểu rõ hơn về sản phẩm đó.'"></div>
-                </div>
-                <div class="row g-0 pb-2 ps-2 pe-2">
-                  <div v-for="(property, index) in properties.properties" class="col-lg-4 col-sm-6 gx-3 gy-3 col-xs-12">
-                    <div class="group-form_box" v-if="properties.propertyType?.INPUT_TEXT?.value === property.type">
-                      <div class="label">{{ property['name'] }}</div>
-                      <div class="">
-                        <InputText v-model="selectedProperty[index]"
-                                   :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
-                      </div>
-                      <div class="ms-error-text"></div>
-                    </div>
-                    <div class="group-form_box"
-                         v-else-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type || properties.propertyType?.SELECT_SINGLE?.value === property.type">
-                      <div class="label d-flex align-items-center">
-                        <span class="required" v-if="property.required">*</span>
-                        {{ property['name'] }}
-                      </div>
-                      <div class="">
-                        <Dropdown v-model="selectedProperty[index]" :options="property.property_values"
-                                  optionLabel="value"
-                                  @before-show="beforeShowSelectWithAddOption(index)"
-                                  :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
-                                  showClear
-                                  filter
-                                  checkmark
-                                  panelClass="ms-dropdown-checkmark"
-                                  class="ms-category text-start">
-                          <template #footer
-                                    v-if="properties.propertyType?.SELECT_SINGLE_WITH_ADD_OPTION?.value === property.type">
-                            <div class="d-flex gap-2 ms-dropdown_properties-footer">
-                              <div class="group-form_box">
-                                <div class="">
-                                  <InputText v-model="valueSelectAddOption[index]"
-                                             :class="{'error': invalidValueSelectAddOption[index]}"
-                                             :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
-                                </div>
-                                <div class="ms-error-text" v-if="invalidValueSelectAddOption[index]">
-                                  {{ invalidValueSelectAddOption[index] }}
-                                </div>
-                              </div>
-                              <Button @click="appendOptionToSingleSelect(index)"
-                                      class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-                                <div class="fw-semibold">Thêm</div>
-                              </Button>
-                            </div>
-                          </template>
-                        </Dropdown>
-                      </div>
-                      <div class="ms-error-text"></div>
-                    </div>
-                    <div class="group-form_box"
-                         v-else-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type || properties.propertyType?.SELECT_MULTIPLE?.value === property.type">
-                      <div class="label">{{ property['name'] }}</div>
-                      <div class="">
-                        <MultiSelect v-model="selectedProperty[index]" :options="property.property_values"
-                                     optionLabel="value"
-                                     :placeholder="MESSAGE.SELECT_PROPERTY_PLACEHOLDER"
-                                     display="chip"
-                                     filter
-                                     @before-show="beforeShowSelectWithAddOption(index)"
-                                     class="ms-category text-start">
-                          <template #footer
-                                    v-if="properties.propertyType?.SELECT_MULTIPLE_WITH_ADD_OPTION?.value === property.type">
-                            <div class="d-flex gap-2 ms-dropdown_properties-footer">
-                              <div class="group-form_box">
-                                <div class="">
-                                  <InputText v-model="valueSelectAddOption[index]"
-                                             :class="{'error': invalidValueSelectAddOption[index]}"
-                                             :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"></InputText>
-                                </div>
-                                <div class="ms-error-text" v-if="invalidValueSelectAddOption[index]">
-                                  {{ invalidValueSelectAddOption[index] }}
-                                </div>
-                              </div>
-                              <Button @click="appendOptionToMultipleSelect(index)"
-                                      class="ms-btn blue d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-                                <div class="fw-semibold">Thêm</div>
-                              </Button>
-                            </div>
-                          </template>
-                        </MultiSelect>
-                      </div>
-                      <div class="ms-error-text"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="group-form_box" ref="brand">
-                <div class="label d-flex align-items-center">
-                  <span class="required">*</span>
-                  Thương hiệu
-                </div>
-                <div class="">
-                  <Dropdown v-model="selectedProduct.brand" :options="brands" optionLabel="brand_name"
-                            placeholder="Chọn một thương hiệu"
-                            :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
-                            checkmark
-                            filter
-                            panelClass="ms-dropdown-checkmark"
-                            :class="{'error': invalidProduct['brand']}"
-                            class="ms-category text-start">
-                    <template #footer
-                    >
-                      <div class="d-flex gap-2 ms-dropdown_properties-footer">
-                        <div class="group-form_box flex-grow-1">
-                          <div class="">
-                            <InputText v-model="valueBrandSelectAddOption"
-                                       :class="{'error': invalidAddBrandOption['brand']}"
-                                       :placeholder="MESSAGE.ENTER"></InputText>
-                          </div>
-                          <div class="ms-error-text" v-if="invalidAddBrandOption['brand']">
-                            {{ invalidAddBrandOption['brand'] }}
-                          </div>
-                        </div>
-                        <div>
-                          <Button @click="appendOptionToBrandSelect"
-                                  class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-                            <div class="fw-semibold">Thêm</div>
-                          </Button>
-                        </div>
-                      </div>
-                    </template>
-                  </Dropdown>
-                </div>
-                <div class="ms-error-text" v-if="invalidProduct['brand']">
-                  {{ invalidProduct['brand'] }}
-                </div>
-              </div>
-            </div>
-          </Panel>
-          <!--          <Panel header="Giá tiền" toggleable class="mt-4">-->
-          <!--            <div class="d-flex flex-column group-form_list">-->
-          <!--              <div class="group-form_box">-->
-          <!--                <div class="label">Giá tiền</div>-->
-          <!--                <div class="">-->
-          <!--                  <InputText placeholder="Giá tiền"></InputText>-->
-          <!--                </div>-->
-          <!--                <div class="ms-error-text"></div>-->
-          <!--              </div>-->
-          <!--              <div class="d-flex flex-row gap-4">-->
-          <!--                <div class="group-form_box flex-grow-1 col-6">-->
-          <!--                  <div class="label">Loại giảm giá</div>-->
-          <!--                  <div class="">-->
-          <!--                    <Dropdown v-model="selectedCategory" :options="cities" optionLabel="name"-->
-          <!--                              placeholder="Loại giảm giá"-->
-          <!--                              class="ms-category text-start"/>-->
-          <!--                  </div>-->
-          <!--                  <div class="ms-error-text"></div>-->
-          <!--                </div>-->
-          <!--                <div class="group-form_box flex-grow-1 col-6">-->
-          <!--                  <div class="label">Tỉ lệ giảm giá</div>-->
-          <!--                  <div class="">-->
-          <!--                    <InputText placeholder="Tỉ lệ giảm giá"></InputText>-->
-          <!--                  </div>-->
-          <!--                  <div class="ms-error-text"></div>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--              <div class="group-form_box">-->
-          <!--                <div class="label">Mô tả</div>-->
-          <!--                <div class="">-->
-          <!--                  <Textarea rows="4" cols="30" class="h-100" placeholder="Nhập mô tả"/>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </Panel>-->
-          <Panel header="Chi tiết sản phẩm" toggleable class="mt-4 ma-description-product ma-media">
-            <div class="d-flex flex-column group-form_list" ref="description">
-              <div class="group-form_box">
-                <div class="label d-flex align-items-center gap-1">
-                  <span class="required">*</span>
-                  Mô tả sản phẩm
-                  <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
-'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
-'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
-                </div>
-                <div class="description">
-                  Nên viết mô tả dài ít nhất 500 ký tự và thêm hình ảnh để giúp khách hàng đưa ra quyết định mua hàng.
-                </div>
-                <Editor v-model="selectedProduct.description" editorStyle="height: 320px"
-                        :class="{'error': invalidProduct['description']}"
-                        placeholder="Nhập mô tả sản phẩm"/>
-                <div class="ms-error-text" v-if="invalidProduct['description']">
-                  {{ invalidProduct['description'] }}
-                </div>
-              </div>
-              <div class="group-form_box" v-if="properties?.size_table">
-                <div class="label d-flex align-items-center gap-1">
-                  <span class="required">*</span>Bảng kích thước
-                  <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
-'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
-'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
-                </div>
-                <div class="d-flex align-items-center gap-3">
-                  <div class="d-flex align-items-center">
-                    <RadioButton v-model="sizeTable" inputId="useSample" name="sizeTable" value="0"
-                                 @change="changeSizeTable"/>
-                    <label for="useSample" class="ml-2 pointer">Sử dụng mẫu</label>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <RadioButton v-model="sizeTable" inputId="upImage" name="sizeTable" value="1"
-                                 @change="changeSizeTable"/>
-                    <label for="upImage" class="ml-2 pointer">Tải ảnh lên</label>
-                  </div>
-                </div>
-
-                <div class="group-form_box mt-3" v-if="sizeTable">
-                  <div class="">
-                    <Dropdown v-model="selectedProduct.size_id" :options="sizeList" optionLabel="size_name"
-                              optionValue="id"
-                              :placeholder="MESSAGE.SELECT_SIZE_CHART_TEMPLATE"
-                              :emptyMessage="MESSAGE.EMPTY_DROPDOWN"
-                              checkmark
-                              filter
-                              panelClass="ms-dropdown-checkmark"
-                              :class="{'error': invalidProduct['brand']}"
-                              class="ms-category text-start">
-                      <template #footer
-                      >
-                        <div class="d-flex gap-2 ms-dropdown_properties-footer">
-                          <div>
-                            <Button @click="isSideBarSizeTable = true;"
-                                    class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-                              <div class="fw-semibold">Thêm</div>
-                            </Button>
-                          </div>
-                        </div>
-                      </template>
-                    </Dropdown>
-                  </div>
-                  <div class="ms-error-text" v-if="invalidProduct['brand']">
-                    {{ invalidProduct['brand'] }}
-                  </div>
-                </div>
-              </div>
-              <div class="group-form_box">
-                <div class="label d-flex align-items-center gap-1">Video
-                  <div class="icon_question--cricle-13 text-start"
-                       v-tooltip="'Video tải lên sẽ được hiển thị trên trang chi tiết sản phẩm. Hãy làm nổi bật 1 hoặc 2 lợi điểm bán hàng chính của sản phẩm trong video.'"></div>
-                </div>
-                <div class="description">
-                  Tỷ lệ khung hình video phải từ 9:16 đến 16:9. Kích thước tập tin tối đa: 100 MB.
-                </div>
-                <div class="col-6 ma-item-video" :class="{'ms-media_active': videoProduct}" @click="chooseVideoProduct">
-                  <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
-                              accept="video/*" :maxFileSize="5000000 " @select="changeVideoProduct($event)"
-                              showUploadButton
-                  >
-                    <template #header="{ chooseCallback, clearCallback, files }">
-                      <button :ref="`chooseVideoProduct`" @click="chooseCallback()">123</button>
-                      <button :ref="`clearVideoProduct`" @click="clearCallback()"></button>
-                    </template>
-                    <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
-                      <div class="p-fileupload-empty  w-100 h-100" data-pc-section="empty">
-                        <div v-if="videoProduct" class="d-flex w-100 h-100 position-relative">
-                          <video :src="videoProduct" class="w-100 h-100">
-                          </video>
-                          <div
-                              class="position-absolute ms-box_video w-100 h-100 flex-column d-flex  align-items-center justify-content-center">
-                            <div class="icon-pause pointer"></div>
-                            <div class="icon_remove-white pointer"></div>
-                          </div>
-                        </div>
-                        <div v-else
-                             class="ms-item_image--products w-100 h-100 d-flex  align-items-center justify-content-center">
-                          <div class="image d-flex align-items-center text-center">
-                            <Image :src="require('@public/assets/icons/video.svg')"
-                                   alt="Image"/>
-                          </div>
-                          <div class="title" v-tooltip.top="'Video'">Video</div>
-                        </div>
-                      </div>
-                    </template>
-                  </FileUpload>
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-            </div>
-          </Panel>
-
-          <Panel header="Thông tin bán hàng" class="mt-4" :collapsed="!selectedCategory">
-            <template #header>
-              <div class="d-flex flex-column justify-content-start text-start ma-custom-panel-header">
-                <div class="title">Thông tin bán hàng</div>
-                <div class="description" v-if="!selectedCategory">Vui lòng chọn danh mục trước</div>
-              </div>
-            </template>
-            <div class="d-flex flex-column group-form_list">
-              <div class="group-form_box">
-                <div class="label d-flex gap-3 mb-1">Kích hoạt biến thể
-                  <InputSwitch v-model="selectedProduct.has_variant"/>
-                </div>
-                <div class="sub-description">Bạn có thể thêm biến thể nếu sản phẩm này có nhiều lựa chọn như kích cỡ
-                  hoặc màu sắc.
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-              <div class="group-form_box" v-if="!selectedProduct.has_variant" ref="product_no_variant">
-                <div class="label d-flex align-items-center">
-                  <span class="required">*</span>
-                  Giá & Số lượng
-                </div>
-                <div class="row theme-arco-table-content-inner gx-0">
-                  <div class="col-4 d-flex flex-column mb-2">
-                    <div class="label pt-1 pb-1 ps-2 d-flex align-items-center">
-                      <span class="required">*</span>
-                      Giá bán lẻ
-                    </div>
-                    <div class="d-flex ps-2">
-                      <InputNumber v-model="saleInfomation.retailPrice" inputClass="text-start" class="flex-grow-1"
-                                   mode="currency"
-                                   :max="999999999"
-                                   :class="{'error': invalidProduct['retail_price']}"
-                                   currency="VND" locale="vi"/>
-                    </div>
-                    <!--                    <div class="ms-error-text ps-2" v-if="invalidProduct['retail_price']">-->
-                    <!--                      {{ invalidProduct['retail_price'] }}-->
-                    <!--                    </div>-->
-                  </div>
-                  <div class="col-4 d-flex flex-column">
-                    <div class="label pt-1 pb-1 d-flex align-items-center ps-3">
-                      <span class="required">*</span>
-                      Số lượng
-                    </div>
-                    <div class="d-flex ps-3">
-                      <InputNumber v-model="saleInfomation.quantity" inputClass="text-start" class="flex-grow-1"
-                                   :class="{'error': invalidProduct['quantity']}"
-                                   :max="999999"/>
-                    </div>
-                    <!--                    <div class="ms-error-text ps-3" v-if="invalidProduct['quantity']">-->
-                    <!--                      {{ invalidProduct['quantity'] }}-->
-                    <!--                    </div>-->
-                  </div>
-                  <div class="col-4 d-flex flex-column">
-                    <div class="label pt-1 pb-1 d-flex align-items-center ps-3 pe-2">
-                      SKU Người bán
-                    </div>
-                    <div class="d-flex ps-3 pe-2">
-                      <InputNumber v-model="saleInfomation.skuSeller" inputClass="text-start" class="flex-grow-1"/>
-                    </div>
-                  </div>
-                </div>
-                <div class="ms-error-text"></div>
-              </div>
-              <div class="ms-group_variants d-flex flex-column gap-3 justify-content-start" v-else
-                   ref="product_has_variant">
-                <div class="ms-variants_wrapper" v-for="(item, key) in listVariant">
-                  <div v-if="!listVariant[key].complete">
-                    <div class="group-form_box">
-                      <div class="label d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                          <span class="required">*</span>
-                          Tên biến thể
-                          <div class="icon16 icon-note text-start" v-tooltip="'\n'+
-'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
-'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
-                        </div>
-                        <div class="d-flex align-items-center ms-checkbox_label gap-1" v-if="key === 0">
-                          <Checkbox v-model="isVariantImage" :binary="true" inputId="variant_image"/>
-                          <label for="variant_image">
-                            Thêm hình ảnh
-                          </label>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center">
-                        <InputText v-model="listVariant[key].name" :placeholder="MESSAGE.INPUT_PLACEHOLDER_VARIANT"
-                                   :class="{'error': invalidVariant[`name${key}`]}" maxlength="50"
-                                   @input="changeNameVariant($event, key)"></InputText>
-                        <div class="icon-w24 ms-1" style="margin-right: 45px;">
-                          <div class="icon_remove pointer" v-if="listVariant.length > 1"
-                               @click="removeVariant(key)"></div>
-                        </div>
-                      </div>
-                      <div class="ms-error-text" v-if="invalidVariant[`name${key}`]">
-                        {{ invalidVariant[`name${key}`] }}
-                      </div>
-                    </div>
-                    <div class="group-form_box mt-4">
-                      <div class="label d-flex align-items-center">
-                        <span class="required">*</span>
-                        Tùy chọn
-                        <div class="icon16 icon-note text-start" v-tooltip="'\n'+
-'Bạn nên liệt kê từ 3 đến 5 lợi điểm bán hàng. Để giúp nội dung mô tả dễ đọc hơn, hãy mô tả từng lợi điểm bán hàng theo từng đoạn không quá 250 ký tự.\n'+
-'Đảm bảo bạn sử dụng ngôn ngữ của thị trường mục tiêu.'"></div>
-                      </div>
-                      <div>
-                        <DataTable :value="item.option" :reorderableColumns="true"
-                                   class="ms-variants_table" :class="{' ms-variant_image': isVariantImage}"
-                                   @rowReorder="onRowReorderVariant($event, key)" v-if="item.option.length > 0">
-                          <Column>
-                            <template #body="slotProps">
-                              <input type="file" hidden :ref="`ref_variant_image${key}${slotProps.index}`"
-                                     @change="changeVariantImage($event, key, slotProps.index)">
-                              <div class="d-flex flex-column" style="max-width: 106px;" v-if="isVariantImage">
-                                <Button v-if="isVariantImage"
-                                        @click="chooseVariantImage(key, slotProps.index)"
-                                        :class="{'border-0': listVariant[key].option[slotProps.index].image}"
-                                        class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center flex-grow-1 me-3 ms-btn_search gap-2">
-                                  <div v-if="!listVariant[key].option[slotProps.index].image">
-                                    <div class="icon">
-                                      <Image :src="require('@public/assets/icons/image.svg')"
-                                             alt="Image"/>
-                                    </div>
-                                    <div class="">Tải ảnh lên</div>
-                                  </div>
-                                  <div v-else class="d-flex">
-                                    <Image :src="listVariant[key].option[slotProps.index].image"
-                                           class="flex-grow-1"
-                                           alt="Image"
-                                           preview>
-                                      <template #indicatoricon>
-                                        <div class="d-flex gap-2">
-                                          <i class="icon-eye"></i>
-                                          <div class="icon_remove-white"
-                                               @click="removeVariantImage($event, key, slotProps.index)"></div>
-                                        </div>
-                                      </template>
-                                    </Image>
-                                  </div>
-                                </Button>
-                                <div class="ms-error-text mt-1 mb-2"
-                                     v-if="invalidVariant[`image${key}${slotProps.index}`]">
-                                  <div class="position-absolute">
-                                    {{ invalidVariant[`image${key}${slotProps.index}`] }}
-                                  </div>
-                                </div>
-                              </div>
-                            </template>
-                          </Column>
-                          <Column class="flex-grow-1 d-flex align-items-start pe-2">
-                            <template #body="slotProps">
-                              <div class="flex-grow-1 d-flex flex-column" :class="{'ms-2': isVariantImage}">
-                                <div class="">
-                                  <InputText v-model="item.option[slotProps.index].value"
-                                             :class="{'error': invalidVariant[`${key}${slotProps.index}`]}"
-                                             :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"
-                                             maxlength="50"
-                                             @blur="changeVariantValue(key, slotProps.index)"></InputText>
-                                </div>
-                                <div class="ms-error-text" v-if="invalidVariant[`${key}${slotProps.index}`]">
-                                  {{ invalidVariant[`${key}${slotProps.index}`] }}
-                                </div>
-                              </div>
-                            </template>
-                          </Column>
-                          <Column
-                              style="padding-top: 6px !important; padding-right: 12px !important; padding-left: 12px !important;">
-                            <template #body="slotProps">
-                              <div class="row-actions flex-row">
-                                <div class="icon_remove pointer"
-                                     @click="deleteOptionVariantValue(key, slotProps.index)">
-                                </div>
-                              </div>
-                            </template>
-                          </Column>
-                          <Column rowReorder :reorderableColumn="false" style="padding-top: 6px !important;">
-                            <template #rowreordericon>
-                              <div class="p-icon p-datatable-reorderablerow-handle icon_drag_dot" aria-hidden="true"
-                                   data-pc-section="rowreordericon"></div>
-                            </template>
-                          </Column>
-                        </DataTable>
-
-                        <div class="mt-2 d-flex flex-grow-1 gap-2">
-                          <input type="file" hidden :ref="`ref_variant_image${key}`"
-                                 @change="changeVariantImage($event, key)">
-                          <div class="d-flex flex-column" style="max-width: 106px;" v-if="isVariantImage">
-                            <Button
-                                @click="chooseVariantImage(key)"
-                                class="ms-btn btn-image outline-primary d-flex flex-column justify-content-center me-3 ms-btn_search gap-2">
-                              <div v-if="!itemVariant[key].image">
-                                <div class="icon">
-                                  <Image :src="require('@public/assets/icons/image.svg')"
-                                         alt="Image"/>
-                                </div>
-                                <div class="">Tải ảnh lên</div>
-                              </div>
-                              <div v-else class="d-flex flex-grow-1">
-                                <Image :src="itemVariant[key].image" class="flex-grow-1"
-                                       alt="Image"
-                                       preview>
-                                  <template #indicatoricon>
-                                    <div class="d-flex gap-2">
-                                      <i class="icon-eye"></i>
-                                      <div class="icon_remove-white"
-                                           @click="removeVariantImage($event, key)"></div>
-                                    </div>
-                                  </template>
-                                </Image>
-                              </div>
-                            </Button>
-                            <div class="ms-error-text" v-if="invalidVariant[`image${key}`]">
-                              {{ invalidVariant[`image${key}`] }}
-                            </div>
-                          </div>
-                          <div class="d-flex flex-column flex-grow-1">
-                            <div class="">
-                              <InputText v-model="itemVariant[key].value"
-                                         :class="{'error': invalidVariant[key]}"
-                                         maxlength="50"
-                                         :placeholder="MESSAGE.INPUT_PROPERTY_PLACEHOLDER"
-                                         @blur="changeVariantValue(key)"></InputText>
-                            </div>
-                            <div class="ms-error-text" v-if="invalidVariant[key]">
-                              {{ invalidVariant[key] }}
-                            </div>
-                          </div>
-                          <div class="me-4 ms-4" style="padding-left: 25px"></div>
-                        </div>
-                        <Button
-                            @click="completeVariant(key)"
-                            class="ms-btn secondary primary d-flex justify-content-center ms-btn_search ps-3 pe-3 mt-4 gap-2">
-                          <div class="">Xong</div>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="" v-else>
-                    <div class="row gy-2 align-items-center">
-                      <div class="d-flex flex-column col-10 gap-2">
-                        <div>
-                          {{ listVariant[key].name }}
-                        </div>
-                        <div class="d-flex gap-2 flex-wrap">
-                          <div v-for="option in listVariant[key].option">
-                            <Chip :label="option.value"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-2 d-flex justify-content-center">
-                        <Button
-                            @click="editVariant(key)"
-                            class="ms-btn btn-transparent d-flex justify-content-center ms-btn_search ps-3 pe-3 gap-1 mt-2 mb-2">
-                          <div class="">Chỉnh sửa</div>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <Button
-                      v-if="listVariant.length < 3"
-                      @click="addVariant"
-                      class="custom-btn text-link ms-btn d-flex justify-content-center ms-btn_search ps-3 pe-3 gap-1 mt-2 mb-2">
-                    <div class="icon24 icon-add-blue"></div>
-                    <div class="">Thêm biến thể</div>
-                  </Button>
-                </div>
-
-                <div class="group-form_box" v-if="variantsData.length > 0">
-                  <div class="label d-flex align-items-center justify-content-between">
-                    <div>
-                      <span class="required">*</span>
-                      Danh sách biến thể
-                    </div>
-                    <div>
-                      <ToggleButton v-model="isBatchEditing" :onLabel="MESSAGE.BATCH_EDITING"
-                                    :offLabel="MESSAGE.BATCH_EDITING" class="ms-btn">
-                        <template #icon>
-                          <div class="icon_up"></div>
-                        </template>
-                      </ToggleButton>
-                    </div>
-                  </div>
-                  <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 gx-3 gy-2"
-                       v-if="isBatchEditing">
-                    <div class="col" v-for="(variant, index) in listVariant">
-                      <div class="">
-                        <Dropdown v-model="batchEditingVariant[`variant${index}`]" :options="[{
-                          value: 'Tất cả'
-                        },... variant.option]" optionLabel="value"
-                                  autoOptionFocus
-                                  selectOnFocus
-                                  placeholder="Trạng thái"
-                                  class="ms-category text-start"/>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <InputNumber v-model="batchEditingVariant['retailPrice']" inputClass="text-start"
-                                   class="flex-grow-1"
-                                   mode="currency"
-                                   placeholder="Giá bán lẻ"
-                                   currency="VND" locale="vi"/>
-                    </div>
-                    <div class="col">
-                      <InputNumber v-model="batchEditingVariant['quantity']" placeholder="Số lượng"
-                                   inputClass="text-start" class="flex-grow-1"/>
-                    </div>
-                    <div class="col">
-                      <InputText v-model="batchEditingVariant['skuSeller']"
-                                 :placeholder="MESSAGE.SKU_SELLER"></InputText>
-                    </div>
-                    <div class="col order-md-last">
-                      <Button
-                          class="ms-btn secondary d-flex justify-content-center w-100 ms-btn_search ps-3 pe-3 gap-2 me-2"
-                          @click="applyBatchEditing">
-                        <div class="">Áp dụng</div>
-                      </Button>
-                    </div>
-                  </div>
-                  <div class="mt-3">
-                    <DataTable class="flex1 flex-column ms-list_variant--table"
-                               :value="variantsData"
-                               scrollable
-                               v-if="variantsData.length > 0"
-                               tableStyle="min-width: 100%" rowHover>
-                      <Column
-                          v-for="(column, index) in Object.keys(variantsData[0]).filter(key => key.startsWith('variant_name_')).map((name, index) => ({ name: variantsData[0][name] }))"
-                          :key="index"
-                          :field="'variant_option_' + index"
-                          :header="column.name"
-                          frozen alignFrozen="left"
-                          style="min-width: 140px"
-                      />
-                      <Column field="retail_price" style="min-width: 140px">
-                        <template #header>
-                          Giá bán lẻ
-                        </template>
-                        <template #body="slotProps">
-                          <div :ref="`variant_retail_price_${slotProps.index}`">
-                            <InputNumber v-model="variantsData[slotProps.index].retail_price" inputClass="text-start"
-                                         class="flex-grow-1"
-                                         mode="currency"
-                                         :class="{'error': invalidProduct[`variant_retail_price_${slotProps.index}`]}"
-                                         placeholder="Giá bán lẻ"
-                                         currency="VND" locale="vi"/>
-                          </div>
-                        </template>
-                      </Column>
-                      <Column field="quantity" style="min-width: 140px">
-                        <template #header>
-                          Số lượng
-                        </template>
-                        <template #body="slotProps">
-                          <div :ref="`variant_quantity_${slotProps.index}`">
-                            <InputNumber v-model="variantsData[slotProps.index].quantity" placeholder="Số lượng"
-                                         :class="{'error': invalidProduct[`variant_quantity_${slotProps.index}`]}"
-                                         inputClass="text-start" class="flex-grow-1"/>
-                          </div>
-                        </template>
-                      </Column>
-                      <Column field="sku_seller" style="min-width: 140px; position: unset;">
-                        <template #header>
-                          {{ MESSAGE.SKU_SELLER }}
-                        </template>
-                        <template #body="slotProps">
-                          <div :ref="`variant_sku_seller_${slotProps.index}`">
-                            <InputText v-model="variantsData[slotProps.index].sku_seller"
-                                       :placeholder="MESSAGE.SKU_SELLER"></InputText>
-                          </div>
-                        </template>
-                      </Column>
-                    </DataTable>
-                  </div>
-                  <div class="ms-error-text"></div>
-                </div>
-              </div>
-
-            </div>
-          </Panel>
-
-        </div>
-        <div class="col-3 gx-3 position-sticky">
-          <Panel header="Loại sản phẩm" toggleable>
-            <p class="m-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-              laborum.
-            </p>
-          </Panel>
         </div>
       </div>
     </div>
@@ -1094,6 +1080,42 @@ export default {
       videoProduct: null,
       selectedSizeTableOption: null,
       sizeList: [],
+      listTabMenu: [
+        {
+          label: 'Thông tin cơ bản',
+          ref: 'image',
+          active: true,
+          children: [
+            {
+              label: 'Hình ảnh sản phẩm',
+              ref: 'image',
+              active: true,
+            },
+            {
+              label: 'Tên sản phẩm',
+              ref: 'product_name',
+            },
+            {
+              label: 'Hạng mục',
+              ref: 'category',
+            },
+            {
+              label: 'Thương hiệu',
+              ref: 'brand',
+            },
+          ],
+        },
+        {
+          label: 'Chi tiết sản phẩm',
+          ref: 'description',
+          children: [],
+        },
+        {
+          label: 'Thông tin bán hàng',
+          ref: 'saleInfo',
+          children: [],
+        },
+      ],
       sizeTableOption: [
         {
           label: 'Chiều dài váy',
@@ -1982,6 +2004,32 @@ export default {
     },
 
     /**
+     *
+     * @param indexParent
+     * @param indexChild
+     * @param isParent
+     */
+    activeTabMenu(indexParent, indexChild = null, isParent = false) {
+      this.listTabMenu.forEach(item => {
+        item.active = false;
+        item.children.forEach(child => {
+          child.active = false;
+        })
+      });
+      if (isParent) {
+        this.$refs[this.listTabMenu[indexParent].ref].scrollIntoView({behavior: 'smooth', block: 'center'})
+        this.listTabMenu[indexParent].active = true;
+        if (this.listTabMenu[indexParent].children.length > 0) {
+          this.listTabMenu[indexParent].children[0].active = true;
+        }
+      } else {
+        this.$refs[this.listTabMenu[indexParent].children[indexChild].ref].scrollIntoView({behavior: 'smooth', block: 'center'})
+        this.listTabMenu[indexParent].active = true;
+        this.listTabMenu[indexParent].children[indexChild].active = true;
+      }
+    },
+
+    /**
      * Lấy dữ liệu danh mục sản phẩm
      */
     loadCategory() {
@@ -2059,7 +2107,82 @@ export default {
 <style lang="scss">
 .ma-add-product_wrapper {
   max-width: 100%;
-  padding: 0;
+  padding: 0 24px;
+
+  .popup-content {
+    padding: 0;
+    background-color: #fff;
+
+    .list-tab-menu {
+      width: 232px;
+      border-right: 1px solid #c1c1c1;
+      height: 100%;
+      padding: 16px 8px 0 !important;
+      color: #707070;
+
+      .tab-item {
+        margin-bottom: 15px;
+        cursor: pointer;
+
+        .tab-item-parent {
+          height: 19px;
+          margin-bottom: 4px;
+          padding-left: 10px;
+
+          &.active {
+            font-weight: 600;
+            color: #ff6d00;
+          }
+        }
+
+        .tab-item-child {
+          height: 36px;
+          padding: 10px 0 10px 20px;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            border-radius: 4px;
+            background-color: #fbe9e7;
+            color: #ff6d00;
+          }
+
+          &.active {
+            font-weight: 600;
+            border-radius: 4px;
+            background-color: #fbe9e7;
+            color: #ff6d00;
+          }
+        }
+      }
+    }
+
+    .p-panel {
+      .p-panel-header {
+        border: unset;
+      }
+
+      .p-panel-content {
+        border: unset;
+      }
+    }
+
+    .content-body {
+      padding: 12px 12px 16px 16px;
+    }
+  }
+
+  .popup-header {
+    padding: 0;
+    height: 60px;
+    background: unset;
+    min-height: 60px;
+
+    .ms-popup-header {
+      min-height: 60px;
+    }
+
+  }
 
   .p-panel {
     border-radius: 8px;
@@ -2202,6 +2325,7 @@ export default {
       padding: 0 24px 24px 24px;
     }
   }
+
 }
 
 .ma-description-product {
