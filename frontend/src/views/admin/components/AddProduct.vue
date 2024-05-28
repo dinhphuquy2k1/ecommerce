@@ -2023,7 +2023,10 @@ export default {
           this.listTabMenu[indexParent].children[0].active = true;
         }
       } else {
-        this.$refs[this.listTabMenu[indexParent].children[indexChild].ref].scrollIntoView({behavior: 'smooth', block: 'center'})
+        this.$refs[this.listTabMenu[indexParent].children[indexChild].ref].scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        })
         this.listTabMenu[indexParent].active = true;
         this.listTabMenu[indexParent].children[indexChild].active = true;
       }
