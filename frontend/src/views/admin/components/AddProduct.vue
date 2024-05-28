@@ -777,8 +777,8 @@
           <div class="flex-grow-1"></div>
           <div class="d-flex">
             <Button
-                class="ms-btn secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
-              <div class="">Lưu nháp</div>
+                class="ms-btn btn-secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
+              <div class="">Lưu làm nháp</div>
             </Button>
             <Button
                 @click="btnAddProduct"

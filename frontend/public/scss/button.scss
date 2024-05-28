@@ -105,6 +105,16 @@
     }
   }
 
+  &.btn-secondary {
+    border: 1px solid #e0e0e0;
+    color: #000;
+    background: #fff;
+
+    &:not(:disabled):hover {
+      background: #f4f5f8;
+    }
+  }
+
   &.orange {
     background: #FA8232;
     color: #fff;
