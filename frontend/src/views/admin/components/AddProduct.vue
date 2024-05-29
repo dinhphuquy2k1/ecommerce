@@ -290,7 +290,7 @@
                       {{ invalidProduct['description'] }}
                     </div>
                   </div>
-                  <div class="group-form_box" v-if="properties?.size_table">
+                  <div class="group-form_box" v-if="properties?.size_table" ref="sizeTable">
                     <div class="label d-flex align-items-center gap-1">
                       <span class="required">*</span>Bảng kích thước
                       <div class="icon_question--cricle-13 text-start" v-tooltip="'\n'+
@@ -309,8 +309,11 @@
                         <label for="upImage" class="ml-2 pointer">Tải ảnh lên</label>
                       </div>
                     </div>
+                    <div class="ms-error-text" v-if="invalidProduct['size_table']">
+                      {{ invalidProduct['size_table'] }}
+                    </div>
 
-                    <div class="group-form_box mt-3" v-if="sizeTable">
+                    <div class="group-form_box mt-3" v-if="Number.parseInt(sizeTable) === 0">
                       <div class="">
                         <Dropdown v-model="selectedProduct.size_id" :options="sizeList" optionLabel="size_name"
                                   optionValue="id"
@@ -337,6 +340,45 @@
                       <div class="ms-error-text" v-if="invalidProduct['brand']">
                         {{ invalidProduct['brand'] }}
                       </div>
+                    </div>
+                    <div v-if="Number.parseInt(sizeTable) === 1" class="mt-2">
+                      <div class="col-6 ma-item-video" :class="{'ms-media_active': sizeImage}"
+                           @click="chooseSizeImage">
+                        <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
+                                    accept="image/*" :maxFileSize="5000000 " @select="changeSizeImage($event)"
+                                    showUploadButton
+                        >
+                          <template #header="{ chooseCallback, clearCallback, files }">
+                            <button :ref="`chooseSizeImage`" @click="chooseCallback()"></button>
+                            <button :ref="`clearVideoProduct`" @click="clearCallback()"></button>
+                          </template>
+                          <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
+                            <div class="p-fileupload-empty  w-100 h-100" data-pc-section="empty">
+                              <div v-if="sizeImage" class="d-flex h-100 w-100">
+                                <Image :src="sizeImage" class="flex-grow-1 w-100 h-100" image-class="ms-image_upload"
+                                       alt="Image"
+                                       preview>
+                                  <template #indicatoricon>
+                                    <div class="d-flex gap-2">
+                                      <i class="icon-eye"></i>
+                                      <div class="icon_remove-white"
+                                           @click="removeSizeImage"></div>
+                                    </div>
+                                  </template>
+                                </Image>
+                              </div>
+                              <div v-else class="ms-item_image--products h-100 d-flex align-items-center justify-content-center">
+                                <div class="image d-flex align-items-center text-center">
+                                  <Image :src="require('@public/assets/icons/image.svg')"
+                                         alt="Image"/>
+                                </div>
+                                <div class="title">Hình ảnh</div>
+                              </div>
+                            </div>
+                          </template>
+                        </FileUpload>
+                      </div>
+                      <div class="ms-error-text"></div>
                     </div>
                   </div>
                   <div class="group-form_box" ref="video">
@@ -778,13 +820,18 @@
           <div class="d-flex">
             <Button
                 class="ms-btn btn-secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
-              <div class="">Lưu làm nháp</div>
+              <div class="">Hủy</div>
             </Button>
             <Button
-                @click="btnAddProduct"
+                @click="btnAddProduct(true)"
+                class="ms-btn primary-outline d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
+              <div class="">Lưu & thêm mới</div>
+            </Button>
+            <Button
+                @click="btnAddProduct()"
                 class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
               <div class="icon-only icon-simple_cart"></div>
-              <div class="">Thêm sản phẩm</div>
+              <div class="">Lưu</div>
             </Button>
           </div>
         </div>
@@ -825,6 +872,7 @@
   <Sidebar v-model:visible="isSideBarSizeTable" header="Sidebar" position="right" :dismissable="false"
            style="width: 45vw" class="ms-sizebar_product d-flex" :showCloseIcon="false">
     <template #container="{ closeCallback }">
+      <TheLoading v-if="isLoadingSizeTable"/>
       <div class="ms-sizebar_product-header">
         <div class="fw-bold text-xl">Tạo bảng kích thước
         </div>
@@ -1017,6 +1065,7 @@ import ToggleButton from 'primevue/togglebutton';
 import Sidebar from 'primevue/sidebar';
 import RadioButton from 'primevue/radiobutton';
 import VueCropper from 'vue-cropperjs';
+import TheLoading from "@/components/TheLoading.vue";
 import 'cropperjs/dist/cropper.css';
 import {getCategory} from '@/api/category'
 import {getCategoryProperty} from '@/api/category-property'
@@ -1034,6 +1083,7 @@ export default {
     }
   },
   components: {
+    TheLoading,
     Button,
     InputText,
     Panel,
@@ -1184,6 +1234,8 @@ export default {
         ]
       },
       isSideBarSizeTable: false,
+      isLoadingSizeTable: false,
+      sizeImage: null,
       indexSelectedImageProduct: null,
       imageProducts: [
         {
@@ -1303,10 +1355,18 @@ export default {
      */
     btnCompleteSizeTable() {
       if (this.validateSizeTable()) {
+        this.isLoadingSizeTable = true;
         addSize(this.sizeTableData).then(res => {
-          console.log(res)
+          this.selectedProduct.size_id = res.data.size_id;
+          this.sizeTableData.id = res.data.size_id;
+          this.sizeList.push(this.sizeTableData);
+          this.isSideBarSizeTable = false;
         }).catch(error => {
           console.log(error)
+        }).finally(() => {
+          setTimeout(() => {
+            this.isLoadingSizeTable = false;
+          }, 350);
         })
       }
     },
@@ -1361,6 +1421,32 @@ export default {
           this.selectedProduct.use_sample_size = false;
           break;
       }
+    },
+
+    /**
+     *
+     */
+    chooseSizeImage() {
+      if (!this.videoProduct) {
+        this.$refs['chooseSizeImage'].click()
+      }
+    },
+
+    /**
+     * Sự kiện thay đổi hình ảnh kích thước
+     * @param event
+     */
+    changeSizeImage(event) {
+      this.sizeImage = URL.createObjectURL(event.files[0]);
+    },
+
+    /**
+     * Xóa ảnh kích thước
+     * @param event
+     */
+    removeSizeImage(event) {
+      event.stopPropagation()
+      this.sizeImage = null;
     },
 
     /**
@@ -1656,7 +1742,7 @@ export default {
         this.invalidVariant[`name${key}`] = MESSAGE.INVALID_EMPTY_VARIANT_NAME;
       }
       this.listVariant[key].option.forEach((item, index) => {
-        delete this.invalidVariant[`${key}${index}`]
+        delete this.invalidVariant[`image${key}${index}`]
         if (item === "") {
           this.invalidVariant[`${key}${index}`] = MESSAGE.INVALID_EMPTY_VARIANT;
         }
@@ -1720,16 +1806,18 @@ export default {
         if (this.listVariant[key].option.filter(item => item.value != null && item.value.toLocaleLowerCase() === this.itemVariant[key].value.toLocaleLowerCase()).length > 0) {
           this.invalidVariant[key] = MESSAGE.INVALID_EXITS_VARIANT;
         } else {
-          this.listVariant[key].option.push({
-            id: this.listVariant.length,
-            value: this.itemVariant[key].value,
-            image: this.itemVariant[key].image,
-          })
-          this.itemVariant[key] = {
-            id: this.itemVariant[key].id,
-            value: null,
-            name: null,
-          };
+          setTimeout(() => {
+            this.listVariant[key].option.push({
+              id: this.listVariant.length,
+              value: this.itemVariant[key].value,
+              image: this.itemVariant[key].image,
+            })
+            this.itemVariant[key] = {
+              id: this.itemVariant[key].id,
+              value: null,
+              name: null,
+            };
+          }, 350);
         }
       }
     },
@@ -1869,7 +1957,7 @@ export default {
     /**
      * Click button thêm sản phẩm
      */
-    async btnAddProduct() {
+    async btnAddProduct(saveNew = false) {
       if (this.validateProduct()) {
         const formData = new FormData();
         for (const item of this.imageProducts) {
@@ -1908,7 +1996,12 @@ export default {
         }
 
         addProduct(formData).then(res => {
-
+          if (saveNew) {
+            this.clearForm();
+          } else {
+            console.log(2)
+            this.$router.push('/admin/product/manage');
+          }
         }).catch(error => {
           console.log(error)
         }).finally(() => {
@@ -1917,6 +2010,30 @@ export default {
       } else {
         console.log(this.invalidProduct)
       }
+    },
+
+    /**
+     *
+     */
+    clearForm() {
+      this.selectedProduct = {};
+      this.listVariant = [
+        {
+          id: 0,
+          name: null,
+          option: []
+        }
+      ];
+      this.selectedCategory = this.selectedVariant = this.sizeTable = null;
+      this.isVariantImage = false;
+      this.properties = [];
+      this.imageProducts.forEach((item, index) => {
+        this.imageProducts[index].image = this.imageProducts[index].imageData = null;
+        this.imageProducts[index].active = false;
+      })
+      this.imageProducts[0].active = true;
+      this.isSideBarSizeTable = false;
+      this.refs.image.scrollIntoView({behavior: 'smooth', block: 'center'});
     },
 
     /**
@@ -1950,13 +2067,21 @@ export default {
         scrollToInvalidProduct = scrollToInvalidProduct ?? 'description';
       }
 
-      // bảng kích thước
-      if (this.isSideBarSizeTable) {
-
-      }
-      // hình ảnh bảng kích thước
-      else {
-
+      if (this.properties.size_table) {
+        if (!this.sizeTable) {
+          this.invalidProduct['size_table'] = MESSAGE.PLEASE_CHOOSE_ONE_OPTION;
+          scrollToInvalidProduct = scrollToInvalidProduct ?? 'sizeTable';
+        } else {
+          // bảng kích thước
+          if (this.isSideBarSizeTable && !this.selectedProduct.size_id) {
+            this.invalidProduct['description'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
+            scrollToInvalidProduct = scrollToInvalidProduct ?? 'sizeTable';
+          }
+          // hình ảnh bảng kích thước
+          else {
+            console.log(2)
+          }
+        }
       }
 
       // có biến thể
@@ -2454,7 +2579,7 @@ export default {
     }
 
     &.ms-media_active {
-      border: 1px solid #fff;
+      border: 1px solid rgba(0,0,0,.14);
     }
 
     &:not(.ms-media_active):hover {

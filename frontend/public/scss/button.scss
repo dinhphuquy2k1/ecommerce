@@ -96,6 +96,16 @@
     }
   }
 
+  &.primary-outline {
+    color: #2979ff;
+    background: #fff;
+    border: 1px solid #2979ff;
+
+    &:not(:disabled):hover {
+      background: #eef4ff;
+    }
+  }
+
   &.primary {
     color: #fff;
     background: #127FFF;

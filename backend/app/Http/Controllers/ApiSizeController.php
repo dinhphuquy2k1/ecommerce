@@ -15,7 +15,7 @@ class ApiSizeController extends Controller
      */
     public function get(): JsonResponse
     {
-        $ret = Size::all()->toArray();
+        $ret = Size::orderByDesc('created_at')->get()->toArray();
         foreach ($ret as &$item) {
             $item['size_option'] = json_decode($item['size_option'], true);
         }
@@ -49,14 +49,15 @@ class ApiSizeController extends Controller
 
         $attribute['size_option'] = json_encode($attribute['size_option']);
 
+        $sizeID = null;
         try {
             DB::beginTransaction();
-            Size::insert($attribute);
+            $sizeID = Size::insertGetId($attribute);
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->sendResponseServerError(['message' => $th->getMessage()]);
         }
-        return $this->sendResponseSuccess();
+        return $this->sendResponseSuccess(['size_id' => $sizeID]);
     }
 }

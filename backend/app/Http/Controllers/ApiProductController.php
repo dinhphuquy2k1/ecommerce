@@ -147,6 +147,7 @@ class ApiProductController extends Controller
             ]);
             $product['category_id'] = $request['category_id'];
             $product['properties'] = $request['properties'] ?? null;
+            $product['has_variant'] = $product['has_variant'] ?? false;
             // ko có biến thể
             if (!$product['has_variant']) {
                 $variant = json_decode($request['variant'], true);
