@@ -823,6 +823,7 @@
           <div class="flex-grow-1"></div>
           <div class="d-flex">
             <Button
+                @click="$router.push({name: routerBackName})"
                 class="ms-btn btn-secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2 me-3">
               <div class="">Hủy</div>
             </Button>
@@ -1313,6 +1314,7 @@ export default {
         },
 
       ],
+      routerBackName: 'manage_product',
       isCropImageProduct: false,
       totalSize: 0,
       saleInfomation: {
@@ -2009,8 +2011,7 @@ export default {
           if (saveNew) {
             this.clearForm();
           } else {
-            console.log(2)
-            this.$router.push('/admin/product/manage');
+            this.$router.push({name: this.routerBackName});
           }
         }).catch(error => {
           console.log(error)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use App\Enums\PropertyType;
 
@@ -25,8 +26,13 @@ class ApiCategoryController extends Controller
      */
     public function get(): JsonResponse
     {
-        $categories = Category::whereIn('id', $this->categoryIds)->orWhereNotNull('parent_id')->with('media')->get()->toArray();
-        $ret = $this->recursiveCategory($categories);
+        if (Cache::has('categories')) {
+            $ret = Cache::get('categories');
+        } else {
+            $categories = Category::whereIn('id', $this->categoryIds)->orWhereNotNull('parent_id')->with('media')->get()->toArray();
+            $ret = $this->recursiveCategory($categories);
+            Cache::put('categories', $ret);
+        }
         return $this->sendResponseSuccess($ret);
     }
 

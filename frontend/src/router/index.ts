@@ -82,6 +82,7 @@ const routes: Array<RouteRecordRaw> = [
                     },
                     {
                         path: 'manage',
+                        name: 'manage_product',
                         components: {
                             header: () => import('@/views/admin/components/Header.vue'),
                             content: () => import('@/views/admin/components/ProductList.vue'),
@@ -90,6 +91,7 @@ const routes: Array<RouteRecordRaw> = [
                     },
                     {
                         path: 'create',
+                        name: 'add_product',
                         components: {
                             header: () => import('@/views/admin/components/Header.vue'),
                             content: () => import('@/views/admin/components/AddProduct.vue'),
