@@ -78,7 +78,7 @@ CREATE TABLE `products`
     `product_name`       varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `category_id`        bigint(20) unsigned NOT NULL,
     `use_sample_size`    tinyint(1) NOT NULL DEFAULT '0',
-    `size_image_id`      bigint(20) unsigned NULL,
+    `size_image`         varchar(255) COLLATE utf8mb4_unicode_ci NULL,
     `size_id`            bigint(20) unsigned NULL,
     `has_variant`        tinyint(1) NOT NULL DEFAULT '0',
     `brand`              varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -94,10 +94,8 @@ CREATE TABLE `products`
     PRIMARY KEY (`id`),
     KEY                  `products_category_id_foreign` (`category_id`),
     KEY                  `products_size_id_foreign` (`size_id`),
-    KEY                  `products_size_image_id_foreign` (`size_image_id`),
     CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
-    CONSTRAINT `products_size_id_foreign` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE,
-    CONSTRAINT `products_size_image_id_foreign` FOREIGN KEY (`size_image_id`) REFERENCES `medias` (`id`) ON DELETE CASCADE
+    CONSTRAINT `products_size_id_foreign` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS variants;
@@ -127,6 +125,7 @@ CREATE TABLE `medias`
     `product_id`  bigint(20) unsigned NULL,
     `category_id` bigint(20) unsigned NULL,
     `type`        tinyint(11) NOT NULL DEFAULT '0',
+    `genitive`    tinyint(11) NOT NULL DEFAULT '0', -- thuộc về (sản phẩm, kích thước ...)
     `created_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),

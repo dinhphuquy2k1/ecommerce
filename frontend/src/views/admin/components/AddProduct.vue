@@ -341,7 +341,7 @@
                         {{ invalidProduct['brand'] }}
                       </div>
                     </div>
-                    <div v-if="Number.parseInt(sizeTable) === 1" class="mt-2">
+                    <div v-if="Number.parseInt(sizeTable) === 1" class="mt-2" ref="sizeImage">
                       <div class="col-6 ma-item-video" :class="{'ms-media_active': sizeImage}"
                            @click="chooseSizeImage">
                         <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
@@ -355,7 +355,8 @@
                           <template #content="{ files, uploadedFiles, removeUploadedFileCallback, removeFileCallback }">
                             <div class="p-fileupload-empty  w-100 h-100" data-pc-section="empty">
                               <div v-if="sizeImage" class="d-flex h-100 w-100">
-                                <Image :src="sizeImage" class="flex-grow-1 w-100 h-100" image-class="ms-image_upload"
+                                <Image :src="sizeImageUrl" class="flex-grow-1 w-100 h-100"
+                                       image-class="ms-image_upload"
                                        alt="Image"
                                        preview>
                                   <template #indicatoricon>
@@ -367,7 +368,8 @@
                                   </template>
                                 </Image>
                               </div>
-                              <div v-else class="ms-item_image--products h-100 d-flex align-items-center justify-content-center">
+                              <div v-else
+                                   class="ms-item_image--products h-100 d-flex align-items-center justify-content-center">
                                 <div class="image d-flex align-items-center text-center">
                                   <Image :src="require('@public/assets/icons/image.svg')"
                                          alt="Image"/>
@@ -378,7 +380,9 @@
                           </template>
                         </FileUpload>
                       </div>
-                      <div class="ms-error-text"></div>
+                      <div class="ms-error-text" v-if="invalidProduct['sizeImage']">
+                        {{ invalidProduct['sizeImage'] }}
+                      </div>
                     </div>
                   </div>
                   <div class="group-form_box" ref="video">
@@ -1236,6 +1240,7 @@ export default {
       isSideBarSizeTable: false,
       isLoadingSizeTable: false,
       sizeImage: null,
+      sizeImageUrl: null,
       indexSelectedImageProduct: null,
       imageProducts: [
         {
@@ -1427,7 +1432,7 @@ export default {
      *
      */
     chooseSizeImage() {
-      if (!this.videoProduct) {
+      if (!this.sizeImage) {
         this.$refs['chooseSizeImage'].click()
       }
     },
@@ -1437,7 +1442,8 @@ export default {
      * @param event
      */
     changeSizeImage(event) {
-      this.sizeImage = URL.createObjectURL(event.files[0]);
+      this.sizeImage = event.files[0];
+      this.sizeImageUrl = URL.createObjectURL(event.files[0]);
     },
 
     /**
@@ -1995,6 +2001,10 @@ export default {
           formData.append('variant', JSON.stringify(this.saleInfomation))
         }
 
+        if (this.sizeImage) {
+          formData.append('sizeImage', this.sizeImage)
+        }
+
         addProduct(formData).then(res => {
           if (saveNew) {
             this.clearForm();
@@ -2079,7 +2089,10 @@ export default {
           }
           // hình ảnh bảng kích thước
           else {
-            console.log(2)
+            if (!this.sizeImage) {
+              this.invalidProduct['sizeImage'] = MESSAGE.SIZE_IMAGE;
+              scrollToInvalidProduct = scrollToInvalidProduct ?? 'sizeImage';
+            }
           }
         }
       }
@@ -2579,7 +2592,7 @@ export default {
     }
 
     &.ms-media_active {
-      border: 1px solid rgba(0,0,0,.14);
+      border: 1px solid rgba(0, 0, 0, .14);
     }
 
     &:not(.ms-media_active):hover {

@@ -86,4 +86,5 @@ export const MESSAGE = {
     MASS_LISTING: 'Niêm yết hàng loạt',
     PLEASE_SELECT_BRAND: 'Vui lòng chọn nhãn hiệu',
     DOWNLOAD_THE_TEMPLATE: 'Tải mẫu về',
+    SIZE_IMAGE: 'Tải lên hình ảnh về bảng kích thước có số đo chi tiết',
 };

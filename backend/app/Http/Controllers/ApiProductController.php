@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
 use Illuminate\Http\Response;
+use App\Enums\GenitiveType;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -34,6 +35,8 @@ class ApiProductController extends Controller
                 'variant' => 'required_without:variants',
                 'product' => 'required|json',
                 'category_id' => 'required|exists:categories,id',
+                'size_id' => 'nullable|required_without:sizeImage|exists:sizes,id',
+                'sizeImage' => 'nullable|required_without:size_id|file|mimetypes:image/*|max:2048',
             ],
             [
                 'medias.required' => 'Phương tiện không được để trống',
@@ -50,6 +53,9 @@ class ApiProductController extends Controller
                 'product.json' => 'Dữ liệu sản phẩm phải là định dạng JSON',
                 'category_id.required' => 'Id category không được để trống',
                 'category_id.exists' => 'Id category không tồn tại',
+                'size_id.exists' => 'Id size không tồn tại',
+                'sizeImage.required_without' => 'Hình ảnh kích thước là bắt buộc',
+                'sizeImage.mimetypes' => 'Yêu cầu dữ liệu là hình ảnh',
             ]
         );
 
@@ -129,18 +135,30 @@ class ApiProductController extends Controller
         $product = json_decode($request['product'], true);
         $variants = $request['variants'] ? json_decode($request['variants'], true) : [];
         $variantImages = $request->file('variantImages') ?? [];
+        $sizeImage = $request->file('sizeImage');
         $mediaAttributes = [];
         try {
+            if ($sizeImage) {
+                $product['size_image'] = $sizeImage->store('images', 'public');
+                $mediaAttributes[] = [
+                    'genitive' => GenitiveType::SIZE,
+                    'media_url' => $product['size_image'],
+                ];
+            }
+
             foreach ($medias as $media) {
                 $mediaAttributes[] = [
-                    'media_url' => $media->store('images', 'public')
+                    'genitive' => GenitiveType::PRODUCT,
+                    'media_url' => $media->store('images', 'public'),
                 ];
             }
             foreach ($variantImages as $media) {
                 $mediaAttributes[] = [
-                    'media_url' => $media->store('images', 'public')
+                    'genitive' => GenitiveType::VARIANT,
+                    'media_url' => $media->store('images', 'public'),
                 ];
             }
+
 
             $product['brand'] = json_encode([
                 'brand_name' => $product['brand']['brand_name'],
