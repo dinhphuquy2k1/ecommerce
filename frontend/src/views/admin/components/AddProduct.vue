@@ -1,5 +1,6 @@
 <template>
-  <div class="form-list flex-grow-1 d-flex ma-add-product_wrapper mw-100">
+  <div class="form-list position-relative flex-grow-1 d-flex ma-add-product_wrapper mw-100">
+    <TheLoading v-if="isLoading"></TheLoading>
     <div class="d-flex flex-column mw-100 mh-100 w-100">
       <div class="popup-header">
         <div class="h-100 d-flex justify-content-between ms-popup-header align-items-center">
@@ -341,9 +342,9 @@
                         {{ invalidProduct['brand'] }}
                       </div>
                     </div>
-                    <div v-if="Number.parseInt(sizeTable) === 1" class="mt-2" ref="sizeImage">
+                    <div v-if="Number.parseInt(sizeTable) === 1" class="mt-2">
                       <div class="col-6 ma-item-video" :class="{'ms-media_active': sizeImage}"
-                           @click="chooseSizeImage">
+                           @click="chooseSizeImage" ref="sizeImage">
                         <FileUpload name="demo[]" url="/api/upload" @upload="onTemplatedUpload($event)"
                                     accept="image/*" :maxFileSize="5000000 " @select="changeSizeImage($event)"
                                     showUploadButton
@@ -835,7 +836,6 @@
             <Button
                 @click="btnAddProduct()"
                 class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-              <div class="icon-only icon-simple_cart"></div>
               <div class="">Lưu</div>
             </Button>
           </div>
@@ -1115,6 +1115,7 @@ export default {
     return {
       selectedProduct: {},
       invalidProduct: [],
+      isLoading: false,
       value: '',
       brands: [],
       valueBrandSelectAddOption: null,
@@ -1997,6 +1998,7 @@ export default {
         formData.append('product', JSON.stringify(this.selectedProduct))
         formData.append('category_id', Object.keys(this.selectedCategory)[0])
         formData.append('properties', JSON.stringify(this.selectedProperty));
+        formData.append('size_id', JSON.stringify(this.selectedProduct.size_id));
         if (this.selectedProduct.has_variant) {
           formData.append('variants', JSON.stringify(this.variantsData))
         } else {
@@ -2006,17 +2008,21 @@ export default {
         if (this.sizeImage) {
           formData.append('sizeImage', this.sizeImage)
         }
-
+        this.isLoading = true;
+        let isSuccess = false;
         addProduct(formData).then(res => {
           if (saveNew) {
             this.clearForm();
           } else {
-            this.$router.push({name: this.routerBackName});
+            isSuccess = true;
           }
         }).catch(error => {
           console.log(error)
         }).finally(() => {
-
+          setTimeout(() => {
+            this.isLoading = false;
+            this.$router.push({name: this.routerBackName});
+          }, 350);
         })
       } else {
         console.log(this.invalidProduct)
@@ -2079,21 +2085,19 @@ export default {
       }
 
       if (this.properties.size_table) {
-        if (!this.sizeTable) {
+        if (this.sizeTable === null) {
           this.invalidProduct['size_table'] = MESSAGE.PLEASE_CHOOSE_ONE_OPTION;
           scrollToInvalidProduct = scrollToInvalidProduct ?? 'sizeTable';
         } else {
           // bảng kích thước
-          if (this.isSideBarSizeTable && !this.selectedProduct.size_id) {
+          if (Number.parseInt(this.sizeTable) === 0 && !this.selectedProduct.size_id) {
             this.invalidProduct['description'] = MESSAGE.PLEASE_FILL_IN_THIS_FIELD;
             scrollToInvalidProduct = scrollToInvalidProduct ?? 'sizeTable';
           }
           // hình ảnh bảng kích thước
-          else {
-            if (!this.sizeImage) {
-              this.invalidProduct['sizeImage'] = MESSAGE.SIZE_IMAGE;
-              scrollToInvalidProduct = scrollToInvalidProduct ?? 'sizeImage';
-            }
+          if (Number.parseInt(this.sizeTable) === 1 && !this.sizeImage) {
+            this.invalidProduct['sizeImage'] = MESSAGE.SIZE_IMAGE;
+            scrollToInvalidProduct = scrollToInvalidProduct ?? 'sizeTable';
           }
         }
       }

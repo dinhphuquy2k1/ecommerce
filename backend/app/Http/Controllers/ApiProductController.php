@@ -19,6 +19,15 @@ class ApiProductController extends Controller
 {
 
     /**
+     * @return JsonResponse
+     */
+    public function get(): JsonResponse
+    {
+        $products = Product::orderByDesc('created_at')->get()->toArray();
+        return $this->sendResponseSuccess($products);
+    }
+
+    /**
      * @param Request $request
      * @return JsonResponse
      */

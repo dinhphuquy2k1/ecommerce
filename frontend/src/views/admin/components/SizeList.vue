@@ -41,7 +41,7 @@
           <template #body="{ data, field, slotProps }">
             <div v-if="!isLoading"> {{ data[field] }}</div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -49,7 +49,7 @@
           <template #body="{ data, field, slotProps }">
             <div v-if="!isLoading"> {{ data[field] }}</div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -57,7 +57,7 @@
           <template #body="{ data, field, slotProps }">
             <div v-if="!isLoading"> {{ data[field] }}</div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -65,7 +65,7 @@
           <template #body="{ data, field, slotProps }">
             <div v-if="!isLoading"> {{ data[field] }}</div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -86,7 +86,7 @@
               </div>
             </div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>

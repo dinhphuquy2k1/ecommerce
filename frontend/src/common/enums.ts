@@ -88,3 +88,7 @@ export const MESSAGE = {
     DOWNLOAD_THE_TEMPLATE: 'Tải mẫu về',
     SIZE_IMAGE: 'Tải lên hình ảnh về bảng kích thước có số đo chi tiết',
 };
+
+export const TIMEOUT = {
+    LOADING: 750,
+}

@@ -20,10 +20,12 @@
       </div>
     </div>
     <div class="box list-content flex-grow-1 flex-row mw-100">
-      <DataTable paginator :rows="10" :rowsPerPageOptions="[5, 10, 20, 50]" class="flex1 flex-column mw-100"
+      <DataTable v-model:selection="selectedProduct" paginator :rows="10" :rowsPerPageOptions="[5, 10, 20, 50]"
+                 class="flex1 flex-column mw-100"
+                 dataKey="id"
                  :class="{ 'loading': isLoading }" :loading="isLoading"
                  scrollable
-                 :value="isLoading ? Array.from({ length: 8 }, () => ({ ...this.department })) : data"
+                 :value="isLoading ? Array.from({ length: 8 }, () => ({ ...{} })) : products"
                  @rowDblclick="onRowSelect($event.data)" tableStyle="min-width: 100%" rowHover>
         <template #paginatorstart>
           <Button type="button" icon="pi pi-refresh" text/>
@@ -37,12 +39,13 @@
             <div>Không tìm thấy kết quả nào</div>
           </div>
         </template>
-        <Column selectionMode="multiple" headerStyle="min-width: 3rem"></Column>
+        <Column selectionMode="multiple"
+                headerStyle="min-width: 60px; max-width: 60px; width: 60px; margin-right: 2px"></Column>
         <Column field="DepartmentCode" style="min-width: 250px" header="Sản phẩm">
           <template #body="{ data, field, slotProps }">
             <div v-if="!isLoading"> {{ data[field] }}</div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -50,7 +53,7 @@
           <template #body="{ data, field, slotProps }">
             <div v-if="!isLoading"> {{ data[field] }}</div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -58,15 +61,15 @@
           <template #body="{ data, field, slotProps }">
             <div v-if="!isLoading"> {{ data[field] }}</div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
-        <Column field="DepartmentName" style="min-width: 180px" dataKey="id" header="Đã cập nhật">
+        <Column field="updated_at" style="min-width: 180px" dataKey="id" header="Đã cập nhật">
           <template #body="{ data, field, slotProps }">
             <div v-if="!isLoading"> {{ data[field] }}</div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -85,7 +88,7 @@
               </div>
             </div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -106,7 +109,7 @@
               </div>
             </div>
             <div v-else>
-              <Skeleton height="18px" class="mb-2"></Skeleton>
+              <Skeleton></Skeleton>
             </div>
           </template>
         </Column>
@@ -122,6 +125,9 @@ import Button from 'primevue/button';
 import Skeleton from 'primevue/skeleton';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
+import Checkbox from "primevue/checkbox";
+import {getProduct} from "@/api/product";
+import {TIMEOUT} from "@/common/enums";
 
 export default {
   components: {
@@ -129,7 +135,35 @@ export default {
     InputText,
     Skeleton,
     DataTable,
-    Column
+    Column,
+    Checkbox,
+  },
+
+  data() {
+    return {
+      isLoading: false,
+      products: [],
+      selectedProduct: null,
+    }
+  },
+
+  methods: {
+    loadProduct() {
+      this.isLoading = true;
+      getProduct().then(res => {
+        this.products = res.data
+      }).catch(error => {
+        console.log(error)
+      }).finally(() => {
+        setTimeout(() => {
+          this.isLoading = false;
+        }, TIMEOUT.LOADING)
+      })
+    }
+  },
+
+  created() {
+    this.loadProduct()
   }
 }
 </script>

@@ -10,3 +10,10 @@ export function addProduct(data) {
         data: data
     })
 }
+
+export function getProduct() {
+    return request({
+        url: 'products',
+        method: 'get',
+    })
+}

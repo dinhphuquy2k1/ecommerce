@@ -36,6 +36,7 @@ Route::prefix('menus')->group(function () {
 });
 
 Route::prefix('products')->group(function () {
+    Route::get('/', [ApiProductController::class, 'get']);
     Route::post('/', [ApiProductController::class, 'store']);
 });
 
