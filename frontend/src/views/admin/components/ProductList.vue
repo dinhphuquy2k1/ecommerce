@@ -4,17 +4,96 @@
       <div class="list-title flex-grow-1 text-start">Quản lý sản phẩm</div>
     </div>
     <div class="d-flex flex-row toolbar-box justify-content-between">
-      <div class="left-toolbar d-flex flex-row">
+      <div class="left-toolbar d-flex flex-row gap-2">
         <div class="m-search_form flex-row d-flex align-items-center d-flex">
           <InputText type="search" v-model="value" class="ms-input_search w-100" placeholder="Tìm kiếm"/>
           <div class="icon24 icon search-right search"></div>
+        </div>
+        <div class="filter-group">
+          <Button
+              @click="toggleFilter"
+              class="ms-btn btn-secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+            <div class="icon24 filter"></div>
+            <div class="">Bộ lọc</div>
+          </Button>
+          <OverlayPanel ref="op" class="filter-overlay">
+            <div class="filter-box">
+              <div class="box-header">
+                <span class="title">
+                  <span class="title">Lọc sản phẩm</span>
+                </span>
+              </div>
+              <div class="box-content flex-column">
+                <div class="group-form_box mt-2">
+                  <div class="label d-flex align-items-center pt-0">
+                    {{ MESSAGE.CATEGORY }}
+                  </div>
+                  <div class="mt-2">
+                    <TreeSelect v-model="filter.category" :options="categories"
+                                label="name"
+                                placeholder="Vui lòng chọn một hạng mục"/>
+                  </div>
+                  <div class="ms-error-text">
+                  </div>
+                </div>
+                <div class="group-form_box">
+                  <div class="label d-flex align-items-center">
+                    {{ MESSAGE.PRICE }}
+                  </div>
+                  <div class="mt-2 d-flex gap-3">
+                    <InputNumber v-model="filter.minPrice" inputClass="text-start" class="flex-grow-1"
+                                 mode="currency"
+                                 :max="999999999"
+                                 :placeholder="MESSAGE.MINIMUM_PRICE"
+                                 currency="VND" locale="vi"/>
+                    <div class="line" style="color:rgba(0,0,0,.25)">_</div>
+                    <InputNumber v-model="filter.maxPrice" inputClass="text-start" class="flex-grow-1"
+                                 mode="currency"
+                                 :max="999999999"
+                                 :placeholder="MESSAGE.MAXIMUM_PRICE"
+                                 currency="VND" locale="vi"/>
+                  </div>
+                  <div class="ms-error-text">
+                  </div>
+                </div>
+                <div class="group-form_box mt-2">
+                  <div class="label d-flex align-items-center pt-0">
+                    {{ MESSAGE.INVENTORY_STATUS }}
+                  </div>
+                  <div class="mt-2 d-flex gap-3">
+                    <div v-for="item in listInventory" :key="item.key" class="d-flex gap-1 align-items-center pointer">
+                      <RadioButton v-model="filter.inventoryStatus" :inputId="item.key" name="dynamic"
+                                   :value="item.key"/>
+                      <label :for="item.key" class="ml-2 pointer">{{ item.name }}</label>
+                    </div>
+                  </div>
+                  <div class="ms-error-text">
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+                <div class="right-content d-flex gap-2">
+                  <Button
+                      @click="toggleFilter"
+                      class="ms-btn btn-secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                    <div class="">{{ MESSAGE.CANCEL }}</div>
+                  </Button>
+                  <Button
+                      @click="$router.push({name: 'add_product'})"
+                      class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+                    <div class="fw-semibold">{{ MESSAGE.APPLY }}</div>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </OverlayPanel>
         </div>
       </div>
       <div class="right-toolbar d-flex flex-row">
         <Button
             @click="$router.push({name: 'add_product'})"
             class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-          <div class="icon-only icon-simple_cart"></div>
+          <div class="icon24 add-white"></div>
           <div class="fw-semibold">Thêm sản phẩm</div>
         </Button>
       </div>
@@ -126,10 +205,21 @@ import Skeleton from 'primevue/skeleton';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Checkbox from "primevue/checkbox";
+import OverlayPanel from 'primevue/overlaypanel';
+import Dropdown from "primevue/dropdown";
+import InputNumber from "primevue/inputnumber";
+import TreeSelect from "primevue/treeselect";
+import RadioButton from 'primevue/radiobutton';
 import {getProduct} from "@/api/product";
-import {TIMEOUT} from "@/common/enums";
+import {getCategory} from "@/api/category";
+import {MESSAGE, TIMEOUT} from "@/common/enums";
 
 export default {
+  computed: {
+    MESSAGE() {
+      return MESSAGE
+    }
+  },
   components: {
     Button,
     InputText,
@@ -137,17 +227,47 @@ export default {
     DataTable,
     Column,
     Checkbox,
+    OverlayPanel,
+    Dropdown,
+    InputNumber,
+    TreeSelect,
+    RadioButton,
   },
 
   data() {
     return {
       isLoading: false,
       products: [],
+      categories: [],
       selectedProduct: null,
+      listInventory: [
+        {
+          key: 1,
+          name: 'Tất cả'
+        },
+        {
+          key: 2,
+          name: 'Hết hàng'
+        },
+        {
+          key: 3,
+          name: 'Còn ít hàng'
+        },
+      ],
+      filter: {
+        category: null,
+        minPrice: null,
+        maxPrice: null,
+        inventoryStatus: 1,
+      },
     }
   },
 
   methods: {
+    toggleFilter(event) {
+      this.$refs.op.toggle(event);
+    },
+
     loadProduct() {
       this.isLoading = true;
       getProduct().then(res => {
@@ -159,11 +279,25 @@ export default {
           this.isLoading = false;
         }, TIMEOUT.LOADING)
       })
-    }
+    },
+
+    /**
+     * Lấy dữ liệu danh mục sản phẩm
+     */
+    loadCategory() {
+      getCategory().then(res => {
+            this.categories = res.data;
+          }
+      )
+          .catch(error => {
+            console.log(error)
+          })
+    },
   },
 
   created() {
-    this.loadProduct()
+    this.loadProduct();
+    this.loadCategory();
   }
 }
 </script>

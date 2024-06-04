@@ -87,6 +87,13 @@ export const MESSAGE = {
     PLEASE_SELECT_BRAND: 'Vui lòng chọn nhãn hiệu',
     DOWNLOAD_THE_TEMPLATE: 'Tải mẫu về',
     SIZE_IMAGE: 'Tải lên hình ảnh về bảng kích thước có số đo chi tiết',
+    MINIMUM_PRICE: 'Giá tối thiểu',
+    MAXIMUM_PRICE: 'Giá tối đa',
+    PRICE: 'Giá',
+    CANCEL: 'Hủy',
+    APPLY: 'Áp dụng',
+    CATEGORY: 'Danh mục',
+    INVENTORY_STATUS: 'Trạng thái hàng tồn kho',
 };
 
 export const TIMEOUT = {

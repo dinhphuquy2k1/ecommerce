@@ -13,6 +13,7 @@
 
 <script>
 import LiveChat from "@/components/LiveChat.vue";
+
 export default {
   components: {
     LiveChat
@@ -86,9 +87,13 @@ export default {
         .m-search_form {
           width: 265px;
           max-height: 38px;
+          height: 36px;
           background: #fff;
           border: 1px solid var(--Gray-100);
           border-radius: 4px;
+          .p-inputtext{
+            background: transparent;
+          }
         }
 
         .m-search_form:focus-within {

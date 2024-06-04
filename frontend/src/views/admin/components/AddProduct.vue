@@ -269,7 +269,7 @@
                   </div>
                 </div>
               </Panel>
-              <Panel header="2. Chi tiết sản phẩm" toggleable
+              <Panel header="2. Chi tiết sản phẩm"
                      class="mt-4 ma-description-product ma-media">
                 <div class="d-flex flex-column group-form_list" ref="description">
                   <div class="group-form_box">
