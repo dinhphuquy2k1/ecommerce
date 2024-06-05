@@ -36,8 +36,8 @@ Route::prefix('menus')->group(function () {
 });
 
 Route::prefix('products')->group(function () {
-    Route::get('/', [ApiProductController::class, 'get']);
-    Route::post('/', [ApiProductController::class, 'store']);
+    Route::post('/', [ApiProductController::class, 'get']);
+    Route::post('/create', [ApiProductController::class, 'store']);
 });
 
 Route::prefix('brands')->group(function () {

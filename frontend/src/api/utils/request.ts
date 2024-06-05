@@ -1,36 +1,38 @@
-import axios from 'axios'
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-const service = axios.create({
+const service: AxiosInstance = axios.create({
     baseURL: "http://localhost:30001/api", // uri = baseURL + apiFunction truyền tới
     timeout: 5000,
     headers: { // Request Headers
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     }
-})
+});
 
 service.interceptors.request.use(
-    config => {
+    (config) => {
         // if (Auth.check()) {
         //     // config.headers['Authorization'] = 'Bearer ' + Auth.getToken()
         // }
-        return config
+        return config;
     },
-    error => {
-        console.log('error', error)
+    (error: any) => {
+        console.log('error', error);
+        return Promise.reject(error);
     }
-)
+);
 
 service.interceptors.response.use(
-    response => {
-        return response.data
+    (response: AxiosResponse) => {
+        return response.data;
     },
-    error => {
-        console.log(error)
+    (error: any) => {
+        console.log(error);
         if (error.response) {
+            // Xử lý lỗi từ phản hồi
         }
-        return Promise.reject(error)
+        return Promise.reject(error);
     }
-)
+);
 
-export default service
+export default service;

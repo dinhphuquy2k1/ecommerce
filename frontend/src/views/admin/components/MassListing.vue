@@ -293,6 +293,7 @@ import Dropdown from 'primevue/dropdown';
 import MultiSelect from "primevue/multiselect";
 import InputText from 'primevue/inputtext';
 import Panel from 'primevue/panel';
+import Button from "primevue/button";
 import {MESSAGE} from "@/common/enums";
 import {getBrand, addBrand} from "@/api/brand";
 import {getCategory} from "@/api/category";
@@ -303,6 +304,7 @@ export default {
     MultiSelect,
     InputText,
     Panel,
+    Button,
   },
 
   data() {

@@ -6,7 +6,7 @@
     <div class="d-flex flex-row toolbar-box justify-content-between">
       <div class="left-toolbar d-flex flex-row gap-2">
         <div class="m-search_form flex-row d-flex align-items-center d-flex">
-          <InputText type="search" v-model="value" class="ms-input_search w-100" placeholder="Tìm kiếm"/>
+          <InputText type="search" v-model="filter.search" class="ms-input_search w-100" placeholder="Tìm kiếm"/>
           <div class="icon24 icon search-right search"></div>
         </div>
         <div class="filter-group">
@@ -29,7 +29,7 @@
                     {{ MESSAGE.CATEGORY }}
                   </div>
                   <div class="mt-2">
-                    <TreeSelect v-model="filter.category" :options="categories"
+                    <TreeSelect v-model="filter.category" :options="getCategory"
                                 label="name"
                                 placeholder="Vui lòng chọn một hạng mục"/>
                   </div>
@@ -99,12 +99,20 @@
       </div>
     </div>
     <div class="box list-content flex-grow-1 flex-row mw-100">
-      <DataTable v-model:selection="selectedProduct" paginator :rows="10" :rowsPerPageOptions="[5, 10, 20, 50]"
+      <DataTable v-model:selection="selectedProduct" paginator :rows="getNumberDefault"
+                 :rowsPerPageOptions="getNUmberOfRecords"
                  class="flex1 flex-column mw-100"
+                 lazy
+                 @page="changePage"
+                 @select-all-change="selectAllChange"
+                 @row-select-all="rowSelectAll"
                  dataKey="id"
-                 :class="{ 'loading': isLoading }" :loading="isLoading"
+                 :class="{ 'loading': isLoadingProduct }" :loading="isLoadingProduct"
                  scrollable
-                 :value="isLoading ? Array.from({ length: 8 }, () => ({ ...{} })) : products"
+                 :totalRecords="products.total"
+                 :value="isLoadingProduct ? Array.from({ length: getNumberDefault }, () => ({ ...{} })) : products?.data"
+                 currentPageReportTemplate="{first} to {last} of {totalRecords}"
+                 paginatorTemplate="FirstPageLink PrevPageLink flex1 CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
                  @rowDblclick="onRowSelect($event.data)" tableStyle="min-width: 100%" rowHover>
         <template #paginatorstart>
           <Button type="button" icon="pi pi-refresh" text/>
@@ -122,7 +130,7 @@
                 headerStyle="min-width: 60px; max-width: 60px; width: 60px; margin-right: 2px"></Column>
         <Column field="DepartmentCode" style="min-width: 250px" header="Sản phẩm">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingProduct"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -130,7 +138,7 @@
         </Column>
         <Column field="DepartmentName" style="min-width: 160px" dataKey="id" header="Số lượng">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingProduct"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -138,7 +146,7 @@
         </Column>
         <Column field="DepartmentName" style="min-width: 180px" dataKey="id" header="Giá bán lẻ">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingProduct"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -146,7 +154,7 @@
         </Column>
         <Column field="updated_at" style="min-width: 180px" dataKey="id" header="Đã cập nhật">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingProduct"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -154,7 +162,7 @@
         </Column>
         <Column dataKey="id" header="Trạng thái" style="min-width: 250px">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading">
+            <div v-if="!isLoadingProduct">
               <div class="d-flex status-ctn max-content" v-if="data['is_exist']"
                    style="background-color: rgb(229, 250, 237);">
                 <div class="status-dot" style="background-color: rgb(0, 200, 83);"></div>
@@ -173,7 +181,7 @@
         </Column>
         <Column frozen alignFrozen="right" style="min-width: 100px; text-align: center;" header="Thao tác">
           <template #body="slotProps">
-            <div class="row-actions flex-row" v-if="!isLoading">
+            <div class="row-actions flex-row" v-if="!isLoadingProduct">
               <div class="item" @click="onRowSelect(slotProps.data)">
                 <div class="v-popover popover">
                   <div class="trigger">
@@ -210,15 +218,15 @@ import Dropdown from "primevue/dropdown";
 import InputNumber from "primevue/inputnumber";
 import TreeSelect from "primevue/treeselect";
 import RadioButton from 'primevue/radiobutton';
-import {getProduct} from "@/api/product";
-import {getCategory} from "@/api/category";
-import {MESSAGE, TIMEOUT} from "@/common/enums";
+import {MESSAGE} from "@/common/enums";
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
   computed: {
     MESSAGE() {
       return MESSAGE
-    }
+    },
+    ...mapGetters(['getNUmberOfRecords', 'getNumberDefault', 'getCategory', 'products', 'isLoadingProduct', 'getFilterDefault'])
   },
   components: {
     Button,
@@ -236,10 +244,8 @@ export default {
 
   data() {
     return {
-      isLoading: false,
-      products: [],
-      categories: [],
-      selectedProduct: null,
+      selectedProduct: [],
+      selectedAll: false,
       listInventory: [
         {
           key: 1,
@@ -255,6 +261,7 @@ export default {
         },
       ],
       filter: {
+        search: null,
         category: null,
         minPrice: null,
         maxPrice: null,
@@ -264,39 +271,34 @@ export default {
   },
 
   methods: {
+    ...mapActions(['loadCategory', 'loadProduct']),
     toggleFilter(event) {
       this.$refs.op.toggle(event);
     },
 
-    loadProduct() {
-      this.isLoading = true;
-      getProduct().then(res => {
-        this.products = res.data
-      }).catch(error => {
-        console.log(error)
-      }).finally(() => {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, TIMEOUT.LOADING)
+    /**
+     * Sự kiện thay đổi số lượng bản ghi
+     * @param event
+     */
+    changePage(event) {
+      console.log(event)
+      this.loadProduct({
+        filter: {
+          limit: event.rows,
+          page: event.page + 1,
+        }
       })
     },
-
-    /**
-     * Lấy dữ liệu danh mục sản phẩm
-     */
-    loadCategory() {
-      getCategory().then(res => {
-            this.categories = res.data;
-          }
-      )
-          .catch(error => {
-            console.log(error)
-          })
+    selectAllChange() {
+      console.log(123)
     },
+    rowSelectAll() {
+      console.log(456)
+    }
   },
 
   created() {
-    this.loadProduct();
+    this.loadProduct({filter: this.$store.getters.getFilterDefault});
     this.loadCategory();
   }
 }

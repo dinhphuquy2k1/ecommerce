@@ -19,11 +19,16 @@ class ApiProductController extends Controller
 {
 
     /**
+     * @param Request $request
      * @return JsonResponse
      */
-    public function get(): JsonResponse
+    public function get(Request $request): JsonResponse
     {
-        $products = Product::orderByDesc('created_at')->get()->toArray();
+        $request->validate([
+            'limit' => 'integer|min:1|max:100',
+        ]);
+
+        $products = Product::orderByDesc('created_at')->paginate($request->get('limit'))->toArray();
         return $this->sendResponseSuccess($products);
     }
 
