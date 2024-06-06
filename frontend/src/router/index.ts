@@ -141,7 +141,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: 'order',
                 children: [
                     {
-                        path: '',
+                        path: 'manage',
                         components: {
                             header: () => import('@/views/admin/components/Header.vue'),
                             content: () => import('@/views/admin/components/OrderManager.vue'),
@@ -257,6 +257,21 @@ const routes: Array<RouteRecordRaw> = [
                 ],
             },
         ],
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'not-found',
+        components: {
+            home: () => import('@/views/user/HomeView.vue'),
+        },
+        children: [
+            {
+                path: '',
+                components: {
+                    content: () => import('@/views/user/components/404.vue'),
+                },
+            },
+        ]
     },
 ]
 

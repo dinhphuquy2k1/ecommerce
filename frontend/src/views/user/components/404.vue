@@ -5,21 +5,23 @@
              alt="Image"/>
       <div class="ms-404-content d-flex flex-column align-items-center justify-content-center">
         <div class="title">Không tìm thấy trang</div>
-        <div class="description">Đã xảy ra lỗi. Có vẻ như không thể tìm thấy yêu cầu của bạn.<br>
+        <div class="description text-center">Đã xảy ra lỗi. Có vẻ như không thể tìm thấy yêu cầu của bạn.<br>
           Liên kết bị hỏng hoặc trang đã bị xóa.
         </div>
-        <div class="buttons d-flex gap-4">
-          <Button class="ms-btn orange ms-btn_search mt-2 text-center d-flex justify-content-center ps-3 pe-3">
+        <div class="buttons d-flex gap-4 ms-4 justify-content-center  align-items-center">
+          <Button
+              @click="$router.go(-1)"
+              class="ms-btn orange ms-btn_search text-center d-flex justify-content-center ps-3 pe-3">
             <div class="d-flex align-items-center gap-1">
               <div class="icon-w20 icon-arrow-left_white"></div>
               <div>Quay lại</div>
             </div>
           </Button>
           <Button
-              class="ms-btn border-orange_white ms-btn_search mt-2 text-center d-flex justify-content-center ps-3 pe-3">
+              class="ms-btn border-orange_white ms-btn_search text-center d-flex justify-content-center ps-3 pe-3">
             <div class="d-flex align-items-center gap-1">
               <div class="icon-w20 icon-home_orange"></div>
-              <div class="mt-1">Quay về trang chủ</div>
+              <div class="">Quay về trang chủ</div>
             </div>
           </Button>
         </div>
