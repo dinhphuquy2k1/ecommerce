@@ -1,5 +1,5 @@
 <template>
-    <div class="ms-banner d-flex row">
+    <div class="ms-banner d-flex row mw-100">
         <div class="ms-carousel col-lg-7 col-12 col-sm-7">
             <Carousel :value="products" :numVisible="1" :numScroll="1" circular :autoplayInterval="5000" class="h-100">
                 <template #item="slotProps">

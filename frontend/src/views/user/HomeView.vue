@@ -3,13 +3,16 @@
     <router-view name="header"></router-view>
     <router-view name="content"></router-view>
     <router-view name="footer"></router-view>
+    <ScrollTop/>
   </div>
 </template>
 
 <script>
-
+import ScrollTop from 'primevue/scrolltop';
 export default {
-  components: {}
+  components: {
+    ScrollTop
+  }
 }
 </script>
 
