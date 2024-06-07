@@ -13,7 +13,7 @@
       <div class="right-toolbar d-flex flex-row">
         <Button
             class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-          <div class="icon-only icon-simple_cart"></div>
+          <div class="icon24 add-white"></div>
           <div class="fw-semibold">Thêm sản phẩm</div>
         </Button>
       </div>

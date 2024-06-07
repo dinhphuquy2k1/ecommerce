@@ -1,9 +1,10 @@
 <template>
-    <router-view name="home"></router-view>
+  <router-view name="home"></router-view>
 </template>
 
 <script>
 import HomeView from '@/views/user/HomeView.vue'
+
 export default {
   components:{
     HomeView
@@ -13,10 +14,12 @@ export default {
 
 <style lang="scss">
 @import url('../public/scss/main.scss');
-.p-dropdown, .p-treeselect, .p-multiselect, .p-inputtext, .ms-btn{
+
+.p-dropdown, .p-treeselect, .p-multiselect, .p-inputtext, .ms-btn {
   line-height: unset;
   height: $input-select-height;
 }
+
 nav {
   padding: 30px;
 
