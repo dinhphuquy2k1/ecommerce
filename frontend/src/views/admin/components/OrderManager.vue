@@ -4,19 +4,26 @@
       <div class="list-title flex-grow-1 text-start">Quản lý đơn hàng</div>
     </div>
     <div class="d-flex flex-row toolbar-box justify-content-between">
-      <div class="left-toolbar d-flex flex-row">
+      <div class="left-toolbar d-flex flex-row gap-2">
         <div class="m-search_form flex-row d-flex align-items-center d-flex">
           <InputText type="search" v-model="value" class="ms-input_search w-100" placeholder="Tìm kiếm"/>
           <div class="icon24 icon search-right search"></div>
         </div>
+        <div class="filter-group">
+          <Button
+              class="ms-btn btn-secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
+            <div class="icon24 filter"></div>
+            <div class="">Bộ lọc</div>
+          </Button>
+        </div>
       </div>
-      <div class="right-toolbar d-flex flex-row">
-        <Button
-            class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
-          <div class="icon24 add-white"></div>
-          <div class="fw-semibold">Thêm sản phẩm</div>
-        </Button>
-      </div>
+      <!--      <div class="right-toolbar d-flex flex-row">-->
+      <!--        <Button-->
+      <!--            class="ms-btn primary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">-->
+      <!--          <div class="icon24 add-white"></div>-->
+      <!--          <div class="fw-semibold">Thêm sản phẩm</div>-->
+      <!--        </Button>-->
+      <!--      </div>-->
     </div>
     <div class="box list-content flex-grow-1 flex-row mw-100">
       <DataTable paginator :rows="10" :rowsPerPageOptions="[5, 10, 20, 50]" class="flex1 flex-column mw-100"
@@ -131,6 +138,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import {getOrder} from "@/api/order";
 import {mapActions, mapGetters} from "vuex";
+import {MESSAGE} from "../../../common/enums";
 
 export default {
   components: {
@@ -155,6 +163,9 @@ export default {
   },
 
   computed: {
+    MESSAGE() {
+      return MESSAGE
+    },
     ...mapGetters(['orders', 'isLoadingOrder']),
   }
 }
