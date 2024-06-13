@@ -1,33 +1,34 @@
-import {getProduct} from "@/api/product";
+import {getOrder} from "@/api/order";
 import {TIMEOUT} from "@/common/enums";
 
 export default {
-    namespace: 'product',
+    namespace: 'order',
     state: {
-        products: [],
-        isLoadingProduct: false,
+        orders: [],
+        isLoadingOrder: false,
         filter: null,
     },
     mutations: {
-        SET_PRODUCT(state: any, products: []) {
-            state.products = products;
+        SET_ORDER(state: any, orders: []) {
+            state.orders = orders;
         },
 
         SET_LOADING(state: any) {
-            state.isLoadingProduct = !state.isLoadingProduct
+            state.isLoadingOrder = !state.isLoadingOrder
         }
     },
+
     actions: {
         /**
          * Hàm lấy toàn bộ danh sách đề thi
          * DPQuy - 19/04/2022
          **/
-        loadProduct({commit}: { commit: any }, payload: { filter: {} } = {filter: {}}): Promise<void> {
+        loadOrder({commit}: { commit: any }, payload: { filter: {} } = {filter: {}}): Promise<void> {
             commit('SET_LOADING');
             return new Promise<void>((resolve, reject) => {
-                const { filter } = payload;
-                getProduct(filter).then((response: any) => {
-                    commit('SET_PRODUCT', response.data);
+                const {filter} = payload;
+                getOrder(filter).then((response: any) => {
+                    commit('SET_ORDER', response.data);
                     resolve();
                 }).catch((error: any) => {
                     reject(error);
@@ -41,12 +42,12 @@ export default {
     },
 
     getters: {
-        products(state: any, {commit}: { commit: Function }) {
-            return state.products
+        orders(state: any, {commit}: { commit: Function }) {
+            return state.orders
         },
 
-        isLoadingProduct(state: any, {commit}: { commit: Function }) {
-            return state.isLoadingProduct;
+        isLoadingOrder(state: any, {commit}: { commit: Function }) {
+            return state.isLoadingOrder;
         }
     }
 };

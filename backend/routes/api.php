@@ -9,6 +9,7 @@ use App\Http\Controllers\ApiSizeController;
 use App\Http\Controllers\ApiMenuController;
 use App\Http\Controllers\ApiWareHouseController;
 use App\Http\Controllers\ApiRoleController;
+use App\Http\Controllers\ApiOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,10 @@ Route::prefix('menus')->group(function () {
 Route::prefix('products')->group(function () {
     Route::post('/', [ApiProductController::class, 'get']);
     Route::post('/create', [ApiProductController::class, 'store']);
+});
+
+Route::prefix('orders')->group(function () {
+    Route::post('/', [ApiOrderController::class, 'get']);
 });
 
 Route::prefix('brands')->group(function () {

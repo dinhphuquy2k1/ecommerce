@@ -249,5 +249,55 @@ CREATE TABLE user_roles
     CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 );
 
+DROP TABLE IF EXISTS shipping_methods;
+CREATE TABLE shipping_methods
+(
+    `id`                   bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `shipping_method_name` VARCHAR(255) NOT NULL UNIQUE,
+    `shipping_method_type` tinyint(1) NOT NULL DEFAULT '0',
+    `created_at`           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`           TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS orders;
+CREATE TABLE orders
+(
+    `id`                 bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `order_code`         VARCHAR(255) NOT NULL UNIQUE,
+    `user_id`            bigint(20) unsigned NOT NULL,
+    `order_status`       tinyint(1) NOT NULL DEFAULT '0',
+    `shipping_method_id` bigint(20) unsigned NOT NULL,
+    `order_total`        int(11) COLLATE utf8mb4_unicode_ci NULL,
+    `created_at`         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`         TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY                  `orders_user_id_foreign` (`user_id`),
+    KEY                  `orders_shipping_method_id_foreign` (`shipping_method_id`),
+    CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `orders_shipping_method_id_foreign` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS order_details;
+CREATE TABLE order_details
+(
+    `id`          bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `order_id`    bigint(20) unsigned NOT NULL,
+    `product_id`  bigint(20) unsigned NULL,
+    `variant_id`  bigint(20) unsigned NULL,
+    `quantity`    int(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `price`       int(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `description` VARCHAR(500) NULL,
+    `created_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY           `order_details_order_id_foreign` (`order_id`),
+    KEY           `order_details_product_id_foreign` (`product_id`),
+    KEY           `order_details_variant_id_foreign` (`variant_id`),
+    CONSTRAINT `order_details_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `order_details_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `order_details_variant_id_foreign` FOREIGN KEY (`variant_id`) REFERENCES `variants` (`id`) ON DELETE CASCADE
+);
+
 SET
 FOREIGN_KEY_CHECKS = 1; -- enable check foreign key

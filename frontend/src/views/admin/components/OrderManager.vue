@@ -20,9 +20,9 @@
     </div>
     <div class="box list-content flex-grow-1 flex-row mw-100">
       <DataTable paginator :rows="10" :rowsPerPageOptions="[5, 10, 20, 50]" class="flex1 flex-column mw-100"
-                 :class="{ 'loading': isLoading }" :loading="isLoading"
+                 :class="{ 'loading': isLoadingOrder }" :loading="isLoadingOrder"
                  scrollable
-                 :value="isLoading ? Array.from({ length: 8 }, () => ({ ...this.department })) : data"
+                 :value="isLoadingOrder ? Array.from({ length: 8 }, () => ({ ...this.department })) : orders.data"
                  @rowDblclick="onRowSelect($event.data)" tableStyle="min-width: 100%" rowHover>
         <template #paginatorstart>
           <Button type="button" icon="pi pi-refresh" text/>
@@ -39,7 +39,7 @@
         <Column selectionMode="multiple" headerStyle="min-width: 3rem"></Column>
         <Column field="DepartmentCode" style="min-width: 250px" header="Đơn hàng">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingOrder"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -47,7 +47,7 @@
         </Column>
         <Column field="DepartmentName" style="min-width: 160px" dataKey="id" header="Người mua">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingOrder"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -55,7 +55,7 @@
         </Column>
         <Column field="DepartmentName" style="min-width: 180px" dataKey="id" header="Mặt hàng">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingOrder"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -63,7 +63,7 @@
         </Column>
         <Column dataKey="id" header="Trạng thái đơn hàng" style="min-width: 250px">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading">
+            <div v-if="!isLoadingOrder">
               <div class="d-flex status-ctn max-content" v-if="data['is_exist']"
                    style="background-color: rgb(229, 250, 237);">
                 <div class="status-dot" style="background-color: rgb(0, 200, 83);"></div>
@@ -82,7 +82,7 @@
         </Column>
         <Column field="DepartmentName" dataKey="id" style="min-width: 200px" header="Phương thức vận chuyển">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingOrder"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -90,7 +90,7 @@
         </Column>
         <Column field="DepartmentName" style="min-width: 150px" dataKey="id" header="Tổng">
           <template #body="{ data, field, slotProps }">
-            <div v-if="!isLoading"> {{ data[field] }}</div>
+            <div v-if="!isLoadingOrder"> {{ data[field] }}</div>
             <div v-else>
               <Skeleton></Skeleton>
             </div>
@@ -98,7 +98,7 @@
         </Column>
         <Column frozen alignFrozen="right" style="min-width: 100px; text-align: center;" header="Thao tác">
           <template #body="slotProps">
-            <div class="row-actions flex-row" v-if="!isLoading">
+            <div class="row-actions flex-row" v-if="!isLoadingOrder">
               <div class="item" @click="onRowSelect(slotProps.data)">
                 <div class="v-popover popover">
                   <div class="trigger">
@@ -129,6 +129,8 @@ import Button from "primevue/button";
 import Skeleton from "primevue/skeleton";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import {getOrder} from "@/api/order";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   components: {
@@ -140,8 +142,20 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
+      orders: [],
     }
+  },
+
+  methods: {
+    ...mapActions(['loadOrder']),
+  },
+
+  created() {
+    this.loadOrder();
+  },
+
+  computed: {
+    ...mapGetters(['orders', 'isLoadingOrder']),
   }
 }
 </script>
