@@ -94,6 +94,7 @@ export const MESSAGE = {
     APPLY: 'Áp dụng',
     CATEGORY: 'Danh mục',
     INVENTORY_STATUS: 'Trạng thái hàng tồn kho',
+    TRANSFER_OPTION: 'Tùy chọn vận chuyển'
 };
 
 export const TIMEOUT = {
