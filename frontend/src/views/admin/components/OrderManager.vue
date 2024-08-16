@@ -11,6 +11,7 @@
         </div>
         <div class="filter-group">
           <Button
+              @click = "isShowSearch = true"
               class="ms-btn btn-secondary d-flex justify-content-center flex-grow-1 ms-btn_search ps-3 pe-3 gap-2">
             <div class="icon24 filter"></div>
             <div class="">Bộ lọc</div>
@@ -128,8 +129,8 @@
       </DataTable>
     </div>
   </div>
-  <Sidebar v-model:visible="show" header="Sidebar" position="right" :dismissable="false"
-           style="width: 35vw" class="ms-sizebar_product d-flex" :showCloseIcon="false">
+  <Sidebar v-model:visible="isShowSearch" header="Sidebar" position="right" :dismissable="false"
+           style="width: 432px" class="ms-sizebar_product d-flex" :showCloseIcon="false">
     <template #container="{ closeCallback }">
       <TheLoading v-if="isLoadingSizeTable"/>
       <div class="ms-sizebar_product-header">
@@ -356,7 +357,7 @@ export default {
   },
   data() {
     return {
-      show: true,
+      isShowSearch: false,
       invalidSizeTable: {},
     }
   },
