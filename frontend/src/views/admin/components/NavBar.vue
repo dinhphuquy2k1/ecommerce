@@ -38,6 +38,7 @@ import PanelMenu from 'primevue/panelmenu';
 import {getMenu} from "@/api/menu";
 
 export default {
+  props: ['isChatNavbar'],
   components: {
     PanelMenu
   },
@@ -64,7 +65,8 @@ export default {
      * Lấy danh sách menu
      */
     async loadMenu() {
-      await getMenu().then(res => {
+      const menu_type = this.isChatNavbar ? 1 : 0;
+      await getMenu(menu_type).then(res => {
         this.menus = res.data
       }).catch(error => {
         console.log(error)

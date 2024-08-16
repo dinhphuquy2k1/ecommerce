@@ -33,7 +33,7 @@ Route::prefix('categories')->group(function () {
 });
 
 Route::prefix('menus')->group(function () {
-    Route::get('/', [ApiMenuController::class, 'getMenu']);
+    Route::get('/{type}', [ApiMenuController::class, 'getMenu'])->where('type', '[0-9]+');
 });
 
 Route::prefix('products')->group(function () {

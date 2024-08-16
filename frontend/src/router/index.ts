@@ -256,6 +256,19 @@ const routes: Array<RouteRecordRaw> = [
                     }
                 ],
             },
+            {
+                path: 'chat',
+                children: [
+                    {
+                        path: '',
+                        components: {
+                            navbar: () => import('@/views/admin/components/NavBar.vue'),
+                            header: () => import('@/views/admin/components/Header.vue'),
+                            content: () => import('@/views/admin/components/AddProduct.vue'),
+                        }
+                    },
+                ]
+            }
         ],
     },
     {

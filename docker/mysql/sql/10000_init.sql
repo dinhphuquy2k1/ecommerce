@@ -170,6 +170,7 @@ CREATE TABLE `menus`
     `id`         bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `label`      varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `icon`       varchar(255) COLLATE utf8mb4_unicode_ci NULL,
+    `menu_type`  tinyint(11) NOT NULL DEFAULT '0',
     `route`      varchar(255) COLLATE utf8mb4_unicode_ci NULL,
     `parent_id`  bigint(20) unsigned DEFAULT NULL,
     `display`    tinyint(1) NOT NULL DEFAULT '0',

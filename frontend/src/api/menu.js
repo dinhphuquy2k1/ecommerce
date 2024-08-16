@@ -2,11 +2,12 @@ import request from '../api/utils/request'
 
 /**
  * Lấy danh sách menu
+ * @param menu_type
  * @returns {*}
  */
-export function getMenu() {
+export function getMenu(menu_type) {
     return request({
-        url: 'menus',
+        url: `menus/${menu_type}`,
         method: 'GET',
     })
 }
